@@ -56,10 +56,9 @@
   <ItemGroup>
     <Compile Include="CenterEditDto.cs" />
     <Compile Include="CenterSaveDto.cs" />
-    <Compile Include="CityComboDto.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="CountryComboDto.cs" />
-    <Compile Include="DistrictComboDto.cs" />
+    <Compile Include="ComboDto.cs" />
+    <Compile Include="DistributionPlan.cs" />
     <Compile Include="FormsFunctions.cs" />
     <Compile Include="frm_health_center.cs">
       <SubType>Form</SubType>
@@ -93,13 +92,11 @@
     </Compile>
     <Compile Include="HealthCenter.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="ItemComboDto.cs" />
     <Compile Include="ItemPo.cs" />
     <Compile Include="ItemPoSaveDto.cs" />
     <Compile Include="ItemPoSearchDto.cs" />
     <Compile Include="ItemTbDto.cs" />
     <Compile Include="Kit.cs" />
-    <Compile Include="KitComboDto.cs" />
     <Compile Include="KitPo.cs" />
     <Compile Include="KitPoSaveDto.cs" />
     <Compile Include="KitPoSearchDto.cs" />

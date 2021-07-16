@@ -15,7 +15,7 @@ namespace WarehouseSystem
                 cmbItem.DataSource = null;
                 HttpClient client = Client.getHttpClient();
                 var response = await client.GetStringAsync("/items/combo");
-                List<ItemComboDto> itemList = JsonConvert.DeserializeObject<List<ItemComboDto>>(response);
+                List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                 cmbItem.DataSource = itemList;
                 cmbItem.DisplayMember = "name";
                 cmbItem.ValueMember = "id";

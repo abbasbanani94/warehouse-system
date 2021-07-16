@@ -16,7 +16,7 @@ namespace WarehouseSystem
                 cmbCity.DataSource = null;
                 HttpClient client = Client.getHttpClient();
                 var response = await client.GetStringAsync("/cities/combo");
-                List<CityComboDto> itemList = JsonConvert.DeserializeObject<List<CityComboDto>>(response);
+                List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                 cmbCity.DataSource = itemList;
                 cmbCity.DisplayMember = "name";
                 cmbCity.ValueMember = "id";
@@ -52,7 +52,7 @@ namespace WarehouseSystem
                     cmbDistrict.DataSource = null;
                     HttpClient client = Client.getHttpClient();
                     var response = await client.GetStringAsync("/districts/combo/" + cityId);
-                    List<DistrictComboDto> itemList = JsonConvert.DeserializeObject<List<DistrictComboDto>>(response);
+                    List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                     cmbDistrict.DataSource = itemList;
                     cmbDistrict.DisplayMember = "name";
                     cmbDistrict.ValueMember = "id";

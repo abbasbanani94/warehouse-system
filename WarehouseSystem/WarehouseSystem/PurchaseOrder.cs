@@ -34,7 +34,7 @@ namespace WarehouseSystem
                 cmbCountry.DataSource = null;
                 HttpClient client = Client.getHttpClient();
                 var response = await client.GetStringAsync("/po/countries");
-                List<CountryComboDto> poList = JsonConvert.DeserializeObject<List<CountryComboDto>>(response);
+                List<ComboDto> poList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                 cmbCountry.DataSource = poList;
                 cmbCountry.DisplayMember = "name";
                 cmbCountry.ValueMember = "id";

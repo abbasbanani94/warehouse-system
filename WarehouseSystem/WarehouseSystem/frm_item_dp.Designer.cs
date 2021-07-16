@@ -30,18 +30,18 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDp = new System.Windows.Forms.TextBox();
             this.txtCenterId = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.cmbDistrict = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCity = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBatch = new System.Windows.Forms.TextBox();
+            this.txtExp = new System.Windows.Forms.TextBox();
+            this.txtMan = new System.Windows.Forms.TextBox();
+            this.txtReceived = new System.Windows.Forms.TextBox();
             this.cmbPoNo = new System.Windows.Forms.ComboBox();
             this.txtTotalQty = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -61,36 +61,36 @@
             this.txtItemId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbItem = new System.Windows.Forms.ComboBox();
-            this.cmbCity = new System.Windows.Forms.ComboBox();
+            this.cmbDp = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.dtpReceived = new System.Windows.Forms.DateTimePicker();
+            this.dtpDp = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPackaging = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.txtInventory = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbCenter = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtDp
             // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(842, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(373, 32);
-            this.textBox1.TabIndex = 18;
+            this.txtDp.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDp.Location = new System.Drawing.Point(842, 44);
+            this.txtDp.Name = "txtDp";
+            this.txtDp.Size = new System.Drawing.Size(373, 32);
+            this.txtDp.TabIndex = 3;
             // 
             // txtCenterId
             // 
@@ -121,7 +121,7 @@
             this.cmbDistrict.Location = new System.Drawing.Point(131, 166);
             this.cmbDistrict.Name = "cmbDistrict";
             this.cmbDistrict.Size = new System.Drawing.Size(263, 32);
-            this.cmbDistrict.TabIndex = 43;
+            this.cmbDistrict.TabIndex = 9;
             // 
             // label25
             // 
@@ -143,16 +143,16 @@
             this.label13.TabIndex = 44;
             this.label13.Text = "DISTRICT*";
             // 
-            // comboBox1
+            // cmbCity
             // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1350, 125);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(265, 32);
-            this.comboBox1.TabIndex = 41;
+            this.cmbCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbCity.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cmbCity.FormattingEnabled = true;
+            this.cmbCity.Location = new System.Drawing.Point(1350, 125);
+            this.cmbCity.Name = "cmbCity";
+            this.cmbCity.Size = new System.Drawing.Size(265, 32);
+            this.cmbCity.TabIndex = 8;
             // 
             // label4
             // 
@@ -164,45 +164,45 @@
             this.label4.TabIndex = 42;
             this.label4.Text = "CITY*";
             // 
-            // textBox5
+            // txtBatch
             // 
-            this.textBox5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(131, 84);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(444, 32);
-            this.textBox5.TabIndex = 40;
-            this.textBox5.TabStop = false;
+            this.txtBatch.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBatch.Location = new System.Drawing.Point(131, 84);
+            this.txtBatch.Name = "txtBatch";
+            this.txtBatch.ReadOnly = true;
+            this.txtBatch.Size = new System.Drawing.Size(444, 32);
+            this.txtBatch.TabIndex = 40;
+            this.txtBatch.TabStop = false;
             // 
-            // textBox4
+            // txtExp
             // 
-            this.textBox4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(1719, 85);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(158, 32);
-            this.textBox4.TabIndex = 39;
-            this.textBox4.TabStop = false;
+            this.txtExp.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExp.Location = new System.Drawing.Point(1719, 85);
+            this.txtExp.Name = "txtExp";
+            this.txtExp.ReadOnly = true;
+            this.txtExp.Size = new System.Drawing.Size(158, 32);
+            this.txtExp.TabIndex = 39;
+            this.txtExp.TabStop = false;
             // 
-            // textBox3
+            // txtMan
             // 
-            this.textBox3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(1350, 84);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(151, 32);
-            this.textBox3.TabIndex = 38;
-            this.textBox3.TabStop = false;
+            this.txtMan.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMan.Location = new System.Drawing.Point(1350, 84);
+            this.txtMan.Name = "txtMan";
+            this.txtMan.ReadOnly = true;
+            this.txtMan.Size = new System.Drawing.Size(151, 32);
+            this.txtMan.TabIndex = 38;
+            this.txtMan.TabStop = false;
             // 
-            // textBox2
+            // txtReceived
             // 
-            this.textBox2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(764, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(144, 32);
-            this.textBox2.TabIndex = 37;
-            this.textBox2.TabStop = false;
+            this.txtReceived.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReceived.Location = new System.Drawing.Point(764, 43);
+            this.txtReceived.Name = "txtReceived";
+            this.txtReceived.ReadOnly = true;
+            this.txtReceived.Size = new System.Drawing.Size(144, 32);
+            this.txtReceived.TabIndex = 37;
+            this.txtReceived.TabStop = false;
             // 
             // cmbPoNo
             // 
@@ -213,7 +213,8 @@
             this.cmbPoNo.Location = new System.Drawing.Point(339, 43);
             this.cmbPoNo.Name = "cmbPoNo";
             this.cmbPoNo.Size = new System.Drawing.Size(236, 32);
-            this.cmbPoNo.TabIndex = 2;
+            this.cmbPoNo.TabIndex = 6;
+            this.cmbPoNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPoNo_KeyPress);
             // 
             // txtTotalQty
             // 
@@ -231,9 +232,10 @@
             this.btnExit.Location = new System.Drawing.Point(1229, 220);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(98, 51);
-            this.btnExit.TabIndex = 24;
+            this.btnExit.TabIndex = 17;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label19
             // 
@@ -251,7 +253,7 @@
             this.btnDelete.Location = new System.Drawing.Point(1098, 220);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(98, 51);
-            this.btnDelete.TabIndex = 23;
+            this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -261,7 +263,7 @@
             this.btnEdit.Location = new System.Drawing.Point(967, 220);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(98, 51);
-            this.btnEdit.TabIndex = 22;
+            this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
@@ -271,7 +273,7 @@
             this.btnSave.Location = new System.Drawing.Point(836, 220);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 51);
-            this.btnSave.TabIndex = 21;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -281,7 +283,7 @@
             this.btnSearch.Location = new System.Drawing.Point(705, 220);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(98, 51);
-            this.btnSearch.TabIndex = 20;
+            this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -291,7 +293,7 @@
             this.btnNew.Location = new System.Drawing.Point(574, 220);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(98, 51);
-            this.btnNew.TabIndex = 19;
+            this.btnNew.TabIndex = 12;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             // 
@@ -394,18 +396,18 @@
             this.cmbItem.Location = new System.Drawing.Point(1350, 43);
             this.cmbItem.Name = "cmbItem";
             this.cmbItem.Size = new System.Drawing.Size(527, 32);
-            this.cmbItem.TabIndex = 4;
+            this.cmbItem.TabIndex = 7;
             // 
-            // cmbCity
+            // cmbDp
             // 
-            this.cmbCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCity.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cmbCity.FormattingEnabled = true;
-            this.cmbCity.Location = new System.Drawing.Point(339, 44);
-            this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(373, 32);
-            this.cmbCity.TabIndex = 2;
+            this.cmbDp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDp.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cmbDp.FormattingEnabled = true;
+            this.cmbDp.Location = new System.Drawing.Point(339, 44);
+            this.cmbDp.Name = "cmbDp";
+            this.cmbDp.Size = new System.Drawing.Size(373, 32);
+            this.cmbDp.TabIndex = 2;
             // 
             // label23
             // 
@@ -419,19 +421,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.cmbCity);
+            this.groupBox1.Controls.Add(this.txtDp);
+            this.groupBox1.Controls.Add(this.cmbDp);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.txtCenterId);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.dtpReceived);
+            this.groupBox1.Controls.Add(this.dtpDp);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1900, 104);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Distribution Plan";
             // 
@@ -445,14 +447,14 @@
             this.label24.TabIndex = 2;
             this.label24.Text = "DATE*";
             // 
-            // dtpReceived
+            // dtpDp
             // 
-            this.dtpReceived.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.dtpReceived.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpReceived.Location = new System.Drawing.Point(1297, 44);
-            this.dtpReceived.Name = "dtpReceived";
-            this.dtpReceived.Size = new System.Drawing.Size(174, 32);
-            this.dtpReceived.TabIndex = 3;
+            this.dtpDp.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.dtpDp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDp.Location = new System.Drawing.Point(1297, 44);
+            this.dtpDp.Name = "dtpDp";
+            this.dtpDp.Size = new System.Drawing.Size(174, 32);
+            this.dtpDp.TabIndex = 4;
             // 
             // label5
             // 
@@ -506,20 +508,20 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.txtInventory);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.txtQty);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.cmbCenter);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.cmbDistrict);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cmbCity);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtBatch);
+            this.groupBox2.Controls.Add(this.txtExp);
+            this.groupBox2.Controls.Add(this.txtMan);
+            this.groupBox2.Controls.Add(this.txtReceived);
             this.groupBox2.Controls.Add(this.cmbPoNo);
             this.groupBox2.Controls.Add(this.txtTotalQty);
             this.groupBox2.Controls.Add(this.btnExit);
@@ -548,49 +550,19 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 122);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1900, 286);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Item Details";
             // 
-            // comboBox2
+            // txtInventory
             // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(764, 166);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(430, 32);
-            this.comboBox2.TabIndex = 45;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(666, 170);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 24);
-            this.label10.TabIndex = 46;
-            this.label10.Text = "CENTER*";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(1350, 166);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(144, 32);
-            this.textBox6.TabIndex = 47;
-            this.textBox6.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1285, 170);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 24);
-            this.label11.TabIndex = 48;
-            this.label11.Text = "QTY*";
+            this.txtInventory.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInventory.Location = new System.Drawing.Point(1050, 125);
+            this.txtInventory.Name = "txtInventory";
+            this.txtInventory.ReadOnly = true;
+            this.txtInventory.Size = new System.Drawing.Size(144, 32);
+            this.txtInventory.TabIndex = 50;
+            this.txtInventory.TabStop = false;
             // 
             // label14
             // 
@@ -602,15 +574,46 @@
             this.label14.TabIndex = 49;
             this.label14.Text = "INVENTORY";
             // 
-            // textBox7
+            // txtQty
             // 
-            this.textBox7.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(1050, 125);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(144, 32);
-            this.textBox7.TabIndex = 50;
-            this.textBox7.TabStop = false;
+            this.txtQty.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.Location = new System.Drawing.Point(1350, 166);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(144, 32);
+            this.txtQty.TabIndex = 11;
+            this.txtQty.TabStop = false;
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPoNo_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(1285, 170);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 24);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "QTY*";
+            // 
+            // cmbCenter
+            // 
+            this.cmbCenter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCenter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbCenter.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cmbCenter.FormattingEnabled = true;
+            this.cmbCenter.Location = new System.Drawing.Point(764, 166);
+            this.cmbCenter.Name = "cmbCenter";
+            this.cmbCenter.Size = new System.Drawing.Size(430, 32);
+            this.cmbCenter.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(666, 170);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 24);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "CENTER*";
             // 
             // dgv
             // 
@@ -652,8 +655,9 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frm_item_dp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_item_dp";
+            this.Text = "Items Distribution Plans";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frm_item_dp_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -665,18 +669,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDp;
         private System.Windows.Forms.TextBox txtCenterId;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox cmbDistrict;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCity;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBatch;
+        private System.Windows.Forms.TextBox txtExp;
+        private System.Windows.Forms.TextBox txtMan;
+        private System.Windows.Forms.TextBox txtReceived;
         private System.Windows.Forms.ComboBox cmbPoNo;
         private System.Windows.Forms.TextBox txtTotalQty;
         private System.Windows.Forms.Button btnExit;
@@ -696,22 +700,22 @@
         private System.Windows.Forms.TextBox txtItemId;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbItem;
-        private System.Windows.Forms.ComboBox cmbCity;
+        private System.Windows.Forms.ComboBox cmbDp;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DateTimePicker dtpReceived;
+        private System.Windows.Forms.DateTimePicker dtpDp;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPackaging;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbCenter;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtInventory;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dgv;
     }
