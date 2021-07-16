@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F2CD12EF-2E05-4306-BFCE-7552EDE8ADF9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WarehouseSystem</RootNamespace>
+    <AssemblyName>WarehouseSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CenterEditDto.cs" />
+    <Compile Include="CenterSaveDto.cs" />
+    <Compile Include="CityComboDto.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="CountryComboDto.cs" />
+    <Compile Include="DistrictComboDto.cs" />
+    <Compile Include="FormsFunctions.cs" />
+    <Compile Include="frm_health_center.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_health_center.designer.cs">
+      <DependentUpon>frm_health_center.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_item_dp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_item_dp.designer.cs">
+      <DependentUpon>frm_item_dp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_item_po.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_item_po.designer.cs">
+      <DependentUpon>frm_item_po.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_kit_po.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kit_po.Designer.cs">
+      <DependentUpon>frm_kit_po.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_parent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_parent.designer.cs">
+      <DependentUpon>frm_parent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HealthCenter.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemComboDto.cs" />
+    <Compile Include="ItemPo.cs" />
+    <Compile Include="ItemPoSaveDto.cs" />
+    <Compile Include="ItemPoSearchDto.cs" />
+    <Compile Include="ItemTbDto.cs" />
+    <Compile Include="Kit.cs" />
+    <Compile Include="KitComboDto.cs" />
+    <Compile Include="KitPo.cs" />
+    <Compile Include="KitPoSaveDto.cs" />
+    <Compile Include="KitPoSearchDto.cs" />
+    <Compile Include="Msg.cs" />
+    <Compile Include="PoCombo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseOrder.cs" />
+    <Compile Include="User.cs" />
+    <EmbeddedResource Include="frm_health_center.resx">
+      <DependentUpon>frm_health_center.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_item_dp.resx">
+      <DependentUpon>frm_item_dp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_item_po.resx">
+      <DependentUpon>frm_item_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_parent.resx">
+      <DependentUpon>frm_parent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
