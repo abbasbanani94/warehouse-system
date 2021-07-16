@@ -1,6 +1,6 @@
 package com.who.warehousesystem.controller;
 
-import com.who.warehousesystem.dto.ItemComboDto;
+import com.who.warehousesystem.dto.ComboDto;
 import com.who.warehousesystem.dto.ItemSaveDto;
 import com.who.warehousesystem.dto.ItemTbDto;
 import com.who.warehousesystem.service.ItemService;
@@ -23,7 +23,7 @@ public class ItemController {
     @GetMapping("/combo")
     public ResponseEntity findItemsCombo () {
         return new ResponseEntity(itemService.findItemsCombo().stream().map(
-                item -> (modelMapper.map(item, ItemComboDto.class))), HttpStatus.OK);
+                item -> (modelMapper.map(item, ComboDto.class))), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

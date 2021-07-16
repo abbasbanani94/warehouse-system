@@ -1,6 +1,6 @@
 package com.who.warehousesystem.controller;
 
-import com.who.warehousesystem.dto.CountryComboDto;
+import com.who.warehousesystem.dto.ComboDto;
 import com.who.warehousesystem.dto.PoComboDto;
 import com.who.warehousesystem.service.CountryService;
 import com.who.warehousesystem.service.PurchaseOrderService;
@@ -39,6 +39,6 @@ public class PurchaseOrderController {
     @GetMapping("/countries")
     public ResponseEntity findAllCountries () {
         return new ResponseEntity(countryService.findAllCountries().stream().map(country -> (
-                modelMapper.map(country, CountryComboDto.class))), HttpStatus.OK);
+                modelMapper.map(country, ComboDto.class))), HttpStatus.OK);
     }
 }

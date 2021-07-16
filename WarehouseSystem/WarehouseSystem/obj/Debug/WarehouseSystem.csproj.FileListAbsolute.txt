@@ -1,0 +1,16 @@
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\WarehouseSystem.exe.config
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\WarehouseSystem.exe
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\WarehouseSystem.pdb
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\Newtonsoft.Json.dll
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\Newtonsoft.Json.xml
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.csprojResolveAssemblyReference.cache
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_health_center.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_item_dp.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_item_po.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_parent.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.Properties.Resources.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.GenerateResource.Cache
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.exe
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.pdb

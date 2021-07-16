@@ -1,7 +1,7 @@
 package com.who.warehousesystem.controller;
 
+import com.who.warehousesystem.dto.ComboDto;
 import com.who.warehousesystem.dto.ItemTbDto;
-import com.who.warehousesystem.dto.KitComboDto;
 import com.who.warehousesystem.service.KitService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class KitController {
     @GetMapping("/combo")
     public ResponseEntity findKitsCombo () {
         return new ResponseEntity(kitService.findKitsCombo().stream()
-                .map(kit -> (modelMapper.map(kit, KitComboDto.class))), HttpStatus.OK);
+                .map(kit -> (modelMapper.map(kit, ComboDto.class))), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
