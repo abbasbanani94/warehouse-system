@@ -3,6 +3,7 @@ package com.who.warehousesystem.service;
 import com.who.warehousesystem.dto.ItemDpSaveDto;
 import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.ItemDpRepository;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +66,9 @@ public class ItemDpService {
         itemPoService.editInventoryByItemDp(itemDp,user);
 
         return itemDp;
+    }
+
+    public List<ItemDp> findAllItemDpDgv() {
+        return itemDpRepository.findAllItemDpDgv().orElse(new ArrayList<>());
     }
 }

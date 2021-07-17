@@ -20,4 +20,7 @@ public interface ItemDpRepository extends JpaRepository<ItemDp,Integer> {
 
     @Query(value = "select * from item_dp where active = 1 order by item_dp_id desc", nativeQuery = true)
     Optional<List<ItemDp>> findAllItemDp();
+
+    @Query(value = "select top 20 * from item_dp where active = 1 order by item_dp_id desc", nativeQuery = true)
+    Optional<List<ItemDp>> findAllItemDpDgv();
 }

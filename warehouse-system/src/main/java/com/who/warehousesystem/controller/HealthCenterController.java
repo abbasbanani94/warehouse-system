@@ -21,7 +21,7 @@ public class HealthCenterController {
 
     @GetMapping("")
     public ResponseEntity findAllHealthCentersDgv () {
-        return new ResponseEntity(healthCenterService.findAllHealthCenters().stream().map(center -> {
+        return new ResponseEntity(healthCenterService.findAllHealthCentersDgv().stream().map(center -> {
             return new CenterDgvDto(center.getId(),
                     center.getDistrict().getCity().getEnName() + " - " + center.getDistrict().getCity().getArName(),
                     center.getDistrict().getEnName() + " - " + center.getDistrict().getArName(),

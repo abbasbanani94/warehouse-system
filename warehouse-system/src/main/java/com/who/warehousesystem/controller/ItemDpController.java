@@ -21,7 +21,7 @@ public class ItemDpController {
 
     @GetMapping("")
     public ResponseEntity findAllItemDpDgv () {
-        return new ResponseEntity(itemDpService.findAllItemDp().stream().map(itemDp ->
+        return new ResponseEntity(itemDpService.findAllItemDpDgv().stream().map(itemDp ->
                 (modelMapper.map(itemDp, ItemDpDgv.class))), HttpStatus.OK);
     }
 

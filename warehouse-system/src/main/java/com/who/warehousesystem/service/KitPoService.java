@@ -58,7 +58,7 @@ public class KitPoService {
     EntityManager entityManager;
 
     public List<KitPo> findKitPoDgv() {
-        return kitPoRepository.findAllKitPo().orElse(new ArrayList<>());
+        return kitPoRepository.findAllKitPoDgv().orElse(new ArrayList<>());
     }
 
     private KitPo initiateObject(KitPoSaveDto dto, User user) throws Exception {

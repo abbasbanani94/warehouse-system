@@ -75,7 +75,8 @@ namespace WarehouseSystem
             txtItemPoId.ResetText();
             if(cmbItem.Text != "" && cmbItem.SelectedValue != null)
             {
-                txtItemPoId.Text = cmbItem.SelectedValue.ToString();
+                if(!dgvClick)
+                    txtItemPoId.Text = cmbItem.SelectedValue.ToString();
                 ItemPo.findItemPoDpDetailsById(txtItemPoId.Text, txtReceived, txtBatch, txtDesc, txtMan,
                     txtExp,txtPackaging,txtTotalQty,txtInventory);
             }
@@ -100,6 +101,7 @@ namespace WarehouseSystem
 
         private void done()
         {
+            cmbItem.DataSource = null;
             FormsFunctions.clearAll(groupBox2);
             load();
         }
@@ -127,11 +129,22 @@ namespace WarehouseSystem
             }
         }
 
+        bool dgvClick = false;
+
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex != -1)
             {
+                dgvClick = true;
                 txtItemDpId.Text = dgv.Rows[e.RowIndex].Cells["Item DP ID"].Value.ToString();
+                cmbDp.Text = dgv.Rows[e.RowIndex].Cells["Plan"].Value.ToString();
+                txtDpId.Text = dgv.Rows[e.RowIndex].Cells["DP ID"].Value.ToString();
+                cmbPoNo.Text = dgv.Rows[e.RowIndex].Cells["PO NO"].Value.ToString();
+                txtPoId.Text = dgv.Rows[e.RowIndex].Cells["PO ID"].Value.ToString();
+                cmbItem.Text = dgv.Rows[e.RowIndex].Cells["Item"].Value.ToString();
+                txtItemPoId.Text = dgv.Rows[e.RowIndex].Cells["Item PO ID"].Value.ToString();
+                txtQty.Text = dgv.Rows[e.RowIndex].Cells["Qty"].Value.ToString();
+                dgvClick = false;
             }
         }
 

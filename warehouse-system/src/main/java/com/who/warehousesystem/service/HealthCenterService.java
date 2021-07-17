@@ -113,4 +113,8 @@ public class HealthCenterService {
         return healthCenterRepository.findHealthCenterById(centerId).orElseThrow(() ->
                 new Exception("No Health Center for ID : " + centerId));
     }
+
+    public List<HealthCenter> findAllHealthCentersDgv() {
+        return healthCenterRepository.findAllHealthCentersDgv().orElse(new ArrayList<>());
+    }
 }
