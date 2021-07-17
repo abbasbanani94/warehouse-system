@@ -59,6 +59,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="ComboDto.cs" />
     <Compile Include="DistributionPlan.cs" />
+    <Compile Include="DpDetailsDto.cs" />
     <Compile Include="FormsFunctions.cs" />
     <Compile Include="frm_health_center.cs">
       <SubType>Form</SubType>
@@ -92,6 +93,8 @@
     </Compile>
     <Compile Include="HealthCenter.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemDp.cs" />
+    <Compile Include="ItemDpSaveDto.cs" />
     <Compile Include="ItemPo.cs" />
     <Compile Include="ItemPoDpDto.cs" />
     <Compile Include="ItemPoSaveDto.cs" />

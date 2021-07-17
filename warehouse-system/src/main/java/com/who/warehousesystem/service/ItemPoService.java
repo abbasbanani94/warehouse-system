@@ -170,4 +170,11 @@ public class ItemPoService {
         return itemPoRepository.findItemPoById(id).orElseThrow(() ->
                 new Exception("No Item PO with ID : " + id));
     }
+
+    public void editInventoryByItemDp(ItemDp itemDp, User user) {
+        ItemPo itemPo = itemDp.getItemPo();
+        itemPo.setInventory(itemPo.getInventory() - itemDp.getQty());
+        itemPo.setUpdatedBy(user);
+        itemPoRepository.save(itemPo);
+    }
 }

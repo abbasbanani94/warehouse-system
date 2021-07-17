@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtDp = new System.Windows.Forms.TextBox();
-            this.txtCenterId = new System.Windows.Forms.TextBox();
+            this.txtDpId = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.cmbDistrict = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -79,6 +79,8 @@
             this.cmbCenter = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.txtItemDpId = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -92,15 +94,16 @@
             this.txtDp.Size = new System.Drawing.Size(373, 32);
             this.txtDp.TabIndex = 3;
             // 
-            // txtCenterId
+            // txtDpId
             // 
-            this.txtCenterId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCenterId.Location = new System.Drawing.Point(106, 44);
-            this.txtCenterId.Name = "txtCenterId";
-            this.txtCenterId.ReadOnly = true;
-            this.txtCenterId.Size = new System.Drawing.Size(103, 32);
-            this.txtCenterId.TabIndex = 1;
-            this.txtCenterId.TabStop = false;
+            this.txtDpId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDpId.Location = new System.Drawing.Point(106, 44);
+            this.txtDpId.Name = "txtDpId";
+            this.txtDpId.ReadOnly = true;
+            this.txtDpId.Size = new System.Drawing.Size(103, 32);
+            this.txtDpId.TabIndex = 1;
+            this.txtDpId.TabStop = false;
+            this.txtDpId.TextChanged += new System.EventHandler(this.txtDpId_TextChanged);
             // 
             // label26
             // 
@@ -279,6 +282,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnSearch
             // 
@@ -299,6 +303,7 @@
             this.btnNew.TabIndex = 12;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // label15
             // 
@@ -412,6 +417,7 @@
             this.cmbDp.Name = "cmbDp";
             this.cmbDp.Size = new System.Drawing.Size(373, 32);
             this.cmbDp.TabIndex = 2;
+            this.cmbDp.TextChanged += new System.EventHandler(this.cmbDp_TextChanged);
             // 
             // label23
             // 
@@ -429,7 +435,7 @@
             this.groupBox1.Controls.Add(this.cmbDp);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.txtCenterId);
+            this.groupBox1.Controls.Add(this.txtDpId);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.label26);
             this.groupBox1.Controls.Add(this.dtpDp);
@@ -512,6 +518,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtItemDpId);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.txtInventory);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtQty);
@@ -624,23 +632,23 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv.Location = new System.Drawing.Point(12, 414);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -648,9 +656,31 @@
             this.dgv.Size = new System.Drawing.Size(1900, 527);
             this.dgv.TabIndex = 1003;
             this.dgv.TabStop = false;
+            this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // txtItemDpId
+            // 
+            this.txtItemDpId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemDpId.Location = new System.Drawing.Point(1719, 166);
+            this.txtItemDpId.Name = "txtItemDpId";
+            this.txtItemDpId.ReadOnly = true;
+            this.txtItemDpId.Size = new System.Drawing.Size(158, 32);
+            this.txtItemDpId.TabIndex = 52;
+            this.txtItemDpId.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1600, 169);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(113, 24);
+            this.label16.TabIndex = 51;
+            this.label16.Text = "ITEM DP ID";
             // 
             // frm_item_dp
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 953);
@@ -674,7 +704,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtDp;
-        private System.Windows.Forms.TextBox txtCenterId;
+        private System.Windows.Forms.TextBox txtDpId;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox cmbDistrict;
         private System.Windows.Forms.Label label25;
@@ -722,5 +752,7 @@
         private System.Windows.Forms.TextBox txtInventory;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.TextBox txtItemDpId;
+        private System.Windows.Forms.Label label16;
     }
 }

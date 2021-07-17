@@ -108,4 +108,9 @@ public class HealthCenterService {
         return healthCenterRepository.findHealthCentersByDistrict(districtId).orElseThrow(() ->
                 new Exception("No health centers were added to the system, please open Health Center's form and add centers there"));
     }
+
+    public HealthCenter findHealthCenterById(Integer centerId) throws Exception {
+        return healthCenterRepository.findHealthCenterById(centerId).orElseThrow(() ->
+                new Exception("No Health Center for ID : " + centerId));
+    }
 }

@@ -34,4 +34,12 @@ public class ItemDp extends DateAudit {
 
     @Column(name = "qty")
     private Integer qty;
+
+    public ItemDp(DistributionPlan dp, HealthCenter center, ItemPo itemPo, Integer qty, User user) {
+        this.distributionPlan = dp;
+        this.healthCenter = center;
+        this.itemPo = itemPo;
+        this.qty = qty;
+        this.setCreatedBy(user);
+    }
 }

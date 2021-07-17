@@ -1,6 +1,7 @@
 package com.who.warehousesystem.model;
 
 import com.who.warehousesystem.audit.DateAudit;
+import com.who.warehousesystem.dto.ItemDpSaveDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,4 +30,11 @@ public class DistributionPlan extends DateAudit {
 
     @Column(name = "d_date")
     private LocalDate dDate;
+
+    public DistributionPlan(ItemDpSaveDto dto, User user) {
+        this.arName = dto.getArName();
+        this.enName = dto.getEnName();
+        this.dDate = dto.getPlanDate();
+        this.setCreatedBy(user);
+    }
 }

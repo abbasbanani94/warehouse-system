@@ -35,6 +35,7 @@ namespace WarehouseSystem
 
         private void load()
         {
+            ItemDp.findItemDpDgv(dgv);
             PurchaseOrder.findAllPoCombo(cmbPoNo);
             DistributionPlan.findAllDpCombo(cmbDp);
         }
@@ -90,6 +91,63 @@ namespace WarehouseSystem
             txtPackaging.ResetText();
             txtTotalQty.ResetText();
             txtInventory.ResetText();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            done();
+        }
+
+        private void done()
+        {
+            FormsFunctions.clearAll(groupBox2);
+            load();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (cmbDp.Text == "" || txtDp.Text == "" || txtItemPoId.Text == "" || cmbCenter.SelectedValue == null ||
+                txtQty.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (txtItemDpId.Text != "")
+                    Msg.errorMsg("Click on Edit button to edit the record", "Error");
+                else
+                {
+                    ItemDpSaveDto dto = new ItemDpSaveDto(txtDpId.Text, cmbDp.Text, txtDp.Text, dtpDp.Value.ToShortDateString(),
+                        txtItemPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
+
+                    if(ItemDp.saveItemDp(dto))
+                    {
+                        Msg.doneMsg("Item DP saved successfully !", "Saved Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex != -1)
+            {
+                txtItemDpId.Text = dgv.Rows[e.RowIndex].Cells["Item DP ID"].Value.ToString();
+            }
+        }
+
+        private void cmbDp_TextChanged(object sender, EventArgs e)
+        {
+            txtDpId.ResetText();
+            if (cmbDp.Text != "" && cmbDp.SelectedValue != null)
+                txtDpId.Text = cmbDp.SelectedValue.ToString();
+        }
+
+        private void txtDpId_TextChanged(object sender, EventArgs e)
+        {
+            txtDp.ResetText();
+            dtpDp.Value = DateTime.Today.Date;
+            if (txtDpId.Text != "")
+                DistributionPlan.findDpDetails(txtDpId.Text, txtDp, dtpDp);
         }
     }
 }
