@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -61,6 +62,55 @@ namespace WarehouseSystem
                 Msg.errorMsg(ex.Message.ToString(), "Error");
             }
             return false;
+        }
+
+        internal static async void findItemsComboByPo(ComboBox cmbItem, string poId)
+        {
+            if (poId.IndexOf('{') == -1)
+            {
+                try
+                {
+                    cmbItem.DataSource = null;
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/itemPo/combo/" + poId);
+                    List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
+                    cmbItem.DataSource = itemList;
+                    cmbItem.DisplayMember = "name";
+                    cmbItem.ValueMember = "id";
+                    cmbItem.ResetText();
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
+            }
+        }
+
+        internal static async void findItemPoDpDetailsById(string itemPoId, TextBox recDate, TextBox batch,
+            TextBox description, TextBox manDate, TextBox expDate, TextBox packaging, TextBox totalQty,
+            TextBox inventory)
+        {
+            if (itemPoId.IndexOf('{') == -1)
+            {
+                try
+                {
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/itemPo/itemPoDp/" + itemPoId);
+                    ItemPoDpDto dto = JsonConvert.DeserializeObject<ItemPoDpDto>(response);
+                    recDate.Text = dto.dateReceived;
+                    batch.Text = dto.batchNo;
+                    description.Text = dto.description;
+                    manDate.Text = dto.manDate;
+                    expDate.Text = dto.expDate;
+                    packaging.Text = dto.packaging;
+                    totalQty.Text = dto.totalQty.ToString();
+                    inventory.Text = dto.inventory.ToString();
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
+            }
         }
 
         internal static bool deleteItemPo(string itemPoId)

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtDp = new System.Windows.Forms.TextBox();
             this.txtCenterId = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPoId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtItemId = new System.Windows.Forms.TextBox();
+            this.txtItemPoId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbItem = new System.Windows.Forms.ComboBox();
             this.cmbDp = new System.Windows.Forms.ComboBox();
@@ -122,6 +122,7 @@
             this.cmbDistrict.Name = "cmbDistrict";
             this.cmbDistrict.Size = new System.Drawing.Size(263, 32);
             this.cmbDistrict.TabIndex = 9;
+            this.cmbDistrict.TextChanged += new System.EventHandler(this.cmbDistrict_TextChanged);
             // 
             // label25
             // 
@@ -153,6 +154,7 @@
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(265, 32);
             this.cmbCity.TabIndex = 8;
+            this.cmbCity.TextChanged += new System.EventHandler(this.cmbCity_TextChanged);
             // 
             // label4
             // 
@@ -214,6 +216,7 @@
             this.cmbPoNo.Name = "cmbPoNo";
             this.cmbPoNo.Size = new System.Drawing.Size(236, 32);
             this.cmbPoNo.TabIndex = 6;
+            this.cmbPoNo.TextChanged += new System.EventHandler(this.cmbPoNo_TextChanged);
             this.cmbPoNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPoNo_KeyPress);
             // 
             // txtTotalQty
@@ -367,25 +370,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "PO ID";
             // 
-            // txtItemId
+            // txtItemPoId
             // 
-            this.txtItemId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemId.Location = new System.Drawing.Point(1050, 43);
-            this.txtItemId.Name = "txtItemId";
-            this.txtItemId.ReadOnly = true;
-            this.txtItemId.Size = new System.Drawing.Size(144, 32);
-            this.txtItemId.TabIndex = 1;
-            this.txtItemId.TabStop = false;
+            this.txtItemPoId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemPoId.Location = new System.Drawing.Point(1050, 43);
+            this.txtItemPoId.Name = "txtItemPoId";
+            this.txtItemPoId.ReadOnly = true;
+            this.txtItemPoId.Size = new System.Drawing.Size(144, 32);
+            this.txtItemPoId.TabIndex = 1;
+            this.txtItemPoId.TabStop = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(962, 46);
+            this.label6.Location = new System.Drawing.Point(931, 46);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 24);
+            this.label6.Size = new System.Drawing.Size(113, 24);
             this.label6.TabIndex = 0;
-            this.label6.Text = "ITEM ID";
+            this.label6.Text = "ITEM PO ID";
             // 
             // cmbItem
             // 
@@ -397,6 +400,7 @@
             this.cmbItem.Name = "cmbItem";
             this.cmbItem.Size = new System.Drawing.Size(527, 32);
             this.cmbItem.TabIndex = 7;
+            this.cmbItem.TextChanged += new System.EventHandler(this.cmbItem_TextChanged);
             // 
             // cmbDp
             // 
@@ -538,7 +542,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtPoId);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txtItemId);
+            this.groupBox2.Controls.Add(this.txtItemPoId);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.cmbItem);
             this.groupBox2.Controls.Add(this.label5);
@@ -620,23 +624,23 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Location = new System.Drawing.Point(12, 414);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -697,7 +701,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPoId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtItemId;
+        private System.Windows.Forms.TextBox txtItemPoId;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbItem;
         private System.Windows.Forms.ComboBox cmbDp;

@@ -3,6 +3,7 @@ package com.who.warehousesystem.controller;
 import com.who.warehousesystem.dto.CenterDgvDto;
 import com.who.warehousesystem.dto.CenterEditDto;
 import com.who.warehousesystem.dto.CenterSaveDto;
+import com.who.warehousesystem.dto.ComboDto;
 import com.who.warehousesystem.service.HealthCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,5 +60,14 @@ public class HealthCenterController {
                     center.getDistrict().getEnName() + " - " + center.getDistrict().getArName(),
                     center.getEnName(),center.getArName());
                 }).collect(Collectors.toList()),HttpStatus.OK);
+    }
+
+    @GetMapping("/combo/{districtId}")
+    public ResponseEntity findAllHealthCentersCombo (@PathVariable (value = "districtId") Integer districtId)
+            throws Exception {
+        return new ResponseEntity(healthCenterService.findAllHealthCentersByDistrict(districtId).stream()
+                .map(center -> {
+            return new ComboDto(center.getId(),center.getEnName() + " - " + center.getArName());
+        }).collect(Collectors.toList()), HttpStatus.OK);
     }
 }

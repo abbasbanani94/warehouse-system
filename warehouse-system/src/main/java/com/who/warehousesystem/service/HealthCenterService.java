@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 @Service
@@ -101,5 +102,10 @@ public class HealthCenterService {
 
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
+    }
+
+    public List<HealthCenter> findAllHealthCentersByDistrict(Integer districtId) throws Exception {
+        return healthCenterRepository.findHealthCentersByDistrict(districtId).orElseThrow(() ->
+                new Exception("No health centers were added to the system, please open Health Center's form and add centers there"));
     }
 }

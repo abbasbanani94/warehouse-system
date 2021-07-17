@@ -1,14 +1,15 @@
 package com.who.warehousesystem.controller;
 
-import com.who.warehousesystem.dto.ItemPoDgv;
-import com.who.warehousesystem.dto.ItemPoSaveDto;
-import com.who.warehousesystem.dto.ItemPoSearchDto;
+import com.who.warehousesystem.dto.*;
+import com.who.warehousesystem.model.ItemPo;
 import com.who.warehousesystem.service.ItemPoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/itemPo")
@@ -68,5 +69,20 @@ public class ItemPoController {
         ,minTemp,maxTemp,description,manDate,expDate,country,batch,packaging,pallets,boxes,packs,totalQty,location);
         return new ResponseEntity(itemPoService.searchItemPo(dto).stream()
                 .map(itemPo -> (modelMapper.map(itemPo, ItemPoDgv.class))), HttpStatus.OK);
+    }
+
+    @GetMapping("/combo/{poId}")
+    public ResponseEntity findItemsComboByPo (@PathVariable (value = "poId") Integer poId) throws Exception {
+        return new ResponseEntity(itemPoService.findItemsPoComboByPo(poId).stream().map(itemPo -> {
+            return new ComboDto(itemPo.getId(), itemPo.getItem().getName());
+        }).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    @GetMapping("/itemPoDp/{itemPoId}")
+    public ResponseEntity findItemPoDpDetailsById (@PathVariable (value = "itemPoId") Integer itemPoId) throws Exception {
+        ItemPo itemPo = itemPoService.findItemPoById(itemPoId);
+        ItemPoDpDto dto = new ItemPoDpDto(itemPo.getRecDate(),itemPo.getBatchNo(),itemPo.getItem().getDescription(),
+                itemPo.getManDate(),itemPo.getExpDate(),itemPo.getPackaging(),itemPo.getTotalQty(),itemPo.getInventory());
+        return new ResponseEntity(dto, HttpStatus.OK);
     }
 }

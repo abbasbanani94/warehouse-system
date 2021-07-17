@@ -160,4 +160,14 @@ public class ItemPoService {
         criteriaQuery.select(root).where(criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
+
+    public List<ItemPo> findItemsPoComboByPo(Integer poId) throws Exception {
+        return itemPoRepository.findItemsPoByPo(poId).orElseThrow(() ->
+                new Exception("No Items added with PO ID : " + poId));
+    }
+
+    public ItemPo findItemPoById(Integer id) throws Exception {
+        return itemPoRepository.findItemPoById(id).orElseThrow(() ->
+                new Exception("No Item PO with ID : " + id));
+    }
 }

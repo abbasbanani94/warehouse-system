@@ -66,6 +66,28 @@ namespace WarehouseSystem
             
         }
 
+        internal static async void findCentersCombo(ComboBox cmbCenter, string districtId)
+        {
+            if (districtId.IndexOf('{') == -1)
+            {
+                try
+                {
+                    cmbCenter.DataSource = null;
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/healthCenters/combo/" + districtId);
+                    List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
+                    cmbCenter.DataSource = itemList;
+                    cmbCenter.DisplayMember = "name";
+                    cmbCenter.ValueMember = "id";
+                    cmbCenter.ResetText();
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
+            }
+        }
+
         internal static bool saveHealthCenter(CenterSaveDto dto)
         {
             try

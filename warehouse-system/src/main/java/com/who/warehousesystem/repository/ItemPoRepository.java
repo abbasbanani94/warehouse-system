@@ -17,4 +17,7 @@ public interface ItemPoRepository extends JpaRepository<ItemPo,Integer> {
 
     @Query(value = "select * from item_po where active = 1 and item_po_id = :id", nativeQuery = true)
     Optional<ItemPo> findItemPoById(@Param(value = "id") Integer id);
+
+    @Query(value = "select * from item_po where active = 1 and purchase_order_id = :poId", nativeQuery = true)
+    Optional<List<ItemPo>> findItemsPoByPo(@Param(value = "poId") Integer poId);
 }
