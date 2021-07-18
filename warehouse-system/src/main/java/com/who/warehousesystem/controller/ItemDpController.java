@@ -30,4 +30,11 @@ public class ItemDpController {
                                       @RequestHeader (value = "userId") Integer userId) throws Exception {
         return new ResponseEntity(modelMapper.map(itemDpService.saveItemDp(dto,userId), ItemDpDgv.class), HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity editItemDp (@PathVariable (value = "id") Integer id,@RequestBody ItemDpSaveDto dto,
+                                      @RequestHeader (value = "userId") Integer userId) throws Exception {
+        return new ResponseEntity(modelMapper.map(itemDpService.editItemDp(id,dto,userId), ItemDpDgv.class),
+                HttpStatus.OK);
+    }
 }

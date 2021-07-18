@@ -171,10 +171,21 @@ public class ItemPoService {
                 new Exception("No Item PO with ID : " + id));
     }
 
-    public void editInventoryByItemDp(ItemDp itemDp, User user) {
+    private void editInventoryByItemDp (ItemDp itemDp,User user,String operation) {
         ItemPo itemPo = itemDp.getItemPo();
-        itemPo.setInventory(itemPo.getInventory() - itemDp.getQty());
+        if(operation.equalsIgnoreCase("add"))
+            itemPo.setInventory(itemPo.getInventory() + itemDp.getQty());
+        else
+            itemPo.setInventory(itemPo.getInventory() - itemDp.getQty());
         itemPo.setUpdatedBy(user);
         itemPoRepository.save(itemPo);
+    }
+
+    public void subInventoryByItemDp(ItemDp itemDp, User user) {
+        editInventoryByItemDp(itemDp, user, "sub");
+    }
+
+    public void addInventoryByItemDp(ItemDp itemDp, User user) {
+        editInventoryByItemDp(itemDp, user, "add");
     }
 }

@@ -3,7 +3,6 @@ package com.who.warehousesystem.service;
 import com.who.warehousesystem.dto.ItemDpSaveDto;
 import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.ItemDpRepository;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,12 +62,40 @@ public class ItemDpService {
         ItemInventory itemInventory = new ItemInventory(itemDp,inventoryType,user);
 
         itemInventoryService.saveItemInventory(itemInventory);
-        itemPoService.editInventoryByItemDp(itemDp,user);
+        itemPoService.subInventoryByItemDp(itemDp,user);
 
         return itemDp;
     }
 
     public List<ItemDp> findAllItemDpDgv() {
         return itemDpRepository.findAllItemDpDgv().orElse(new ArrayList<>());
+    }
+
+    public ItemDp editItemDp(Integer id, ItemDpSaveDto dto, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        ItemDp itemDp = itemDpRepository.findItemDpById(id).orElseThrow(() ->
+                new Exception("No Item DP found for ID : " + id));
+        itemPoService.addInventoryByItemDp(itemDp, user);
+        InventoryType inventoryType = inventoryTypeService.findTypeById(2); //Out
+        ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemDp
+                (inventoryType.getId(),itemDp.getId());
+        ItemPo itemPo = itemPoService.findItemPoById(dto.getItemPoId());
+        DistributionPlan dp = dpService.findDpByItemDp(dto, user);
+        HealthCenter healthCenter = healthCenterService.findHealthCenterById(dto.getCenterId());
+        itemDp.setDistributionPlan(dp);
+        itemDp.setHealthCenter(healthCenter);
+        itemDp.setItemPo(itemPo);
+        itemDp.setUpdatedBy(user);
+        itemDp = itemDpRepository.save(itemDp);
+
+        itemInventory.setItemPo(itemPo);
+        itemInventory.setItemDp(itemDp);
+        itemInventory.setOutQty(dto.getQty());
+        itemInventory.setUpdatedBy(user);
+        itemInventory.setNote("ItemDp Id: " + itemDp.getId() + ", Plan Name: " + itemDp.getDistributionPlan().getEnName() +
+                ", Item: " + itemDp.getItemPo().getItem().getName() + ", Out Qty: " + itemDp.getQty());
+        itemInventoryService.saveItemInventory(itemInventory);
+        itemPoService.subInventoryByItemDp(itemDp, user);
+        return itemDp;
     }
 }

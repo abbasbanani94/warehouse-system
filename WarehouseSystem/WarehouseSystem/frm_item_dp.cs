@@ -162,5 +162,26 @@ namespace WarehouseSystem
             if (txtDpId.Text != "")
                 DistributionPlan.findDpDetails(txtDpId.Text, txtDp, dtpDp);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (cmbDp.Text == "" || txtDp.Text == "" || txtItemPoId.Text == "" || cmbCenter.SelectedValue == null ||
+                txtQty.Text == "" || txtItemDpId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if(Msg.questionMsg("Do you want to edit Item DP ?", "Are You Sure") == DialogResult.Yes)
+                {
+                    ItemDpSaveDto dto = new ItemDpSaveDto(txtDpId.Text, cmbDp.Text, txtDp.Text, dtpDp.Value.ToShortDateString(),
+                        txtItemPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
+
+                    if (ItemDp.editItemDp(txtItemDpId.Text,dto))
+                    {
+                        Msg.doneMsg("Item DP edited successfully !", "Edited Successfully");
+                        done();
+                    }
+                }
+            }
+        }
     }
 }

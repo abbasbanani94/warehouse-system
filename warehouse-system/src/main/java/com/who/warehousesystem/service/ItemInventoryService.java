@@ -20,4 +20,11 @@ public class ItemInventoryService {
         return itemInventoryRepository.findItemInventoryByTypeAndItemPo(typeId, itemPoId)
                 .orElseThrow(() -> new Exception("No Item inventory for PO ID : " + itemPoId + " and Type ID : " + typeId));
     }
+
+    public ItemInventory findItemInventoryByTypeAndItemDp(Integer typeId, Integer itemDpId)
+            throws Exception {
+        return itemInventoryRepository.findItemInventoryByTypeAndItemPoAndDp(typeId,itemDpId)
+                .orElseThrow(() -> new Exception("No Item inventory for Item DP id : " + itemDpId + " and " +
+                        "type ID : " + typeId));
+    }
 }
