@@ -101,9 +101,8 @@ public class ItemPoService {
         itemPo.setActive(false);
         itemPo.setUpdatedBy(user);
         itemPoRepository.save(itemPo);
-        InventoryType inventoryType = inventoryTypeService.findTypeById(1);//In
         ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemPo
-                (inventoryType.getId(),itemPo.getId());
+                (1,itemPo.getId());
         itemInventory.setActive(false);
         itemInventory.setUpdatedBy(user);
         itemInventoryService.saveItemInventory(itemInventory);

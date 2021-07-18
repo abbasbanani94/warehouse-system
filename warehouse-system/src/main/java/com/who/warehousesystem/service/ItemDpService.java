@@ -6,6 +6,11 @@ import com.who.warehousesystem.repository.ItemDpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +37,9 @@ public class ItemDpService {
 
     @Autowired
     ItemInventoryService itemInventoryService;
+
+    @Autowired
+    ItemWbService itemWbService;
 
     public ItemDp findItemDpByItemPo(Integer itemPoId) {
         return itemDpRepository.findItemDpByItemPo(itemPoId);
@@ -73,8 +81,7 @@ public class ItemDpService {
 
     public ItemDp editItemDp(Integer id, ItemDpSaveDto dto, Integer userId) throws Exception {
         User user = userService.findUserById(userId);
-        ItemDp itemDp = itemDpRepository.findItemDpById(id).orElseThrow(() ->
-                new Exception("No Item DP found for ID : " + id));
+        ItemDp itemDp = findItemDpById(id);
         itemPoService.addInventoryByItemDp(itemDp, user);
         InventoryType inventoryType = inventoryTypeService.findTypeById(2); //Out
         ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemDp
@@ -97,5 +104,62 @@ public class ItemDpService {
         itemInventoryService.saveItemInventory(itemInventory);
         itemPoService.subInventoryByItemDp(itemDp, user);
         return itemDp;
+    }
+
+    public void deleteItemDp(Integer id, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        ItemDp itemDp = findItemDpById(id);
+        checkItemDpExistence(itemDp.getId());
+        itemDp.setUpdatedBy(user);
+        itemDp.setActive(false);
+        itemPoService.addInventoryByItemDp(itemDp, user);
+        itemDpRepository.save(itemDp);
+        ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemDp(2,id);
+        itemInventory.setActive(false);
+        itemInventory.setUpdatedBy(user);
+        itemInventoryService.saveItemInventory(itemInventory);
+    }
+
+    private void checkItemDpExistence(Integer id) throws Exception {
+        if(itemWbService.findItemWbByItemDp(id) != null)
+            throw new Exception("Item DP cannot be deleted because it's included in other tables");
+    }
+
+    private ItemDp findItemDpById(Integer id) throws Exception {
+        return itemDpRepository.findItemDpById(id).orElseThrow(() ->
+                new Exception("No Item DP found for ID : " + id));
+    }
+
+    @Autowired
+    EntityManager entityManager;
+
+    public List<ItemDp> searchItemDp(String planId, String date, String poId, String itemPoId, String cityId,
+                                     String districtId, String centerId, String qty) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ItemDp> cq = cb.createQuery(ItemDp.class);
+        Root<ItemDp> root = cq.from(ItemDp.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(cb.equal(root.get("active"), true));
+
+        if(!planId.isBlank() && !planId.isEmpty())
+            predicates.add(cb.equal(root.join("distributionPlan").get("id"), planId));
+        if(!date.isBlank() && !date.isEmpty())
+            predicates.add(cb.equal(root.join("distributionPlan").get("dDate"), date));
+        if(!poId.isBlank() && !poId.isEmpty())
+            predicates.add(cb.equal(root.join("itemPo").join("purchaseOrder").get("id"), poId));
+        if(!itemPoId.isBlank() && !itemPoId.isEmpty())
+            predicates.add(cb.equal(root.join("itemPo").get("id"), itemPoId));
+        if(!cityId.isBlank() && !cityId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").join("district").join("city").get("id"), cityId));
+        if(!districtId.isBlank() && !districtId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").join("district").get("id"), districtId));
+        if(!centerId.isBlank() && !centerId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").get("id"), centerId));
+        if(!qty.isBlank() && !qty.isEmpty())
+            predicates.add(cb.equal(root.get("qty"), qty));
+
+        cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+        return entityManager.createQuery(cq).getResultList();
     }
 }

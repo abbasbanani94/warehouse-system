@@ -156,6 +156,7 @@
             this.chkExp.Name = "chkExp";
             this.chkExp.Size = new System.Drawing.Size(123, 28);
             this.chkExp.TabIndex = 28;
+            this.chkExp.TabStop = false;
             this.chkExp.Text = "Exp. Date";
             this.chkExp.UseVisualStyleBackColor = true;
             // 
@@ -167,6 +168,7 @@
             this.chkMan.Name = "chkMan";
             this.chkMan.Size = new System.Drawing.Size(128, 28);
             this.chkMan.TabIndex = 27;
+            this.chkMan.TabStop = false;
             this.chkMan.Text = "Man. Date";
             this.chkMan.UseVisualStyleBackColor = true;
             // 
@@ -188,6 +190,7 @@
             this.chkReceived.Name = "chkReceived";
             this.chkReceived.Size = new System.Drawing.Size(165, 28);
             this.chkReceived.TabIndex = 26;
+            this.chkReceived.TabStop = false;
             this.chkReceived.Text = "Date Received";
             this.chkReceived.UseVisualStyleBackColor = true;
             // 

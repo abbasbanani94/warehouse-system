@@ -183,5 +183,38 @@ namespace WarehouseSystem
                 }
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtItemDpId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (Msg.questionMsg("Do you want to delete Item DP ?", "Are You Sure") == DialogResult.Yes)
+                {
+                    if (ItemDp.deleteItemDp(txtItemDpId.Text))
+                    {
+                        Msg.doneMsg("Item DP deleted successfully !", "Deleted Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string date = "", cityId = "", districtId = "", centerId = "";
+            if (chkDate.Checked)
+                date = dtpDp.Value.ToShortDateString();
+            if (cmbCity.SelectedValue != null)
+                cityId = cmbCity.SelectedValue.ToString();
+            if (cmbDistrict.SelectedValue != null)
+                districtId = cmbDistrict.SelectedValue.ToString();
+            if (cmbCenter.SelectedValue != null)
+                centerId = cmbCenter.SelectedValue.ToString();
+
+            ItemDp.searchItemDpDgv(dgv, txtDpId.Text, date, txtPoId.Text, txtItemPoId.Text,
+                cityId, districtId, centerId, txtQty.Text);
+        }
     }
 }
