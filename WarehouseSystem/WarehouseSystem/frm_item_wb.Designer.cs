@@ -544,7 +544,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1900, 286);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Item DP Details";
+            this.groupBox2.Text = "DP Details";
             // 
             // cmbCenter
             // 
@@ -763,7 +763,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_item_wb";
-            this.Text = "frm_item_wb";
+            this.Text = "Waybill Details";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
