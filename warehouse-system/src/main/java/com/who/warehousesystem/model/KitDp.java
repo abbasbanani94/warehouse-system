@@ -34,4 +34,12 @@ public class KitDp extends DateAudit {
 
     @Column(name = "qty")
     private Integer qty;
+
+    public KitDp(DistributionPlan dp, HealthCenter center, KitPo kitPo, Integer qty, User user) {
+        this.distributionPlan = dp;
+        this.healthCenter = center;
+        this.kitPo = kitPo;
+        this.qty = qty;
+        this.setCreatedBy(user);
+    }
 }

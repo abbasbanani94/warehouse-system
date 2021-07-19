@@ -54,4 +54,15 @@ public class KitInventory extends DateAudit {
         this.note = "KitPo Id:" + kitPo.getId() + ", PO No:" + kitPo.getOrder().getNo() + ", Kit:" +
                 kitPo.getKit().getName() + ", Exp. Date:" + kitPo.getExpDate() + ", In Qty:" + kitPo.getTotalQty();
     }
+
+    public KitInventory(KitDp kitDp, InventoryType inventoryType, User user) {
+        this.kitPo = kitDp.getKitPo();
+        this.kitDp = kitDp;
+        this.inventoryType = inventoryType;
+        this.inQty = 0;
+        this.outQty = kitDp.getQty();
+        this.setCreatedBy(user);
+        this.note = "KitDp ID: " + kitDp.getId() + ", Plan Name: " + kitDp.getDistributionPlan().getEnName() + ", " +
+                "Kit: " + kitDp.getKitPo().getKit().getName() + ", Out Qty: " + kitDp.getQty();
+    }
 }

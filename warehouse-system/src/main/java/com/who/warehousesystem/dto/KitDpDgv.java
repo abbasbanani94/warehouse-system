@@ -15,7 +15,7 @@ public class KitDpDgv {
     private Integer id;
     @JsonProperty(value = "Plan")
     private String distributionPlanEnName;
-    @JsonProperty(value = "Item")
+    @JsonProperty(value = "Kit")
     private String kitPoKitName;
     @JsonProperty(value = "PO NO")
     private String kitPoPurchaseOrderNo;

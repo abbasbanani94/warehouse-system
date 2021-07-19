@@ -53,13 +53,9 @@ public class ItemDpService {
             return false;
     }
 
-    public List<ItemDp> findAllItemDp() {
-        return itemDpRepository.findAllItemDp().orElse(new ArrayList<>());
-    }
-
     public ItemDp saveItemDp(ItemDpSaveDto dto, Integer userId) throws Exception {
         User user = userService.findUserById(userId);
-        DistributionPlan dp = dpService.findDpByItemDp(dto,user);
+        DistributionPlan dp = dpService.findDpByDetails(dto.getPlanId(),dto.getEnName(),dto.getArName(),dto.getPlanDate(),user);
         HealthCenter center = healthCenterService.findHealthCenterById(dto.getCenterId());
         ItemPo itemPo = itemPoService.findItemPoById(dto.getItemPoId());
 
@@ -87,7 +83,7 @@ public class ItemDpService {
         ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemDp
                 (inventoryType.getId(),itemDp.getId());
         ItemPo itemPo = itemPoService.findItemPoById(dto.getItemPoId());
-        DistributionPlan dp = dpService.findDpByItemDp(dto, user);
+        DistributionPlan dp = dpService.findDpByDetails(dto.getPlanId(),dto.getEnName(),dto.getArName(),dto.getPlanDate(),user);
         HealthCenter healthCenter = healthCenterService.findHealthCenterById(dto.getCenterId());
         itemDp.setDistributionPlan(dp);
         itemDp.setHealthCenter(healthCenter);

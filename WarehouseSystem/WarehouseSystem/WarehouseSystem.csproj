@@ -108,6 +108,7 @@
     <Compile Include="ItemTbDto.cs" />
     <Compile Include="Kit.cs" />
     <Compile Include="KitDp.cs" />
+    <Compile Include="KitDpSaveDto.cs" />
     <Compile Include="KitPo.cs" />
     <Compile Include="KitPoDpDto.cs" />
     <Compile Include="KitPoSaveDto.cs" />

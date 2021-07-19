@@ -172,4 +172,22 @@ public class KitPoService {
         return kitPoRepository.findKitPoById(id).orElseThrow(() ->
                 new Exception("No Kit PO with ID : " + id));
     }
+
+    private void editInventoryByKitDp (KitDp kitDp, User user, String operation) {
+        KitPo kitPo = kitDp.getKitPo();
+        if(operation.equalsIgnoreCase("add"))
+            kitPo.setInventory(kitPo.getInventory() + kitDp.getQty());
+        else
+            kitPo.setInventory(kitPo.getInventory() - kitDp.getQty());
+        kitPo.setUpdatedBy(user);
+        kitPoRepository.save(kitPo);
+    }
+
+    public void subInventoryByKitDp(KitDp kitDp, User user) {
+        editInventoryByKitDp(kitDp, user, "sub");
+    }
+
+    public void addInventoryByKitDp(KitDp kitDp, User user) {
+        editInventoryByKitDp(kitDp, user, "add");
+    }
 }

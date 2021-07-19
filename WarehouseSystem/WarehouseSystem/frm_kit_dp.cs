@@ -91,5 +91,71 @@ namespace WarehouseSystem
             txtTotalQty.ResetText();
             txtInventory.ResetText();
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            done();
+        }
+
+        private void done()
+        {
+            FormsFunctions.clearAll(groupBox2);
+            load();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (cmbDpEn.Text == "" || txtDpAr.Text == "" || txtKitPoId.Text == "" || cmbCenter.SelectedValue == null ||
+                txtQty.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (txtKitDpId.Text != "")
+                    Msg.errorMsg("Click on Edit button to edit the record", "Error");
+                else
+                {
+                    KitDpSaveDto dto = new KitDpSaveDto(txtDpId.Text, cmbDpEn.Text, txtDpAr.Text, dtpDp.Value.ToShortDateString(),
+                        txtKitPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
+
+                    if (KitDp.saveKitDp(dto))
+                    {
+                        Msg.doneMsg("Kit DP saved successfully !", "Saved Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void cmbDpEn_TextChanged(object sender, EventArgs e)
+        {
+            txtDpId.ResetText();
+            if (cmbDpEn.Text != "" && cmbDpEn.SelectedValue != null)
+                txtDpId.Text = cmbDpEn.SelectedValue.ToString();
+        }
+
+        private void txtDpId_TextChanged(object sender, EventArgs e)
+        {
+            txtDpAr.ResetText();
+            dtpDp.Value = DateTime.Today.Date;
+            if (txtDpId.Text != "")
+                DistributionPlan.findDpDetails(txtDpId.Text, txtDpAr, dtpDp);
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                dgvClick = true;
+                txtKitDpId.Text = dgv.Rows[e.RowIndex].Cells["Kit DP ID"].Value.ToString();
+                cmbDpEn.Text = dgv.Rows[e.RowIndex].Cells["Plan"].Value.ToString();
+                txtDpId.Text = dgv.Rows[e.RowIndex].Cells["DP ID"].Value.ToString();
+                cmbPoNo.Text = dgv.Rows[e.RowIndex].Cells["PO NO"].Value.ToString();
+                txtPoId.Text = dgv.Rows[e.RowIndex].Cells["PO ID"].Value.ToString();
+                cmbKit.Text = dgv.Rows[e.RowIndex].Cells["Kit"].Value.ToString();
+                txtKitPoId.Text = dgv.Rows[e.RowIndex].Cells["Kit PO ID"].Value.ToString();
+                txtQty.Text = dgv.Rows[e.RowIndex].Cells["Qty"].Value.ToString();
+                dgvClick = false;
+            }
+        }
     }
 }

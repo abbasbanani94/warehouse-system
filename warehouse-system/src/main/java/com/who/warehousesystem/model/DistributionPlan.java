@@ -31,10 +31,10 @@ public class DistributionPlan extends DateAudit {
     @Column(name = "d_date")
     private LocalDate dDate;
 
-    public DistributionPlan(ItemDpSaveDto dto, User user) {
-        this.arName = dto.getArName();
-        this.enName = dto.getEnName();
-        this.dDate = dto.getPlanDate();
+    public DistributionPlan(String arName,String enName,LocalDate planDate, User user) {
+        this.arName = arName;
+        this.enName = enName;
+        this.dDate = planDate;
         this.setCreatedBy(user);
     }
 }
