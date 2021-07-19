@@ -55,19 +55,20 @@
             this.label26 = new System.Windows.Forms.Label();
             this.dtpWb = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbWbNo = new System.Windows.Forms.ComboBox();
             this.txtDpName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listDp = new System.Windows.Forms.ListBox();
-            this.listWb = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnAddAll = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
-            this.cmbWbNo = new System.Windows.Forms.ComboBox();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAddAll = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listWb = new System.Windows.Forms.ListBox();
+            this.listDp = new System.Windows.Forms.ListBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,6 @@
             this.txtDpDate.Size = new System.Drawing.Size(144, 32);
             this.txtDpDate.TabIndex = 37;
             this.txtDpDate.TabStop = false;
-            this.txtDpDate.TextChanged += new System.EventHandler(this.cmbCenter_TextChanged);
             // 
             // label8
             // 
@@ -135,7 +135,6 @@
             this.cmbCenter.Name = "cmbCenter";
             this.cmbCenter.Size = new System.Drawing.Size(452, 32);
             this.cmbCenter.TabIndex = 8;
-            this.cmbCenter.TextChanged += new System.EventHandler(this.cmbCenter_TextChanged);
             // 
             // cmbDistrict
             // 
@@ -370,6 +369,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Waybill Details";
             // 
+            // cmbWbNo
+            // 
+            this.cmbWbNo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbWbNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbWbNo.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cmbWbNo.FormattingEnabled = true;
+            this.cmbWbNo.Location = new System.Drawing.Point(411, 44);
+            this.cmbWbNo.Name = "cmbWbNo";
+            this.cmbWbNo.Size = new System.Drawing.Size(206, 32);
+            this.cmbWbNo.TabIndex = 2;
+            this.cmbWbNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWbNo_KeyPress);
+            // 
             // txtDpName
             // 
             this.txtDpName.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -402,6 +413,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnLoad);
             this.groupBox2.Controls.Add(this.btnRemoveAll);
             this.groupBox2.Controls.Add(this.btnRemove);
             this.groupBox2.Controls.Add(this.btnAddAll);
@@ -430,37 +442,53 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DP Details";
             // 
-            // listDp
+            // btnRemoveAll
             // 
-            this.listDp.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.listDp.FormattingEnabled = true;
-            this.listDp.ItemHeight = 24;
-            this.listDp.Location = new System.Drawing.Point(123, 137);
-            this.listDp.Name = "listDp";
-            this.listDp.Size = new System.Drawing.Size(745, 556);
-            this.listDp.TabIndex = 40;
-            this.listDp.TabStop = false;
+            this.btnRemoveAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
+            this.btnRemoveAll.Location = new System.Drawing.Point(891, 466);
+            this.btnRemoveAll.Name = "btnRemoveAll";
+            this.btnRemoveAll.Size = new System.Drawing.Size(98, 51);
+            this.btnRemoveAll.TabIndex = 47;
+            this.btnRemoveAll.TabStop = false;
+            this.btnRemoveAll.Text = "<<";
+            this.btnRemoveAll.UseVisualStyleBackColor = true;
+            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
             // 
-            // listWb
+            // btnRemove
             // 
-            this.listWb.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.listWb.FormattingEnabled = true;
-            this.listWb.ItemHeight = 24;
-            this.listWb.Location = new System.Drawing.Point(1012, 137);
-            this.listWb.Name = "listWb";
-            this.listWb.Size = new System.Drawing.Size(745, 556);
-            this.listWb.TabIndex = 41;
-            this.listWb.TabStop = false;
+            this.btnRemove.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
+            this.btnRemove.Location = new System.Drawing.Point(891, 393);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(98, 51);
+            this.btnRemove.TabIndex = 46;
+            this.btnRemove.TabStop = false;
+            this.btnRemove.Text = "<";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // label5
+            // btnAddAll
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label5.Location = new System.Drawing.Point(117, 100);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 34);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "DP ITEMS";
+            this.btnAddAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
+            this.btnAddAll.Location = new System.Drawing.Point(891, 320);
+            this.btnAddAll.Name = "btnAddAll";
+            this.btnAddAll.Size = new System.Drawing.Size(98, 51);
+            this.btnAddAll.TabIndex = 45;
+            this.btnAddAll.TabStop = false;
+            this.btnAddAll.Text = ">>";
+            this.btnAddAll.UseVisualStyleBackColor = true;
+            this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Location = new System.Drawing.Point(891, 247);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(98, 51);
+            this.btnAdd.TabIndex = 44;
+            this.btnAdd.TabStop = false;
+            this.btnAdd.Text = ">";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label6
             // 
@@ -472,61 +500,51 @@
             this.label6.TabIndex = 43;
             this.label6.Text = "WB ITEMS";
             // 
-            // btnAdd
+            // label5
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.Location = new System.Drawing.Point(891, 243);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(98, 51);
-            this.btnAdd.TabIndex = 44;
-            this.btnAdd.TabStop = false;
-            this.btnAdd.Text = ">";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label5.Location = new System.Drawing.Point(117, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(138, 34);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "DP ITEMS";
             // 
-            // btnAddAll
+            // listWb
             // 
-            this.btnAddAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnAddAll.Location = new System.Drawing.Point(891, 315);
-            this.btnAddAll.Name = "btnAddAll";
-            this.btnAddAll.Size = new System.Drawing.Size(98, 51);
-            this.btnAddAll.TabIndex = 45;
-            this.btnAddAll.TabStop = false;
-            this.btnAddAll.Text = ">>";
-            this.btnAddAll.UseVisualStyleBackColor = true;
+            this.listWb.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.listWb.FormattingEnabled = true;
+            this.listWb.ItemHeight = 24;
+            this.listWb.Location = new System.Drawing.Point(1012, 137);
+            this.listWb.Name = "listWb";
+            this.listWb.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listWb.Size = new System.Drawing.Size(867, 556);
+            this.listWb.TabIndex = 41;
+            this.listWb.TabStop = false;
             // 
-            // btnRemove
+            // listDp
             // 
-            this.btnRemove.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnRemove.Location = new System.Drawing.Point(891, 391);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(98, 51);
-            this.btnRemove.TabIndex = 46;
-            this.btnRemove.TabStop = false;
-            this.btnRemove.Text = "<";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.listDp.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.listDp.FormattingEnabled = true;
+            this.listDp.ItemHeight = 24;
+            this.listDp.Location = new System.Drawing.Point(21, 137);
+            this.listDp.Name = "listDp";
+            this.listDp.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listDp.Size = new System.Drawing.Size(847, 556);
+            this.listDp.TabIndex = 40;
+            this.listDp.TabStop = false;
             // 
-            // btnRemoveAll
+            // btnLoad
             // 
-            this.btnRemoveAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnRemoveAll.Location = new System.Drawing.Point(891, 468);
-            this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(98, 51);
-            this.btnRemoveAll.TabIndex = 47;
-            this.btnRemoveAll.TabStop = false;
-            this.btnRemoveAll.Text = "<<";
-            this.btnRemoveAll.UseVisualStyleBackColor = true;
-            // 
-            // cmbWbNo
-            // 
-            this.cmbWbNo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbWbNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbWbNo.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cmbWbNo.FormattingEnabled = true;
-            this.cmbWbNo.Location = new System.Drawing.Point(411, 44);
-            this.cmbWbNo.Name = "cmbWbNo";
-            this.cmbWbNo.Size = new System.Drawing.Size(206, 32);
-            this.cmbWbNo.TabIndex = 2;
-            this.cmbWbNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWbNo_KeyPress);
+            this.btnLoad.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLoad.Location = new System.Drawing.Point(891, 174);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(98, 51);
+            this.btnLoad.TabIndex = 48;
+            this.btnLoad.TabStop = false;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // frm_waybill_details
             // 
@@ -590,5 +608,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbWbNo;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

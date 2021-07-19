@@ -26,5 +26,41 @@ namespace WarehouseSystem
                 Msg.errorMsg(ex.Message.ToString(), "Error");
             }
         }
+
+        internal static async void findItemsKitsListNoWb(ListBox listDp, string dpId, string centerId)
+        {
+            try
+            {
+                listDp.Items.Clear();
+                HttpClient client = Client.getHttpClient();
+                var response = await client.GetStringAsync("/waybills/items-kits-no-wb/list?dpId=" + dpId +
+                    "&centerId=" + centerId);
+                List<string> poList = JsonConvert.DeserializeObject<List<string>>(response);
+                foreach (string i in poList)
+                    listDp.Items.Add(i);
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+        }
+
+        internal static async void findItemsKitsListWb(ListBox listWb, string dpId, string centerId)
+        {
+            try
+            {
+                listWb.Items.Clear();
+                HttpClient client = Client.getHttpClient();
+                var response = await client.GetStringAsync("/waybills/items-kits-wb/list?dpId=" + dpId +
+                    "&centerId=" + centerId);
+                List<string> poList = JsonConvert.DeserializeObject<List<string>>(response);
+                foreach (string i in poList)
+                    listWb.Items.Add(i);
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+        }
     }
 }

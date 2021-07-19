@@ -13,6 +13,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemDpService {
@@ -171,5 +172,23 @@ public class ItemDpService {
 
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
+    }
+
+    public List<String> findItemsDpListByDpAndCenterNoWb(Integer dpId, Integer centerId) {
+        return itemDpRepository.findItemDpByDpAndCenterNoWb(dpId,centerId).orElse(new ArrayList<>()).stream().map(
+                itemDp -> {
+                    return "I" + itemDp.getId() + " - " + itemDp.getItemPo().getItem().getName() +
+                            " - Qty : " + itemDp.getQty();
+                }
+        ).collect(Collectors.toList());
+    }
+
+    public List<String> findItemsDpListByDpAndCenterWb(Integer dpId, Integer centerId) {
+        return itemDpRepository.findItemDpByDpAndCenterWb(dpId,centerId).orElse(new ArrayList<>()).stream().map(
+                itemDp -> {
+                    return "I" + itemDp.getId() + " - " + itemDp.getItemPo().getItem().getName() +
+                            " - Qty : " + itemDp.getQty();
+                }
+        ).collect(Collectors.toList());
     }
 }
