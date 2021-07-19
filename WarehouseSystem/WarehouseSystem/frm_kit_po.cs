@@ -225,6 +225,9 @@ namespace WarehouseSystem
                 cmbType.Text);
 
             KitPo.searchKitPoDgv(dto, dgv);
+
+            if (dgv.Rows.Count == 0)
+                KitPo.findKitPoDgv(dgv);
         }
     }
 }

@@ -3,9 +3,15 @@ package com.who.warehousesystem.service;
 import com.who.warehousesystem.dto.KitDpSaveDto;
 import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.KitDpRepository;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,5 +127,38 @@ public class KitDpService {
     private void checkKitDpExistence(Integer id) throws Exception {
         if(kitWbService.findKitWbByKitDp(id) != null)
             throw new Exception("Kit DP cannot be deleted because it's included in other tables");
+    }
+
+    @Autowired
+    EntityManager entityManager;
+
+    public List<KitDp> searchKitDp(String planId, String date, String poId, String kitPoId, String cityId,
+                                   String districtId, String centerId, String qty) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<KitDp> cq = cb.createQuery(KitDp.class);
+        Root<KitDp> root = cq.from(KitDp.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(cb.equal(root.get("active"), true));
+
+        if(!districtId.isBlank() && !districtId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").join("district").get("id"), districtId));
+        if(!centerId.isBlank() && !centerId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").get("id"), centerId));
+        if(!poId.isBlank() && !poId.isEmpty())
+            predicates.add(cb.equal(root.join("kitPo").join("purchaseOrder").get("id"), poId));
+        if(!kitPoId.isBlank() && !kitPoId.isEmpty())
+            predicates.add(cb.equal(root.join("kitPo").get("id"), kitPoId));
+        if(!cityId.isBlank() && !cityId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").join("district").join("city").get("id"), cityId));
+        if(!qty.isBlank() && !qty.isEmpty())
+            predicates.add(cb.equal(root.get("qty"), qty));
+        if(!planId.isBlank() && !planId.isEmpty())
+            predicates.add(cb.equal(root.join("distributionPlan").get("id"), planId));
+        if(!date.isBlank() && !date.isEmpty())
+            predicates.add(cb.equal(root.join("distributionPlan").get("dDate"), date));
+
+        cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+        return entityManager.createQuery(cq).getResultList();
     }
 }

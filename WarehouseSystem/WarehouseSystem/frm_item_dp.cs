@@ -92,6 +92,8 @@ namespace WarehouseSystem
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            txtDp.ResetText();
+            dtpDp.Value = DateTime.Today.Date;
             done();
         }
 
@@ -212,6 +214,9 @@ namespace WarehouseSystem
 
             ItemDp.searchItemDpDgv(dgv, txtDpId.Text, date, txtPoId.Text, txtItemPoId.Text,
                 cityId, districtId, centerId, txtQty.Text);
+
+            if (dgv.Rows.Count == 0)
+                ItemDp.findItemDpDgv(dgv);
         }
     }
 }

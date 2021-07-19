@@ -82,5 +82,25 @@ namespace WarehouseSystem
             }
             return false;
         }
+
+        internal static async void searchKitDpDgv(DataGridView dgv, string planId, string date, string poId,
+            string kitPoId, string cityId, string districtId, string centerId, string qty)
+        {
+            try
+            {
+                HttpClient client = Client.getHttpClient();
+                var response = await client.GetStringAsync("/kitDp/search?planId=" + planId +
+                    "&date=" + date + "&poId=" + poId + "&kitPoId=" + kitPoId + "&cityId=" + cityId +
+                    "&districtId=" + districtId + "&centerId=" + centerId + "&qty=" + qty);
+                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
+                dgv.DataSource = dt;
+                if (dgv.Rows.Count == 0)
+                    Msg.errorMsg("No data found", "NO DATA");
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+        }
     }
 }

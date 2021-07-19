@@ -214,6 +214,9 @@ namespace WarehouseSystem
                 txtPacksBox.Text, txtTotalQty.Text, txtLocation.Text);
 
             ItemPo.searchItemPoDgv(dto, dgv);
+
+            if (dgv.Rows.Count == 0)
+                ItemPo.findItemPoDgv(dgv);
         }
 
         private void btnDisposal_Click(object sender, EventArgs e)

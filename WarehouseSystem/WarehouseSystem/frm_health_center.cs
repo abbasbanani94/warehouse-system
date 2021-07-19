@@ -133,6 +133,8 @@ namespace WarehouseSystem
         {
             HealthCenter.searchHealthCenter(cmbCity.Text, cmbDistrict.Text, txtEn.Text, txtAr.Text,
                 dgv);
+            if (dgv.Rows.Count == 0)
+                HealthCenter.findAllHealthCenters(dgv);
         }
     }
 }

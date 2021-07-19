@@ -94,6 +94,8 @@ namespace WarehouseSystem
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            txtDpAr.ResetText();
+            dtpDp.Value = DateTime.Today.Date;
             done();
         }
 
@@ -200,6 +202,25 @@ namespace WarehouseSystem
                     }
                 }
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string date = "", cityId = "", districtId = "", centerId = "";
+            if (chkDate.Checked)
+                date = dtpDp.Value.ToShortDateString();
+            if (cmbCity.SelectedValue != null)
+                cityId = cmbCity.SelectedValue.ToString();
+            if (cmbDistrict.SelectedValue != null)
+                districtId = cmbDistrict.SelectedValue.ToString();
+            if (cmbCenter.SelectedValue != null)
+                centerId = cmbCenter.SelectedValue.ToString();
+
+            KitDp.searchKitDpDgv(dgv, txtDpId.Text, date, txtPoId.Text, txtKitPoId.Text,
+                cityId, districtId, centerId, txtQty.Text);
+
+            if (dgv.Rows.Count == 0)
+                KitDp.findKitDpDgv(dgv);
         }
     }
 }
