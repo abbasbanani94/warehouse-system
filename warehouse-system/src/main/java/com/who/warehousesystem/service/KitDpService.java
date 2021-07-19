@@ -3,7 +3,6 @@ package com.who.warehousesystem.service;
 import com.who.warehousesystem.dto.KitDpSaveDto;
 import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.KitDpRepository;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,12 +58,13 @@ public class KitDpService {
     }
 
     public KitDp saveKitDp(KitDpSaveDto dto, Integer userId) throws Exception {
+        checkKitDpDuplicate(dto);
         User user = userService.findUserById(userId);
         DistributionPlan dp = dpService.findDpByDetails(dto.getPlanId(),dto.getEnName(),dto.getArName(),dto.getPlanDate(),user);
         HealthCenter center = healthCenterService.findHealthCenterById(dto.getCenterId());
         KitPo kitPo = kitPoService.findKitPoById(dto.getKitPoId());
-
         KitDp kitDp = new KitDp(dp,center,kitPo,dto.getQty(),user);
+
         kitDp = kitDpRepository.save(kitDp);
 
         InventoryType inventoryType = inventoryTypeService.findTypeById(2); //Out
@@ -76,7 +76,19 @@ public class KitDpService {
         return kitDp;
     }
 
+    private void checkKitDpDuplicate(KitDpSaveDto dto) throws Exception {
+        if(kitDpRepository.findKitDpByDpAndCenterAndKitPo(dto.getPlanId(),dto.getCenterId(),dto.getKitPoId()) != null)
+            throw new Exception("This kitPo already saved for this center and DP");
+    }
+
+    private void checkKitDpDuplicate(Integer id,KitDpSaveDto dto) throws Exception {
+        KitDp kitDp =kitDpRepository.findKitDpByDpAndCenterAndKitPo(dto.getPlanId(),dto.getCenterId(),dto.getKitPoId());
+        if(kitDp != null && kitDp.getId() != id)
+            throw new Exception("This kitPo already saved for this center and DP");
+    }
+
     public KitDp editKitDp(Integer id, KitDpSaveDto dto, Integer userId) throws Exception {
+        checkKitDpDuplicate(id, dto);
         User user = userService.findUserById(userId);
         KitDp kitDp = findKitDpById(id);
         kitPoService.addInventoryByKitDp(kitDp, user);

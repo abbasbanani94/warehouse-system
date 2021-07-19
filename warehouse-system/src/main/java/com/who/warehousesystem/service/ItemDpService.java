@@ -54,12 +54,13 @@ public class ItemDpService {
     }
 
     public ItemDp saveItemDp(ItemDpSaveDto dto, Integer userId) throws Exception {
+        checkItemDpDuplicate(dto);
         User user = userService.findUserById(userId);
         DistributionPlan dp = dpService.findDpByDetails(dto.getPlanId(),dto.getEnName(),dto.getArName(),dto.getPlanDate(),user);
         HealthCenter center = healthCenterService.findHealthCenterById(dto.getCenterId());
         ItemPo itemPo = itemPoService.findItemPoById(dto.getItemPoId());
-
         ItemDp itemDp = new ItemDp(dp,center,itemPo,dto.getQty(),user);
+
         itemDp = itemDpRepository.save(itemDp);
 
         InventoryType inventoryType = inventoryTypeService.findTypeById(2); //Out
@@ -71,11 +72,17 @@ public class ItemDpService {
         return itemDp;
     }
 
+    private void checkItemDpDuplicate(ItemDpSaveDto dto) throws Exception {
+        if(itemDpRepository.findItemDpByDpAndCenterAndItemPo(dto.getPlanId(),dto.getCenterId(),dto.getItemPoId()) != null)
+            throw new Exception("This itemPo already saved for this center and DP");
+    }
+
     public List<ItemDp> findAllItemDpDgv() {
         return itemDpRepository.findAllItemDpDgv().orElse(new ArrayList<>());
     }
 
     public ItemDp editItemDp(Integer id, ItemDpSaveDto dto, Integer userId) throws Exception {
+        checkItemDpDuplicate(id,dto.getPlanId(),dto.getCenterId(),dto.getItemPoId());
         User user = userService.findUserById(userId);
         ItemDp itemDp = findItemDpById(id);
         itemPoService.addInventoryByItemDp(itemDp, user);
@@ -101,6 +108,12 @@ public class ItemDpService {
         itemInventoryService.saveItemInventory(itemInventory);
         itemPoService.subInventoryByItemDp(itemDp, user);
         return itemDp;
+    }
+
+    private void checkItemDpDuplicate(Integer id, Integer planId, Integer centerId, Integer itemPoId) throws Exception {
+        ItemDp itemDp = itemDpRepository.findItemDpByDpAndCenterAndItemPo(planId,centerId,itemPoId);
+        if(itemDp != null && itemDp.getId() != id)
+            throw new Exception("This itemPo already saved for this center and DP");
     }
 
     public void deleteItemDp(Integer id, Integer userId) throws Exception {
