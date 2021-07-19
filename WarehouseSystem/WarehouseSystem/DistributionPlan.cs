@@ -45,5 +45,24 @@ namespace WarehouseSystem
                 }
             }
         }
+
+        internal static async void findDpDetails(string id, TextBox arName, TextBox date)
+        {
+            if (id.IndexOf('{') == -1)
+            {
+                try
+                {
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/dp/details/" + id);
+                    DpDetailsDto dto = JsonConvert.DeserializeObject<DpDetailsDto>(response);
+                    arName.Text = dto.arName;
+                    date.Text = dto.dDate;
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
+            }
+        }
     }
 }

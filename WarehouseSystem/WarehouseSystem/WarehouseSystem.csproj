@@ -125,6 +125,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrder.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Waybill.cs" />
     <EmbeddedResource Include="frm_health_center.resx">
       <DependentUpon>frm_health_center.cs</DependentUpon>
     </EmbeddedResource>

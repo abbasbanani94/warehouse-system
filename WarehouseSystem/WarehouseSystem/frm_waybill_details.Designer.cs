@@ -81,6 +81,7 @@
             this.txtDpDate.Size = new System.Drawing.Size(144, 32);
             this.txtDpDate.TabIndex = 37;
             this.txtDpDate.TabStop = false;
+            this.txtDpDate.TextChanged += new System.EventHandler(this.cmbCenter_TextChanged);
             // 
             // label8
             // 
@@ -122,6 +123,7 @@
             this.cmbDpName.Name = "cmbDpName";
             this.cmbDpName.Size = new System.Drawing.Size(452, 32);
             this.cmbDpName.TabIndex = 10;
+            this.cmbDpName.TextChanged += new System.EventHandler(this.cmbDpName_TextChanged);
             // 
             // cmbCenter
             // 
@@ -133,6 +135,7 @@
             this.cmbCenter.Name = "cmbCenter";
             this.cmbCenter.Size = new System.Drawing.Size(452, 32);
             this.cmbCenter.TabIndex = 8;
+            this.cmbCenter.TextChanged += new System.EventHandler(this.cmbCenter_TextChanged);
             // 
             // cmbDistrict
             // 
@@ -144,6 +147,7 @@
             this.cmbDistrict.Name = "cmbDistrict";
             this.cmbDistrict.Size = new System.Drawing.Size(455, 32);
             this.cmbDistrict.TabIndex = 7;
+            this.cmbDistrict.TextChanged += new System.EventHandler(this.cmbDistrict_TextChanged);
             // 
             // label13
             // 
@@ -165,6 +169,7 @@
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(477, 32);
             this.cmbCity.TabIndex = 6;
+            this.cmbCity.TextChanged += new System.EventHandler(this.cmbCity_TextChanged);
             // 
             // label4
             // 
@@ -254,6 +259,7 @@
             this.txtDpId.Size = new System.Drawing.Size(124, 32);
             this.txtDpId.TabIndex = 1;
             this.txtDpId.TabStop = false;
+            this.txtDpId.TextChanged += new System.EventHandler(this.txtDpId_TextChanged);
             // 
             // label2
             // 
@@ -533,6 +539,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Waybill Details";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frm_waybill_details_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
