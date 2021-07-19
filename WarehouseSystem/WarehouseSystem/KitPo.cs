@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -103,6 +104,55 @@ namespace WarehouseSystem
             catch (Exception ex)
             {
                 Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+        }
+
+        internal static async void findKitsComboByPo(ComboBox cmbKit, string poId)
+        {
+            if (poId.IndexOf('{') == -1)
+            {
+                try
+                {
+                    cmbKit.DataSource = null;
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/kitPo/combo/" + poId);
+                    List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
+                    cmbKit.DataSource = itemList;
+                    cmbKit.DisplayMember = "name";
+                    cmbKit.ValueMember = "id";
+                    cmbKit.ResetText();
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
+            }
+        }
+
+        internal static async void findKitPoDpDetailsById(string kitPoId, TextBox recDate, TextBox batch,
+            TextBox description, TextBox manDate, TextBox expDate, TextBox kitType, TextBox totalQty,
+            TextBox inventory)
+        {
+            if (kitPoId.IndexOf('{') == -1)
+            {
+                try
+                {
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/kitPo/kitPoDp/" + kitPoId);
+                    KitPoDpDto dto = JsonConvert.DeserializeObject<KitPoDpDto>(response);
+                    recDate.Text = dto.dateReceived;
+                    batch.Text = dto.batchNo;
+                    description.Text = dto.description;
+                    manDate.Text = dto.manDate;
+                    expDate.Text = dto.expDate;
+                    kitType.Text = dto.kitType;
+                    totalQty.Text = dto.totalQty.ToString();
+                    inventory.Text = dto.inventory.ToString();
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
             }
         }
     }

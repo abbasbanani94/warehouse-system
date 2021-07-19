@@ -1,8 +1,7 @@
 package com.who.warehousesystem.controller;
 
-import com.who.warehousesystem.dto.KitPoDgv;
-import com.who.warehousesystem.dto.KitPoSaveDto;
-import com.who.warehousesystem.dto.KitPoSearchDto;
+import com.who.warehousesystem.dto.*;
+import com.who.warehousesystem.model.KitPo;
 import com.who.warehousesystem.service.KitPoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/kitPo")
@@ -68,5 +67,21 @@ public class KitPoController {
                 country,batchNo,location,palletsQty,boxesPallets,kitsPallet,totalQty,kitType);
         return new ResponseEntity(kitPoService.searchKitPo(dto).stream()
                 .map(kitPo -> (modelMapper.map(kitPo, KitPoDgv.class))), HttpStatus.OK);
+    }
+
+    @GetMapping("/combo/{poId}")
+    public ResponseEntity findKitsPoComboByPo (@PathVariable (value = "poId") Integer poId) throws Exception {
+        return new ResponseEntity(kitPoService.findKitsPoComboByPo(poId).stream().map(kitPo -> {
+            return new ComboDto(kitPo.getId(), kitPo.getKit().getName());
+        }).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    @GetMapping("/kitPoDp/{kitPoId}")
+    public ResponseEntity findItemPoDpDetailsById (@PathVariable (value = "kitPoId") Integer kitPoId) throws Exception {
+        KitPo kitPo = kitPoService.findKitPoById(kitPoId);
+        KitPoDpDto dto = new KitPoDpDto(kitPo.getRecDate(), kitPo.getBatchNo(), kitPo.getKit().getDescription(),
+                kitPo.getManDate(), kitPo.getExpDate(), kitPo.getKit().getKitType().getName(), kitPo.getTotalQty(),
+                kitPo.getInventory());
+        return new ResponseEntity(dto, HttpStatus.OK);
     }
 }

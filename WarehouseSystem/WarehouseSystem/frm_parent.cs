@@ -99,5 +99,24 @@ namespace WarehouseSystem
         {
             _item_dp = null;
         }
+
+        private frm_kit_dp _kit_dp = null;
+
+        private void kitsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (_kit_dp == null)
+            {
+                _kit_dp = new frm_kit_dp();
+                _kit_dp.Show();
+                _kit_dp.FormClosed += _kit_dp_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Kit Distribution Plans");
+        }
+
+        private void _kit_dp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _kit_dp = null;
+        }
     }
 }

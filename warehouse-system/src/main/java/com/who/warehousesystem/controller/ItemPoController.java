@@ -72,7 +72,7 @@ public class ItemPoController {
     }
 
     @GetMapping("/combo/{poId}")
-    public ResponseEntity findItemsComboByPo (@PathVariable (value = "poId") Integer poId) throws Exception {
+    public ResponseEntity findItemsPoComboByPo (@PathVariable (value = "poId") Integer poId) throws Exception {
         return new ResponseEntity(itemPoService.findItemsPoComboByPo(poId).stream().map(itemPo -> {
             return new ComboDto(itemPo.getId(), itemPo.getItem().getName());
         }).collect(Collectors.toList()), HttpStatus.OK);

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WarehouseSystem
@@ -42,6 +35,7 @@ namespace WarehouseSystem
 
         private void cmbCity_TextChanged(object sender, EventArgs e)
         {
+            cmbDistrict.SelectedValue = -1;
             cmbDistrict.DataSource = null;
             if (cmbCity.Text != "" && cmbCity.SelectedValue != null)
             {
@@ -51,6 +45,7 @@ namespace WarehouseSystem
 
         private void cmbDistrict_TextChanged(object sender, EventArgs e)
         {
+            cmbCenter.SelectedValue = -1;
             cmbCenter.DataSource = null;
             if(cmbDistrict.Text != "" && cmbDistrict.SelectedValue != null)
             {
@@ -61,6 +56,7 @@ namespace WarehouseSystem
         private void cmbPoNo_TextChanged(object sender, EventArgs e)
         {
             txtPoId.ResetText();
+            cmbItem.SelectedValue = -1;
             cmbItem.DataSource = null;
             if (cmbPoNo.Text != "" && cmbPoNo.SelectedValue != null)
             {
@@ -101,6 +97,7 @@ namespace WarehouseSystem
 
         private void done()
         {
+            cmbItem.SelectedValue = -1;
             cmbItem.DataSource = null;
             FormsFunctions.clearAll(groupBox2);
             load();

@@ -21,4 +21,7 @@ public interface KitPoRepository extends JpaRepository<KitPo,Integer> {
 
     @Query(value = "select top 20 * from kit_po where active = 1 order by kit_po_id desc", nativeQuery = true)
     Optional<List<KitPo>> findAllKitPoDgv();
+
+    @Query(value = "select * from kit_po where active = 1 and purchase_order_id = :poId", nativeQuery = true)
+    Optional<List<KitPo>> findKitsPoByPo(Integer poId);
 }

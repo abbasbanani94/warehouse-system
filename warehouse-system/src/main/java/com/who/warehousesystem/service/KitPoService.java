@@ -162,4 +162,14 @@ public class KitPoService {
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
     }
+
+    public List<KitPo> findKitsPoComboByPo(Integer poId) throws Exception {
+        return kitPoRepository.findKitsPoByPo(poId).orElseThrow(() ->
+                new Exception("No Kits were added using this PO ID : " + poId));
+    }
+
+    public KitPo findKitPoById(Integer id) throws Exception {
+        return kitPoRepository.findKitPoById(id).orElseThrow(() ->
+                new Exception("No Kit PO with ID : " + id));
+    }
 }

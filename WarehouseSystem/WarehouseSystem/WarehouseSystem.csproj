@@ -79,6 +79,12 @@
     <Compile Include="frm_item_po.designer.cs">
       <DependentUpon>frm_item_po.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_kit_dp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kit_dp.Designer.cs">
+      <DependentUpon>frm_kit_dp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_kit_po.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,7 +107,9 @@
     <Compile Include="ItemPoSearchDto.cs" />
     <Compile Include="ItemTbDto.cs" />
     <Compile Include="Kit.cs" />
+    <Compile Include="KitDp.cs" />
     <Compile Include="KitPo.cs" />
+    <Compile Include="KitPoDpDto.cs" />
     <Compile Include="KitPoSaveDto.cs" />
     <Compile Include="KitPoSearchDto.cs" />
     <Compile Include="Msg.cs" />
@@ -118,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_item_po.resx">
       <DependentUpon>frm_item_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kit_dp.resx">
+      <DependentUpon>frm_kit_dp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_parent.resx">
       <DependentUpon>frm_parent.cs</DependentUpon>

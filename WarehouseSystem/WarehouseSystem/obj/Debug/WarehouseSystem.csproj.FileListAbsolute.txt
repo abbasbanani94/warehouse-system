@@ -9,6 +9,7 @@ C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debu
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_health_center.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_item_dp.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_item_po.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_kit_dp.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_parent.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.Properties.Resources.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.GenerateResource.Cache

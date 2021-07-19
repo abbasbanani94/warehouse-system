@@ -77,6 +77,7 @@ public class KitPo extends DateAudit {
         this.boxesPerPallet = boxesPerPallet;
         this.kitsPerPallet = kitsPerPallet;
         this.totalQty = totalQty;
+        this.inventory = totalQty;
         this.location = location;
         this.setCreatedBy(user);
         this.setActive(true);

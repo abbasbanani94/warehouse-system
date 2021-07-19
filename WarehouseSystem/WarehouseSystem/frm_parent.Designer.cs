@@ -33,6 +33,8 @@
             this.purchaseOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distributionPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.healthCentersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tslDate = new System.Windows.Forms.ToolStripLabel();
@@ -43,8 +45,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tslUser = new System.Windows.Forms.ToolStripLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.distributionPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kitsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +85,22 @@
             this.kitsToolStripMenuItem.Size = new System.Drawing.Size(140, 30);
             this.kitsToolStripMenuItem.Text = "Kits";
             this.kitsToolStripMenuItem.Click += new System.EventHandler(this.kitsToolStripMenuItem_Click);
+            // 
+            // distributionPlansToolStripMenuItem
+            // 
+            this.distributionPlansToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemsToolStripMenuItem1,
+            this.kitsToolStripMenuItem1});
+            this.distributionPlansToolStripMenuItem.Name = "distributionPlansToolStripMenuItem";
+            this.distributionPlansToolStripMenuItem.Size = new System.Drawing.Size(163, 29);
+            this.distributionPlansToolStripMenuItem.Text = "Distribution Plans";
+            // 
+            // itemsToolStripMenuItem1
+            // 
+            this.itemsToolStripMenuItem1.Name = "itemsToolStripMenuItem1";
+            this.itemsToolStripMenuItem1.Size = new System.Drawing.Size(210, 30);
+            this.itemsToolStripMenuItem1.Text = "Items";
+            this.itemsToolStripMenuItem1.Click += new System.EventHandler(this.itemsToolStripMenuItem1_Click);
             // 
             // healthCentersToolStripMenuItem
             // 
@@ -153,20 +170,12 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // distributionPlansToolStripMenuItem
+            // kitsToolStripMenuItem1
             // 
-            this.distributionPlansToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemsToolStripMenuItem1});
-            this.distributionPlansToolStripMenuItem.Name = "distributionPlansToolStripMenuItem";
-            this.distributionPlansToolStripMenuItem.Size = new System.Drawing.Size(163, 29);
-            this.distributionPlansToolStripMenuItem.Text = "Distribution Plans";
-            // 
-            // itemsToolStripMenuItem1
-            // 
-            this.itemsToolStripMenuItem1.Name = "itemsToolStripMenuItem1";
-            this.itemsToolStripMenuItem1.Size = new System.Drawing.Size(210, 30);
-            this.itemsToolStripMenuItem1.Text = "Items";
-            this.itemsToolStripMenuItem1.Click += new System.EventHandler(this.itemsToolStripMenuItem1_Click);
+            this.kitsToolStripMenuItem1.Name = "kitsToolStripMenuItem1";
+            this.kitsToolStripMenuItem1.Size = new System.Drawing.Size(210, 30);
+            this.kitsToolStripMenuItem1.Text = "Kits";
+            this.kitsToolStripMenuItem1.Click += new System.EventHandler(this.kitsToolStripMenuItem1_Click);
             // 
             // frm_parent
             // 
@@ -207,5 +216,6 @@
         private System.Windows.Forms.ToolStripMenuItem healthCentersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distributionPlansToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem kitsToolStripMenuItem1;
     }
 }

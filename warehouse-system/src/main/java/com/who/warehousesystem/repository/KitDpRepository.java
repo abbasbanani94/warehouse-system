@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface KitDpRepository extends JpaRepository<KitDp,Integer> {
@@ -16,4 +17,7 @@ public interface KitDpRepository extends JpaRepository<KitDp,Integer> {
 
     @Query(value = "select * from kit_dp where active = 1 and health_center_id = :healthCenterId", nativeQuery = true)
     List<KitDp> findKitDpByHealthCenter(@Param(value = "healthCenterId") Integer healthCenterId);
+
+    @Query(value = "select top 20 * from kit_dp where active = 1 order by kit_dp_id desc", nativeQuery = true)
+    Optional<List<KitDp>> findAllKitDpDgv();
 }
