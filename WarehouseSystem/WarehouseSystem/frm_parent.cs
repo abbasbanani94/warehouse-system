@@ -118,5 +118,24 @@ namespace WarehouseSystem
         {
             _kit_dp = null;
         }
+
+        private frm_waybill_details _wb_details = null;
+
+        private void itemsKitsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_wb_details == null)
+            {
+                _wb_details = new frm_waybill_details();
+                _wb_details.Show();
+                _wb_details.FormClosed += _wb_details_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Waybill items & kits");
+        }
+
+        private void _wb_details_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _wb_details = null;
+        }
     }
 }
