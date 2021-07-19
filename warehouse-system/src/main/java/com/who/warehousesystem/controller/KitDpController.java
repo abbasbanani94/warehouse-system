@@ -36,4 +36,11 @@ public class KitDpController {
                                      @RequestHeader (value = "userId") Integer userId) throws Exception {
         return new ResponseEntity(modelMapper.map(kitDpService.editKitDp(id,dto,userId), KitDpDgv.class), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteKitDp (@PathVariable (value = "id") Integer id,
+                                       @RequestHeader (value = "userId") Integer userId) throws Exception {
+        kitDpService.deleteKitDp(id,userId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

@@ -103,4 +103,23 @@ public class KitDpService {
         return kitDpRepository.findKitDpById(id).orElseThrow(() ->
                 new Exception("No Kit DP found for ID : " + id));
     }
+
+    public void deleteKitDp(Integer id, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        KitDp kitDp = findKitDpById(id);
+        checkKitDpExistence(id);
+        kitDp.setUpdatedBy(user);
+        kitDp.setActive(false);
+        kitPoService.addInventoryByKitDp(kitDp, user);
+        kitDpRepository.save(kitDp);
+        KitInventory kitInventory = kitInventoryService.findKitInventoryByTypeAndKitDp(2, id);
+        kitInventory.setActive(false);
+        kitInventory.setUpdatedBy(user);
+        kitInventoryService.saveKitInventory(kitInventory);
+    }
+
+    private void checkKitDpExistence(Integer id) throws Exception {
+        if(kitWbService.findKitWbByKitDp(id) != null)
+            throw new Exception("Kit DP cannot be deleted because it's included in other tables");
+    }
 }

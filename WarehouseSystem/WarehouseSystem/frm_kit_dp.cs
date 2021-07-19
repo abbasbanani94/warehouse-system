@@ -184,5 +184,22 @@ namespace WarehouseSystem
             if (cmbKit.SelectedValue == null)
                 txtKitPoId.ResetText();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtKitDpId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (Msg.questionMsg("Do you want to delete Kit DP ?", "Are You Sure") == DialogResult.Yes)
+                {
+                    if (KitDp.deleteKitDp(txtKitDpId.Text))
+                    {
+                        Msg.doneMsg("Kit DP deleted successfully !", "Deleted Successfully");
+                        done();
+                    }
+                }
+            }
+        }
     }
 }
