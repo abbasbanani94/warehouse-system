@@ -89,6 +89,7 @@ public class ItemDpService {
         itemDp.setHealthCenter(healthCenter);
         itemDp.setItemPo(itemPo);
         itemDp.setUpdatedBy(user);
+        itemDp.setQty(dto.getQty());
         itemDp = itemDpRepository.save(itemDp);
 
         itemInventory.setItemPo(itemPo);

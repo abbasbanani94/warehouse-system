@@ -30,4 +30,10 @@ public class KitDpController {
                                      @RequestHeader (value = "userId") Integer userId) throws Exception {
         return new ResponseEntity(modelMapper.map(kitDpService.saveKitDp(dto,userId), KitDpDgv.class), HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity editKitDp (@PathVariable (value = "id") Integer id,@RequestBody KitDpSaveDto dto,
+                                     @RequestHeader (value = "userId") Integer userId) throws Exception {
+        return new ResponseEntity(modelMapper.map(kitDpService.editKitDp(id,dto,userId), KitDpDgv.class), HttpStatus.OK);
+    }
 }

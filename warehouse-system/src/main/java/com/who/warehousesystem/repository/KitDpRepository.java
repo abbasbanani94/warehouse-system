@@ -20,4 +20,7 @@ public interface KitDpRepository extends JpaRepository<KitDp,Integer> {
 
     @Query(value = "select top 20 * from kit_dp where active = 1 order by kit_dp_id desc", nativeQuery = true)
     Optional<List<KitDp>> findAllKitDpDgv();
+
+    @Query(value = "select * from kit_dp where active = 1 and kit_dp_id = :id", nativeQuery = true)
+    Optional<KitDp> findKitDpById(@Param(value = "id") Integer id);
 }

@@ -69,4 +69,38 @@ public class KitDpService {
 
         return kitDp;
     }
+
+    public KitDp editKitDp(Integer id, KitDpSaveDto dto, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        KitDp kitDp = findKitDpById(id);
+        kitPoService.addInventoryByKitDp(kitDp, user);
+        InventoryType inventoryType = inventoryTypeService.findTypeById(2); //Out
+        KitInventory kitInventory = kitInventoryService.findKitInventoryByTypeAndKitDp
+                (inventoryType.getId(), id);
+        KitPo kitPo = kitPoService.findKitPoById(dto.getKitPoId());
+        DistributionPlan dp = dpService.findDpByDetails(dto.getPlanId(),dto.getEnName(),dto.getArName(),dto.getPlanDate(),user);
+        HealthCenter center = healthCenterService.findHealthCenterById(dto.getCenterId());
+        kitDp.setDistributionPlan(dp);
+        kitDp.setHealthCenter(center);
+        kitDp.setKitPo(kitPo);
+        kitDp.setQty(dto.getQty());
+        kitDp.setUpdatedBy(user);
+        kitDp = kitDpRepository.save(kitDp);
+
+        kitInventory.setKitPo(kitPo);
+        kitInventory.setKitDp(kitDp);
+        kitInventory.setOutQty(kitDp.getQty());
+        kitInventory.setUpdatedBy(user);
+        kitInventory.setNote("KitDp ID: " + id + ", Plan Name: " + kitDp.getDistributionPlan().getEnName() + ", " +
+                "Kit: " + kitDp.getKitPo().getKit().getName() + ", Out Qty: " + kitDp.getQty());
+
+        kitInventoryService.saveKitInventory(kitInventory);
+        kitPoService.subInventoryByKitDp(kitDp, user);
+        return kitDp;
+    }
+
+    private KitDp findKitDpById(Integer id) throws Exception {
+        return kitDpRepository.findKitDpById(id).orElseThrow(() ->
+                new Exception("No Kit DP found for ID : " + id));
+    }
 }

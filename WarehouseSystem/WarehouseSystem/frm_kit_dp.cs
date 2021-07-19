@@ -157,5 +157,32 @@ namespace WarehouseSystem
                 dgvClick = false;
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (cmbDpEn.Text == "" || txtDpAr.Text == "" || txtKitPoId.Text == "" || cmbCenter.SelectedValue == null ||
+                txtQty.Text == "" || txtKitDpId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (Msg.questionMsg("Do you want to edit Kit DP ?", "Are You Sure") == DialogResult.Yes)
+                {
+                    KitDpSaveDto dto = new KitDpSaveDto(txtDpId.Text, cmbDpEn.Text, txtDpAr.Text, dtpDp.Value.ToShortDateString(),
+                        txtKitPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
+
+                    if (KitDp.editKitDp(txtKitDpId.Text, dto))
+                    {
+                        Msg.doneMsg("Kit DP edited successfully !", "Edited Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void cmbKit_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbKit.SelectedValue == null)
+                txtKitPoId.ResetText();
+        }
     }
 }
