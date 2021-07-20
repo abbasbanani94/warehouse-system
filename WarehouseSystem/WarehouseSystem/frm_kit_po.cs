@@ -204,9 +204,28 @@ namespace WarehouseSystem
             Msg.errorMsg("No form yet", "NO FORM");
         }
 
+        private frm_kit_details _kit_details = null;
+
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Msg.errorMsg("No form yet", "NO FORM");
+            if (txtKitPoId.Text == "")
+                Msg.errorMsg("You must double click on the kit you want to add details for", "Error");
+            else
+            {
+                if (_kit_details == null)
+                {
+                    _kit_details = new frm_kit_details(txtKitPoId.Text);
+                    _kit_details.Show();
+                    _kit_details.FormClosed += _kit_details_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Kit Details");
+            }
+        }
+
+        private void _kit_details_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _kit_details = null;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

@@ -84,4 +84,9 @@ public class KitPoController {
                 kitPo.getInventory());
         return new ResponseEntity(dto, HttpStatus.OK);
     }
+
+    @GetMapping("/name/{id}")
+    public ResponseEntity findKitNameByKitPo (@PathVariable (value = "id") Integer id) throws Exception {
+        return new ResponseEntity(new NameDto(kitPoService.findKitNameByKitPo(id)), HttpStatus.OK);
+    }
 }

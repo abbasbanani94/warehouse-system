@@ -5,6 +5,7 @@ import com.who.warehousesystem.dto.ItemSaveDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -34,7 +35,7 @@ public class Item extends DateAudit {
     @Column(name = "description")
     private String description;
 
-    public Item(ItemSaveDto dto,User user) {
+    public Item(ItemSaveDto dto, User user) {
         this.name = dto.getName();
         this.minTemp = dto.getMinTemp();
         this.maxTemp = dto.getMaxTemp();

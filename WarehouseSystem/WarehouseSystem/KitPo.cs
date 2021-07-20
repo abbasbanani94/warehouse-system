@@ -155,5 +155,20 @@ namespace WarehouseSystem
                 }
             }
         }
+
+        internal static async void findKitNameByKitPoId(string id,TextBox name)
+        {
+            try
+            {
+                HttpClient client = Client.getHttpClient();
+                var response = await client.GetStringAsync("/kitPo/name/" + id);
+                NameDto dto = JsonConvert.DeserializeObject<NameDto>(response);
+                name.Text = dto.name;
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+        }
     }
 }

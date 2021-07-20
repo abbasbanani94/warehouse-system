@@ -190,4 +190,8 @@ public class KitPoService {
     public void addInventoryByKitDp(KitDp kitDp, User user) {
         editInventoryByKitDp(kitDp, user, "add");
     }
+
+    public String findKitNameByKitPo(Integer id) throws Exception {
+        return findKitPoById(id).getKit().getName();
+    }
 }
