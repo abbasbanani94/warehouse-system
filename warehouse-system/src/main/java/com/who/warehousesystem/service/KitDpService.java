@@ -174,4 +174,16 @@ public class KitDpService {
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
     }
+
+    public List<String> findDpKitsByCenterNoWb(Integer centerId) {
+        return kitDpRepository.findKitDpByCenterNoWb(centerId).orElse(new ArrayList<>()).stream().map(kitDp -> {
+            return "K" + kitDp.getId() + " - " + kitDp.getKitPo().getKit().getName() + " - Qty : " + kitDp.getQty();
+        }).collect(Collectors.toList());
+    }
+
+    public List<String> findDpKitsByCenterWb(Integer centerId) {
+        return kitDpRepository.findKitDpByCenterWb(centerId).orElse(new ArrayList<>()).stream().map(kitDp -> {
+            return "K" + kitDp.getId() + " - " + kitDp.getKitPo().getKit().getName() + " - Qty : " + kitDp.getQty();
+        }).collect(Collectors.toList());
+    }
 }

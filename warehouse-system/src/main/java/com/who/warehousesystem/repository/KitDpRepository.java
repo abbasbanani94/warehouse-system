@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,4 +30,12 @@ public interface KitDpRepository extends JpaRepository<KitDp,Integer> {
     KitDp findKitDpByDpAndCenterAndKitPo(@Param(value = "dpId") Integer planId,
                                          @Param(value = "centerId") Integer centerId,
                                          @Param(value = "kitPoId") Integer kitPoId);
+
+    @Query(value = "select * from kit_dp where active = 1 and health_center_id = :centerId and kit_dp_id not " +
+            "in (select kit_dp_id from kit_wb where active = 1)", nativeQuery = true)
+    Optional<List<KitDp>> findKitDpByCenterNoWb(@Param(value = "centerId") Integer centerId);
+
+    @Query(value = "select * from kit_dp where active = 1 and health_center_id = :centerId and kit_dp_id " +
+            "in (select kit_dp_id from kit_wb where active = 1)", nativeQuery = true)
+    Optional<List<KitDp>> findKitDpByCenterWb(@Param(value = "centerId") Integer centerId);
 }

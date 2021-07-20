@@ -23,4 +23,8 @@ public interface HealthCenterRepository extends JpaRepository<HealthCenter,Integ
 
     @Query(value = "select top 50 * from health_centers where active = 1 order by health_center_id desc", nativeQuery = true)
     Optional<List<HealthCenter>> findAllHealthCentersDgv();
+
+    @Query(value = "select * from health_centers where active = 1 and health_center_id = (select health_center_id " +
+            "from waybills where waybill_id = :wbId)", nativeQuery = true)
+    Optional<HealthCenter> findHealthCenterByWbId(@Param(value = "wbId") Integer wbId);
 }

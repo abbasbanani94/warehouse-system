@@ -121,7 +121,12 @@ namespace WarehouseSystem
 
         private frm_waybill _waybills = null;
 
-        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _waybills_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _waybills = null;
+        }
+
+        private void waybillsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_waybills == null)
             {
@@ -131,11 +136,6 @@ namespace WarehouseSystem
             }
             else
                 Msg.formAlreadyOpen("Waybills");
-        }
-
-        private void _waybills_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _waybills = null;
         }
     }
 }

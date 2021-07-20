@@ -117,4 +117,9 @@ public class HealthCenterService {
     public List<HealthCenter> findAllHealthCentersDgv() {
         return healthCenterRepository.findAllHealthCentersDgv().orElse(new ArrayList<>());
     }
+
+    public HealthCenter findHealthCenterByWb(Integer wbId) throws Exception {
+        return healthCenterRepository.findHealthCenterByWbId(wbId).orElseThrow(() ->
+                new Exception("No Health Center found for Waybill ID : " + wbId));
+    }
 }

@@ -29,28 +29,19 @@
         private void InitializeComponent()
         {
             this.label10 = new System.Windows.Forms.Label();
-            this.cmbCenter = new System.Windows.Forms.ComboBox();
-            this.cmbDistrict = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.cmbCity = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.txtPallets = new System.Windows.Forms.TextBox();
             this.txtBoxes = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.chkDate = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtWbId = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.dtpWb = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbWbNo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
@@ -61,6 +52,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listWb = new System.Windows.Forms.ListBox();
             this.listDp = new System.Windows.Forms.ListBox();
+            this.txtWbNo = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtWbDate = new System.Windows.Forms.TextBox();
+            this.txtDistrict = new System.Windows.Forms.TextBox();
+            this.txtCenter = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -75,28 +71,6 @@
             this.label10.TabIndex = 49;
             this.label10.Text = "CENTER*";
             // 
-            // cmbCenter
-            // 
-            this.cmbCenter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCenter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCenter.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cmbCenter.FormattingEnabled = true;
-            this.cmbCenter.Location = new System.Drawing.Point(1367, 82);
-            this.cmbCenter.Name = "cmbCenter";
-            this.cmbCenter.Size = new System.Drawing.Size(452, 32);
-            this.cmbCenter.TabIndex = 8;
-            // 
-            // cmbDistrict
-            // 
-            this.cmbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbDistrict.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cmbDistrict.FormattingEnabled = true;
-            this.cmbDistrict.Location = new System.Drawing.Point(745, 82);
-            this.cmbDistrict.Name = "cmbDistrict";
-            this.cmbDistrict.Size = new System.Drawing.Size(455, 32);
-            this.cmbDistrict.TabIndex = 7;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -106,17 +80,6 @@
             this.label13.Size = new System.Drawing.Size(108, 24);
             this.label13.TabIndex = 47;
             this.label13.Text = "DISTRICT*";
-            // 
-            // cmbCity
-            // 
-            this.cmbCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCity.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cmbCity.FormattingEnabled = true;
-            this.cmbCity.Location = new System.Drawing.Point(140, 82);
-            this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(477, 32);
-            this.cmbCity.TabIndex = 6;
             // 
             // label4
             // 
@@ -131,7 +94,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1091, 720);
+            this.btnExit.Location = new System.Drawing.Point(892, 559);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(98, 51);
             this.btnExit.TabIndex = 17;
@@ -144,18 +107,20 @@
             this.txtPallets.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPallets.Location = new System.Drawing.Point(1367, 44);
             this.txtPallets.Name = "txtPallets";
+            this.txtPallets.ReadOnly = true;
             this.txtPallets.Size = new System.Drawing.Size(144, 32);
             this.txtPallets.TabIndex = 5;
-            this.txtPallets.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWbNo_KeyPress);
+            this.txtPallets.TabStop = false;
             // 
             // txtBoxes
             // 
             this.txtBoxes.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxes.Location = new System.Drawing.Point(1056, 44);
             this.txtBoxes.Name = "txtBoxes";
+            this.txtBoxes.ReadOnly = true;
             this.txtBoxes.Size = new System.Drawing.Size(144, 32);
             this.txtBoxes.TabIndex = 4;
-            this.txtBoxes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWbNo_KeyPress);
+            this.txtBoxes.TabStop = false;
             // 
             // label1
             // 
@@ -167,30 +132,10 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "TOTAL BOXES";
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(1531, 47);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(157, 24);
-            this.label21.TabIndex = 38;
-            this.label21.Text = "Search Options :";
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(962, 720);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(98, 51);
-            this.btnEdit.TabIndex = 15;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(831, 720);
+            this.btnSave.Location = new System.Drawing.Point(892, 485);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 51);
             this.btnSave.TabIndex = 14;
@@ -206,28 +151,6 @@
             this.label2.Size = new System.Drawing.Size(153, 24);
             this.label2.TabIndex = 42;
             this.label2.Text = "TOTAL PALLETS";
-            // 
-            // btnNew
-            // 
-            this.btnNew.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Location = new System.Drawing.Point(703, 720);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(98, 51);
-            this.btnNew.TabIndex = 12;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // chkDate
-            // 
-            this.chkDate.AutoSize = true;
-            this.chkDate.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.chkDate.Location = new System.Drawing.Point(1704, 46);
-            this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(115, 28);
-            this.chkDate.TabIndex = 37;
-            this.chkDate.TabStop = false;
-            this.chkDate.Text = "WB Date";
-            this.chkDate.UseVisualStyleBackColor = true;
             // 
             // label24
             // 
@@ -269,35 +192,24 @@
             this.label26.TabIndex = 11;
             this.label26.Text = "WAYBILL NO*";
             // 
-            // dtpWb
-            // 
-            this.dtpWb.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.dtpWb.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpWb.Location = new System.Drawing.Point(745, 44);
-            this.dtpWb.Name = "dtpWb";
-            this.dtpWb.Size = new System.Drawing.Size(148, 32);
-            this.dtpWb.TabIndex = 3;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbWbNo);
-            this.groupBox1.Controls.Add(this.cmbCenter);
+            this.groupBox1.Controls.Add(this.txtCenter);
+            this.groupBox1.Controls.Add(this.txtDistrict);
+            this.groupBox1.Controls.Add(this.txtWbDate);
+            this.groupBox1.Controls.Add(this.txtCity);
+            this.groupBox1.Controls.Add(this.txtWbNo);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.cmbDistrict);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.cmbCity);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtPallets);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtBoxes);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.chkDate);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.txtWbId);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.dtpWb);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -305,18 +217,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Waybill Details";
-            // 
-            // cmbWbNo
-            // 
-            this.cmbWbNo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbWbNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbWbNo.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cmbWbNo.FormattingEnabled = true;
-            this.cmbWbNo.Location = new System.Drawing.Point(411, 44);
-            this.cmbWbNo.Name = "cmbWbNo";
-            this.cmbWbNo.Size = new System.Drawing.Size(206, 32);
-            this.cmbWbNo.TabIndex = 2;
-            this.cmbWbNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWbNo_KeyPress);
             // 
             // groupBox2
             // 
@@ -330,9 +230,7 @@
             this.groupBox2.Controls.Add(this.listWb);
             this.groupBox2.Controls.Add(this.listDp);
             this.groupBox2.Controls.Add(this.btnExit);
-            this.groupBox2.Controls.Add(this.btnEdit);
             this.groupBox2.Controls.Add(this.btnSave);
-            this.groupBox2.Controls.Add(this.btnNew);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 150);
             this.groupBox2.Name = "groupBox2";
@@ -344,7 +242,7 @@
             // btnLoad
             // 
             this.btnLoad.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLoad.Location = new System.Drawing.Point(891, 115);
+            this.btnLoad.Location = new System.Drawing.Point(892, 115);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(98, 51);
             this.btnLoad.TabIndex = 48;
@@ -356,7 +254,7 @@
             // btnRemoveAll
             // 
             this.btnRemoveAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnRemoveAll.Location = new System.Drawing.Point(891, 407);
+            this.btnRemoveAll.Location = new System.Drawing.Point(892, 411);
             this.btnRemoveAll.Name = "btnRemoveAll";
             this.btnRemoveAll.Size = new System.Drawing.Size(98, 51);
             this.btnRemoveAll.TabIndex = 47;
@@ -368,7 +266,7 @@
             // btnRemove
             // 
             this.btnRemove.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnRemove.Location = new System.Drawing.Point(891, 334);
+            this.btnRemove.Location = new System.Drawing.Point(892, 337);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(98, 51);
             this.btnRemove.TabIndex = 46;
@@ -380,7 +278,7 @@
             // btnAddAll
             // 
             this.btnAddAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnAddAll.Location = new System.Drawing.Point(891, 261);
+            this.btnAddAll.Location = new System.Drawing.Point(892, 263);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(98, 51);
             this.btnAddAll.TabIndex = 45;
@@ -392,7 +290,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.Location = new System.Drawing.Point(891, 188);
+            this.btnAdd.Location = new System.Drawing.Point(892, 189);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(98, 51);
             this.btnAdd.TabIndex = 44;
@@ -429,7 +327,7 @@
             this.listWb.Location = new System.Drawing.Point(1012, 78);
             this.listWb.Name = "listWb";
             this.listWb.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listWb.Size = new System.Drawing.Size(867, 613);
+            this.listWb.Size = new System.Drawing.Size(867, 700);
             this.listWb.TabIndex = 41;
             this.listWb.TabStop = false;
             // 
@@ -441,9 +339,59 @@
             this.listDp.Location = new System.Drawing.Point(21, 78);
             this.listDp.Name = "listDp";
             this.listDp.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listDp.Size = new System.Drawing.Size(847, 613);
+            this.listDp.Size = new System.Drawing.Size(847, 700);
             this.listDp.TabIndex = 40;
             this.listDp.TabStop = false;
+            // 
+            // txtWbNo
+            // 
+            this.txtWbNo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWbNo.Location = new System.Drawing.Point(411, 44);
+            this.txtWbNo.Name = "txtWbNo";
+            this.txtWbNo.ReadOnly = true;
+            this.txtWbNo.Size = new System.Drawing.Size(184, 32);
+            this.txtWbNo.TabIndex = 50;
+            this.txtWbNo.TabStop = false;
+            // 
+            // txtCity
+            // 
+            this.txtCity.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCity.Location = new System.Drawing.Point(140, 82);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.ReadOnly = true;
+            this.txtCity.Size = new System.Drawing.Size(455, 32);
+            this.txtCity.TabIndex = 51;
+            this.txtCity.TabStop = false;
+            // 
+            // txtWbDate
+            // 
+            this.txtWbDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWbDate.Location = new System.Drawing.Point(735, 44);
+            this.txtWbDate.Name = "txtWbDate";
+            this.txtWbDate.ReadOnly = true;
+            this.txtWbDate.Size = new System.Drawing.Size(174, 32);
+            this.txtWbDate.TabIndex = 52;
+            this.txtWbDate.TabStop = false;
+            // 
+            // txtDistrict
+            // 
+            this.txtDistrict.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDistrict.Location = new System.Drawing.Point(735, 82);
+            this.txtDistrict.Name = "txtDistrict";
+            this.txtDistrict.ReadOnly = true;
+            this.txtDistrict.Size = new System.Drawing.Size(465, 32);
+            this.txtDistrict.TabIndex = 53;
+            this.txtDistrict.TabStop = false;
+            // 
+            // txtCenter
+            // 
+            this.txtCenter.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCenter.Location = new System.Drawing.Point(1367, 82);
+            this.txtCenter.Name = "txtCenter";
+            this.txtCenter.ReadOnly = true;
+            this.txtCenter.Size = new System.Drawing.Size(495, 32);
+            this.txtCenter.TabIndex = 54;
+            this.txtCenter.TabStop = false;
             // 
             // frm_waybill_details
             // 
@@ -467,26 +415,18 @@
 
         #endregion
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cmbCenter;
-        private System.Windows.Forms.ComboBox cmbDistrict;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cmbCity;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox txtPallets;
         private System.Windows.Forms.TextBox txtBoxes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.CheckBox chkDate;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtWbId;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.DateTimePicker dtpWb;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox listWb;
@@ -497,7 +437,11 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbWbNo;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.TextBox txtCenter;
+        private System.Windows.Forms.TextBox txtDistrict;
+        private System.Windows.Forms.TextBox txtWbDate;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtWbNo;
     }
 }

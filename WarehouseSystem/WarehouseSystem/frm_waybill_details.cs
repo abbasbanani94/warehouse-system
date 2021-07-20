@@ -6,14 +6,10 @@ namespace WarehouseSystem
 {
     public partial class frm_waybill_details : Form
     {
-        public frm_waybill_details()
+        public frm_waybill_details(string wbId)
         {
             InitializeComponent();
-        }
-
-        private void txtWbNo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Msg.numbersOnly(e);
+            txtWbId.Text = wbId;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -23,18 +19,14 @@ namespace WarehouseSystem
 
         private void frm_waybill_details_Load(object sender, EventArgs e)
         {
-            HealthCenter.findCitiesCombo(cmbCity);
-            load();
-        }
-
-        private void load()
-        {
-            
+            Waybill.findWaybillById(txtWbId.Text, txtWbNo, txtWbDate, txtBoxes, txtPallets, txtCity,
+                txtDistrict, txtCenter);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            
+            Waybill.findItems(listDp, txtWbId.Text, "/waybills/dp-items/");
+            Waybill.findItems(listWb, txtWbId.Text, "/waybills/wb-items/");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

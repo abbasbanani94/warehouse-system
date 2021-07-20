@@ -173,4 +173,18 @@ public class ItemDpService {
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
     }
+
+    public List<String> findDpItemsByCenterNoWb(Integer centerId) {
+        return itemDpRepository.findItemDpByCenterNoWb(centerId).orElse(new ArrayList<>()).stream().map(itemDp -> {
+            return "I" + itemDp.getId() + " - " + itemDp.getItemPo().getItem().getName() + " - Qty : " +
+                    itemDp.getQty();
+        }).collect(Collectors.toList());
+    }
+
+    public List<String> findDpItemsByCenterWb(Integer centerId) {
+        return itemDpRepository.findItemDpByCenterWb(centerId).orElse(new ArrayList<>()).stream().map(itemDp -> {
+            return "I" + itemDp.getId() + " - " + itemDp.getItemPo().getItem().getName() + " - Qty : " +
+                    itemDp.getQty();
+        }).collect(Collectors.toList());
+    }
 }

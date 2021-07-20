@@ -32,4 +32,12 @@ public interface ItemDpRepository extends JpaRepository<ItemDp,Integer> {
     ItemDp findItemDpByDpAndCenterAndItemPo(@Param(value = "dpId") Integer dpId,
                                             @Param(value = "centerId") Integer centerId,
                                             @Param(value = "itemPoId") Integer itemPoId);
+
+    @Query(value = "select * from item_dp where active = 1 and health_center_id = :centerId and item_dp_id not " +
+            "in (select item_dp_id from item_wb where active = 1)", nativeQuery = true)
+    Optional<List<ItemDp>> findItemDpByCenterNoWb(@Param(value = "centerId") Integer centerId);
+
+    @Query(value = "select * from item_dp where active = 1 and health_center_id = :centerId and item_dp_id in " +
+            "(select item_dp_id from item_wb where active = 1)", nativeQuery = true)
+    Optional<List<ItemDp>> findItemDpByCenterWb(@Param(value = "centerId") Integer centerId);
 }

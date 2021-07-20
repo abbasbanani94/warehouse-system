@@ -90,7 +90,7 @@ public class WaybillService {
         return waybillRepository.save(waybill);
     }
 
-    private Waybill findWaybillById(Integer id) throws Exception {
+    public Waybill findWaybillById(Integer id) throws Exception {
         return waybillRepository.findWaybillById(id).orElseThrow(() ->
                 new Exception("No Waybill for ID : " + id));
     }
@@ -144,5 +144,21 @@ public class WaybillService {
 
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
+    }
+
+    public List<String> findDpItemsByWb(Integer wbId) throws Exception {
+        HealthCenter healthCenter = healthCenterService.findHealthCenterByWb(wbId);
+        List<String> items = itemDpService.findDpItemsByCenterNoWb(healthCenter.getId());
+        List<String> kits = kitDpService.findDpKitsByCenterNoWb(healthCenter.getId());
+
+        return addTwoLists(items,kits);
+    }
+
+    public List<String> findWbItemsByWb(Integer wbId) throws Exception {
+        HealthCenter healthCenter = healthCenterService.findHealthCenterByWb(wbId);
+        List<String> items = itemDpService.findDpItemsByCenterWb(healthCenter.getId());
+        List<String> kits = kitDpService.findDpKitsByCenterWb(healthCenter.getId());
+
+        return addTwoLists(items,kits);
     }
 }

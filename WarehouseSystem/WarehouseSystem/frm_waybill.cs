@@ -29,8 +29,6 @@ namespace WarehouseSystem
         private void load()
         {
             txtWbNo.Focus();
-            txtBoxes.Text = "0";
-            txtPallets.Text = "0";
             Waybill.findAllWaybillsDgv(dgv);
         }
 
@@ -153,6 +151,30 @@ namespace WarehouseSystem
             {
                 Waybill.findAllWaybillsDgv(dgv);
             }
+        }
+
+        private frm_waybill_details _waybill_details = null;
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            if (txtWbId.Text == "")
+                Msg.errorMsg("you must double click on the row you want to enter details for then click on Details", "Error");
+            else
+            {
+                if (_waybill_details == null)
+                {
+                    _waybill_details = new frm_waybill_details(txtWbId.Text);
+                    _waybill_details.Show();
+                    _waybill_details.FormClosed += _waybill_details_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Waybill Details");
+            }
+        }
+
+        private void _waybill_details_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _waybill_details = null;
         }
     }
 }
