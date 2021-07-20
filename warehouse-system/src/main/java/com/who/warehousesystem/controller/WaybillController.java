@@ -1,6 +1,7 @@
 package com.who.warehousesystem.controller;
 
 import com.who.warehousesystem.dto.WbDetailsDto;
+import com.who.warehousesystem.dto.WbDetailsSaveDto;
 import com.who.warehousesystem.dto.WbDgvDto;
 import com.who.warehousesystem.dto.WbSaveDto;
 import com.who.warehousesystem.service.WaybillService;
@@ -72,5 +73,12 @@ public class WaybillController {
     @GetMapping("/wb-items/{id}")
     public ResponseEntity findWbItemsByWb (@PathVariable (value = "id") Integer id) throws Exception {
         return new ResponseEntity(waybillService.findWbItemsByWb(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity saveWbDetails (@PathVariable (value = "id") Integer id, @RequestBody WbDetailsSaveDto dto,
+                                         @RequestHeader (value = "userId") Integer userId) throws Exception {
+        waybillService.saveWbDetails(id,dto,userId);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

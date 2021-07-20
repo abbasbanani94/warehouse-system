@@ -1,5 +1,6 @@
 package com.who.warehousesystem.service;
 
+import com.who.warehousesystem.dto.WbDetailsSaveDto;
 import com.who.warehousesystem.dto.WbSaveDto;
 import com.who.warehousesystem.model.HealthCenter;
 import com.who.warehousesystem.model.User;
@@ -160,5 +161,11 @@ public class WaybillService {
         List<String> kits = kitDpService.findDpKitsByCenterWb(healthCenter.getId());
 
         return addTwoLists(items,kits);
+    }
+
+    public void saveWbDetails(Integer id, WbDetailsSaveDto dto, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        HealthCenter healthCenter = healthCenterService.findHealthCenterByWb(id);
+
     }
 }
