@@ -75,7 +75,7 @@ public class WaybillController {
         return new ResponseEntity(waybillService.findWbItemsByWb(id), HttpStatus.OK);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/details/{id}")
     public ResponseEntity saveWbDetails (@PathVariable (value = "id") Integer id, @RequestBody WbDetailsSaveDto dto,
                                          @RequestHeader (value = "userId") Integer userId) throws Exception {
         waybillService.saveWbDetails(id,dto,userId);

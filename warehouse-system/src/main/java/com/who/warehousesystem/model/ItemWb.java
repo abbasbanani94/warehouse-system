@@ -27,4 +27,10 @@ public class ItemWb extends DateAudit {
     @OneToOne
     @JoinColumn(name = "item_dp_id")
     private ItemDp itemDp;
+
+    public ItemWb(Waybill waybill, ItemDp itemDp, User user) {
+        this.waybill = waybill;
+        this.itemDp = itemDp;
+        this.setCreatedBy(user);
+    }
 }

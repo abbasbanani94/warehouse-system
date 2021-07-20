@@ -104,5 +104,29 @@ namespace WarehouseSystem
                 }
             }
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(Msg.questionMsg("Do you want to save Waybill details ?","Save Confirmation") == DialogResult.Yes)
+            {
+                List<string> dpList = addFromListBox(listDp);
+                List<string> wbList = addFromListBox(listWb);
+                WbDetailsSaveDto dto = new WbDetailsSaveDto(dpList, wbList);
+                if(Waybill.saveWaybillDetails(txtWbId.Text, dto))
+                {
+                    Msg.doneMsg("Waybill details saved successfully !", "Successfully");
+                }
+            }
+        }
+
+        private List<string> addFromListBox(ListBox listBox)
+        {
+            List<string> list = new List<string>();
+            for(int i=0; i<listBox.Items.Count; i++)
+            {
+                list.Add(listBox.Items[i].ToString());
+            }
+            return list;
+        }
     }
 }

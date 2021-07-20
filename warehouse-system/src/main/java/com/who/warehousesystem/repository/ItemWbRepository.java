@@ -16,5 +16,5 @@ public interface ItemWbRepository extends JpaRepository<ItemWb,Integer> {
     ItemWb findItemWbByItemDp(@Param(value = "itemDpId") Integer itemDpId);
 
     @Query(value = "select * from item_wb where active = 1 and waybill_id = :wbId", nativeQuery = true)
-    Optional<List<ItemWb>> findItemWbByWb(@Param(value = "wbId") Integer wbId);
+    Optional<List<ItemWb>> findAllItemWbByWb(@Param(value = "wbId") Integer wbId);
 }

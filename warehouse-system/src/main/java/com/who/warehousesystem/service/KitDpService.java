@@ -186,4 +186,16 @@ public class KitDpService {
             return "K" + kitDp.getId() + " - " + kitDp.getKitPo().getKit().getName() + " - Qty : " + kitDp.getQty();
         }).collect(Collectors.toList());
     }
+
+    public List<KitDp> extractKitsDpsFromWbStringList(List<String> wbList) throws Exception {
+        List<KitDp> kitDps = new ArrayList<>();
+        for(String kit : wbList) {
+            if(kit.startsWith("K")) {
+                Integer id = Integer.parseInt(kit.substring(1,kit.indexOf(' ')));
+                KitDp kitDp = findKitDpById(id);
+                kitDps.add(kitDp);
+            }
+        }
+        return kitDps;
+    }
 }

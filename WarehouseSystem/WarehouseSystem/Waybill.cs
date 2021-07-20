@@ -147,5 +147,25 @@ namespace WarehouseSystem
                 }
             }
         }
+
+        internal static bool saveWaybillDetails(string wbId,WbDetailsSaveDto dto)
+        {
+            try
+            {
+                HttpClient client = Client.getHttpClient();
+                var response = client.PostAsJsonAsync("/waybills/details/" + wbId, dto);
+                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+                    return true;
+                else
+                {
+                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+            return false;
+        }
     }
 }

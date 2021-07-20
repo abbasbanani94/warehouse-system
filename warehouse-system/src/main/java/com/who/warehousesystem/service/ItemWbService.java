@@ -1,6 +1,6 @@
 package com.who.warehousesystem.service;
 
-import com.who.warehousesystem.model.ItemWb;
+import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.ItemWbRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,25 @@ public class ItemWbService {
     }
 
     public List<ItemWb> findItemWbByWb(Integer wbId) {
-        return itemWbRepository.findItemWbByWb(wbId).orElse(new ArrayList<>());
+        return itemWbRepository.findAllItemWbByWb(wbId).orElse(new ArrayList<>());
+    }
+
+    public boolean deleteItemWbByWb(Integer wbId, User user) {
+        List<ItemWb> itemWbs = itemWbRepository.findAllItemWbByWb(wbId).orElse(new ArrayList<>());
+        for(ItemWb itemWb : itemWbs) {
+            itemWb.setActive(false);
+            itemWb.setUpdatedBy(user);
+        }
+        itemWbRepository.saveAll(itemWbs);
+        return true;
+    }
+
+    public void saveItemWbs(Waybill waybill, List<ItemDp> itemDps, User user) throws Exception {
+        List<ItemWb> itemWbs = new ArrayList<>();
+        for (ItemDp itemDp : itemDps) {
+            ItemWb itemWb = new ItemWb(waybill,itemDp,user);
+            itemWbs.add(itemWb);
+        }
+        itemWbRepository.saveAll(itemWbs);
     }
 }

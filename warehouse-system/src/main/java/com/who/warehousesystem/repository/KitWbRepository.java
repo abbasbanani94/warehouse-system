@@ -16,5 +16,5 @@ public interface KitWbRepository extends JpaRepository<KitWb,Integer> {
     KitWb findKitWbByKitDp(@Param(value = "kitDpId") Integer kitDpId);
 
     @Query(value = "select * from kit_wb where active = 1 and waybill_id = :wbId", nativeQuery = true)
-    Optional<List<KitWb>> findKitWbByWb(@Param(value = "wbId") Integer wbId);
+    Optional<List<KitWb>> findAllKitWbByWb(@Param(value = "wbId") Integer wbId);
 }

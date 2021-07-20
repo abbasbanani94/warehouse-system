@@ -42,6 +42,11 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCenter = new System.Windows.Forms.TextBox();
+            this.txtDistrict = new System.Windows.Forms.TextBox();
+            this.txtWbDate = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtWbNo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
@@ -52,11 +57,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listWb = new System.Windows.Forms.ListBox();
             this.listDp = new System.Windows.Forms.ListBox();
-            this.txtWbNo = new System.Windows.Forms.TextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtWbDate = new System.Windows.Forms.TextBox();
-            this.txtDistrict = new System.Windows.Forms.TextBox();
-            this.txtCenter = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -141,6 +141,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label2
             // 
@@ -217,6 +218,56 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Waybill Details";
+            // 
+            // txtCenter
+            // 
+            this.txtCenter.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCenter.Location = new System.Drawing.Point(1367, 82);
+            this.txtCenter.Name = "txtCenter";
+            this.txtCenter.ReadOnly = true;
+            this.txtCenter.Size = new System.Drawing.Size(495, 32);
+            this.txtCenter.TabIndex = 54;
+            this.txtCenter.TabStop = false;
+            // 
+            // txtDistrict
+            // 
+            this.txtDistrict.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDistrict.Location = new System.Drawing.Point(735, 82);
+            this.txtDistrict.Name = "txtDistrict";
+            this.txtDistrict.ReadOnly = true;
+            this.txtDistrict.Size = new System.Drawing.Size(465, 32);
+            this.txtDistrict.TabIndex = 53;
+            this.txtDistrict.TabStop = false;
+            // 
+            // txtWbDate
+            // 
+            this.txtWbDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWbDate.Location = new System.Drawing.Point(735, 44);
+            this.txtWbDate.Name = "txtWbDate";
+            this.txtWbDate.ReadOnly = true;
+            this.txtWbDate.Size = new System.Drawing.Size(174, 32);
+            this.txtWbDate.TabIndex = 52;
+            this.txtWbDate.TabStop = false;
+            // 
+            // txtCity
+            // 
+            this.txtCity.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCity.Location = new System.Drawing.Point(140, 82);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.ReadOnly = true;
+            this.txtCity.Size = new System.Drawing.Size(455, 32);
+            this.txtCity.TabIndex = 51;
+            this.txtCity.TabStop = false;
+            // 
+            // txtWbNo
+            // 
+            this.txtWbNo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWbNo.Location = new System.Drawing.Point(411, 44);
+            this.txtWbNo.Name = "txtWbNo";
+            this.txtWbNo.ReadOnly = true;
+            this.txtWbNo.Size = new System.Drawing.Size(184, 32);
+            this.txtWbNo.TabIndex = 50;
+            this.txtWbNo.TabStop = false;
             // 
             // groupBox2
             // 
@@ -342,56 +393,6 @@
             this.listDp.Size = new System.Drawing.Size(847, 700);
             this.listDp.TabIndex = 40;
             this.listDp.TabStop = false;
-            // 
-            // txtWbNo
-            // 
-            this.txtWbNo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWbNo.Location = new System.Drawing.Point(411, 44);
-            this.txtWbNo.Name = "txtWbNo";
-            this.txtWbNo.ReadOnly = true;
-            this.txtWbNo.Size = new System.Drawing.Size(184, 32);
-            this.txtWbNo.TabIndex = 50;
-            this.txtWbNo.TabStop = false;
-            // 
-            // txtCity
-            // 
-            this.txtCity.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(140, 82);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.ReadOnly = true;
-            this.txtCity.Size = new System.Drawing.Size(455, 32);
-            this.txtCity.TabIndex = 51;
-            this.txtCity.TabStop = false;
-            // 
-            // txtWbDate
-            // 
-            this.txtWbDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWbDate.Location = new System.Drawing.Point(735, 44);
-            this.txtWbDate.Name = "txtWbDate";
-            this.txtWbDate.ReadOnly = true;
-            this.txtWbDate.Size = new System.Drawing.Size(174, 32);
-            this.txtWbDate.TabIndex = 52;
-            this.txtWbDate.TabStop = false;
-            // 
-            // txtDistrict
-            // 
-            this.txtDistrict.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDistrict.Location = new System.Drawing.Point(735, 82);
-            this.txtDistrict.Name = "txtDistrict";
-            this.txtDistrict.ReadOnly = true;
-            this.txtDistrict.Size = new System.Drawing.Size(465, 32);
-            this.txtDistrict.TabIndex = 53;
-            this.txtDistrict.TabStop = false;
-            // 
-            // txtCenter
-            // 
-            this.txtCenter.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCenter.Location = new System.Drawing.Point(1367, 82);
-            this.txtCenter.Name = "txtCenter";
-            this.txtCenter.ReadOnly = true;
-            this.txtCenter.Size = new System.Drawing.Size(495, 32);
-            this.txtCenter.TabIndex = 54;
-            this.txtCenter.TabStop = false;
             // 
             // frm_waybill_details
             // 

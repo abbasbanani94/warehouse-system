@@ -2,9 +2,7 @@ package com.who.warehousesystem.service;
 
 import com.who.warehousesystem.dto.WbDetailsSaveDto;
 import com.who.warehousesystem.dto.WbSaveDto;
-import com.who.warehousesystem.model.HealthCenter;
-import com.who.warehousesystem.model.User;
-import com.who.warehousesystem.model.Waybill;
+import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.WaybillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +32,12 @@ public class WaybillService {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ItemWbService itemWbService;
+
+    @Autowired
+    KitWbService kitWbService;
 
     public boolean findWaybillByHealthCenter(Integer healthCenterId) {
         List<Waybill> waybills = waybillRepository.findWaybillByHealthCenter(healthCenterId);
@@ -95,12 +99,6 @@ public class WaybillService {
         return waybillRepository.findWaybillById(id).orElseThrow(() ->
                 new Exception("No Waybill for ID : " + id));
     }
-
-    @Autowired
-    ItemWbService itemWbService;
-
-    @Autowired
-    KitWbService kitWbService;
 
     public void deleteWaybill(Integer id, Integer userId) throws Exception {
         checkWaybillExistence(id);
@@ -165,7 +163,13 @@ public class WaybillService {
 
     public void saveWbDetails(Integer id, WbDetailsSaveDto dto, Integer userId) throws Exception {
         User user = userService.findUserById(userId);
-        HealthCenter healthCenter = healthCenterService.findHealthCenterByWb(id);
+        Waybill waybill = findWaybillById(id);
+        if(itemWbService.deleteItemWbByWb(id,user) && kitWbService.deleteItemWbByWb(id,user)) {
+            List<ItemDp> itemDps = itemDpService.extractItemDpsFromWbStringList(dto.getWbList());
+            List<KitDp> kitDps = kitDpService.extractKitsDpsFromWbStringList(dto.getWbList());
 
+            itemWbService.saveItemWbs(waybill,itemDps,user);
+            kitWbService.saveKitWbs(waybill,kitDps,user);
+        }
     }
 }

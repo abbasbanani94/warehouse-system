@@ -133,6 +133,7 @@
     <Compile Include="User.cs" />
     <Compile Include="Waybill.cs" />
     <Compile Include="WbDetailsDto.cs" />
+    <Compile Include="WbDetailsSaveDto.cs" />
     <Compile Include="WbSaveDto.cs" />
     <EmbeddedResource Include="frm_health_center.resx">
       <DependentUpon>frm_health_center.cs</DependentUpon>

@@ -27,4 +27,10 @@ public class KitWb extends DateAudit {
     @OneToOne
     @JoinColumn(name = "kit_dp_id")
     private KitDp kitDp;
+
+    public KitWb(Waybill waybill, KitDp kitDp, User user) {
+        this.waybill = waybill;
+        this.kitDp = kitDp;
+        this.setCreatedBy(user);
+    }
 }

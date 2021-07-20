@@ -187,4 +187,16 @@ public class ItemDpService {
                     itemDp.getQty();
         }).collect(Collectors.toList());
     }
+
+    public List<ItemDp> extractItemDpsFromWbStringList(List<String> wbList) throws Exception {
+        List<ItemDp> itemDps = new ArrayList<>();
+        for(String item : wbList) {
+            if(item.startsWith("I")) {
+                Integer id = Integer.parseInt(item.substring(1,item.indexOf(' ')));
+                ItemDp itemDp = findItemDpById(id);
+                itemDps.add(itemDp);
+            }
+        }
+        return itemDps;
+    }
 }
