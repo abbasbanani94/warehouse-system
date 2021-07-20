@@ -101,7 +101,6 @@ namespace WarehouseSystem
         {
             cmbItem.SelectedValue = -1;
             cmbItem.DataSource = null;
-            FormsFunctions.clearAll(groupBox2);
             load();
         }
 

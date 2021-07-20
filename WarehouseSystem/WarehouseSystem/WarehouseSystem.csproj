@@ -79,6 +79,12 @@
     <Compile Include="frm_item_po.designer.cs">
       <DependentUpon>frm_item_po.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_waybill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_waybill.Designer.cs">
+      <DependentUpon>frm_waybill.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_waybill_details.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,7 @@
     <Compile Include="PurchaseOrder.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Waybill.cs" />
+    <Compile Include="WbSaveDto.cs" />
     <EmbeddedResource Include="frm_health_center.resx">
       <DependentUpon>frm_health_center.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_item_po.resx">
       <DependentUpon>frm_item_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_waybill.resx">
+      <DependentUpon>frm_waybill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_waybill_details.resx">
       <DependentUpon>frm_waybill_details.cs</DependentUpon>

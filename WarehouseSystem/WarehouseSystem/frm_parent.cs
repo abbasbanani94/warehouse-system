@@ -119,23 +119,23 @@ namespace WarehouseSystem
             _kit_dp = null;
         }
 
-        private frm_waybill_details _wb_details = null;
+        private frm_waybill _waybills = null;
 
-        private void itemsKitsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_wb_details == null)
+            if (_waybills == null)
             {
-                _wb_details = new frm_waybill_details();
-                _wb_details.Show();
-                _wb_details.FormClosed += _wb_details_FormClosed;
+                _waybills = new frm_waybill();
+                _waybills.Show();
+                _waybills.FormClosed += _waybills_FormClosed;
             }
             else
-                Msg.formAlreadyOpen("Waybill items & kits");
+                Msg.formAlreadyOpen("Waybills");
         }
 
-        private void _wb_details_FormClosed(object sender, FormClosedEventArgs e)
+        private void _waybills_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _wb_details = null;
+            _waybills = null;
         }
     }
 }

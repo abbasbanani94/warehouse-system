@@ -36,6 +36,8 @@
             this.distributionPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kitsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.waybillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.healthCentersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tslDate = new System.Windows.Forms.ToolStripLabel();
@@ -46,8 +48,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tslUser = new System.Windows.Forms.ToolStripLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.waybillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsKitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +111,21 @@
             this.kitsToolStripMenuItem1.Size = new System.Drawing.Size(140, 30);
             this.kitsToolStripMenuItem1.Text = "Kits";
             this.kitsToolStripMenuItem1.Click += new System.EventHandler(this.kitsToolStripMenuItem1_Click);
+            // 
+            // waybillsToolStripMenuItem
+            // 
+            this.waybillsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detailsToolStripMenuItem});
+            this.waybillsToolStripMenuItem.Name = "waybillsToolStripMenuItem";
+            this.waybillsToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
+            this.waybillsToolStripMenuItem.Text = "Waybills";
+            // 
+            // detailsToolStripMenuItem
+            // 
+            this.detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
+            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.detailsToolStripMenuItem.Text = "Waybill Details";
+            this.detailsToolStripMenuItem.Click += new System.EventHandler(this.detailsToolStripMenuItem_Click);
             // 
             // healthCentersToolStripMenuItem
             // 
@@ -180,21 +195,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // waybillsToolStripMenuItem
-            // 
-            this.waybillsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemsKitsToolStripMenuItem});
-            this.waybillsToolStripMenuItem.Name = "waybillsToolStripMenuItem";
-            this.waybillsToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
-            this.waybillsToolStripMenuItem.Text = "Waybills";
-            // 
-            // itemsKitsToolStripMenuItem
-            // 
-            this.itemsKitsToolStripMenuItem.Name = "itemsKitsToolStripMenuItem";
-            this.itemsKitsToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
-            this.itemsKitsToolStripMenuItem.Text = "Items & Kits";
-            this.itemsKitsToolStripMenuItem.Click += new System.EventHandler(this.itemsKitsToolStripMenuItem_Click);
-            // 
             // frm_parent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -236,6 +236,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem kitsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem waybillsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemsKitsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
     }
 }

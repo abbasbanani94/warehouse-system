@@ -29,58 +29,12 @@ namespace WarehouseSystem
 
         private void load()
         {
-            Waybill.findAllWaybillCombo(cmbWbNo);
-            DistributionPlan.findAllDpCombo(cmbDpName);
-        }
-
-        private void cmbDpName_TextChanged(object sender, EventArgs e)
-        {
-            txtDpId.ResetText();
-            if(cmbDpName.Text != "" && cmbDpName.SelectedValue != null)
-            {
-                txtDpId.Text = cmbDpName.SelectedValue.ToString();
-            }
-        }
-
-        private void txtDpId_TextChanged(object sender, EventArgs e)
-        {
-            txtDpName.ResetText();
-            txtDpDate.ResetText();
-            if(txtDpId.Text != "")
-            {
-                DistributionPlan.findDpDetails(txtDpId.Text, txtDpName, txtDpDate);
-            }
-        }
-
-        private void cmbCity_TextChanged(object sender, EventArgs e)
-        {
-            cmbDistrict.SelectedValue = -1;
-            cmbDistrict.DataSource = null;
-            if (cmbCity.Text != "" && cmbCity.SelectedValue != null)
-            {
-                HealthCenter.findDistrictsCombo(cmbDistrict, cmbCity.SelectedValue.ToString());
-            }
-        }
-
-        private void cmbDistrict_TextChanged(object sender, EventArgs e)
-        {
-            cmbCenter.SelectedValue = -1;
-            cmbCenter.DataSource = null;
-            if (cmbDistrict.Text != "" && cmbDistrict.SelectedValue != null)
-            {
-                HealthCenter.findCentersCombo(cmbCenter, cmbDistrict.SelectedValue.ToString());
-            }
+            
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            if(txtDpId.Text == "" || cmbCenter.SelectedValue == null)
-                Msg.errorMsg("You must choose DP Name and Center to load the items","Error");
-            else
-            {
-                Waybill.findItemsKitsListNoWb(listDp, txtDpId.Text, cmbCenter.SelectedValue.ToString());
-                Waybill.findItemsKitsListWb(listWb, txtDpId.Text, cmbCenter.SelectedValue.ToString());
-            }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

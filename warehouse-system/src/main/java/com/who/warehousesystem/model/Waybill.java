@@ -1,6 +1,7 @@
 package com.who.warehousesystem.model;
 
 import com.who.warehousesystem.audit.DateAudit;
+import com.who.warehousesystem.dto.WbSaveDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,4 +37,13 @@ public class Waybill extends DateAudit {
 
     @Column(name = "total_pallets")
     private Integer totalPallets;
+
+    public Waybill(WbSaveDto dto, HealthCenter healthCenter, User user) {
+        this.formNo = dto.getWbNo();
+        this.healthCenter = healthCenter;
+        this.exportDate = dto.getWbDate();
+        this.totalBoxes = dto.getBoxes();
+        this.totalPallets = dto.getPallets();
+        this.setCreatedBy(user);
+    }
 }

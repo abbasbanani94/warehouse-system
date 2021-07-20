@@ -101,7 +101,6 @@ namespace WarehouseSystem
 
         private void done()
         {
-            FormsFunctions.clearAll(groupBox2);
             load();
         }
 

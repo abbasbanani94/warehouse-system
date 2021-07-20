@@ -1,12 +1,18 @@
 package com.who.warehousesystem.service;
 
-import com.who.warehousesystem.dto.WbDetailsSaveDto;
+import com.who.warehousesystem.dto.WbSaveDto;
+import com.who.warehousesystem.model.HealthCenter;
 import com.who.warehousesystem.model.User;
 import com.who.warehousesystem.model.Waybill;
 import com.who.warehousesystem.repository.WaybillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +21,9 @@ public class WaybillService {
 
     @Autowired
     WaybillRepository waybillRepository;
+
+    @Autowired
+    HealthCenterService healthCenterService;
 
     @Autowired
     ItemDpService itemDpService;
@@ -33,17 +42,6 @@ public class WaybillService {
             return false;
     }
 
-    public List<Waybill> findAllWaybills() {
-        return waybillRepository.findAllWaybills().orElse(new ArrayList<>());
-    }
-
-    public List<String> findItemsKitsListNoWb(Integer dpId, Integer centerId) throws Exception {
-        List<String> items = itemDpService.findItemsDpListByDpAndCenterNoWb(dpId,centerId);
-        List<String> kits = kitDpService.findKitsDpListByDpAndCenterNoWb(dpId,centerId);
-        List<String> listBox = addTwoLists(items,kits);
-        return listBox;
-    }
-
     private List<String> addTwoLists(List<String> items, List<String> kits) {
         List<String> listBox = new ArrayList<>();
         for(String item : items) {
@@ -55,15 +53,96 @@ public class WaybillService {
         return listBox;
     }
 
-    public List<String> findItemsKitsListWb(Integer dpId, Integer centerId) {
-        List<String> items = itemDpService.findItemsDpListByDpAndCenterWb(dpId, centerId);
-        List<String> kits = kitDpService.findKitsDpListByDpAndCenterWb(dpId, centerId);
-        List<String> listBox = addTwoLists(items,kits);
-        return listBox;
+    public List<Waybill> findAllWaybillsDgv() {
+        return waybillRepository.findAllWaybillsDgv().orElse(new ArrayList<>());
     }
 
-    public void saveWaybillDetails(WbDetailsSaveDto dto, Integer userId) throws Exception {
+    public Waybill saveWaybill(WbSaveDto dto, Integer userId) throws Exception {
+        checkWaybillNoDuplicate(dto.getWbNo());
         User user = userService.findUserById(userId);
+        HealthCenter healthCenter = healthCenterService.findHealthCenterById(dto.getCenterId());
+        Waybill waybill = new Waybill(dto,healthCenter,user);
+        return waybillRepository.save(waybill);
+    }
 
+    private void checkWaybillNoDuplicate(Integer wbNo) throws Exception {
+        if(waybillRepository.findWaybillByNo(wbNo) != null)
+            throw new Exception("WB NO entered is already taken, please check and retry again");
+    }
+
+    private void checkWaybillNoDuplicate(Integer id, Integer wbNo) throws Exception {
+        Waybill waybill = waybillRepository.findWaybillByNo(wbNo);
+        if(waybill != null && waybill.getId() != id)
+            throw new Exception("WB NO entered is already taken, please check and retry again");
+    }
+
+    public Waybill editWaybill(Integer id, WbSaveDto dto, Integer userId) throws Exception {
+        checkWaybillNoDuplicate(id,dto.getWbNo());
+        User user = userService.findUserById(userId);
+        Waybill waybill = findWaybillById(id);
+        HealthCenter healthCenter = healthCenterService.findHealthCenterById(dto.getCenterId());
+        waybill.setExportDate(dto.getWbDate());
+        waybill.setFormNo(dto.getWbNo());
+        waybill.setHealthCenter(healthCenter);
+        waybill.setTotalBoxes(dto.getBoxes());
+        waybill.setTotalPallets(dto.getPallets());
+        waybill.setUpdatedBy(user);
+        return waybillRepository.save(waybill);
+    }
+
+    private Waybill findWaybillById(Integer id) throws Exception {
+        return waybillRepository.findWaybillById(id).orElseThrow(() ->
+                new Exception("No Waybill for ID : " + id));
+    }
+
+    @Autowired
+    ItemWbService itemWbService;
+
+    @Autowired
+    KitWbService kitWbService;
+
+    public void deleteWaybill(Integer id, Integer userId) throws Exception {
+        checkWaybillExistence(id);
+        User user = userService.findUserById(userId);
+        Waybill waybill = findWaybillById(id);
+        waybill.setUpdatedBy(user);
+        waybill.setActive(false);
+        waybillRepository.save(waybill);
+    }
+
+    private void checkWaybillExistence(Integer id) throws Exception {
+        if(itemWbService.findItemWbByWb(id).size() > 0 || kitWbService.findKitWbByWb(id).size() > 0)
+            throw new Exception("Cannot delete this Waybill because it's included in another tables");
+    }
+
+    @Autowired
+    EntityManager entityManager;
+
+    public List<Waybill> searchWaybill(String wbNo, String wbDate, String boxes, String pallets, String cityId,
+                                       String districtId, String centerId) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Waybill> cq = cb.createQuery(Waybill.class);
+        Root<Waybill> root = cq.from(Waybill.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(cb.equal(root.get("active"), true));
+
+        if(!wbNo.isBlank() && !wbNo.isEmpty())
+            predicates.add(cb.equal(root.get("formNo"), wbNo));
+        if(!wbDate.isBlank() && !wbDate.isEmpty())
+            predicates.add(cb.equal(root.get("exportDate"),wbDate));
+        if(!boxes.isBlank() && !boxes.isEmpty())
+            predicates.add(cb.equal(root.get("totalBoxes"), boxes));
+        if(!pallets.isEmpty() && !pallets.isBlank())
+            predicates.add(cb.equal(root.get("totalPallets"), pallets));
+        if(!cityId.isBlank() && !cityId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").join("district").join("city").get("id"),cityId));
+        if(!districtId.isBlank() && !districtId.isEmpty())
+            predicates.add(cb.equal(root.join("healthCenter").join("district").get("id"),districtId));
+        if(!centerId.isEmpty() && !centerId.isBlank())
+            predicates.add(cb.equal(root.join("healthCenter").get("id"),districtId));
+
+        cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+        return entityManager.createQuery(cq).getResultList();
     }
 }
