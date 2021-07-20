@@ -1,14 +1,12 @@
 package com.who.warehousesystem.controller;
 
 import com.who.warehousesystem.dto.ComboDto;
+import com.who.warehousesystem.dto.WbDetailsSaveDto;
 import com.who.warehousesystem.service.WaybillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
@@ -36,5 +34,12 @@ public class WaybillController {
     public ResponseEntity findItemsKitsListWb (@RequestParam (value = "dpId") Integer dpId,
                                                @RequestParam (value = "centerId") Integer centerId) {
         return new ResponseEntity(waybillService.findItemsKitsListWb(dpId, centerId), HttpStatus.OK);
+    }
+
+    @PostMapping("/details")
+    public ResponseEntity saveWaybillDetails (@RequestBody WbDetailsSaveDto dto,
+                                              @RequestHeader (value = "userId") Integer userId) throws Exception {
+        waybillService.saveWaybillDetails(dto,userId);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

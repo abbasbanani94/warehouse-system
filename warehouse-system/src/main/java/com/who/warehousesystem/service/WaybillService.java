@@ -1,5 +1,7 @@
 package com.who.warehousesystem.service;
 
+import com.who.warehousesystem.dto.WbDetailsSaveDto;
+import com.who.warehousesystem.model.User;
 import com.who.warehousesystem.model.Waybill;
 import com.who.warehousesystem.repository.WaybillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class WaybillService {
 
     @Autowired
     KitDpService kitDpService;
+
+    @Autowired
+    UserService userService;
 
     public boolean findWaybillByHealthCenter(Integer healthCenterId) {
         List<Waybill> waybills = waybillRepository.findWaybillByHealthCenter(healthCenterId);
@@ -55,5 +60,10 @@ public class WaybillService {
         List<String> kits = kitDpService.findKitsDpListByDpAndCenterWb(dpId, centerId);
         List<String> listBox = addTwoLists(items,kits);
         return listBox;
+    }
+
+    public void saveWaybillDetails(WbDetailsSaveDto dto, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+
     }
 }

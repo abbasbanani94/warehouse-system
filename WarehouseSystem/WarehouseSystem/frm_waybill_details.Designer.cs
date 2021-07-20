@@ -60,6 +60,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAddAll = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listWb = new System.Windows.Forms.ListBox();
             this.listDp = new System.Windows.Forms.ListBox();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -442,6 +442,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DP Details";
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLoad.Location = new System.Drawing.Point(891, 174);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(98, 51);
+            this.btnLoad.TabIndex = 48;
+            this.btnLoad.TabStop = false;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // btnRemoveAll
             // 
             this.btnRemoveAll.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
@@ -504,7 +516,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label5.Location = new System.Drawing.Point(117, 100);
+            this.label5.Location = new System.Drawing.Point(15, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 34);
             this.label5.TabIndex = 42;
@@ -533,18 +545,6 @@
             this.listDp.Size = new System.Drawing.Size(847, 556);
             this.listDp.TabIndex = 40;
             this.listDp.TabStop = false;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLoad.Location = new System.Drawing.Point(891, 174);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(98, 51);
-            this.btnLoad.TabIndex = 48;
-            this.btnLoad.TabStop = false;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // frm_waybill_details
             // 
