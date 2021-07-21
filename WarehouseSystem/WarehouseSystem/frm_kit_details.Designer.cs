@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtKitName = new System.Windows.Forms.TextBox();
             this.chkExp = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.txtItemPoId = new System.Windows.Forms.TextBox();
+            this.txtDetailId = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnDisposal = new System.Windows.Forms.Button();
-            this.txtTotalQty = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtPiecesPack = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -47,7 +46,6 @@
             this.txtPacksBox = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnNew = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.txtMax = new System.Windows.Forms.TextBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
@@ -65,23 +63,26 @@
             this.txtMin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpExp = new System.Windows.Forms.DateTimePicker();
-            this.txtKitName = new System.Windows.Forms.TextBox();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBoxNo = new System.Windows.Forms.TextBox();
+            this.btnNew = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnNew);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtBoxNo);
             this.groupBox1.Controls.Add(this.txtKitName);
             this.groupBox1.Controls.Add(this.chkExp);
             this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.txtItemPoId);
+            this.groupBox1.Controls.Add(this.txtDetailId);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.btnDisposal);
-            this.groupBox1.Controls.Add(this.txtTotalQty);
             this.groupBox1.Controls.Add(this.btnExit);
-            this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.txtPiecesPack);
             this.groupBox1.Controls.Add(this.btnEdit);
@@ -90,7 +91,6 @@
             this.groupBox1.Controls.Add(this.txtPacksBox);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.btnNew);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtMax);
             this.groupBox1.Controls.Add(this.txtDesc);
@@ -116,6 +116,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kit Details";
             // 
+            // txtKitName
+            // 
+            this.txtKitName.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKitName.Location = new System.Drawing.Point(398, 43);
+            this.txtKitName.Name = "txtKitName";
+            this.txtKitName.ReadOnly = true;
+            this.txtKitName.Size = new System.Drawing.Size(547, 32);
+            this.txtKitName.TabIndex = 37;
+            this.txtKitName.TabStop = false;
+            // 
             // chkExp
             // 
             this.chkExp.AutoSize = true;
@@ -138,15 +148,15 @@
             this.label21.TabIndex = 36;
             this.label21.Text = "Search Options :";
             // 
-            // txtItemPoId
+            // txtDetailId
             // 
-            this.txtItemPoId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemPoId.Location = new System.Drawing.Point(1350, 130);
-            this.txtItemPoId.Name = "txtItemPoId";
-            this.txtItemPoId.ReadOnly = true;
-            this.txtItemPoId.Size = new System.Drawing.Size(144, 32);
-            this.txtItemPoId.TabIndex = 33;
-            this.txtItemPoId.TabStop = false;
+            this.txtDetailId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDetailId.Location = new System.Drawing.Point(1350, 130);
+            this.txtDetailId.Name = "txtDetailId";
+            this.txtDetailId.ReadOnly = true;
+            this.txtDetailId.Size = new System.Drawing.Size(144, 32);
+            this.txtDetailId.TabIndex = 33;
+            this.txtDetailId.TabStop = false;
             // 
             // label11
             // 
@@ -161,52 +171,35 @@
             // btnDisposal
             // 
             this.btnDisposal.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisposal.Location = new System.Drawing.Point(1294, 189);
+            this.btnDisposal.Location = new System.Drawing.Point(1212, 189);
             this.btnDisposal.Name = "btnDisposal";
             this.btnDisposal.Size = new System.Drawing.Size(125, 51);
-            this.btnDisposal.TabIndex = 17;
+            this.btnDisposal.TabIndex = 18;
             this.btnDisposal.Text = "Disposal";
             this.btnDisposal.UseVisualStyleBackColor = true;
-            // 
-            // txtTotalQty
-            // 
-            this.txtTotalQty.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalQty.Location = new System.Drawing.Point(759, 133);
-            this.txtTotalQty.Name = "txtTotalQty";
-            this.txtTotalQty.Size = new System.Drawing.Size(103, 32);
-            this.txtTotalQty.TabIndex = 9;
-            this.txtTotalQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
+            this.btnDisposal.Click += new System.EventHandler(this.btnDisposal_Click);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1162, 189);
+            this.btnExit.Location = new System.Drawing.Point(1080, 189);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(98, 51);
-            this.btnExit.TabIndex = 16;
+            this.btnExit.TabIndex = 17;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(628, 137);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(125, 24);
-            this.label19.TabIndex = 31;
-            this.label19.Text = "TOTAL QTY*";
-            // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(1031, 189);
+            this.btnDelete.Location = new System.Drawing.Point(949, 189);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(98, 51);
-            this.btnDelete.TabIndex = 15;
+            this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtPiecesPack
             // 
@@ -214,18 +207,19 @@
             this.txtPiecesPack.Location = new System.Drawing.Point(444, 133);
             this.txtPiecesPack.Name = "txtPiecesPack";
             this.txtPiecesPack.Size = new System.Drawing.Size(138, 32);
-            this.txtPiecesPack.TabIndex = 8;
+            this.txtPiecesPack.TabIndex = 9;
             this.txtPiecesPack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
             // 
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(900, 189);
+            this.btnEdit.Location = new System.Drawing.Point(818, 189);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(98, 51);
-            this.btnEdit.TabIndex = 14;
+            this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // label18
             // 
@@ -240,12 +234,13 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(769, 189);
+            this.btnSave.Location = new System.Drawing.Point(687, 189);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 51);
-            this.btnSave.TabIndex = 13;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtPacksBox
             // 
@@ -253,18 +248,19 @@
             this.txtPacksBox.Location = new System.Drawing.Point(149, 133);
             this.txtPacksBox.Name = "txtPacksBox";
             this.txtPacksBox.Size = new System.Drawing.Size(144, 32);
-            this.txtPacksBox.TabIndex = 7;
+            this.txtPacksBox.TabIndex = 8;
             this.txtPacksBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(638, 189);
+            this.btnSearch.Location = new System.Drawing.Point(556, 189);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(98, 51);
-            this.btnSearch.TabIndex = 12;
+            this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label17
             // 
@@ -275,16 +271,6 @@
             this.label17.Size = new System.Drawing.Size(125, 24);
             this.label17.TabIndex = 27;
             this.label17.Text = "PACKS/BOX*";
-            // 
-            // btnNew
-            // 
-            this.btnNew.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Location = new System.Drawing.Point(507, 189);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(98, 51);
-            this.btnNew.TabIndex = 11;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -302,7 +288,7 @@
             this.txtMax.Location = new System.Drawing.Point(398, 88);
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(103, 32);
-            this.txtMax.TabIndex = 4;
+            this.txtMax.TabIndex = 5;
             this.txtMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
             // 
             // txtDesc
@@ -311,7 +297,7 @@
             this.txtDesc.Location = new System.Drawing.Point(643, 88);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(551, 32);
-            this.txtDesc.TabIndex = 5;
+            this.txtDesc.TabIndex = 6;
             // 
             // label12
             // 
@@ -356,7 +342,7 @@
             // txtItemId
             // 
             this.txtItemId.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemId.Location = new System.Drawing.Point(1050, 43);
+            this.txtItemId.Location = new System.Drawing.Point(1050, 133);
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.ReadOnly = true;
             this.txtItemId.Size = new System.Drawing.Size(144, 32);
@@ -367,7 +353,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(962, 46);
+            this.label6.Location = new System.Drawing.Point(962, 136);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 24);
             this.label6.TabIndex = 0;
@@ -382,7 +368,7 @@
             this.cmbItem.Location = new System.Drawing.Point(1350, 43);
             this.cmbItem.Name = "cmbItem";
             this.cmbItem.Size = new System.Drawing.Size(527, 32);
-            this.cmbItem.TabIndex = 2;
+            this.cmbItem.TabIndex = 3;
             this.cmbItem.TextChanged += new System.EventHandler(this.cmbItem_TextChanged);
             // 
             // label5
@@ -411,7 +397,7 @@
             this.txtPackaging.Location = new System.Drawing.Point(1350, 88);
             this.txtPackaging.Name = "txtPackaging";
             this.txtPackaging.Size = new System.Drawing.Size(527, 32);
-            this.txtPackaging.TabIndex = 6;
+            this.txtPackaging.TabIndex = 7;
             // 
             // label9
             // 
@@ -429,14 +415,14 @@
             this.txtMin.Location = new System.Drawing.Point(149, 88);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(103, 32);
-            this.txtMin.TabIndex = 3;
+            this.txtMin.TabIndex = 4;
             this.txtMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(927, 135);
+            this.label8.Location = new System.Drawing.Point(592, 139);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(116, 24);
             this.label8.TabIndex = 8;
@@ -446,43 +432,33 @@
             // 
             this.dtpExp.Font = new System.Drawing.Font("Tahoma", 10F);
             this.dtpExp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExp.Location = new System.Drawing.Point(1050, 129);
+            this.dtpExp.Location = new System.Drawing.Point(715, 133);
             this.dtpExp.Name = "dtpExp";
             this.dtpExp.Size = new System.Drawing.Size(144, 32);
-            this.dtpExp.TabIndex = 10;
-            // 
-            // txtKitName
-            // 
-            this.txtKitName.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKitName.Location = new System.Drawing.Point(398, 43);
-            this.txtKitName.Name = "txtKitName";
-            this.txtKitName.ReadOnly = true;
-            this.txtKitName.Size = new System.Drawing.Size(547, 32);
-            this.txtKitName.TabIndex = 37;
-            this.txtKitName.TabStop = false;
+            this.dtpExp.TabIndex = 11;
             // 
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.Location = new System.Drawing.Point(12, 279);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -490,6 +466,37 @@
             this.dgv.Size = new System.Drawing.Size(1900, 662);
             this.dgv.TabIndex = 1003;
             this.dgv.TabStop = false;
+            this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(993, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 24);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "BOX NO*";
+            // 
+            // txtBoxNo
+            // 
+            this.txtBoxNo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxNo.Location = new System.Drawing.Point(1091, 43);
+            this.txtBoxNo.Name = "txtBoxNo";
+            this.txtBoxNo.Size = new System.Drawing.Size(103, 32);
+            this.txtBoxNo.TabIndex = 2;
+            this.txtBoxNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.Location = new System.Drawing.Point(423, 189);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(98, 51);
+            this.btnNew.TabIndex = 12;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // frm_kit_details
             // 
@@ -517,12 +524,10 @@
         private System.Windows.Forms.TextBox txtKitName;
         private System.Windows.Forms.CheckBox chkExp;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtItemPoId;
+        private System.Windows.Forms.TextBox txtDetailId;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnDisposal;
-        private System.Windows.Forms.TextBox txtTotalQty;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtPiecesPack;
         private System.Windows.Forms.Button btnEdit;
@@ -531,7 +536,6 @@
         private System.Windows.Forms.TextBox txtPacksBox;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtMax;
         private System.Windows.Forms.TextBox txtDesc;
@@ -550,5 +554,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtpExp;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtBoxNo;
+        private System.Windows.Forms.Button btnNew;
     }
 }

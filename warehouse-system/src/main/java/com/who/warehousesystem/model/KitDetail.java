@@ -1,6 +1,7 @@
 package com.who.warehousesystem.model;
 
 import com.who.warehousesystem.audit.DateAudit;
+import com.who.warehousesystem.dto.KitDetailSaveDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,4 +44,15 @@ public class KitDetail extends DateAudit {
 
     @Column(name = "exp_date")
     private LocalDate expDate;
+
+    public KitDetail(KitPo kitPo, Item item, KitDetailSaveDto dto, User user) {
+        this.kitPo = kitPo;
+        this.item = item;
+        this.boxNo = dto.getBoxNo();
+        this.expDate = dto.getExpDate();
+        this.packaging = dto.getPackaging();
+        this.packsPerBox = dto.getPacksPerBox();
+        this.piecesPerPack = dto.getPiecesPerPack();
+        this.setCreatedBy(user);
+    }
 }
