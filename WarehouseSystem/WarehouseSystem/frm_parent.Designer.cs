@@ -47,6 +47,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tslUser = new System.Windows.Forms.ToolStripLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +69,7 @@
             // purchaseOrdersToolStripMenuItem
             // 
             this.purchaseOrdersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detailsToolStripMenuItem,
             this.itemsToolStripMenuItem,
             this.kitsToolStripMenuItem});
             this.purchaseOrdersToolStripMenuItem.Name = "purchaseOrdersToolStripMenuItem";
@@ -77,14 +79,14 @@
             // itemsToolStripMenuItem
             // 
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(140, 30);
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
             this.itemsToolStripMenuItem.Text = "Items";
             this.itemsToolStripMenuItem.Click += new System.EventHandler(this.itemsToolStripMenuItem_Click);
             // 
             // kitsToolStripMenuItem
             // 
             this.kitsToolStripMenuItem.Name = "kitsToolStripMenuItem";
-            this.kitsToolStripMenuItem.Size = new System.Drawing.Size(140, 30);
+            this.kitsToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
             this.kitsToolStripMenuItem.Text = "Kits";
             this.kitsToolStripMenuItem.Click += new System.EventHandler(this.kitsToolStripMenuItem_Click);
             // 
@@ -186,6 +188,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // detailsToolStripMenuItem
+            // 
+            this.detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
+            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
+            this.detailsToolStripMenuItem.Text = "Details";
+            this.detailsToolStripMenuItem.Click += new System.EventHandler(this.detailsToolStripMenuItem_Click);
+            // 
             // frm_parent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -227,5 +236,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem kitsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem waybillsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
     }
 }

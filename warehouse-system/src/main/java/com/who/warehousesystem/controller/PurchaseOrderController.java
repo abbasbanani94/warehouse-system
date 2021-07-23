@@ -29,16 +29,29 @@ public class PurchaseOrderController {
         .map(po -> (modelMapper.map(po, PoComboDto.class))), HttpStatus.OK);
     }
 
-    @PostMapping("/{poNo}")
-    public ResponseEntity savePurchaseOrder (@PathVariable (value = "poNo") String poNo,
+    @PostMapping("")
+    public ResponseEntity savePurchaseOrder (@RequestBody Integer poNo,
                                              @RequestHeader (value = "userId") Integer userId) throws Exception {
         return new ResponseEntity(modelMapper.map(purchaseOrderService.savePurchaseOrder(poNo, userId),
                 PoComboDto.class),HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity editPurchaseOrder (@PathVariable (value = "id") Integer id,
+                                             @RequestBody Integer poNo,
+                                             @RequestHeader (value = "userId") Integer userId) throws Exception {
+        return new ResponseEntity(modelMapper.map(purchaseOrderService.editPurchaseOrder(id,poNo,userId),
+                PoComboDto.class), HttpStatus.OK);
     }
 
     @GetMapping("/countries")
     public ResponseEntity findAllCountries () {
         return new ResponseEntity(countryService.findAllCountries().stream().map(country -> (
                 modelMapper.map(country, ComboDto.class))), HttpStatus.OK);
+    }
+
+    @GetMapping("/dgv")
+    public ResponseEntity findAllPoDgv () {
+        return new ResponseEntity(purchaseOrderService.findAllPoDgv(), HttpStatus.OK);
     }
 }

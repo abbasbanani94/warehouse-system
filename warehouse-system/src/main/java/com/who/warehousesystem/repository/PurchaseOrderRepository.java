@@ -17,4 +17,13 @@ public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder,Int
 
     @Query(value = "select * from purchase_orders where purchase_order_id = :id", nativeQuery = true)
     Optional<PurchaseOrder> findPurchaseOrderById(@Param(value = "id") Integer poId);
+
+    @Query(value = "select p.purchase_order_id,p.purchase_order_no,(select count(item_po_id) from item_po " +
+            "where active = 1 and purchase_order_id = p.purchase_order_id) as items,(select count(kit_po_id) as kits from " +
+            "kit_po where active = 1 and purchase_order_id = p.purchase_order_id) as kits from purchase_orders p where " +
+            "p.active = 1 order by p.purchase_order_id desc", nativeQuery = true)
+    Optional<List<Object[]>> findAllPoDgv();
+
+    @Query(value = "select * from purchase_orders where active = 1 and purchase_order_no = :no", nativeQuery = true)
+    PurchaseOrder findPurchaseOrderByNo(@Param(value = "no") Integer poNo);
 }

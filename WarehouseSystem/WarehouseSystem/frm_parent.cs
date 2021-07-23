@@ -137,5 +137,24 @@ namespace WarehouseSystem
             else
                 Msg.formAlreadyOpen("Waybills");
         }
+
+        private frm_purchase_order _purchase_order = null;
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_purchase_order == null)
+            {
+                _purchase_order = new frm_purchase_order();
+                _purchase_order.Show();
+                _purchase_order.FormClosed += _purchase_order_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Purchase Orders Details");
+        }
+
+        private void _purchase_order_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _purchase_order = null;
+        }
     }
 }

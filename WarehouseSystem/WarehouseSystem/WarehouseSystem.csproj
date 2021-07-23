@@ -85,6 +85,12 @@
     <Compile Include="frm_kit_details.Designer.cs">
       <DependentUpon>frm_kit_details.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_purchase_order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_purchase_order.Designer.cs">
+      <DependentUpon>frm_purchase_order.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_waybill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_details.resx">
       <DependentUpon>frm_kit_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_purchase_order.resx">
+      <DependentUpon>frm_purchase_order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_waybill.resx">
       <DependentUpon>frm_waybill.cs</DependentUpon>
