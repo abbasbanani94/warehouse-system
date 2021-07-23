@@ -85,14 +85,14 @@ namespace WarehouseSystem
         }
 
         internal static async void searchWaybill(string wbNo,string wbDate,string boxes,string pallets,
-            string cityId,string districtId,string centerId, DataGridView dgv)
+            string cityId,string districtId,string centerId, DataGridView dgv,bool d)
         {
             try
             {
                 HttpClient client = Client.getHttpClient();
                 var response = await client.GetStringAsync("/waybills/search?wbNo=" + wbNo +
                     "&wbDate=" + wbDate + "&boxes=" + boxes + "&pallets=" + pallets + "&cityId=" +
-                    cityId + "&districtId=" + districtId + "&centerId=" + centerId);
+                    cityId + "&districtId=" + districtId + "&centerId=" + centerId + "&d=" + d);
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
                 dgv.DataSource = dt;
                 if (dgv.Rows.Count == 0)

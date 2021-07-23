@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -145,7 +146,7 @@ public class ItemDpService {
     EntityManager entityManager;
 
     public List<ItemDp> searchItemDp(String planId, String date, String poId, String itemPoId, String cityId,
-                                     String districtId, String centerId, String qty) {
+                                     String districtId, String centerId, String qty,boolean d) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<ItemDp> cq = cb.createQuery(ItemDp.class);
         Root<ItemDp> root = cq.from(ItemDp.class);
@@ -155,8 +156,8 @@ public class ItemDpService {
 
         if(!planId.isBlank() && !planId.isEmpty())
             predicates.add(cb.equal(root.join("distributionPlan").get("id"), planId));
-        if(!date.isBlank() && !date.isEmpty())
-            predicates.add(cb.equal(root.join("distributionPlan").get("dDate"), date));
+        if(d)
+            predicates.add(cb.equal(root.join("distributionPlan").get("dDate"), LocalDate.parse(date)));
         if(!poId.isBlank() && !poId.isEmpty())
             predicates.add(cb.equal(root.join("itemPo").join("purchaseOrder").get("id"), poId));
         if(!itemPoId.isBlank() && !itemPoId.isEmpty())

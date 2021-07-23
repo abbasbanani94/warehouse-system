@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,12 +139,14 @@ public class KitPoService {
             predicates.add(cb.equal(root.get("boxesPerPallet"), dto.getBoxesPallet()));
         if(!dto.getCountry().isBlank() && !dto.getCountry().isEmpty())
             predicates.add(cb.equal(root.join("country").get("name"), dto.getCountry()));
-        if(!dto.getDateReceived().isBlank() && !dto.getDateReceived().isEmpty())
-            predicates.add(cb.equal(root.get("recDate"), dto.getDateReceived()));
+        if(dto.isRec())
+            predicates.add(cb.equal(root.get("recDate"), LocalDate.parse(dto.getDateReceived())));
         if(!dto.getDescription().isBlank() && !dto.getDescription().isEmpty())
-            predicates.add(cb.like(root.get("description"), "%" + dto.getDescription() + "%"));
-        if(!dto.getExpDate().isBlank() && !dto.getExpDate().isEmpty())
-            predicates.add(cb.equal(root.get("expDate"), dto.getExpDate()));
+            predicates.add(cb.like(root.join("kit").get("description"), "%" + dto.getDescription() + "%"));
+        if(dto.isExp())
+            predicates.add(cb.equal(root.get("expDate"), LocalDate.parse(dto.getExpDate())));
+        if(dto.isMan())
+            predicates.add(cb.equal(root.get("manDate"), LocalDate.parse(dto.getManDate())));
         if(!dto.getKitId().isBlank() && !dto.getKitId().isEmpty())
             predicates.add(cb.equal(root.join("kit").get("id"), dto.getKitId()));
         if(!dto.getKitsPallet().isBlank() && !dto.getKitsPallet().isEmpty())

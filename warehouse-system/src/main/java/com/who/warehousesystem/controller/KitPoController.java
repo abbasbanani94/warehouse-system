@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 @RestController
@@ -62,9 +63,12 @@ public class KitPoController {
                                        @RequestParam (value = "boxesPallets") String boxesPallets,
                                        @RequestParam (value = "kitsPallet") String kitsPallet,
                                        @RequestParam (value = "totalQty") String totalQty,
-                                       @RequestParam (value = "kitType") String kitType) {
+                                       @RequestParam (value = "kitType") String kitType,
+                                       @RequestParam (value = "rec") boolean rec,
+                                       @RequestParam (value = "man") boolean man,
+                                       @RequestParam (value = "exp") boolean exp) {
         KitPoSearchDto dto = new KitPoSearchDto(poId,dateReceived,kitId,minTemp,maxTemp,description,manDate,expDate,
-                country,batchNo,location,palletsQty,boxesPallets,kitsPallet,totalQty,kitType);
+                country,batchNo,location,palletsQty,boxesPallets,kitsPallet,totalQty,kitType,rec,man,exp);
         return new ResponseEntity(kitPoService.searchKitPo(dto).stream()
                 .map(kitPo -> (modelMapper.map(kitPo, KitPoDgv.class))), HttpStatus.OK);
     }

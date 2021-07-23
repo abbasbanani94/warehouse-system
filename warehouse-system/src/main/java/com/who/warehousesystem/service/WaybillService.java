@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,7 +119,7 @@ public class WaybillService {
     EntityManager entityManager;
 
     public List<Waybill> searchWaybill(String wbNo, String wbDate, String boxes, String pallets, String cityId,
-                                       String districtId, String centerId) {
+                                       String districtId, String centerId,boolean d) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Waybill> cq = cb.createQuery(Waybill.class);
         Root<Waybill> root = cq.from(Waybill.class);
@@ -128,8 +129,8 @@ public class WaybillService {
 
         if(!wbNo.isBlank() && !wbNo.isEmpty())
             predicates.add(cb.equal(root.get("formNo"), wbNo));
-        if(!wbDate.isBlank() && !wbDate.isEmpty())
-            predicates.add(cb.equal(root.get("exportDate"),wbDate));
+        if(d)
+            predicates.add(cb.equal(root.get("exportDate"), LocalDate.parse(wbDate)));
         if(!boxes.isBlank() && !boxes.isEmpty())
             predicates.add(cb.equal(root.get("totalBoxes"), boxes));
         if(!pallets.isEmpty() && !pallets.isBlank())

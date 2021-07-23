@@ -85,7 +85,7 @@ namespace WarehouseSystem
 
         internal static async void searchKitDetails(string kitPoId,string boxNo,string minTemp,
             string maxTemp,string description,string packaging,string packs,string pieces,
-            string expDate,string itemId,DataGridView dgv)
+            string expDate,string itemId,DataGridView dgv,bool exp)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace WarehouseSystem
                 var response = await client.GetStringAsync("/kitDetails/search?kitPoId=" + kitPoId + 
                     "&boxNo=" + boxNo + "&minTemp=" + minTemp + "&maxTemp=" + maxTemp + 
                     "&description=" + description + "&packaging=" + packaging + "&packs=" + packs + 
-                    "&pieces=" + pieces + "&expDate=" + expDate + "&itemId=" + itemId);
+                    "&pieces=" + pieces + "&expDate=" + expDate + "&itemId=" + itemId + "&exp=" + exp);
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
                 dgv.DataSource = dt;
             }

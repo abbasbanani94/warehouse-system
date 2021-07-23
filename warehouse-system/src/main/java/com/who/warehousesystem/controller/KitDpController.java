@@ -53,8 +53,9 @@ public class KitDpController {
                                         @RequestParam (value = "cityId") String cityId,
                                         @RequestParam (value = "districtId") String districtId,
                                         @RequestParam (value = "centerId") String centerId,
-                                        @RequestParam (value = "qty") String qty) {
+                                        @RequestParam (value = "qty") String qty,
+                                        @RequestParam (value = "d") boolean d) {
         return new ResponseEntity(kitDpService.searchKitDp(planId,date,poId,kitPoId,cityId,districtId,
-                centerId,qty).stream().map(kitDp -> (modelMapper.map(kitDp, KitDpDgv.class))), HttpStatus.OK);
+                centerId,qty,d).stream().map(kitDp -> (modelMapper.map(kitDp, KitDpDgv.class))), HttpStatus.OK);
     }
 }

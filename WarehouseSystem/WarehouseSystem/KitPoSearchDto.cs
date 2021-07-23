@@ -26,9 +26,14 @@ namespace WarehouseSystem
         public string totalQty { get; set; }
         public string kitType { get; set; }
 
+        public bool rec { get; set; }
+        public bool man { get; set; }
+        public bool exp { get; set; }
+
         public KitPoSearchDto (string poId,string dateReceived,string kitId,string minTemp,string maxTemp,
             string description,string manDate,string expDate,string country,string batchNo,string location,
-            string palletsQty,string boxesPallets,string kitsPallet,string totalQty,string kitType)
+            string palletsQty,string boxesPallets,string kitsPallet,string totalQty,string kitType,
+            bool rec,bool man,bool exp)
         {
             this.poId = poId;
             this.dateReceived = dateReceived;
@@ -46,6 +51,9 @@ namespace WarehouseSystem
             this.kitsPallet = kitsPallet;
             this.totalQty = totalQty;
             this.kitType = kitType;
+            this.rec = rec;
+            this.man = man;
+            this.exp = exp;
         }
 
         public override string ToString()

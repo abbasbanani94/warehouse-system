@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +116,7 @@ public class ItemPoService {
             throw new Exception("ItemPo ID : " + itemPoId + " cannot be deleted because it's included with another tables");
     }
 
-    public List<ItemPo> searchItemPo(ItemPoSearchDto dto) {
+    public List<ItemPo> searchItemPo(ItemPoSearchDto dto) throws Exception {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<ItemPo> criteriaQuery = criteriaBuilder.createQuery(ItemPo.class);
         Root<ItemPo> root = criteriaQuery.from(ItemPo.class);
@@ -129,18 +130,18 @@ public class ItemPoService {
             predicates.add(criteriaBuilder.equal(root.get("boxesPerPallet"), dto.getBoxes()));
         if(!dto.getCountry().isEmpty() && !dto.getCountry().isBlank())
             predicates.add(criteriaBuilder.equal(root.join("country").get("name"),dto.getCountry()));
-        if(!dto.getDateReceived().isEmpty() && dto.getDateReceived().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("recDate"), dto.getDateReceived()));
+        if(dto.isRec())
+            predicates.add(criteriaBuilder.equal(root.get("recDate"), LocalDate.parse(dto.getDateReceived())));
         if(!dto.getDescription().isEmpty() && !dto.getDescription().isBlank())
             predicates.add(criteriaBuilder.like(root.join("item").get("description"),dto.getDescription()));
-        if(!dto.getExpDate().isEmpty() && !dto.getExpDate().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("expDate"), dto.getExpDate()));
+        if(dto.isExp())
+            predicates.add(criteriaBuilder.equal(root.get("expDate"), LocalDate.parse(dto.getExpDate())));
         if(!dto.getItemId().isEmpty() && !dto.getItemId().isBlank())
             predicates.add(criteriaBuilder.equal(root.join("item").get("id"), dto.getItemId()));
         if(!dto.getLocation().isEmpty() && !dto.getLocation().isBlank())
             predicates.add(criteriaBuilder.like(root.get("location"), "%" + dto.getLocation() + "%"));
-        if(!dto.getManDate().isEmpty() && !dto.getManDate().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("manDate"), dto.getManDate()));
+        if(dto.isMan())
+            predicates.add(criteriaBuilder.equal(root.get("manDate"), LocalDate.parse(dto.getManDate())));
         if(!dto.getMaxTemp().isEmpty() && !dto.getMaxTemp().isBlank())
             predicates.add(criteriaBuilder.equal(root.join("item").get("maxTemp"), dto.getMaxTemp()));
         if(!dto.getMinTemp().isEmpty() && !dto.getMinTemp().isBlank())

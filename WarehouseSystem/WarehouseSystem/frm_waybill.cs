@@ -134,9 +134,7 @@ namespace WarehouseSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string date = "", cityId = "", districtId = "", centerId = "";
-            if (chkDate.Checked)
-                date = dtpWb.Value.ToShortDateString();
+            string cityId = "", districtId = "", centerId = "";
             if (cmbCity.SelectedValue != null)
                 cityId = cmbCity.SelectedValue.ToString();
             if (cmbDistrict.SelectedValue != null)
@@ -144,8 +142,8 @@ namespace WarehouseSystem
             if (cmbCenter.SelectedValue != null)
                 centerId = cmbCenter.SelectedValue.ToString();
 
-            Waybill.searchWaybill(txtWbNo.Text, date, txtBoxes.Text, txtPallets.Text, cityId, districtId,
-                centerId, dgv);
+            Waybill.searchWaybill(txtWbNo.Text, dtpWb.Value.ToShortDateString(), txtBoxes.Text, txtPallets.Text, 
+                cityId, districtId,centerId, dgv, chkDate.Checked);
 
             if(dgv.Rows.Count == 0)
             {

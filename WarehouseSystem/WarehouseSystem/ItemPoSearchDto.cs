@@ -24,10 +24,14 @@ namespace WarehouseSystem
         public string packs { get; set; }
         public string totalQty { get; set; }
         public string location { get; set; }
+        public bool rec { get; set; }
+        public bool man { get; set; }
+        public bool exp { get; set; }
 
         public ItemPoSearchDto (string poId,string dateReceived,string itemId,string minTemp,string maxTemp,
             string description,string manDate,string expDate,string country,string batch,string packaging,
-            string pallets,string boxes,string packs,string totalQty,string location)
+            string pallets,string boxes,string packs,string totalQty,string location,bool rec,bool man,
+            bool exp)
         {
             this.poId = poId;
             this.dateReceived = dateReceived;
@@ -45,6 +49,9 @@ namespace WarehouseSystem
             this.packs = packs;
             this.totalQty = totalQty;
             this.location = location;
+            this.rec = rec;
+            this.man = man;
+            this.exp = exp;
         }
     }
 }

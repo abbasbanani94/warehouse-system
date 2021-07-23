@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -146,7 +147,7 @@ public class KitDpService {
     EntityManager entityManager;
 
     public List<KitDp> searchKitDp(String planId, String date, String poId, String kitPoId, String cityId,
-                                   String districtId, String centerId, String qty) {
+                                   String districtId, String centerId, String qty,boolean d) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<KitDp> cq = cb.createQuery(KitDp.class);
         Root<KitDp> root = cq.from(KitDp.class);
@@ -168,8 +169,8 @@ public class KitDpService {
             predicates.add(cb.equal(root.get("qty"), qty));
         if(!planId.isBlank() && !planId.isEmpty())
             predicates.add(cb.equal(root.join("distributionPlan").get("id"), planId));
-        if(!date.isBlank() && !date.isEmpty())
-            predicates.add(cb.equal(root.join("distributionPlan").get("dDate"), date));
+        if(d)
+            predicates.add(cb.equal(root.join("distributionPlan").get("dDate"), LocalDate.parse(date)));
 
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();

@@ -95,7 +95,8 @@ namespace WarehouseSystem
                     "&manDate=" + dto.manDate + "&expDate=" + dto.expDate + "&country=" + dto.country +
                     "&batchNo=" + dto.batchNo + "&location=" + dto.location + "&palletsQty=" + dto.palletsQty +
                     "&boxesPallets=" + dto.boxesPallets + "&kitsPallet=" + dto.kitsPallet + 
-                    "&totalQty=" + dto.totalQty + "&kitType=" + dto.kitType);
+                    "&totalQty=" + dto.totalQty + "&kitType=" + dto.kitType + "&rec=" + dto.rec + 
+                    "&man=" + dto.man + "&exp=" + dto.exp);
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
                 dgv.DataSource = dt;
                 if (dgv.Rows.Count == 0)

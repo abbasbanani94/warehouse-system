@@ -64,9 +64,13 @@ public class ItemPoController {
                                         @RequestParam (value = "boxes") String boxes,
                                         @RequestParam (value = "packs") String packs,
                                         @RequestParam (value = "totalQty") String totalQty,
-                                        @RequestParam (value = "location") String location) {
+                                        @RequestParam (value = "location") String location,
+                                        @RequestParam (value = "rec") boolean rec,
+                                        @RequestParam (value = "man") boolean man,
+                                        @RequestParam (value = "exp") boolean exp) throws Exception {
         ItemPoSearchDto dto = new ItemPoSearchDto(poId,dateReceived,itemId
-        ,minTemp,maxTemp,description,manDate,expDate,country,batch,packaging,pallets,boxes,packs,totalQty,location);
+        ,minTemp,maxTemp,description,manDate,expDate,country,batch,packaging,pallets,boxes,packs,totalQty,location,
+                rec,man,exp);
         return new ResponseEntity(itemPoService.searchItemPo(dto).stream()
                 .map(itemPo -> (modelMapper.map(itemPo, ItemPoDgv.class))), HttpStatus.OK);
     }

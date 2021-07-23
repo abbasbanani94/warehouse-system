@@ -205,9 +205,7 @@ namespace WarehouseSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string date = "", cityId = "", districtId = "", centerId = "";
-            if (chkDate.Checked)
-                date = dtpDp.Value.ToShortDateString();
+            string cityId = "", districtId = "", centerId = "";
             if (cmbCity.SelectedValue != null)
                 cityId = cmbCity.SelectedValue.ToString();
             if (cmbDistrict.SelectedValue != null)
@@ -215,8 +213,8 @@ namespace WarehouseSystem
             if (cmbCenter.SelectedValue != null)
                 centerId = cmbCenter.SelectedValue.ToString();
 
-            KitDp.searchKitDpDgv(dgv, txtDpId.Text, date, txtPoId.Text, txtKitPoId.Text,
-                cityId, districtId, centerId, txtQty.Text);
+            KitDp.searchKitDpDgv(dgv, txtDpId.Text, dtpDp.Value.ToShortDateString(), txtPoId.Text, txtKitPoId.Text,
+                cityId, districtId, centerId, txtQty.Text, chkDate.Checked);
 
             if (dgv.Rows.Count == 0)
                 KitDp.findKitDpDgv(dgv);

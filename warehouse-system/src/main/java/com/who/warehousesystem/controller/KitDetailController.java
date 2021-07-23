@@ -59,9 +59,10 @@ public class KitDetailController {
                                             @RequestParam (value = "packs") String packs,
                                             @RequestParam (value = "pieces") String pieces,
                                             @RequestParam (value = "expDate") String expDate,
-                                            @RequestParam (value = "itemId") String itemId) {
+                                            @RequestParam (value = "itemId") String itemId,
+                                            @RequestParam (value = "exp") boolean exp) {
         return new ResponseEntity(kitDetailService.searchKitDetails(kitPoId,boxNo,minTemp,maxTemp,description,
-                packaging,packs,pieces,expDate,itemId).stream().map(kitDetail -> (modelMapper.map(kitDetail,
+                packaging,packs,pieces,expDate,itemId,exp).stream().map(kitDetail -> (modelMapper.map(kitDetail,
                 KitDetailDgvDto.class))), HttpStatus.OK);
     }
 }

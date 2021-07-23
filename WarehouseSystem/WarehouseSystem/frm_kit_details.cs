@@ -128,12 +128,9 @@ namespace WarehouseSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string exp = "";
-            if (chkExp.Checked)
-                exp = dtpExp.Value.ToShortDateString();
             KitDetails.searchKitDetails(txtKitPoId.Text, txtBoxNo.Text, txtMin.Text, txtMax.Text,
-                txtDesc.Text, txtPackaging.Text, txtPacksBox.Text, txtPiecesPack.Text, exp, txtItemId.Text,
-                dgv);
+                txtDesc.Text, txtPackaging.Text, txtPacksBox.Text, txtPiecesPack.Text, 
+                dtpExp.Value.ToShortDateString(),txtItemId.Text,dgv,chkExp.Checked);
 
             if (dgv.Rows.Count == 0)
                 KitDetails.findAllKitDetailsByKitPo(txtKitPoId.Text, dgv);

@@ -230,18 +230,11 @@ namespace WarehouseSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string dateReceived = "", manDate = "", expDate = "";
-            if (chkExp.Checked)
-                expDate = dtpExp.Value.ToShortDateString();
-            if (chkMan.Checked)
-                manDate = dtpMan.Value.ToShortDateString();
-            if (chkReceived.Checked)
-                dateReceived = dtpReceived.Value.ToShortDateString();
-
-            KitPoSearchDto dto = new KitPoSearchDto(txtPoId.Text, dateReceived, txtKitId.Text,
-                txtMin.Text, txtMax.Text, txtDesc.Text, manDate, expDate, cmbCountry.Text, txtBatch.Text,
+            KitPoSearchDto dto = new KitPoSearchDto(txtPoId.Text, dtpReceived.Value.ToShortDateString(),
+                txtKitId.Text, txtMin.Text, txtMax.Text, txtDesc.Text, dtpMan.Value.ToShortDateString(),
+                dtpExp.Value.ToShortDateString(), cmbCountry.Text, txtBatch.Text,
                 txtLocation.Text, txtPalletsQty.Text, txtBoxesPallet.Text, txtKitsPallet.Text, txtTotalQty.Text,
-                cmbType.Text);
+                cmbType.Text, chkReceived.Checked, chkMan.Checked, chkExp.Checked);
 
             KitPo.searchKitPoDgv(dto, dgv);
 

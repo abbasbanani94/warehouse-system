@@ -26,4 +26,7 @@ public class ItemPoSearchDto {
     private String packs;
     private String totalQty;
     private String location;
+    private boolean rec;
+    private boolean man;
+    private boolean exp;
 }

@@ -5,6 +5,7 @@ import com.who.warehousesystem.dto.WbDetailsSaveDto;
 import com.who.warehousesystem.dto.WbDgvDto;
 import com.who.warehousesystem.dto.WbSaveDto;
 import com.who.warehousesystem.service.WaybillService;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,9 +56,10 @@ public class WaybillController {
                                          @RequestParam (value = "pallets") String pallets,
                                          @RequestParam (value = "cityId") String cityId,
                                          @RequestParam (value = "districtId") String districtId,
-                                         @RequestParam (value = "centerId") String centerId) {
+                                         @RequestParam (value = "centerId") String centerId,
+                                         @RequestParam (value = "d") boolean d) {
         return new ResponseEntity(waybillService.searchWaybill(wbNo,wbDate,boxes,pallets,cityId,districtId,
-                centerId).stream().map(wb -> (modelMapper.map(wb,WbDgvDto.class))), HttpStatus.OK);
+                centerId,d).stream().map(wb -> (modelMapper.map(wb,WbDgvDto.class))), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

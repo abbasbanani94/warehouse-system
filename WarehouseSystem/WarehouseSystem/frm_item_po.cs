@@ -200,18 +200,12 @@ namespace WarehouseSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string dateReceived = "", manDate = "", expDate = "";
-            if (chkReceived.Checked)
-                dateReceived = dtpReceived.Value.ToShortDateString();
-            if (chkMan.Checked)
-                manDate = dtpMan.Value.ToShortDateString();
-            if (chkExp.Checked)
-                expDate = dtpExp.Value.ToShortDateString();
-
-            ItemPoSearchDto dto = new ItemPoSearchDto(txtPoId.Text, dateReceived, txtItemId.Text,
-                txtMin.Text, txtMax.Text, txtDesc.Text, manDate, expDate, cmbCountry.Text,
+            ItemPoSearchDto dto = new ItemPoSearchDto(txtPoId.Text, dtpReceived.Value.ToShortDateString(),
+                txtItemId.Text, txtMin.Text, txtMax.Text, txtDesc.Text, dtpMan.Value.ToShortDateString(),
+                dtpExp.Value.ToShortDateString(), cmbCountry.Text,
                 txtBatch.Text, txtPackaging.Text, txtPalletsQty.Text, txtBoxesPallet.Text,
-                txtPacksBox.Text, txtTotalQty.Text, txtLocation.Text);
+                txtPacksBox.Text, txtTotalQty.Text, txtLocation.Text, chkReceived.Checked,
+                chkMan.Checked, chkExp.Checked);
 
             ItemPo.searchItemPoDgv(dto, dgv);
 

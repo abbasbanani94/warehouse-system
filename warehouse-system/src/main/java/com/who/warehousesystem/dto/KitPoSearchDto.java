@@ -3,6 +3,8 @@ package com.who.warehousesystem.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 
@@ -24,4 +26,7 @@ public class KitPoSearchDto {
     private String kitsPallet;
     private String totalQty;
     private String kitType;
+    private boolean rec;
+    private boolean man;
+    private boolean exp;
 }

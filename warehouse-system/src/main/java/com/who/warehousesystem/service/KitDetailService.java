@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +103,7 @@ public class KitDetailService {
 
     public List<KitDetail> searchKitDetails(String kitPoId, String boxNo, String minTemp, String maxTemp,
                                             String description, String packaging, String packs, String pieces,
-                                            String expDate, String itemId) {
+                                            String expDate, String itemId,boolean exp) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<KitDetail> cq = cb.createQuery(KitDetail.class);
         Root<KitDetail> root = cq.from(KitDetail.class);
@@ -125,8 +126,8 @@ public class KitDetailService {
             predicates.add(cb.equal(root.get("packsPerBox"),packs));
         if(!pieces.isEmpty() && !pieces.isBlank())
             predicates.add(cb.equal(root.get("piecesPerPack"),pieces));
-        if(!expDate.isEmpty() && !expDate.isBlank())
-            predicates.add(cb.equal(root.get("expDate"),expDate));
+        if(exp)
+            predicates.add(cb.equal(root.get("expDate"), LocalDate.parse(expDate)));
         if(!itemId.isEmpty() && !itemId.isBlank())
             predicates.add(cb.equal(root.join("item").get("id"),itemId));
 

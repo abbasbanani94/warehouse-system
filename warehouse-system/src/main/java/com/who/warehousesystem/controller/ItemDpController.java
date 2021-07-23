@@ -53,8 +53,9 @@ public class ItemDpController {
                                         @RequestParam (value = "cityId") String cityId,
                                         @RequestParam (value = "districtId") String districtId,
                                         @RequestParam (value = "centerId") String centerId,
-                                        @RequestParam (value = "qty") String qty) {
+                                        @RequestParam (value = "qty") String qty,
+                                        @RequestParam (value = "d") boolean d) {
         return new ResponseEntity(itemDpService.searchItemDp(planId,date,poId,itemPoId,cityId,districtId,
-                centerId,qty).stream().map(itemDp -> (modelMapper.map(itemDp, ItemDpDgv.class))), HttpStatus.OK);
+                centerId,qty,d).stream().map(itemDp -> (modelMapper.map(itemDp, ItemDpDgv.class))), HttpStatus.OK);
     }
 }
