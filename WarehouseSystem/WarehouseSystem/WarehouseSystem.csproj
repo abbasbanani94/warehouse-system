@@ -58,9 +58,17 @@
     <Compile Include="CenterSaveDto.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ComboDto.cs" />
+    <Compile Include="Disposal.cs" />
+    <Compile Include="DisposalSaveDto.cs" />
     <Compile Include="DistributionPlan.cs" />
     <Compile Include="DpDetailsDto.cs" />
     <Compile Include="FormsFunctions.cs" />
+    <Compile Include="frm_disposal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_disposal.Designer.cs">
+      <DependentUpon>frm_disposal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_distribution_plan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +173,9 @@
     <Compile Include="WbSaveDto.cs" />
     <Compile Include="Worker.cs" />
     <Compile Include="WorkerSaveDto.cs" />
+    <EmbeddedResource Include="frm_disposal.resx">
+      <DependentUpon>frm_disposal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_distribution_plan.resx">
       <DependentUpon>frm_distribution_plan.cs</DependentUpon>
     </EmbeddedResource>

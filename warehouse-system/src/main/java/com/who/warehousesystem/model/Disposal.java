@@ -1,6 +1,7 @@
 package com.who.warehousesystem.model;
 
 import com.who.warehousesystem.audit.DateAudit;
+import com.who.warehousesystem.dto.DisposalSaveDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,10 @@ public class Disposal extends DateAudit {
 
     @Column(name = "disposal_date")
     private LocalDate disposalDate;
+
+    public Disposal(DisposalSaveDto dto, User user) {
+        this.reason = dto.getReason();
+        this.disposalDate = dto.getDate();
+        this.setCreatedBy(user);
+    }
 }

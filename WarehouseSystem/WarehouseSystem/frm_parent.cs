@@ -194,5 +194,24 @@ namespace WarehouseSystem
         {
             _worker = null;
         }
+
+        private frm_disposal _disposal = null;
+
+        private void disposalsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_disposal == null)
+            {
+                _disposal = new frm_disposal();
+                _disposal.Show();
+                _disposal.FormClosed += _disposal_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Disposals");
+        }
+
+        private void _disposal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _disposal = null;
+        }
     }
 }

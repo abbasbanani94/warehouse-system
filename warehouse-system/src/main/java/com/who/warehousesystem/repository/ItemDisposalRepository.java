@@ -6,9 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface ItemDisposalRepository extends JpaRepository<ItemDisposal,Integer> {
 
     @Query(value = "select * from item_disposals where item_po_id = :itemPoId and active = 1", nativeQuery = true)
     ItemDisposal findItemDisposalByItemPo(@Param(value = "itemPoId") Integer itemPoId);
+
+    @Query(value = "select * from item_disposals where active = 1 and disposal_id = :disposal",nativeQuery = true)
+    Optional<List<ItemDisposal>> findItemDisposalsByDisposal(@Param(value = "disposal") Integer disposalId);
 }
