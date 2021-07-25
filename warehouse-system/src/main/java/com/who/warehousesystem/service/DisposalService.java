@@ -55,7 +55,7 @@ public class DisposalService {
         return disposalRepository.save(disposal);
     }
 
-    private Disposal findDisposalById(Integer id) throws Exception {
+    public Disposal findDisposalById(Integer id) throws Exception {
         return disposalRepository.findDisposalById(id).orElseThrow(() ->
                 new Exception("No Disposal found for ID : " + id));
     }
@@ -81,10 +81,12 @@ public class DisposalService {
         disposalRepository.save(disposal);
     }
 
+    //ToDo : add KitDetailDisposal model
+
     private void checkRelatedData(Integer disposalId) throws Exception {
         if(itemDisposalService.findAllItemDisposalsByDisposal(disposalId).size() > 0 ||
            kitDisposalService.findAllKitDisposalsByDisposal(disposalId).size() > 0)
-            throw new Exception("Cannot delete this Disposal becaues it's included in another tables");
+            throw new Exception("Cannot delete this Disposal because it's included in another tables");
     }
 
     @Autowired

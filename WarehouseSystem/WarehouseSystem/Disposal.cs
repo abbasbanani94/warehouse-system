@@ -101,5 +101,24 @@ namespace WarehouseSystem
                 Msg.errorMsg(ex.Message.ToString(), "Error");
             }
         }
+
+        internal static async void findDisposalDetails(string id, TextBox reason, TextBox date)
+        {
+            if (id.IndexOf('{') == -1)
+            {
+                try
+                {
+                    HttpClient client = Client.getHttpClient();
+                    var response = await client.GetStringAsync("/disposals/details/" + id);
+                    DisposalSaveDto dto = JsonConvert.DeserializeObject<DisposalSaveDto>(response);
+                    reason.Text = dto.reason;
+                    date.Text = dto.date;
+                }
+                catch (Exception ex)
+                {
+                    Msg.errorMsg(ex.Message.ToString(), "Error");
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.who.warehousesystem.controller;
 
 import com.who.warehousesystem.dto.DisposalDgvDto;
 import com.who.warehousesystem.dto.DisposalSaveDto;
+import com.who.warehousesystem.model.Disposal;
 import com.who.warehousesystem.service.DisposalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,11 @@ public class DisposalController {
                                            @RequestParam (value = "d") boolean d) {
         return new ResponseEntity(disposalService.searchDisposals(reason,date,d).stream().map(
                 disposal -> (modelMapper.map(disposal,DisposalDgvDto.class))), HttpStatus.OK);
+    }
+
+    @GetMapping("/details/{id}")
+    public ResponseEntity findDisposalDetailsById (@PathVariable (value = "id") Integer id) throws Exception {
+        return new ResponseEntity(modelMapper.map(disposalService.findDisposalById(id), DisposalSaveDto.class),
+                HttpStatus.OK);
     }
 }

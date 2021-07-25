@@ -114,5 +114,29 @@ namespace WarehouseSystem
                     Disposal.findAllDisposalsDgv(dgv);
             }
         }
+
+        private frm_item_disposal _item_disposal = null;
+
+        private void btnItemDisposals_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text == "")
+                Msg.errorMsg("click on the row you want to enter item disposal for", "Error");
+            else
+            {
+                if (_item_disposal == null)
+                {
+                    _item_disposal = new frm_item_disposal(txtId.Text);
+                    _item_disposal.Show();
+                    _item_disposal.FormClosed += _item_disposal_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Item Disposal");
+            }
+        }
+
+        private void _item_disposal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _item_disposal = null;
+        }
     }
 }

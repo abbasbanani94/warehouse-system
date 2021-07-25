@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.chkDate = new System.Windows.Forms.CheckBox();
@@ -46,12 +46,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.btnItemDisposals = new System.Windows.Forms.Button();
+            this.btnKitDisposals = new System.Windows.Forms.Button();
+            this.btnDetailsDisposals = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDetailsDisposals);
+            this.groupBox1.Controls.Add(this.btnKitDisposals);
+            this.groupBox1.Controls.Add(this.btnItemDisposals);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.chkDate);
             this.groupBox1.Controls.Add(this.label24);
@@ -69,7 +75,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(808, 287);
+            this.groupBox1.Size = new System.Drawing.Size(808, 349);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Disposal";
@@ -225,31 +231,64 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv.Location = new System.Drawing.Point(12, 305);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv.Location = new System.Drawing.Point(12, 367);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowTemplate.Height = 29;
-            this.dgv.Size = new System.Drawing.Size(808, 568);
+            this.dgv.Size = new System.Drawing.Size(808, 506);
             this.dgv.TabIndex = 1005;
             this.dgv.TabStop = false;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // btnItemDisposals
+            // 
+            this.btnItemDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemDisposals.Location = new System.Drawing.Point(28, 285);
+            this.btnItemDisposals.Name = "btnItemDisposals";
+            this.btnItemDisposals.Size = new System.Drawing.Size(229, 51);
+            this.btnItemDisposals.TabIndex = 41;
+            this.btnItemDisposals.TabStop = false;
+            this.btnItemDisposals.Text = "Item Disposals";
+            this.btnItemDisposals.UseVisualStyleBackColor = true;
+            this.btnItemDisposals.Click += new System.EventHandler(this.btnItemDisposals_Click);
+            // 
+            // btnKitDisposals
+            // 
+            this.btnKitDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKitDisposals.Location = new System.Drawing.Point(290, 285);
+            this.btnKitDisposals.Name = "btnKitDisposals";
+            this.btnKitDisposals.Size = new System.Drawing.Size(229, 51);
+            this.btnKitDisposals.TabIndex = 42;
+            this.btnKitDisposals.TabStop = false;
+            this.btnKitDisposals.Text = "Kit Disposals";
+            this.btnKitDisposals.UseVisualStyleBackColor = true;
+            // 
+            // btnDetailsDisposals
+            // 
+            this.btnDetailsDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetailsDisposals.Location = new System.Drawing.Point(552, 285);
+            this.btnDetailsDisposals.Name = "btnDetailsDisposals";
+            this.btnDetailsDisposals.Size = new System.Drawing.Size(229, 51);
+            this.btnDetailsDisposals.TabIndex = 43;
+            this.btnDetailsDisposals.Text = "Kit Details Disposals";
+            this.btnDetailsDisposals.UseVisualStyleBackColor = true;
             // 
             // frm_disposal
             // 
@@ -288,5 +327,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Button btnDetailsDisposals;
+        private System.Windows.Forms.Button btnKitDisposals;
+        private System.Windows.Forms.Button btnItemDisposals;
     }
 }

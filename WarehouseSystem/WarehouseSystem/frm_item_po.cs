@@ -212,10 +212,5 @@ namespace WarehouseSystem
             if (dgv.Rows.Count == 0)
                 ItemPo.findItemPoDgv(dgv);
         }
-
-        private void btnDisposal_Click(object sender, EventArgs e)
-        {
-            Msg.errorMsg("No form yet", "NO FORM");
-        }
     }
 }
