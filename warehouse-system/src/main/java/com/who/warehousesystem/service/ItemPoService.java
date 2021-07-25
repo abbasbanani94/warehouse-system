@@ -188,4 +188,8 @@ public class ItemPoService {
     public void addInventoryByItemDp(ItemDp itemDp, User user) {
         editInventoryByItemDp(itemDp, user, "add");
     }
+
+    public int findItemsCountByPo(Integer poId) {
+        return itemPoRepository.findItemsCountById(poId);
+    }
 }

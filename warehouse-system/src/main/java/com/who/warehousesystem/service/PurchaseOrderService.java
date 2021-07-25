@@ -32,7 +32,7 @@ public class PurchaseOrderService {
     }
 
     private void checkPoDuplicate(Integer poNo) throws Exception {
-        if(purchaseOrderRepository.findPurchaseOrderByNo(poNo) != null)
+        if(purchaseOrderRepository.findPurchaseOrderByNo(poNo).isPresent())
             throw new Exception("There is another purchase order with the same No entered");
     }
 
@@ -61,9 +61,41 @@ public class PurchaseOrderService {
     }
 
     private PurchaseOrder checkPoDuplicate(Integer poNo, Integer id) throws Exception {
-        PurchaseOrder po = purchaseOrderRepository.findPurchaseOrderByNo(poNo);
-        if(po != null && po.getId() == id)
+        PurchaseOrder po = purchaseOrderRepository.findPurchaseOrderByNo(poNo).orElse(null);
+        if(po != null && po.getId() != id)
             throw new Exception("There is another purchase order with the same No entered");
         return po;
+    }
+
+    public void deletePurchaseOrder(Integer id, Integer userId) throws Exception {
+        checkPoRelatedData(id);
+        User user = userService.findUserById(userId);
+        PurchaseOrder po = findPurchaseOrderById(id);
+        po.setActive(false);
+        po.setUpdatedBy(user);
+        purchaseOrderRepository.save(po);
+    }
+
+    private PurchaseOrder findPurchaseOrderById(Integer id) throws Exception {
+        return purchaseOrderRepository.findPurchaseOrderById(id).orElseThrow(() ->
+                new Exception("No Purchase Order for ID : " + id));
+    }
+
+    @Autowired
+    ItemPoService itemPoService;
+
+    @Autowired
+    KitPoService kitPoService;
+
+    private void checkPoRelatedData(Integer id) throws Exception {
+        if(itemPoService.findItemsCountByPo(id) != 0 || kitPoService.findKitsCountByPo(id) != 0)
+            throw new Exception("This PO cannot be deleted because it's included with Items or Kits");
+    }
+
+    public List<PoDgvDto> searchAllPoDgv(Integer no) {
+        return purchaseOrderRepository.searchAllPoDgv(no).orElse(new ArrayList<>()).stream().map(po -> {
+            return new PoDgvDto(Integer.parseInt(po[0].toString()),po[1].toString(),
+                    Integer.parseInt(po[2].toString()),Integer.parseInt(po[3].toString()));
+        }).collect(Collectors.toList());
     }
 }

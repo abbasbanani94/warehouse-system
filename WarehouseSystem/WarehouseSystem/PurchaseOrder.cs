@@ -43,6 +43,21 @@ namespace WarehouseSystem
             }
         }
 
+        internal static async void searchPurchaseOrder(DataGridView dgv,string no)
+        {
+            try
+            {
+                HttpClient client = Client.getHttpClient();
+                var response = await client.GetStringAsync("/po/search/" + no);
+                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
+                dgv.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+        }
+
         internal static async void findAllCountries(ComboBox cmbCountry)
         {
             try
@@ -62,7 +77,7 @@ namespace WarehouseSystem
             }
         }
 
-        internal static bool savePurchaseOrder(string no)
+        internal static bool savePurchaseOrder(int no)
         {
             try
             {
@@ -82,12 +97,32 @@ namespace WarehouseSystem
             return false;
         }
 
-        internal static bool editPurchaseOrder(string id,string no)
+        internal static bool editPurchaseOrder(int id,int no)
         {
             try
             {
                 HttpClient client = Client.getHttpClient();
                 var response = client.PutAsJsonAsync("/po/" + id, no);
+                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+                    return true;
+                else
+                {
+                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+            return false;
+        }
+
+        internal static bool deletePurchaseOrder(string id)
+        {
+            try
+            {
+                HttpClient client = Client.getHttpClient();
+                var response = client.DeleteAsync("/po/" + id);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else

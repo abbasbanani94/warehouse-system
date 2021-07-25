@@ -197,4 +197,8 @@ public class KitPoService {
     public String findKitNameByKitPo(Integer id) throws Exception {
         return findKitPoById(id).getKit().getName();
     }
+
+    public int findKitsCountByPo(Integer poId) {
+        return kitPoRepository.findKitsCountByPo(poId);
+    }
 }
