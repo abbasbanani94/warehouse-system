@@ -20,3 +20,4 @@ C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debu
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_kit_details.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_purchase_order.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_distribution_plan.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_worker.resources

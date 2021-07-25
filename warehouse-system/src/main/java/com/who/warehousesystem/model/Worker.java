@@ -1,6 +1,7 @@
 package com.who.warehousesystem.model;
 
 import com.who.warehousesystem.audit.DateAudit;
+import com.who.warehousesystem.dto.WorkerSaveDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +29,11 @@ public class Worker extends DateAudit {
 
     @Column(name = "mobile")
     private String mobile;
+
+    public Worker(WorkerSaveDto dto, User user) {
+        this.enName = dto.getEnName();
+        this.arName = dto.getArName();
+        this.mobile = dto.getMobile();
+        this.setCreatedBy(user);
+    }
 }

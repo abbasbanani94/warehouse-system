@@ -175,5 +175,24 @@ namespace WarehouseSystem
         {
             _dp = null;
         }
+
+        private frm_worker _worker = null;
+
+        private void dailyWorkersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_worker == null)
+            {
+                _worker = new frm_worker();
+                _worker.Show();
+                _worker.FormClosed += _worker_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Daily Workers");
+        }
+
+        private void _worker_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _worker = null;
+        }
     }
 }

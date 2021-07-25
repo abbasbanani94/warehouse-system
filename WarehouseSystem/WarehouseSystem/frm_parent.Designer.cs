@@ -35,6 +35,7 @@
             this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distributionPlansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kitsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.waybillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tslUser = new System.Windows.Forms.ToolStripLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.detailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailyWorkersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +61,8 @@
             this.purchaseOrdersToolStripMenuItem,
             this.distributionPlansToolStripMenuItem,
             this.waybillsToolStripMenuItem,
-            this.healthCentersToolStripMenuItem});
+            this.healthCentersToolStripMenuItem,
+            this.dailyWorkersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1454, 33);
@@ -108,17 +110,24 @@
             this.distributionPlansToolStripMenuItem.Size = new System.Drawing.Size(163, 29);
             this.distributionPlansToolStripMenuItem.Text = "Distribution Plans";
             // 
+            // detailsToolStripMenuItem1
+            // 
+            this.detailsToolStripMenuItem1.Name = "detailsToolStripMenuItem1";
+            this.detailsToolStripMenuItem1.Size = new System.Drawing.Size(149, 30);
+            this.detailsToolStripMenuItem1.Text = "Details";
+            this.detailsToolStripMenuItem1.Click += new System.EventHandler(this.detailsToolStripMenuItem1_Click);
+            // 
             // itemsToolStripMenuItem1
             // 
             this.itemsToolStripMenuItem1.Name = "itemsToolStripMenuItem1";
-            this.itemsToolStripMenuItem1.Size = new System.Drawing.Size(210, 30);
+            this.itemsToolStripMenuItem1.Size = new System.Drawing.Size(149, 30);
             this.itemsToolStripMenuItem1.Text = "Items";
             this.itemsToolStripMenuItem1.Click += new System.EventHandler(this.itemsToolStripMenuItem1_Click);
             // 
             // kitsToolStripMenuItem1
             // 
             this.kitsToolStripMenuItem1.Name = "kitsToolStripMenuItem1";
-            this.kitsToolStripMenuItem1.Size = new System.Drawing.Size(210, 30);
+            this.kitsToolStripMenuItem1.Size = new System.Drawing.Size(149, 30);
             this.kitsToolStripMenuItem1.Text = "Kits";
             this.kitsToolStripMenuItem1.Click += new System.EventHandler(this.kitsToolStripMenuItem1_Click);
             // 
@@ -197,12 +206,12 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // detailsToolStripMenuItem1
+            // dailyWorkersToolStripMenuItem
             // 
-            this.detailsToolStripMenuItem1.Name = "detailsToolStripMenuItem1";
-            this.detailsToolStripMenuItem1.Size = new System.Drawing.Size(210, 30);
-            this.detailsToolStripMenuItem1.Text = "Details";
-            this.detailsToolStripMenuItem1.Click += new System.EventHandler(this.detailsToolStripMenuItem1_Click);
+            this.dailyWorkersToolStripMenuItem.Name = "dailyWorkersToolStripMenuItem";
+            this.dailyWorkersToolStripMenuItem.Size = new System.Drawing.Size(133, 29);
+            this.dailyWorkersToolStripMenuItem.Text = "Daily Workers";
+            this.dailyWorkersToolStripMenuItem.Click += new System.EventHandler(this.dailyWorkersToolStripMenuItem_Click);
             // 
             // frm_parent
             // 
@@ -247,5 +256,6 @@
         private System.Windows.Forms.ToolStripMenuItem waybillsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dailyWorkersToolStripMenuItem;
     }
 }
