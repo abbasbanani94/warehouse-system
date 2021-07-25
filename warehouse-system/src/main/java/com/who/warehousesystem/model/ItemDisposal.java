@@ -30,4 +30,11 @@ public class ItemDisposal extends DateAudit {
 
     @Column(name = "qty")
     private Integer qty;
+
+    public ItemDisposal(Disposal disposal, ItemPo itemPo, Integer qty, User user) {
+        this.disposal = disposal;
+        this.itemPo = itemPo;
+        this.qty = qty;
+        this.setCreatedBy(user);
+    }
 }

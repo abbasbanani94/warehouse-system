@@ -25,6 +25,7 @@ namespace WarehouseSystem
         {
             Disposal.findDisposalDetails(txtDisposalId.Text, txtReason, txtDate);
             PurchaseOrder.findAllPoCombo(cmbPoNo);
+            load();
         }
 
         private void cmbPoNo_TextChanged(object sender, EventArgs e)
@@ -61,6 +62,45 @@ namespace WarehouseSystem
             txtPackaging.ResetText();
             txtTotalQty.ResetText();
             txtInventory.ResetText();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtItemPoId.Text == "" || txtQty.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (txtItemDisposalId.Text != "")
+                    Msg.errorMsg("click on Edit butto to edit this record", "Error");
+                else
+                {
+                    ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtDisposalId.Text,
+                        txtItemPoId.Text, txtQty.Text);
+
+                    if(ItemDisposal.saveItemDisposal(txtDisposalId.Text, dto))
+                    {
+                        Msg.doneMsg("Item Disposal saved successfully !", "Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void done()
+        {
+            FormsFunctions.clearAll(groupBox2);
+            load();
+        }
+
+        private void load()
+        {
+            cmbPoNo.Focus();
+            ItemDisposal.findAllItemDisposalsDgv(txtDisposalId.Text, dgv);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            done();
         }
     }
 }

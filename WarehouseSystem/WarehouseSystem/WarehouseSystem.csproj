@@ -149,6 +149,8 @@
     </Compile>
     <Compile Include="HealthCenter.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemDisposal.cs" />
+    <Compile Include="ItemDisposalSaveDto.cs" />
     <Compile Include="ItemDp.cs" />
     <Compile Include="ItemDpSaveDto.cs" />
     <Compile Include="ItemPo.cs" />

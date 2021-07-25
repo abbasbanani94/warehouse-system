@@ -66,4 +66,16 @@ public class ItemInventory extends DateAudit {
         this.note = "ItemDp Id: " + itemDp.getId() + ", Plan Name: " + itemDp.getDistributionPlan().getEnName() + ", " +
                 "Item: " + itemDp.getItemPo().getItem().getName() + ", Out Qty: " + itemDp.getQty();
     }
+
+    public ItemInventory(ItemDisposal itemDisposal, InventoryType inventoryType, User user) {
+        this.itemPo = itemDisposal.getItemPo();
+        this.itemDisposal = itemDisposal;
+        this.inventoryType = inventoryType;
+        this.inQty = 0;
+        this.outQty = itemDisposal.getQty();
+        this.setCreatedBy(user);
+        this.note = "ItemDisposal Id: " + itemDisposal.getId() + ", Disposal Reason: " + itemDisposal.getDisposal()
+                .getReason() + ", Item: " + itemDisposal.getItemPo().getItem().getName() + ", Out Qty: " +
+                itemDisposal.getQty();
+    }
 }

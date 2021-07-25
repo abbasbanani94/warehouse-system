@@ -17,4 +17,12 @@ public interface ItemDisposalRepository extends JpaRepository<ItemDisposal,Integ
 
     @Query(value = "select * from item_disposals where active = 1 and disposal_id = :disposal",nativeQuery = true)
     Optional<List<ItemDisposal>> findItemDisposalsByDisposal(@Param(value = "disposal") Integer disposalId);
+
+    @Query(value = "select * from item_disposals where active = 1 and disposal_id = :disposal and " +
+            "item_po_id = :itemPo", nativeQuery = true)
+    ItemDisposal findItemDisposalByDisposalAndItemPo(@Param(value = "disposal") Integer disposalId,
+                                                     @Param(value = "itemPo") Integer itemPoId);
+
+    @Query(value = "select * from item_disposals where active = 1 and item_disposal_id = :id",nativeQuery = true)
+    Optional<ItemDisposal> findItemDisposalById(@Param(value = "id") Integer id);
 }

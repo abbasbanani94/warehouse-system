@@ -171,25 +171,28 @@ public class ItemPoService {
                 new Exception("No Item PO with ID : " + id));
     }
 
-    private void editInventoryByItemDp (ItemDp itemDp,User user,String operation) {
-        ItemPo itemPo = itemDp.getItemPo();
+    private void editInventoryByItemPoAndQty(ItemPo itemPo, Integer qty, User user, String operation) {
         if(operation.equalsIgnoreCase("add"))
-            itemPo.setInventory(itemPo.getInventory() + itemDp.getQty());
+            itemPo.setInventory(itemPo.getInventory() + qty);
         else
-            itemPo.setInventory(itemPo.getInventory() - itemDp.getQty());
+            itemPo.setInventory(itemPo.getInventory() - qty);
         itemPo.setUpdatedBy(user);
         itemPoRepository.save(itemPo);
     }
 
     public void subInventoryByItemDp(ItemDp itemDp, User user) {
-        editInventoryByItemDp(itemDp, user, "sub");
+        editInventoryByItemPoAndQty(itemDp.getItemPo(), itemDp.getQty(), user, "sub");
     }
 
     public void addInventoryByItemDp(ItemDp itemDp, User user) {
-        editInventoryByItemDp(itemDp, user, "add");
+        editInventoryByItemPoAndQty(itemDp.getItemPo(), itemDp.getQty(), user, "add");
     }
 
     public int findItemsCountByPo(Integer poId) {
         return itemPoRepository.findItemsCountById(poId);
+    }
+
+    public void subInventoryByItemDisposal(ItemDisposal itemDisposal,User user) {
+        editInventoryByItemPoAndQty(itemDisposal.getItemPo(),itemDisposal.getQty(),user,"sub");
     }
 }
