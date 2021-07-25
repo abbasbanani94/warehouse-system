@@ -61,6 +61,12 @@
     <Compile Include="DistributionPlan.cs" />
     <Compile Include="DpDetailsDto.cs" />
     <Compile Include="FormsFunctions.cs" />
+    <Compile Include="frm_distribution_plan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_distribution_plan.Designer.cs">
+      <DependentUpon>frm_distribution_plan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_health_center.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,7 @@
     <Compile Include="KitPoSearchDto.cs" />
     <Compile Include="Msg.cs" />
     <Compile Include="NameDto.cs" />
+    <Compile Include="PlanSaveDto.cs" />
     <Compile Include="PoCombo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +157,9 @@
     <Compile Include="WbDetailsDto.cs" />
     <Compile Include="WbDetailsSaveDto.cs" />
     <Compile Include="WbSaveDto.cs" />
+    <EmbeddedResource Include="frm_distribution_plan.resx">
+      <DependentUpon>frm_distribution_plan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_health_center.resx">
       <DependentUpon>frm_health_center.cs</DependentUpon>
     </EmbeddedResource>

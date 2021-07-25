@@ -40,4 +40,7 @@ public interface ItemDpRepository extends JpaRepository<ItemDp,Integer> {
     @Query(value = "select * from item_dp where active = 1 and health_center_id = :centerId and item_dp_id in " +
             "(select item_dp_id from item_wb where active = 1)", nativeQuery = true)
     Optional<List<ItemDp>> findItemDpByCenterWb(@Param(value = "centerId") Integer centerId);
+
+    @Query(value = "select * from item_dp where active = 1 and dp_id = :dpId",nativeQuery = true)
+    Optional<List<ItemDp>> findItemDpByDp(@Param(value = "dpId") Integer dpId);
 }

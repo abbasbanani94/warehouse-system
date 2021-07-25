@@ -38,4 +38,7 @@ public interface KitDpRepository extends JpaRepository<KitDp,Integer> {
     @Query(value = "select * from kit_dp where active = 1 and health_center_id = :centerId and kit_dp_id " +
             "in (select kit_dp_id from kit_wb where active = 1)", nativeQuery = true)
     Optional<List<KitDp>> findKitDpByCenterWb(@Param(value = "centerId") Integer centerId);
+
+    @Query(value = "select * from kit_dp where active = 1 and dp_id = :dpId", nativeQuery = true)
+    Optional<List<KitDp>> findKitDpByDp(@Param(value = "dpId") Integer dpId);
 }

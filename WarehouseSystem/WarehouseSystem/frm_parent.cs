@@ -156,5 +156,24 @@ namespace WarehouseSystem
         {
             _purchase_order = null;
         }
+
+        private frm_distribution_plan _dp = null;
+
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (_dp == null)
+            {
+                _dp = new frm_distribution_plan();
+                _dp.Show();
+                _dp.FormClosed += _dp_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Distribution Plan");
+        }
+
+        private void _dp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _dp = null;
+        }
     }
 }

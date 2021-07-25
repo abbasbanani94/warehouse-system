@@ -24,4 +24,7 @@ public interface DistributionPlanRepository extends JpaRepository<DistributionPl
     DistributionPlan findDpByNamesAndDate(@Param(value = "en") String enName,
                                           @Param(value = "ar") String arName,
                                           @Param(value = "planDate") LocalDate planDate);
+
+    @Query(value = "select top 20 * from distribution_plans where active = 1 order by dp_id desc", nativeQuery = true)
+    Optional<List<DistributionPlan>> findAllDpDgv();
 }

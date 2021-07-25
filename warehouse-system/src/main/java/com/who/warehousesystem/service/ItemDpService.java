@@ -13,6 +13,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -199,5 +200,9 @@ public class ItemDpService {
             }
         }
         return itemDps;
+    }
+
+    public List<ItemDp> findItemDpByDp(Integer dpId) {
+        return itemDpRepository.findItemDpByDp(dpId).orElse(new ArrayList<>());
     }
 }

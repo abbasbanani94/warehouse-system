@@ -117,48 +117,48 @@ public class ItemPoService {
     }
 
     public List<ItemPo> searchItemPo(ItemPoSearchDto dto) throws Exception {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<ItemPo> criteriaQuery = criteriaBuilder.createQuery(ItemPo.class);
-        Root<ItemPo> root = criteriaQuery.from(ItemPo.class);
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ItemPo> cq = cb.createQuery(ItemPo.class);
+        Root<ItemPo> root = cq.from(ItemPo.class);
 
         List<Predicate> predicates = new ArrayList<>();
-        predicates.add(criteriaBuilder.equal(root.get("active"),true));
+        predicates.add(cb.equal(root.get("active"),true));
 
         if(!dto.getBatch().isEmpty() && !dto.getBatch().isBlank())
-            predicates.add(criteriaBuilder.like(root.get("batchNo"), "%" + dto.getBatch() + "%"));
+            predicates.add(cb.like(root.get("batchNo"), "%" + dto.getBatch() + "%"));
         if(!dto.getBoxes().isEmpty() && !dto.getBoxes().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("boxesPerPallet"), dto.getBoxes()));
+            predicates.add(cb.equal(root.get("boxesPerPallet"), dto.getBoxes()));
         if(!dto.getCountry().isEmpty() && !dto.getCountry().isBlank())
-            predicates.add(criteriaBuilder.equal(root.join("country").get("name"),dto.getCountry()));
+            predicates.add(cb.equal(root.join("country").get("name"),dto.getCountry()));
         if(dto.isRec())
-            predicates.add(criteriaBuilder.equal(root.get("recDate"), LocalDate.parse(dto.getDateReceived())));
+            predicates.add(cb.equal(root.get("recDate"), LocalDate.parse(dto.getDateReceived())));
         if(!dto.getDescription().isEmpty() && !dto.getDescription().isBlank())
-            predicates.add(criteriaBuilder.like(root.join("item").get("description"),dto.getDescription()));
+            predicates.add(cb.like(root.join("item").get("description"),dto.getDescription()));
         if(dto.isExp())
-            predicates.add(criteriaBuilder.equal(root.get("expDate"), LocalDate.parse(dto.getExpDate())));
+            predicates.add(cb.equal(root.get("expDate"), LocalDate.parse(dto.getExpDate())));
         if(!dto.getItemId().isEmpty() && !dto.getItemId().isBlank())
-            predicates.add(criteriaBuilder.equal(root.join("item").get("id"), dto.getItemId()));
+            predicates.add(cb.equal(root.join("item").get("id"), dto.getItemId()));
         if(!dto.getLocation().isEmpty() && !dto.getLocation().isBlank())
-            predicates.add(criteriaBuilder.like(root.get("location"), "%" + dto.getLocation() + "%"));
+            predicates.add(cb.like(root.get("location"), "%" + dto.getLocation() + "%"));
         if(dto.isMan())
-            predicates.add(criteriaBuilder.equal(root.get("manDate"), LocalDate.parse(dto.getManDate())));
+            predicates.add(cb.equal(root.get("manDate"), LocalDate.parse(dto.getManDate())));
         if(!dto.getMaxTemp().isEmpty() && !dto.getMaxTemp().isBlank())
-            predicates.add(criteriaBuilder.equal(root.join("item").get("maxTemp"), dto.getMaxTemp()));
+            predicates.add(cb.equal(root.join("item").get("maxTemp"), dto.getMaxTemp()));
         if(!dto.getMinTemp().isEmpty() && !dto.getMinTemp().isBlank())
-            predicates.add(criteriaBuilder.equal(root.join("item").get("minTemp"), dto.getMinTemp()));
+            predicates.add(cb.equal(root.join("item").get("minTemp"), dto.getMinTemp()));
         if(!dto.getPackaging().isEmpty() && !dto.getPackaging().isBlank())
-            predicates.add(criteriaBuilder.like(root.get("packaging"), "%" + dto.getPackaging() + "%"));
+            predicates.add(cb.like(root.get("packaging"), "%" + dto.getPackaging() + "%"));
         if(!dto.getPacks().isEmpty() && !dto.getPacks().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("packsPerBox"), dto.getPacks()));
+            predicates.add(cb.equal(root.get("packsPerBox"), dto.getPacks()));
         if(!dto.getPallets().isEmpty() && !dto.getPallets().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("palletsQty"), dto.getPallets()));
+            predicates.add(cb.equal(root.get("palletsQty"), dto.getPallets()));
         if(!dto.getPoId().isEmpty() && !dto.getPoId().isBlank())
-            predicates.add(criteriaBuilder.equal(root.join("purchaseOrder").get("id"), dto.getPoId()));
+            predicates.add(cb.equal(root.join("purchaseOrder").get("id"), dto.getPoId()));
         if(!dto.getTotalQty().isEmpty() && !dto.getTotalQty().isBlank())
-            predicates.add(criteriaBuilder.equal(root.get("totalQty"),dto.getTotalQty()));
+            predicates.add(cb.equal(root.get("totalQty"),dto.getTotalQty()));
 
-        criteriaQuery.select(root).where(criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()])));
-        return entityManager.createQuery(criteriaQuery).getResultList();
+        cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+        return entityManager.createQuery(cq).getResultList();
     }
 
     public List<ItemPo> findItemsPoComboByPo(Integer poId) throws Exception {
