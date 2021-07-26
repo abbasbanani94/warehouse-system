@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Data;
+﻿using System;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -8,19 +6,10 @@ namespace WarehouseSystem
 {
     class ItemDisposal
     {
-        internal static async void findAllItemDisposalsDgv(string disposalId,DataGridView dgv)
+        static string baseUrl = "/itemDisposals";
+        internal static void findAllItemDisposalsDgv(string disposalId,DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/itemDisposals/" + disposalId);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
+            Client.findAllDgv(dgv, baseUrl + "/" + disposalId);
         }
 
         internal static bool saveItemDisposal(string disposalId,ItemDisposalSaveDto dto)
@@ -28,7 +17,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/itemDisposals/" + disposalId, dto);
+                var response = client.PostAsJsonAsync(baseUrl + "/" + disposalId, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -48,7 +37,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync("/itemDisposals/" + disposalId + "/" + itemDisposalId, dto);
+                var response = client.PutAsJsonAsync(baseUrl + "/" + disposalId + "/" + itemDisposalId, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -68,7 +57,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync("/itemDisposals/" + id);
+                var response = client.DeleteAsync(baseUrl + "/" + id);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -83,23 +72,11 @@ namespace WarehouseSystem
             return false;
         }
 
-        internal static async void searchItemDisposal(string disposalId,string poId,string itemPoId,
+        internal static void searchItemDisposal(string disposalId,string poId,string itemPoId,
             string qty,DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/itemDisposals/search?disposalId=" + disposalId + 
+            Client.findAllDgv(dgv, baseUrl + "/search?disposalId=" + disposalId +
                     "&poId=" + poId + "&itemPoId=" + itemPoId + "&qty=" + qty);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-                if (dgv.Rows.Count == 0)
-                    Msg.errorMsg("No data found", "NO DATA");
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
         }
     }
 }

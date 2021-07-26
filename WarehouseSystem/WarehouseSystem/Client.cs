@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Data;
 using System.Net.Http;
+using System.Windows.Forms;
 
 namespace WarehouseSystem
 {
@@ -14,6 +17,21 @@ namespace WarehouseSystem
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Add("userId", User.userId);
             return client;
+        }
+
+        internal static async void findAllDgv(DataGridView dgv,string url)
+        {
+            try
+            {
+                HttpClient client = getHttpClient();
+                var response = await client.GetStringAsync(url);
+                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
+                dgv.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
         }
     }
 }

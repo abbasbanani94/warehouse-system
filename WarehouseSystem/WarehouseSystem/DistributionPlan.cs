@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -9,13 +8,14 @@ namespace WarehouseSystem
 {
     class DistributionPlan
     {
+        static string baseUrl = "/dp";
         internal static async void findAllDpCombo(ComboBox cmb)
         {
             try
             {
                 cmb.DataSource = null;
                 HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/dp/combo");
+                var response = await client.GetStringAsync(baseUrl + "/combo");
                 List<ComboDto> poList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                 cmb.DataSource = poList;
                 cmb.DisplayMember = "name";
@@ -35,7 +35,7 @@ namespace WarehouseSystem
                 try
                 {
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/dp/details/" + id);
+                    var response = await client.GetStringAsync(baseUrl + "/details/" + id);
                     DpDetailsDto dto = JsonConvert.DeserializeObject<DpDetailsDto>(response);
                     arName.Text = dto.arName;
                     date.Value = Convert.ToDateTime(dto.dDate).Date;
@@ -54,7 +54,7 @@ namespace WarehouseSystem
                 try
                 {
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/dp/details/" + id);
+                    var response = await client.GetStringAsync(baseUrl + "/details/" + id);
                     DpDetailsDto dto = JsonConvert.DeserializeObject<DpDetailsDto>(response);
                     arName.Text = dto.arName;
                     date.Text = dto.dDate;
@@ -66,19 +66,9 @@ namespace WarehouseSystem
             }
         }
 
-        internal static async void findAllDpDgv(DataGridView dgv)
+        internal static void findAllDpDgv(DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/dp/dgv");
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
+            Client.findAllDgv(dgv, baseUrl + "/dgv");
         }
 
         internal static bool saveDistributionPlan(PlanSaveDto dto)
@@ -86,7 +76,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/dp", dto);
+                var response = client.PostAsJsonAsync(baseUrl, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -106,7 +96,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync("/dp/" + id, dto);
+                var response = client.PutAsJsonAsync(baseUrl + "/" + id, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -126,7 +116,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync("/dp/" + id);
+                var response = client.DeleteAsync(baseUrl + "/" + id);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -141,23 +131,11 @@ namespace WarehouseSystem
             return false;
         }
 
-        internal static async void searchDistributionPlan(string enName,string arName,string date,
-            bool d,DataGridView dgv)
+        internal static  void searchDistributionPlan(string enName,string arName,string date,bool d,
+            DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/dp/search?enName=" + enName + "&arName=" + 
+            Client.findAllDgv(dgv, baseUrl + "/search?enName=" + enName + "&arName=" +
                     arName + "&date=" + date + "&d=" + d);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-                if (dgv.Rows.Count == 0)
-                    Msg.errorMsg("No data found", "NO DATA");
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
         }
     }
 }

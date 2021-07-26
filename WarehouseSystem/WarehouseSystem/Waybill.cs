@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -9,19 +8,10 @@ namespace WarehouseSystem
 {
     class Waybill
     {
+        static string baseUrl = "/waybills";
         internal static async void findAllWaybillsDgv(DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/waybills");
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
+            Client.findAllDgv(dgv, baseUrl);
         }
 
         internal static bool saveWaybill(WbSaveDto dto)
@@ -29,7 +19,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/waybills", dto);
+                var response = client.PostAsJsonAsync(baseUrl, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -49,7 +39,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync("/waybills/" + id, dto);
+                var response = client.PutAsJsonAsync(baseUrl + "/" + id, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -69,7 +59,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync("/waybills/" + id);
+                var response = client.DeleteAsync(baseUrl  + "/" + id);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -87,21 +77,9 @@ namespace WarehouseSystem
         internal static async void searchWaybill(string wbNo,string wbDate,string boxes,string pallets,
             string cityId,string districtId,string centerId, DataGridView dgv,bool d)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/waybills/search?wbNo=" + wbNo +
+            Client.findAllDgv(dgv, baseUrl + "/search?wbNo=" + wbNo +
                     "&wbDate=" + wbDate + "&boxes=" + boxes + "&pallets=" + pallets + "&cityId=" +
                     cityId + "&districtId=" + districtId + "&centerId=" + centerId + "&d=" + d);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-                if (dgv.Rows.Count == 0)
-                    Msg.errorMsg("No data found", "NO DATA");
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
         }
 
         internal static async void findWaybillById(string wbId, TextBox wbNo, TextBox wbDate,
@@ -112,7 +90,7 @@ namespace WarehouseSystem
                 try
                 {
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/waybills/" + wbId);
+                    var response = await client.GetStringAsync(baseUrl + "/" + wbId);
                     WbDetailsDto dto = JsonConvert.DeserializeObject<WbDetailsDto>(response);
                     wbNo.Text = dto.wbNo;
                     wbDate.Text = dto.wbDate;
@@ -153,7 +131,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/waybills/details/" + wbId, dto);
+                var response = client.PostAsJsonAsync(baseUrl + "/details/" + wbId, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else

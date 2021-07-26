@@ -9,6 +9,7 @@ namespace WarehouseSystem
 {
     class HealthCenter
     {
+        static string baseUrl = "/healthCenters";
         internal static async void findCitiesCombo(ComboBox cmbCity)
         {
             try
@@ -28,19 +29,9 @@ namespace WarehouseSystem
             }
         }
 
-        internal static async void findAllHealthCenters(DataGridView dgv)
+        internal static void findAllHealthCenters(DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/healthCenters");
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
+            Client.findAllDgv(dgv, baseUrl);
         }
 
         internal static async void findDistrictsCombo(ComboBox cmbDistrict,string cityId)
@@ -74,7 +65,7 @@ namespace WarehouseSystem
                 {
                     cmbCenter.DataSource = null;
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/healthCenters/combo/" + districtId);
+                    var response = await client.GetStringAsync(baseUrl + "/combo/" + districtId);
                     List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                     cmbCenter.DataSource = itemList;
                     cmbCenter.DisplayMember = "name";
@@ -93,7 +84,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/healthCenters", dto);
+                var response = client.PostAsJsonAsync(baseUrl, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -113,7 +104,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync("/healthCenters/" + id, dto);
+                var response = client.PutAsJsonAsync(baseUrl + "/" + id, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -133,7 +124,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync("/healthCenters/" + id);
+                var response = client.DeleteAsync(baseUrl + "/" + id);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -148,23 +139,11 @@ namespace WarehouseSystem
             return false;
         }
 
-        internal static async void searchHealthCenter(string city,string district, string enName,
-            string arName, DataGridView dgv)
+        internal static void searchHealthCenter(string city,string district, string enName,string arName, 
+            DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/healthCenters/search?cityName=" + city + 
+            Client.findAllDgv(dgv, baseUrl + "/search?cityName=" + city +
                     "&districtName=" + district + "&enName=" + enName + "&arName=" + arName);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-                if (dgv.Rows.Count == 0)
-                    Msg.errorMsg("No data found", "NO DATA");
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
         }
     }
 }

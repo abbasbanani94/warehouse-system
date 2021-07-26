@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -9,19 +8,10 @@ namespace WarehouseSystem
 {
     class KitPo
     {
-        internal static async void findKitPoDgv(DataGridView dgv)
+        static string baseUrl = "/kitPo";
+        internal static void findKitPoDgv(DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/kitPo");
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
+            Client.findAllDgv(dgv, baseUrl);
         }
 
         internal static bool saveKitPo(KitPoSaveDto dto)
@@ -29,7 +19,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/kitPo", dto);
+                var response = client.PostAsJsonAsync(baseUrl, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -49,7 +39,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync("/kitPo/" + dto.kitPoId, dto);
+                var response = client.PutAsJsonAsync(baseUrl + "/" + dto.kitPoId, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -69,7 +59,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync("/kitPo/" + dto.kitPoId);
+                var response = client.DeleteAsync(baseUrl + "/" + dto.kitPoId);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -86,26 +76,14 @@ namespace WarehouseSystem
 
         internal static async void searchKitPoDgv(KitPoSearchDto dto, DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/kitPo/search?poId=" + dto.poId +
+            Client.findAllDgv(dgv, baseUrl + "/search?poId=" + dto.poId +
                     "&dateReceived=" + dto.dateReceived + "&kitId=" + dto.kitId + "&minTemp=" +
                     dto.minTemp + "&maxTemp=" + dto.maxTemp + "&description=" + dto.description +
                     "&manDate=" + dto.manDate + "&expDate=" + dto.expDate + "&country=" + dto.country +
                     "&batchNo=" + dto.batchNo + "&location=" + dto.location + "&palletsQty=" + dto.palletsQty +
-                    "&boxesPallets=" + dto.boxesPallets + "&kitsPallet=" + dto.kitsPallet + 
-                    "&totalQty=" + dto.totalQty + "&kitType=" + dto.kitType + "&rec=" + dto.rec + 
+                    "&boxesPallets=" + dto.boxesPallets + "&kitsPallet=" + dto.kitsPallet +
+                    "&totalQty=" + dto.totalQty + "&kitType=" + dto.kitType + "&rec=" + dto.rec +
                     "&man=" + dto.man + "&exp=" + dto.exp);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-                if (dgv.Rows.Count == 0)
-                    Msg.errorMsg("No data found", "NO DATA");
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
         }
 
         internal static async void findKitsComboByPo(ComboBox cmbKit, string poId)
@@ -116,7 +94,7 @@ namespace WarehouseSystem
                 {
                     cmbKit.DataSource = null;
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/kitPo/combo/" + poId);
+                    var response = await client.GetStringAsync(baseUrl + "/combo/" + poId);
                     List<ComboDto> itemList = JsonConvert.DeserializeObject<List<ComboDto>>(response);
                     cmbKit.DataSource = itemList;
                     cmbKit.DisplayMember = "name";
@@ -139,7 +117,7 @@ namespace WarehouseSystem
                 try
                 {
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/kitPo/kitPoDp/" + kitPoId);
+                    var response = await client.GetStringAsync(baseUrl + "/kitPoDp/" + kitPoId);
                     KitPoDpDto dto = JsonConvert.DeserializeObject<KitPoDpDto>(response);
                     recDate.Text = dto.dateReceived;
                     batch.Text = dto.batchNo;
@@ -162,7 +140,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/kitPo/name/" + id);
+                var response = await client.GetStringAsync(baseUrl + "/name/" + id);
                 NameDto dto = JsonConvert.DeserializeObject<NameDto>(response);
                 name.Text = dto.name;
             }

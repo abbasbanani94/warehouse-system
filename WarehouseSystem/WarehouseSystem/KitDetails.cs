@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Data;
+﻿using System;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -8,19 +6,10 @@ namespace WarehouseSystem
 {
     class KitDetails
     {
-        internal static async void findAllKitDetailsByKitPo(string kitPoId,DataGridView dgv)
+        static string baseUrl = "/kitDetails";
+        internal static void findAllKitDetailsByKitPo(string kitPoId,DataGridView dgv)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/kitDetails/" + kitPoId);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
+            Client.findAllDgv(dgv, baseUrl + "/" + kitPoId);
         }
 
         internal static bool saveKitDetail(string kitPoId,KitDetailSaveDto dto)
@@ -28,7 +17,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync("/kitDetails/" + kitPoId, dto);
+                var response = client.PostAsJsonAsync(baseUrl + "/" + kitPoId, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -48,7 +37,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync("/kitDetails/" + kitPoId + "/" + detailId, dto);
+                var response = client.PutAsJsonAsync(baseUrl + "/" + kitPoId + "/" + detailId, dto);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -68,7 +57,7 @@ namespace WarehouseSystem
             try
             {
                 HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync("/kitDetails/" + detailId);
+                var response = client.DeleteAsync(baseUrl + "/" + detailId);
                 if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
                     return true;
                 else
@@ -87,20 +76,10 @@ namespace WarehouseSystem
             string maxTemp,string description,string packaging,string packs,string pieces,
             string expDate,string itemId,DataGridView dgv,bool exp)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync("/kitDetails/search?kitPoId=" + kitPoId + 
-                    "&boxNo=" + boxNo + "&minTemp=" + minTemp + "&maxTemp=" + maxTemp + 
-                    "&description=" + description + "&packaging=" + packaging + "&packs=" + packs + 
+            Client.findAllDgv(dgv, baseUrl + "/search?kitPoId=" + kitPoId +
+                    "&boxNo=" + boxNo + "&minTemp=" + minTemp + "&maxTemp=" + maxTemp +
+                    "&description=" + description + "&packaging=" + packaging + "&packs=" + packs +
                     "&pieces=" + pieces + "&expDate=" + expDate + "&itemId=" + itemId + "&exp=" + exp);
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(response, (typeof(DataTable)));
-                dgv.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
         }
     }
 }
