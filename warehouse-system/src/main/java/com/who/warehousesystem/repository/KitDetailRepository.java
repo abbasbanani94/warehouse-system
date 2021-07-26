@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface KitDetailRepository extends JpaRepository<KitDetail,Integer> {
 
     @Query(value = "select * from kit_details where active = 1 and kit_po_id = :kitPoId", nativeQuery = true)
-    List<KitDetail> findKitDetailsByKitPo(@Param(value = "kitPoId") Integer kitPoId);
+    Optional<List<KitDetail>> findKitDetailsByKitPo(@Param(value = "kitPoId") Integer kitPoId);
 
     @Query(value = "select * from kit_details where active = 1 and kit_po_id = :kitPoId order by kit_detail_id desc",
         nativeQuery = true)

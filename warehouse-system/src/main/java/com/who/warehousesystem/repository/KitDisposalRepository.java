@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface KitDisposalRepository extends JpaRepository<KitDisposal,Integer> {
 
     @Query(value = "select * from kit_disposals where active = 1 and kit_po_id = :kitPoId", nativeQuery = true)
-    KitDisposal findKitDisposalByKitPo(@Param(value = "kitPoId") Integer kitPoId);
+    Optional<List<KitDisposal>> findKitDisposalsByKitPo(@Param(value = "kitPoId") Integer kitPoId);
 
     @Query(value = "select * from kit_disposals where active = 1 and disposal_id = :disposal", nativeQuery = true)
     Optional<List<KitDisposal>> findKitDisposalsByDisposal(@Param(value = "disposal") Integer disposalId);

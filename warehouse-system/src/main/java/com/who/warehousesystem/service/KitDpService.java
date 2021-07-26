@@ -44,8 +44,8 @@ public class KitDpService {
     @Autowired
     KitWbService kitWbService;
 
-    public KitDp findKitDpByKitPo(Integer kitPoId) {
-        return kitDpRepository.findKitDpByKitPo(kitPoId);
+    public List<KitDp> findKitDpByKitPo(Integer kitPoId) {
+        return kitDpRepository.findKitDpByKitPo(kitPoId).orElse(new ArrayList<>());
     }
 
     public boolean findKitDpByHealthCenter(Integer healthCenterId) {

@@ -13,7 +13,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,8 +43,8 @@ public class ItemDpService {
     @Autowired
     ItemWbService itemWbService;
 
-    public ItemDp findItemDpByItemPo(Integer itemPoId) {
-        return itemDpRepository.findItemDpByItemPo(itemPoId);
+    public List<ItemDp> findItemDpsByItemPo(Integer itemPoId) {
+        return itemDpRepository.findItemDpsByItemPo(itemPoId).orElse(new ArrayList<>());
     }
 
     public boolean findItemDpByHealthCenter(Integer healthCenterId) {

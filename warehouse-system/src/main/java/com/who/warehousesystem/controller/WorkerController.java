@@ -43,8 +43,7 @@ public class WorkerController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteWorker (@PathVariable (value = "id") Integer id,
                                         @RequestHeader (value = "userId") Integer userId) throws Exception {
-        //Todo update this after creating new Checking tables
-        //workerService.deleteWorker(id,userId);
+        workerService.deleteWorker(id,userId);
         return new ResponseEntity(HttpStatus.OK);
     }
 

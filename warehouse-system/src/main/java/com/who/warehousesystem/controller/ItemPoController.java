@@ -44,8 +44,7 @@ public class ItemPoController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteItemPo (@PathVariable Integer id,
                                         @RequestHeader (value = "userId") Integer userId) throws Exception {
-        //todo fix this after creating new check tables
-        //itemPoService.deleteItemPo(id,userId);
+        itemPoService.deleteItemPo(id,userId);
         return new ResponseEntity(HttpStatus.OK);
     }
 

@@ -67,21 +67,22 @@ public class WorkerService {
             throwDuplicateException();
     }
 
-//    public void deleteWorker(Integer id, Integer userId) throws Exception {
-//        checkRelatedData(id);
-//        User user = userService.findUserById(userId);
-//        Worker worker = findWorkerById(id);
-//        worker.setActive(false);
-//        worker.setUpdatedBy(user);
-//        workerRepository.save(worker);
-//    }
+    public void deleteWorker(Integer id, Integer userId) throws Exception {
+        checkRelatedData(id);
+        User user = userService.findUserById(userId);
+        Worker worker = findWorkerById(id);
+        worker.setActive(false);
+        worker.setUpdatedBy(user);
+        workerRepository.save(worker);
+    }
 
-//    private void checkRelatedData(Integer workerId) throws Exception {
-//        if(itemWorkerService.findAllItemsCheckingByWorker(workerId).size() > 0 ||
-//           kitWorkerService.findAllKitsCheckingByWorker(workerId).size() > 0 ||
-//           dpWorkerService.findAllKitsCheckingByWorker(workerId).size() > 0)
-//            throw new Exception("This worker cannot be deleted because it's included in another tables");
-//    }
+    @Autowired
+    CheckWorkerService checkWorkerService;
+
+    private void checkRelatedData(Integer workerId) throws Exception {
+        if(checkWorkerService.findCheckWorkersByWorker(workerId).size() > 0)
+            throw new Exception("This worker cannot be deleted because it's included in another tables");
+    }
 
     @Autowired
     EntityManager entityManager;

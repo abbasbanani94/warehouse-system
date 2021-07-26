@@ -3,7 +3,6 @@ package com.who.warehousesystem.service;
 import com.who.warehousesystem.dto.KitDisposalSaveDto;
 import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.KitDisposalRepository;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -37,8 +35,8 @@ public class KitDisposalService {
     @Autowired
     KitInventoryService kitInventoryService;
 
-    public KitDisposal findKitDetailByKitPo(Integer kitPoId) {
-        return kitDisposalRepository.findKitDisposalByKitPo(kitPoId);
+    public List<KitDisposal> findKitDisposalsByKitPo(Integer kitPoId) {
+        return kitDisposalRepository.findKitDisposalsByKitPo(kitPoId).orElse(new ArrayList<>());
     }
 
     public List<KitDisposal> findAllKitDisposalsByDisposal(Integer disposalId) {

@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface ItemDisposalRepository extends JpaRepository<ItemDisposal,Integer> {
 
     @Query(value = "select * from item_disposals where item_po_id = :itemPoId and active = 1", nativeQuery = true)
-    ItemDisposal findItemDisposalByItemPo(@Param(value = "itemPoId") Integer itemPoId);
+    Optional<List<ItemDisposal>> findItemDisposalsByItemPo(@Param(value = "itemPoId") Integer itemPoId);
 
     @Query(value = "select * from item_disposals where active = 1 and disposal_id = :disposal",nativeQuery = true)
     Optional<List<ItemDisposal>> findItemDisposalsByDisposal(@Param(value = "disposal") Integer disposalId);

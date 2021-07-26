@@ -33,12 +33,8 @@ public class KitDetailService {
     @Autowired
     ItemService itemService;
 
-    public boolean findKitDetailByKitPo(Integer kitPoId) {
-        List<KitDetail> kitDetails = kitDetailRepository.findKitDetailsByKitPo(kitPoId);
-        if(kitDetails.size() >= 1)
-            return true;
-        else
-            return false;
+    public List<KitDetail> findKitDetailsByKitPo(Integer kitPoId) {
+        return kitDetailRepository.findKitDetailsByKitPo(kitPoId).orElse(new ArrayList<>());
     }
 
     public List<KitDetail> findAllKitDetailsByKitPoDgv(Integer kitPoId) {

@@ -97,30 +97,33 @@ public class KitPoService {
         return kitPo;
     }
 
-//    public void deleteKitPo(Integer id, Integer userId) throws Exception {
-//        User user = userService.findUserById(userId);
-//        KitPo kitPo = kitPoRepository.findKitPoById(id).orElseThrow(() ->
-//                new Exception("Kit PO not found for ID : " + id));
-//        checkKitPoExistence(id);
-//        kitPo.setActive(false);
-//        kitPo.setUpdatedBy(user);
-//        kitPoRepository.save(kitPo);
-//        InventoryType inventoryType = inventoryTypeService.findTypeById(1);//In
-//        KitInventory kitInventory = kitInventoryService.findKitInventoryByTypeAndKitPo
-//                (inventoryType.getId(),kitPo.getId());
-//        kitInventory.setActive(false);
-//        kitInventory.setUpdatedBy(user);
-//        kitInventoryService.saveKitInventory(kitInventory);
-//    }
-//
-//    private void checkKitPoExistence(Integer kitPoId) throws Exception {
-//        if(kitDetailService.findKitDetailByKitPo(kitPoId) ||
-//           kitDisposalService.findKitDetailByKitPo(kitPoId) != null ||
-//           kitDpService.findKitDpByKitPo(kitPoId) != null ||
-//           kitPoCheckingService.findKitPoCheckingByKitPo (kitPoId) != null) {
-//            throw new Exception("Kit PO ID : " + kitPoId + " cannot be deleted because it's included with another tables");
-//        }
-//    }
+    public void deleteKitPo(Integer id, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        KitPo kitPo = kitPoRepository.findKitPoById(id).orElseThrow(() ->
+                new Exception("Kit PO not found for ID : " + id));
+        checkKitPoExistence(id);
+        kitPo.setActive(false);
+        kitPo.setUpdatedBy(user);
+        kitPoRepository.save(kitPo);
+        InventoryType inventoryType = inventoryTypeService.findTypeById(1);//In
+        KitInventory kitInventory = kitInventoryService.findKitInventoryByTypeAndKitPo
+                (inventoryType.getId(),kitPo.getId());
+        kitInventory.setActive(false);
+        kitInventory.setUpdatedBy(user);
+        kitInventoryService.saveKitInventory(kitInventory);
+    }
+
+    @Autowired
+    CheckKitPoService checkKitPoService;
+
+    private void checkKitPoExistence(Integer kitPoId) throws Exception {
+        if(kitDetailService.findKitDetailsByKitPo(kitPoId).size() > 0 ||
+           kitDisposalService.findKitDisposalsByKitPo(kitPoId).size() > 0 ||
+           kitDpService.findKitDpByKitPo(kitPoId).size() > 0 ||
+           checkKitPoService.findCheckKitsByKitPo(kitPoId).size() > 0) {
+            throw new Exception("Kit PO ID : " + kitPoId + " cannot be deleted because it's included with another tables");
+        }
+    }
 
     public List<KitPo> searchKitPo(KitPoSearchDto dto) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();

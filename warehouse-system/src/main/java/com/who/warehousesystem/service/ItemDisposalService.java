@@ -12,7 +12,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -36,8 +35,8 @@ public class ItemDisposalService {
     @Autowired
     DisposalService disposalService;
 
-    public ItemDisposal findItemDisposalByItemPo(Integer itemPoId) {
-        return itemDisposalRepository.findItemDisposalByItemPo(itemPoId);
+    public List<ItemDisposal> findItemDisposalsByItemPo(Integer itemPoId) {
+        return itemDisposalRepository.findItemDisposalsByItemPo(itemPoId).orElse(new ArrayList<>());
     }
 
     public List<ItemDisposal> findAllItemDisposalsByDisposal(Integer disposalId) {

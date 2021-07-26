@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface KitDpRepository extends JpaRepository<KitDp,Integer> {
 
     @Query(value = "select * from kit_dp where active = 1 and kit_po_id = :kitPoId", nativeQuery = true)
-    KitDp findKitDpByKitPo(@Param(value = "kitPoId") Integer kitPoId);
+    Optional<List<KitDp>> findKitDpByKitPo(@Param(value = "kitPoId") Integer kitPoId);
 
     @Query(value = "select * from kit_dp where active = 1 and health_center_id = :healthCenterId", nativeQuery = true)
     List<KitDp> findKitDpByHealthCenter(@Param(value = "healthCenterId") Integer healthCenterId);
