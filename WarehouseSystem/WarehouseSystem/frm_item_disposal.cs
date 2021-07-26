@@ -74,8 +74,7 @@ namespace WarehouseSystem
                     Msg.idInSave("Item Disposal");
                 else
                 {
-                    ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtDisposalId.Text,
-                        txtItemPoId.Text, txtQty.Text);
+                    ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtItemPoId.Text, txtQty.Text);
 
                     if (ItemDisposal.saveItemDisposal(txtDisposalId.Text, dto))
                     {
@@ -111,8 +110,7 @@ namespace WarehouseSystem
             {
                 if (Msg.editConfirm("Item Disposal") == DialogResult.Yes)
                 {
-                    ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtDisposalId.Text,
-                        txtItemPoId.Text, txtQty.Text);
+                    ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtItemPoId.Text, txtQty.Text);
 
                     if (ItemDisposal.editItemDisposal(txtDisposalId.Text,txtItemDisposalId.Text, dto))
                     {

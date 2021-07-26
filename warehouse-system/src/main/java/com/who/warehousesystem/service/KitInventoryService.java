@@ -27,4 +27,10 @@ public class KitInventoryService {
                 .orElseThrow(() -> new Exception("No Kit inventory for Kit DP id : " + kitDpId + " and " +
                         "type ID : " + typeId));
     }
+
+    public KitInventory findKitInventoryByTypeAndKitDisposal(Integer typeId, Integer kitDisposalId) throws Exception {
+        return kitInventoryRepository.findKitInventoryByTypeAndKitDisposal(typeId,kitDisposalId)
+                .orElseThrow(() -> new Exception("No Kit inventory for Kit Disposal id : " + kitDisposalId + " and " +
+                        "type ID : " + typeId));
+    }
 }

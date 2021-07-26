@@ -75,9 +75,7 @@ public class ItemDisposalService {
         User user = userService.findUserById(userId);
         ItemDisposal itemDisposal = findItemDisposalById(id);
         itemPoService.addInventoryByItemDisposal(itemDisposal,user);
-        InventoryType inventoryType = inventoryTypeService.findTypeById(2);//Out
-        ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemDisposal(inventoryType.getId(),
-                itemDisposal.getId());
+        ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemDisposal(2,id);
         Disposal disposal = disposalService.findDisposalById(disposalId);
         ItemPo itemPo = itemPoService.findItemPoById(dto.getItemPoId());
         itemDisposal.setDisposal(disposal);

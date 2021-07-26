@@ -31,6 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDetailsDisposals = new System.Windows.Forms.Button();
+            this.btnKitDisposals = new System.Windows.Forms.Button();
+            this.btnItemDisposals = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.chkDate = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -46,9 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnItemDisposals = new System.Windows.Forms.Button();
-            this.btnKitDisposals = new System.Windows.Forms.Button();
-            this.btnDetailsDisposals = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +79,40 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Disposal";
+            // 
+            // btnDetailsDisposals
+            // 
+            this.btnDetailsDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetailsDisposals.Location = new System.Drawing.Point(552, 285);
+            this.btnDetailsDisposals.Name = "btnDetailsDisposals";
+            this.btnDetailsDisposals.Size = new System.Drawing.Size(229, 51);
+            this.btnDetailsDisposals.TabIndex = 43;
+            this.btnDetailsDisposals.Text = "Kit Details Disposals";
+            this.btnDetailsDisposals.UseVisualStyleBackColor = true;
+            // 
+            // btnKitDisposals
+            // 
+            this.btnKitDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKitDisposals.Location = new System.Drawing.Point(290, 285);
+            this.btnKitDisposals.Name = "btnKitDisposals";
+            this.btnKitDisposals.Size = new System.Drawing.Size(229, 51);
+            this.btnKitDisposals.TabIndex = 42;
+            this.btnKitDisposals.TabStop = false;
+            this.btnKitDisposals.Text = "Kit Disposals";
+            this.btnKitDisposals.UseVisualStyleBackColor = true;
+            this.btnKitDisposals.Click += new System.EventHandler(this.btnKitDisposals_Click);
+            // 
+            // btnItemDisposals
+            // 
+            this.btnItemDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemDisposals.Location = new System.Drawing.Point(28, 285);
+            this.btnItemDisposals.Name = "btnItemDisposals";
+            this.btnItemDisposals.Size = new System.Drawing.Size(229, 51);
+            this.btnItemDisposals.TabIndex = 41;
+            this.btnItemDisposals.TabStop = false;
+            this.btnItemDisposals.Text = "Item Disposals";
+            this.btnItemDisposals.UseVisualStyleBackColor = true;
+            this.btnItemDisposals.Click += new System.EventHandler(this.btnItemDisposals_Click);
             // 
             // label21
             // 
@@ -256,39 +290,6 @@
             this.dgv.TabIndex = 1005;
             this.dgv.TabStop = false;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
-            // 
-            // btnItemDisposals
-            // 
-            this.btnItemDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemDisposals.Location = new System.Drawing.Point(28, 285);
-            this.btnItemDisposals.Name = "btnItemDisposals";
-            this.btnItemDisposals.Size = new System.Drawing.Size(229, 51);
-            this.btnItemDisposals.TabIndex = 41;
-            this.btnItemDisposals.TabStop = false;
-            this.btnItemDisposals.Text = "Item Disposals";
-            this.btnItemDisposals.UseVisualStyleBackColor = true;
-            this.btnItemDisposals.Click += new System.EventHandler(this.btnItemDisposals_Click);
-            // 
-            // btnKitDisposals
-            // 
-            this.btnKitDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKitDisposals.Location = new System.Drawing.Point(290, 285);
-            this.btnKitDisposals.Name = "btnKitDisposals";
-            this.btnKitDisposals.Size = new System.Drawing.Size(229, 51);
-            this.btnKitDisposals.TabIndex = 42;
-            this.btnKitDisposals.TabStop = false;
-            this.btnKitDisposals.Text = "Kit Disposals";
-            this.btnKitDisposals.UseVisualStyleBackColor = true;
-            // 
-            // btnDetailsDisposals
-            // 
-            this.btnDetailsDisposals.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetailsDisposals.Location = new System.Drawing.Point(552, 285);
-            this.btnDetailsDisposals.Name = "btnDetailsDisposals";
-            this.btnDetailsDisposals.Size = new System.Drawing.Size(229, 51);
-            this.btnDetailsDisposals.TabIndex = 43;
-            this.btnDetailsDisposals.Text = "Kit Details Disposals";
-            this.btnDetailsDisposals.UseVisualStyleBackColor = true;
             // 
             // frm_disposal
             // 

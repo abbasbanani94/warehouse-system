@@ -2,14 +2,14 @@
 
 namespace WarehouseSystem
 {
-    class ItemDisposalSaveDto
+    class KitDisposalSaveDto
     {
-        public string itemPoId { get; set; }
+        public string kitPoId { get; set; }
         public string qty { get; set; }
 
-        public ItemDisposalSaveDto (string itemPoId,string qty)
+        public KitDisposalSaveDto(string kitPoId, string qty)
         {
-            this.itemPoId = itemPoId;
+            this.kitPoId = kitPoId;
             this.qty = qty;
         }
 

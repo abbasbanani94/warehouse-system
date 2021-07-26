@@ -19,4 +19,9 @@ public interface KitInventoryRepository extends JpaRepository<KitInventory,Integ
     nativeQuery = true)
     Optional<KitInventory> findKitInventoryByTypeAndKitDp(@Param(value = "typeId") Integer typeId,
                                                           @Param(value = "kitDpId") Integer kitDpId);
+
+    @Query(value = "select * from kit_inventory where active = 1 and kit_disposal_id = :kitDisposal and " +
+            "type_id = :type", nativeQuery = true)
+    Optional<KitInventory> findKitInventoryByTypeAndKitDisposal(@Param(value = "type") Integer typeId,
+                                                                @Param(value = "kitDisposal") Integer kitDisposalId);
 }

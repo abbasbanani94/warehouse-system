@@ -1,5 +1,6 @@
 package com.who.warehousesystem.service;
 
+import com.who.warehousesystem.dto.PoComboDto;
 import com.who.warehousesystem.dto.PoDgvDto;
 import com.who.warehousesystem.model.PurchaseOrder;
 import com.who.warehousesystem.model.User;
@@ -20,8 +21,15 @@ public class PurchaseOrderService {
     @Autowired
     UserService userService;
 
-    public List<PurchaseOrder> findAllPurchaseOrders () {
-        return purchaseOrderRepository.findAllPurchaseOrders().orElse(new ArrayList<>());
+    public List<PoComboDto> findAllPurchaseOrders () {
+        List<PoComboDto> dtos = new ArrayList<>();
+        List<Object[]> objects = purchaseOrderRepository.findAllPoDgv().orElse(new ArrayList<>());
+        for(Object[] po : objects) {
+            if (Integer.parseInt(po[2].toString()) != 0 || Integer.parseInt(po[3].toString()) != 0) {
+                dtos.add(new PoComboDto(Integer.parseInt(po[0].toString()), po[1].toString()));
+            }
+        }
+        return dtos;
     }
 
     public PurchaseOrder savePurchaseOrder(Integer poNo,Integer userId) throws Exception {
@@ -43,7 +51,7 @@ public class PurchaseOrderService {
         else {
             return purchaseOrderRepository.save(new PurchaseOrder(Integer.parseInt(poNo),user));
         }
-    }
+     }
 
     public List<PoDgvDto> findAllPoDgv() {
         return purchaseOrderRepository.findAllPoDgv().orElse(new ArrayList<>()).stream().map(po -> {

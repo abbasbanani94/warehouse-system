@@ -176,22 +176,21 @@ public class KitPoService {
                 new Exception("No Kit PO with ID : " + id));
     }
 
-    private void editInventoryByKitDp (KitDp kitDp, User user, String operation) {
-        KitPo kitPo = kitDp.getKitPo();
+    private void editInventoryByKitPo(KitPo kitPo, Integer qty, User user, String operation) {
         if(operation.equalsIgnoreCase("add"))
-            kitPo.setInventory(kitPo.getInventory() + kitDp.getQty());
+            kitPo.setInventory(kitPo.getInventory() + qty);
         else
-            kitPo.setInventory(kitPo.getInventory() - kitDp.getQty());
+            kitPo.setInventory(kitPo.getInventory() - qty);
         kitPo.setUpdatedBy(user);
         kitPoRepository.save(kitPo);
     }
 
     public void subInventoryByKitDp(KitDp kitDp, User user) {
-        editInventoryByKitDp(kitDp, user, "sub");
+        editInventoryByKitPo(kitDp.getKitPo(), kitDp.getQty(),user, "sub");
     }
 
     public void addInventoryByKitDp(KitDp kitDp, User user) {
-        editInventoryByKitDp(kitDp, user, "add");
+        editInventoryByKitPo(kitDp.getKitPo(), kitDp.getQty(), user, "add");
     }
 
     public String findKitNameByKitPo(Integer id) throws Exception {
@@ -200,5 +199,13 @@ public class KitPoService {
 
     public int findKitsCountByPo(Integer poId) {
         return kitPoRepository.findKitsCountByPo(poId);
+    }
+
+    public void subInventoryByKitDisposal(KitDisposal kitDisposal, User user) {
+        editInventoryByKitPo(kitDisposal.getKitPo(),kitDisposal.getQty(),user,"sub");
+    }
+
+    public void addInventoryByKitDisposal(KitDisposal kitDisposal, User user) {
+        editInventoryByKitPo(kitDisposal.getKitPo(),kitDisposal.getQty(),user,"add");
     }
 }

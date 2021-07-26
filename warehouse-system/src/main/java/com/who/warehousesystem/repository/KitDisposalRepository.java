@@ -17,4 +17,12 @@ public interface KitDisposalRepository extends JpaRepository<KitDisposal,Integer
 
     @Query(value = "select * from kit_disposals where active = 1 and disposal_id = :disposal", nativeQuery = true)
     Optional<List<KitDisposal>> findKitDisposalsByDisposal(@Param(value = "disposal") Integer disposalId);
+
+    @Query(value = "select * from kit_disposals where active = 1 and disposal_id = :disposal and " +
+            "kit_po_id = :kitPo", nativeQuery = true)
+    KitDisposal findKitDisposalByDisposalAndKitPo(@Param(value = "disposal") Integer disposalId,
+                                                  @Param(value = "kitPo") Integer kitPoId);
+
+    @Query(value = "select * from kit_disposals where active = 1 and kit_disposal_id = :id", nativeQuery = true)
+    Optional<KitDisposal> findKitDisposalById(@Param(value = "id") Integer id);
 }

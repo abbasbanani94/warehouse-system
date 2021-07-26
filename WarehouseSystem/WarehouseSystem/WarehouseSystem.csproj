@@ -105,6 +105,12 @@
     <Compile Include="frm_kit_details.Designer.cs">
       <DependentUpon>frm_kit_details.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_kit_disposal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kit_disposal.Designer.cs">
+      <DependentUpon>frm_kit_disposal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_purchase_order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,8 @@
     <Compile Include="Kit.cs" />
     <Compile Include="KitDetails.cs" />
     <Compile Include="KitDetailSaveDto.cs" />
+    <Compile Include="KitDisposal.cs" />
+    <Compile Include="KitDisposalSaveDto.cs" />
     <Compile Include="KitDp.cs" />
     <Compile Include="KitDpSaveDto.cs" />
     <Compile Include="KitPo.cs" />
@@ -201,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_details.resx">
       <DependentUpon>frm_kit_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kit_disposal.resx">
+      <DependentUpon>frm_kit_disposal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_po.resx">
       <DependentUpon>frm_kit_po.cs</DependentUpon>

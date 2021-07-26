@@ -30,4 +30,11 @@ public class KitDisposal extends DateAudit {
 
     @Column(name = "qty")
     private Integer qty;
+
+    public KitDisposal(Disposal disposal, KitPo kitPo, Integer qty, User user) {
+        this.disposal = disposal;
+        this.kitPo = kitPo;
+        this.qty = qty;
+        this.setCreatedBy(user);
+    }
 }

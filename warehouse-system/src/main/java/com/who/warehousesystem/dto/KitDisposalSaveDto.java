@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ItemDisposalSaveDto {
+public class KitDisposalSaveDto {
 
-    private Integer itemPoId;
+    private Integer kitPoId;
     private Integer qty;
 }

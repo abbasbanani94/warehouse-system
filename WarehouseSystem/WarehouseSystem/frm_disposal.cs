@@ -138,5 +138,29 @@ namespace WarehouseSystem
         {
             _item_disposal = null;
         }
+
+        private frm_kit_disposal _kit_disposal = null;
+
+        private void btnKitDisposals_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text == "")
+                Msg.errorMsg("click on the row you want to enter kit disposal for", "Error");
+            else
+            {
+                if (_kit_disposal == null)
+                {
+                    _kit_disposal = new frm_kit_disposal(txtId.Text);
+                    _kit_disposal.Show();
+                    _kit_disposal.FormClosed += _kit_disposal_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Kit Disposals");
+            }
+        }
+
+        private void _kit_disposal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _kit_disposal = null;
+        }
     }
 }
