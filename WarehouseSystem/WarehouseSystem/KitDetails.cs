@@ -54,25 +54,10 @@ namespace WarehouseSystem
 
         internal static bool deleteKitDetail(string detailId)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync(baseUrl + "/" + detailId);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.deleteRequest(baseUrl + "/" + detailId);
         }
 
-        internal static async void searchKitDetails(string kitPoId,string boxNo,string minTemp,
+        internal static void searchKitDetails(string kitPoId,string boxNo,string minTemp,
             string maxTemp,string description,string packaging,string packs,string pieces,
             string expDate,string itemId,DataGridView dgv,bool exp)
         {

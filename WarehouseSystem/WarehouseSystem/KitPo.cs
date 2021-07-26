@@ -56,22 +56,7 @@ namespace WarehouseSystem
 
         internal static bool deleteKitPo(KitPoSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync(baseUrl + "/" + dto.kitPoId);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.deleteRequest(baseUrl + "/" + dto.kitPoId);
         }
 
         internal static async void searchKitPoDgv(KitPoSearchDto dto, DataGridView dgv)

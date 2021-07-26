@@ -105,22 +105,7 @@ namespace WarehouseSystem
 
         internal static bool deleteItemPo(string itemPoId)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync(baseUrl + "/" + itemPoId);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.deleteRequest(baseUrl + "/" + itemPoId);
         }
 
         internal static void searchItemPoDgv(ItemPoSearchDto dto,DataGridView dgv)

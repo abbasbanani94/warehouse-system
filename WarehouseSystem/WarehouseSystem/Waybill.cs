@@ -9,7 +9,7 @@ namespace WarehouseSystem
     class Waybill
     {
         static string baseUrl = "/waybills";
-        internal static async void findAllWaybillsDgv(DataGridView dgv)
+        internal static void findAllWaybillsDgv(DataGridView dgv)
         {
             Client.findAllDgv(dgv, baseUrl);
         }
@@ -56,25 +56,10 @@ namespace WarehouseSystem
 
         internal static bool deleteWaybill(string id)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.DeleteAsync(baseUrl  + "/" + id);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.deleteRequest(baseUrl + "/" + id);
         }
 
-        internal static async void searchWaybill(string wbNo,string wbDate,string boxes,string pallets,
+        internal static void searchWaybill(string wbNo,string wbDate,string boxes,string pallets,
             string cityId,string districtId,string centerId, DataGridView dgv,bool d)
         {
             Client.findAllDgv(dgv, baseUrl + "/search?wbNo=" + wbNo +
