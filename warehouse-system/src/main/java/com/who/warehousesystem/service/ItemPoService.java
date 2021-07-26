@@ -195,4 +195,8 @@ public class ItemPoService {
     public void subInventoryByItemDisposal(ItemDisposal itemDisposal,User user) {
         editInventoryByItemPoAndQty(itemDisposal.getItemPo(),itemDisposal.getQty(),user,"sub");
     }
+
+    public void addInventoryByItemDisposal(ItemDisposal itemDisposal, User user) {
+        editInventoryByItemPoAndQty(itemDisposal.getItemPo(), itemDisposal.getQty(), user, "add");
+    }
 }

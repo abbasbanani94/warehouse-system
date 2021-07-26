@@ -18,6 +18,11 @@ public interface ItemInventoryRepository extends JpaRepository<ItemInventory,Int
 
     @Query(value = "select * from item_inventory where active = 1 and item_dp_id = :itemDpId and type_id = :typeId",
             nativeQuery = true)
-    Optional<ItemInventory> findItemInventoryByTypeAndItemPoAndDp(@Param(value = "typeId") Integer typeId,
-                                                                  @Param(value = "itemDpId") Integer itemDpId);
+    Optional<ItemInventory> findItemInventoryByTypeAndItemDp(@Param(value = "typeId") Integer typeId,
+                                                             @Param(value = "itemDpId") Integer itemDpId);
+
+    @Query(value = "select * from item_inventory where active = 1 and item_disposal_id = :itemDisposal and " +
+            "type_id = :typeId", nativeQuery = true)
+    Optional<ItemInventory> findItemInventoryByTypeAndItemDisposal(@Param(value = "typeId") Integer typeId,
+                                                                   @Param(value = "itemDisposal") Integer itemDisposalId);
 }

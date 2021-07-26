@@ -1,7 +1,6 @@
 package com.who.warehousesystem.service;
 
 import com.who.warehousesystem.model.ItemInventory;
-import com.who.warehousesystem.model.User;
 import com.who.warehousesystem.repository.ItemInventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +22,15 @@ public class ItemInventoryService {
 
     public ItemInventory findItemInventoryByTypeAndItemDp(Integer typeId, Integer itemDpId)
             throws Exception {
-        return itemInventoryRepository.findItemInventoryByTypeAndItemPoAndDp(typeId,itemDpId)
+        return itemInventoryRepository.findItemInventoryByTypeAndItemDp(typeId,itemDpId)
                 .orElseThrow(() -> new Exception("No Item inventory for Item DP id : " + itemDpId + " and " +
                         "type ID : " + typeId));
+    }
+
+    public ItemInventory findItemInventoryByTypeAndItemDisposal(Integer typeId, Integer itemDisposalId)
+            throws Exception {
+        return itemInventoryRepository.findItemInventoryByTypeAndItemDisposal(typeId, itemDisposalId)
+                .orElseThrow(() -> new Exception("No Item inventory for Item Disposal ID : " + itemDisposalId +
+                        " and type ID : " + typeId));
     }
 }

@@ -102,5 +102,68 @@ namespace WarehouseSystem
         {
             done();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (txtItemPoId.Text == "" || txtQty.Text == "" || txtItemDisposalId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (Msg.questionMsg("Do you want to edit Item Disposal ?","Edit Confirmation") == DialogResult.Yes)
+                {
+                    ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtDisposalId.Text,
+                        txtItemPoId.Text, txtQty.Text);
+
+                    if (ItemDisposal.editItemDisposal(txtDisposalId.Text,txtItemDisposalId.Text, dto))
+                    {
+                        Msg.doneMsg("Item Disposal edited successfully !", "Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex != -1)
+            {
+                txtItemDisposalId.Text = dgv.Rows[e.RowIndex].Cells["Item Disposal ID"].Value.ToString();
+                cmbPoNo.Text = dgv.Rows[e.RowIndex].Cells["PO NO"].Value.ToString();
+                txtPoId.Text = dgv.Rows[e.RowIndex].Cells["PO ID"].Value.ToString();
+                cmbItem.Text = dgv.Rows[e.RowIndex].Cells["Item"].Value.ToString();
+                txtItemPoId.Text = dgv.Rows[e.RowIndex].Cells["Item PO ID"].Value.ToString();
+                txtQty.Text = dgv.Rows[e.RowIndex].Cells["Qty"].Value.ToString();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtItemPoId.Text == "" || txtQty.Text == "" || txtItemDisposalId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (Msg.questionMsg("Do you want to delete Item Disposal ?", "Delete Confirmation") == DialogResult.Yes)
+                {
+                    if (ItemDisposal.deleteItemDisposal(txtItemDisposalId.Text))
+                    {
+                        Msg.doneMsg("Item Disposal deleted successfully !", "Successfully");
+                        done();
+                    }
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtPoId.Text == "" && txtItemPoId.Text == "" && txtQty.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                ItemDisposal.searchItemDisposal(txtDisposalId.Text, txtPoId.Text, txtItemPoId.Text,
+                    txtQty.Text, dgv);
+                if (dgv.Rows.Count == 0)
+                    ItemDisposal.findAllItemDisposalsDgv(txtDisposalId.Text, dgv);
+            }
+        }
     }
 }

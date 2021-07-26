@@ -37,7 +37,24 @@ public class ItemDisposalController {
     public ResponseEntity editItemDisposal (@PathVariable (value = "disposalId") Integer disposalId,
                                             @PathVariable (value = "id") Integer id,
                                             @RequestBody ItemDisposalSaveDto dto,
-                                            @RequestHeader (value = "userId") Integer userId) {
-        return new ResponseEntity(itemDisposalService.editItemDisposal(id,disposalId,dto,userId), HttpStatus.OK);
+                                            @RequestHeader (value = "userId") Integer userId) throws Exception {
+        return new ResponseEntity(modelMapper.map(itemDisposalService.editItemDisposal(id,disposalId,dto,userId),
+                ItemDisposalDgvDto.class), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteItemDisposal (@PathVariable (value = "id") Integer id,
+                                              @RequestHeader (value = "userId") Integer userId) throws Exception {
+        itemDisposalService.deleteItemDisposal(id,userId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity searchItemDisposals (@RequestParam (value = "disposalId") Integer disposalId,
+                                               @RequestParam (value = "poId") String poId,
+                                               @RequestParam (value = "itemPoId") String itemPoId,
+                                               @RequestParam (value = "qty") String qty) {
+        return new ResponseEntity(itemDisposalService.searchItemDisposals(disposalId,poId,itemPoId,qty).stream()
+                .map(itemDisposal -> (modelMapper.map(itemDisposal,ItemDisposalDgvDto.class))), HttpStatus.OK);
     }
 }
