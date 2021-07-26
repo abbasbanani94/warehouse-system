@@ -29,7 +29,7 @@ namespace WarehouseSystem
         private void load()
         {
             ItemDp.findItemDpDgv(dgv);
-            PurchaseOrder.findAllPoCombo(cmbPoNo);
+            PurchaseOrder.findAllPoComboItems(cmbPoNo);
             DistributionPlan.findAllDpCombo(cmbDp);
         }
 

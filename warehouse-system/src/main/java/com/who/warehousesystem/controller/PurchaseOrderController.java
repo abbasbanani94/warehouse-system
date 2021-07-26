@@ -26,8 +26,18 @@ public class PurchaseOrderController {
 
     @GetMapping("")
     public ResponseEntity findAllPurchaseOrderCombo () {
-        return new ResponseEntity(purchaseOrderService.findAllPurchaseOrders().stream()
-        .map(po -> (modelMapper.map(po, PoComboDto.class))), HttpStatus.OK);
+        return new ResponseEntity(purchaseOrderService.findAllPurchaseOrders().stream().map(
+                po -> (modelMapper.map(po,PoComboDto.class))), HttpStatus.OK);
+    }
+
+    @GetMapping("/items")
+    public ResponseEntity findAllPurchaseOrderComboItems () {
+        return new ResponseEntity(purchaseOrderService.findAllPurchaseOrdersItems(), HttpStatus.OK);
+    }
+
+    @GetMapping("/kits")
+    public ResponseEntity findAllPurchaseOrderComboKits () {
+        return new ResponseEntity(purchaseOrderService.findAllPurchaseOrdersKits(), HttpStatus.OK);
     }
 
     @PostMapping("")

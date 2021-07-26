@@ -24,7 +24,7 @@ namespace WarehouseSystem
         private void frm_item_disposal_Load(object sender, EventArgs e)
         {
             Disposal.findDisposalDetails(txtDisposalId.Text, txtReason, txtDate);
-            PurchaseOrder.findAllPoCombo(cmbPoNo);
+            PurchaseOrder.findAllPoComboItems(cmbPoNo);
             load();
         }
 

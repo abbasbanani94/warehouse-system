@@ -9,23 +9,36 @@ namespace WarehouseSystem
     class PurchaseOrder
     {
         static string baseUrl = "/po";
-        internal static async void findAllPoCombo(ComboBox cmbPoNo)
+        internal static async void findAllPoCombo(ComboBox cmbPoNo,string url)
         {
             try
             {
                 cmbPoNo.DataSource = null;
                 HttpClient client = Client.getHttpClient();
-                var response = await client.GetStringAsync(baseUrl);
+                var response = await client.GetStringAsync(url);
                 List<PoCombo> poList = JsonConvert.DeserializeObject<List<PoCombo>>(response);
                 cmbPoNo.DataSource = poList;
                 cmbPoNo.DisplayMember = "no";
                 cmbPoNo.ValueMember = "id";
                 cmbPoNo.ResetText();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Msg.errorMsg(ex.Message.ToString(), "Error");
             }
+        }
+        internal static void findAllPoCombo(ComboBox cmbPoNo)
+        {
+            findAllPoCombo(cmbPoNo, baseUrl);
+        }
+        internal static void findAllPoComboItems(ComboBox cmbPoNo)
+        {
+            findAllPoCombo(cmbPoNo, baseUrl + "/items");
+        }
+
+        internal static void findAllPoComboKits(ComboBox cmbPoNo)
+        {
+            findAllPoCombo(cmbPoNo, baseUrl + "/kits");
         }
 
         internal static void findAllPoDgv(DataGridView dgv)

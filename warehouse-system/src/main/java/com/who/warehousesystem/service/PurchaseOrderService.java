@@ -21,15 +21,26 @@ public class PurchaseOrderService {
     @Autowired
     UserService userService;
 
-    public List<PoComboDto> findAllPurchaseOrders () {
-        List<PoComboDto> dtos = new ArrayList<>();
+    public List<PoComboDto> findAllPurchaseOrdersItems() {
+        List<PoComboDto> list = new ArrayList<>();
         List<Object[]> objects = purchaseOrderRepository.findAllPoDgv().orElse(new ArrayList<>());
         for(Object[] po : objects) {
-            if (Integer.parseInt(po[2].toString()) != 0 || Integer.parseInt(po[3].toString()) != 0) {
-                dtos.add(new PoComboDto(Integer.parseInt(po[0].toString()), po[1].toString()));
+            if (Integer.parseInt(po[2].toString()) != 0) {
+                list.add(new PoComboDto(Integer.parseInt(po[0].toString()), po[1].toString()));
             }
         }
-        return dtos;
+        return list;
+    }
+
+    public List<PoComboDto> findAllPurchaseOrdersKits() {
+        List<PoComboDto> list = new ArrayList<>();
+        List<Object[]> objects = purchaseOrderRepository.findAllPoDgv().orElse(new ArrayList<>());
+        for(Object[] po : objects) {
+            if (Integer.parseInt(po[3].toString()) != 0) {
+                list.add(new PoComboDto(Integer.parseInt(po[0].toString()), po[1].toString()));
+            }
+        }
+        return list;
     }
 
     public PurchaseOrder savePurchaseOrder(Integer poNo,Integer userId) throws Exception {
@@ -105,5 +116,9 @@ public class PurchaseOrderService {
             return new PoDgvDto(Integer.parseInt(po[0].toString()),po[1].toString(),
                     Integer.parseInt(po[2].toString()),Integer.parseInt(po[3].toString()));
         }).collect(Collectors.toList());
+    }
+
+    public List<PurchaseOrder> findAllPurchaseOrders() {
+        return purchaseOrderRepository.findAllPurchaseOrders().orElse(new ArrayList<>());
     }
 }
