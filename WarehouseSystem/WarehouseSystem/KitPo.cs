@@ -16,42 +16,12 @@ namespace WarehouseSystem
 
         internal static bool saveKitPo(KitPoSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync(baseUrl, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.saveRequest(baseUrl, dto);
         }
 
         internal static bool editKitPo(KitPoSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync(baseUrl + "/" + dto.kitPoId, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.editRequest(baseUrl + "/" + dto.kitPoId, dto);
         }
 
         internal static bool deleteKitPo(KitPoSaveDto dto)
@@ -59,7 +29,7 @@ namespace WarehouseSystem
             return Client.deleteRequest(baseUrl + "/" + dto.kitPoId);
         }
 
-        internal static async void searchKitPoDgv(KitPoSearchDto dto, DataGridView dgv)
+        internal static void searchKitPoDgv(KitPoSearchDto dto, DataGridView dgv)
         {
             Client.findAllDgv(dgv, baseUrl + "/search?poId=" + dto.poId +
                     "&dateReceived=" + dto.dateReceived + "&kitId=" + dto.kitId + "&minTemp=" +

@@ -14,42 +14,12 @@ namespace WarehouseSystem
 
         internal static bool saveWorker(WorkerSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync(baseUrl, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.saveRequest(baseUrl, dto);
         }
 
         internal static bool editWorker(WorkerSaveDto dto, string id)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync(baseUrl + "/" + id, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.editRequest(baseUrl + "/" + id, dto);
         }
 
         internal static bool deleteWorker(string id)

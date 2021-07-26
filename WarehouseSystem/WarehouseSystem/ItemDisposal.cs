@@ -14,42 +14,12 @@ namespace WarehouseSystem
 
         internal static bool saveItemDisposal(string disposalId,ItemDisposalSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync(baseUrl + "/" + disposalId, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.saveRequest(baseUrl + "/" + disposalId, dto);
         }
 
         internal static bool editItemDisposal(string disposalId,string itemDisposalId,ItemDisposalSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync(baseUrl + "/" + disposalId + "/" + itemDisposalId, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.editRequest(baseUrl + "/" + disposalId + "/" + itemDisposalId, dto);
         }
 
         internal static bool deleteItemDisposal(string id)

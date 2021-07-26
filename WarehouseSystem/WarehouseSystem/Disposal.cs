@@ -15,42 +15,12 @@ namespace WarehouseSystem
 
         internal static bool saveDisposal(DisposalSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync(baseUrl, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.saveRequest(baseUrl, dto);
         }
 
         internal static bool editDisposal(string id, DisposalSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync(baseUrl + "/" + id, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.editRequest(baseUrl + "/" + id, dto);
         }
 
         internal static bool deleteDisposal(string id)
@@ -71,7 +41,7 @@ namespace WarehouseSystem
                 try
                 {
                     HttpClient client = Client.getHttpClient();
-                    var response = await client.GetStringAsync("/disposals/details/" + id);
+                    var response = await client.GetStringAsync(baseUrl + "/details/" + id);
                     DisposalSaveDto dto = JsonConvert.DeserializeObject<DisposalSaveDto>(response);
                     reason.Text = dto.reason;
                     date.Text = dto.date;

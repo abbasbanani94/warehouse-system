@@ -53,5 +53,45 @@ namespace WarehouseSystem
             }
             return false;
         }
+
+        internal static bool saveRequest(string url,object dto)
+        {
+            try
+            {
+                HttpClient client = getHttpClient();
+                var response = client.PostAsJsonAsync(url, dto);
+                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+                    return true;
+                else
+                {
+                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+            return false;
+        }
+
+        internal static bool editRequest(string url, object dto)
+        {
+            try
+            {
+                HttpClient client = getHttpClient();
+                var response = client.PutAsJsonAsync(url, dto);
+                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+                    return true;
+                else
+                {
+                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                Msg.errorMsg(ex.Message.ToString(), "Error");
+            }
+            return false;
+        }
     }
 }

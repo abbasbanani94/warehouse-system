@@ -59,42 +59,12 @@ namespace WarehouseSystem
 
         internal static bool savePurchaseOrder(int no)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync(baseUrl + "/", no);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.saveRequest(baseUrl, no);
         }
 
         internal static bool editPurchaseOrder(int id,int no)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync(baseUrl + "/" + id, no);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.editRequest(baseUrl + "/" + id, no);
         }
 
         internal static bool deletePurchaseOrder(string id)

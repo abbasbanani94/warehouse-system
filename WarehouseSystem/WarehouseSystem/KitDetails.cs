@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace WarehouseSystem
 {
@@ -14,42 +12,12 @@ namespace WarehouseSystem
 
         internal static bool saveKitDetail(string kitPoId,KitDetailSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PostAsJsonAsync(baseUrl + "/" + kitPoId, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.saveRequest(baseUrl + "/" + kitPoId, dto);
         }
 
         internal static bool editKitDetails(string kitPoId,string detailId,KitDetailSaveDto dto)
         {
-            try
-            {
-                HttpClient client = Client.getHttpClient();
-                var response = client.PutAsJsonAsync(baseUrl + "/" + kitPoId + "/" + detailId, dto);
-                if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-                    return true;
-                else
-                {
-                    Msg.errorMsg(response.Result.Content.ReadAsStringAsync().Result, "Error");
-                }
-            }
-            catch (Exception ex)
-            {
-                Msg.errorMsg(ex.Message.ToString(), "Error");
-            }
-            return false;
+            return Client.editRequest(baseUrl + "/" + kitPoId + "/" + detailId, dto);
         }
 
         internal static bool deleteKitDetail(string detailId)
