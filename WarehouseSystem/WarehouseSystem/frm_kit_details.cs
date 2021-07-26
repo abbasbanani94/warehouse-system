@@ -59,13 +59,15 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
+                if (txtDetailId.Text != "")
+                    Msg.idInSave("Kit Detail");
                 KitDetailSaveDto dto = new KitDetailSaveDto(txtBoxNo.Text, cmbItem.Text, txtMin.Text,
                     txtMax.Text, txtDesc.Text, txtPackaging.Text, txtPacksBox.Text, txtPiecesPack.Text,
                     dtpExp.Value.ToShortDateString());
 
                 if(KitDetails.saveKitDetail(txtKitPoId.Text, dto))
                 {
-                    Msg.doneMsg("Kit detail saved successfully !", "Successfully");
+                    Msg.saved("Kit Detail");
                     load();
                 }
             }
@@ -93,7 +95,7 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit Kit Details ?", "Edit Confirmation") == DialogResult.Yes)
+                if(Msg.editConfirm("Kit Detail") == DialogResult.Yes)
                 {
                     KitDetailSaveDto dto = new KitDetailSaveDto(txtBoxNo.Text, cmbItem.Text, txtMin.Text,
                     txtMax.Text, txtDesc.Text, txtPackaging.Text, txtPacksBox.Text, txtPiecesPack.Text,
@@ -101,7 +103,7 @@ namespace WarehouseSystem
 
                     if (KitDetails.editKitDetails(txtKitPoId.Text, txtDetailId.Text,dto))
                     {
-                        Msg.doneMsg("Kit detail edited successfully !", "Successfully");
+                        Msg.edited("Kit Detail");
                         load();
                     }
                 }
@@ -115,11 +117,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to delete Kit Detail ?", "Delete Confirmation") == DialogResult.Yes)
+                if(Msg.deleteConfirm("Kit Detail") == DialogResult.Yes)
                 {
                     if(KitDetails.deleteKitDetail(txtDetailId.Text))
                     {
-                        Msg.doneMsg("Kit detail deleted successfully !", "Successfully");
+                        Msg.deleted("Kit Detail");
                         load();
                     }
                 }

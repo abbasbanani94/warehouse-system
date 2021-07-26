@@ -112,7 +112,7 @@ namespace WarehouseSystem
             else
             {
                 if (txtKitDpId.Text != "")
-                    Msg.errorMsg("Click on Edit button to edit the record", "Error");
+                    Msg.idInSave("Kit DP");
                 else
                 {
                     KitDpSaveDto dto = new KitDpSaveDto(txtDpId.Text, cmbDpEn.Text, txtDpAr.Text, dtpDp.Value.ToShortDateString(),
@@ -120,7 +120,7 @@ namespace WarehouseSystem
 
                     if (KitDp.saveKitDp(dto))
                     {
-                        Msg.doneMsg("Kit DP saved successfully !", "Saved Successfully");
+                        Msg.saved("Kit DP");
                         done();
                     }
                 }
@@ -166,14 +166,14 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to edit Kit DP ?", "Are You Sure") == DialogResult.Yes)
+                if (Msg.editConfirm("Kit DP") == DialogResult.Yes)
                 {
                     KitDpSaveDto dto = new KitDpSaveDto(txtDpId.Text, cmbDpEn.Text, txtDpAr.Text, dtpDp.Value.ToShortDateString(),
                         txtKitPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
 
                     if (KitDp.editKitDp(txtKitDpId.Text, dto))
                     {
-                        Msg.doneMsg("Kit DP edited successfully !", "Edited Successfully");
+                        Msg.edited("Kit DP");
                         done();
                     }
                 }
@@ -192,11 +192,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete Kit DP ?", "Are You Sure") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Kit DP") == DialogResult.Yes)
                 {
                     if (KitDp.deleteKitDp(txtKitDpId.Text))
                     {
-                        Msg.doneMsg("Kit DP deleted successfully !", "Deleted Successfully");
+                        Msg.deleted("Kit DP");
                         done();
                     }
                 }

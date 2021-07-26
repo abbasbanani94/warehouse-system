@@ -83,7 +83,7 @@ namespace WarehouseSystem
             else
             {
                 if (txtItemPoId.Text != "")
-                    Msg.errorMsg("Click edit to edit previously entered data.", "Error");
+                    Msg.idInSave("Item PO");
                 else
                 {
                     ItemPoSaveDto dto = new ItemPoSaveDto(txtPoId.Text, cmbPoNo.Text, dtpReceived.Value.ToShortDateString(),
@@ -93,7 +93,7 @@ namespace WarehouseSystem
                     txtItemPoId.Text, txtLocation.Text);
                     if (ItemPo.saveItemPo(dto))
                     {
-                        Msg.doneMsg("Item PO saved successfully !", "Done");
+                        Msg.saved("Item PO");
                         done();
                     }
                 }
@@ -163,7 +163,7 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit Item PO ?", "Are you sure ?") == DialogResult.Yes)
+                if(Msg.editConfirm("Item PO") == DialogResult.Yes)
                 {
                     ItemPoSaveDto dto = new ItemPoSaveDto(txtPoId.Text, cmbPoNo.Text, dtpReceived.Value.ToShortDateString(),
                     cmbItem.Text, txtMin.Text, txtMax.Text, txtDesc.Text, dtpMan.Value.ToShortDateString(),
@@ -172,7 +172,7 @@ namespace WarehouseSystem
                     txtItemPoId.Text, txtLocation.Text);
                     if (ItemPo.editItemPo(dto))
                     {
-                        Msg.doneMsg("Item PO edited successfully !", "Done");
+                        Msg.edited("Item PO");
                         done();
                     }
                 }
@@ -187,11 +187,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete Item PO ?", "Are you sure ?") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Item PO") == DialogResult.Yes)
                 {
                     if (ItemPo.deleteItemPo(txtItemPoId.Text))
                     {
-                        Msg.doneMsg("Item PO deleted successfully !", "Done");
+                        Msg.deleted("Item PO");
                         done();
                     }
                 }

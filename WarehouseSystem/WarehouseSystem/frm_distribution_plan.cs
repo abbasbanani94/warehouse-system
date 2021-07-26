@@ -33,13 +33,13 @@ namespace WarehouseSystem
             else
             {
                 if (txtId.Text != "")
-                    Msg.errorMsg("click on Edit button if you want to edit", "Error");
+                    Msg.idInSave("DP");
                 else
                 {
                     PlanSaveDto dto = new PlanSaveDto(txtEn.Text, txtAr.Text, dtp.Value.ToShortDateString());
-                    if(DistributionPlan.saveDistributionPlan(dto))
+                    if (DistributionPlan.saveDistributionPlan(dto))
                     {
-                        Msg.doneMsg("Distribution Plan saved successfully !", "Successfully");
+                        Msg.saved("Distribution Plan");
                         done();
                     }
                 }
@@ -74,12 +74,12 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit DP ?","Edit Confirmation") == DialogResult.Yes)
+                if(Msg.editConfirm("Distribution Plan") == DialogResult.Yes)
                 {
                     PlanSaveDto dto = new PlanSaveDto(txtEn.Text, txtAr.Text, dtp.Value.ToShortDateString());
                     if (DistributionPlan.editDistributionPlan(txtId.Text,dto))
                     {
-                        Msg.doneMsg("Distribution Plan edited successfully !", "Successfully");
+                        Msg.edited("Distribution Plan");
                         done();
                     }
                 }
@@ -92,11 +92,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to delete this DP ?","Delete Confirmation") == DialogResult.Yes)
+                if(Msg.deleteConfirm("Distribution Plan") == DialogResult.Yes)
                 {
                     if(DistributionPlan.deleteDistributionPlan(txtId.Text))
                     {
-                        Msg.doneMsg("Distribution Plan deleted successfully !", "Successfully");
+                        Msg.deleted("Distribution Plan");
                         done();
                     }
                 }

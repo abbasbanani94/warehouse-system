@@ -48,9 +48,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
+                if (txtId.Text != "")
+                    Msg.idInSave("Purchase Order");
                 if(PurchaseOrder.savePurchaseOrder(Convert.ToInt32(txtNo.Text)))
                 {
-                    Msg.doneMsg("Purchase Order saved successfully !", "Successfully");
+                    Msg.saved("Purchase Order");
                     done();
                 }
             }
@@ -62,11 +64,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit Purchase Order's No ?","Edit Confirmation") == DialogResult.Yes)
+                if(Msg.editConfirm("Purchase Order") == DialogResult.Yes)
                 {
                     if(PurchaseOrder.editPurchaseOrder(Convert.ToInt32(txtId.Text), Convert.ToInt32(txtNo.Text)))
                     {
-                        Msg.doneMsg("Purchase Order edited successfully !", "Successfully");
+                        Msg.edited("Purchase Order");
                         done();
                     }
                 }
@@ -85,11 +87,11 @@ namespace WarehouseSystem
                     Msg.errorMsg("This PO cannot be deleted because it's included in another tables", "Error");
                 else
                 {
-                    if(Msg.questionMsg("Do you want to delete this PO ?", "Delete Confirmation") == DialogResult.Yes)
+                    if(Msg.deleteConfirm("Purchase Order") == DialogResult.Yes)
                     {
                         if(PurchaseOrder.deletePurchaseOrder(txtId.Text))
                         {
-                            Msg.doneMsg("Purchase Order deleted successfully !", "Successfully");
+                            Msg.deleted("Purchase Order");
                             done();
                         }
                     }

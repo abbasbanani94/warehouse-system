@@ -71,15 +71,15 @@ namespace WarehouseSystem
             else
             {
                 if (txtItemDisposalId.Text != "")
-                    Msg.errorMsg("click on Edit butto to edit this record", "Error");
+                    Msg.idInSave("Item Disposal");
                 else
                 {
                     ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtDisposalId.Text,
                         txtItemPoId.Text, txtQty.Text);
 
-                    if(ItemDisposal.saveItemDisposal(txtDisposalId.Text, dto))
+                    if (ItemDisposal.saveItemDisposal(txtDisposalId.Text, dto))
                     {
-                        Msg.doneMsg("Item Disposal saved successfully !", "Successfully");
+                        Msg.saved("Item Disposal");
                         done();
                     }
                 }
@@ -109,14 +109,14 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to edit Item Disposal ?","Edit Confirmation") == DialogResult.Yes)
+                if (Msg.editConfirm("Item Disposal") == DialogResult.Yes)
                 {
                     ItemDisposalSaveDto dto = new ItemDisposalSaveDto(txtDisposalId.Text,
                         txtItemPoId.Text, txtQty.Text);
 
                     if (ItemDisposal.editItemDisposal(txtDisposalId.Text,txtItemDisposalId.Text, dto))
                     {
-                        Msg.doneMsg("Item Disposal edited successfully !", "Successfully");
+                        Msg.edited("Item Disposal");
                         done();
                     }
                 }
@@ -142,11 +142,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete Item Disposal ?", "Delete Confirmation") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Item Disposal") == DialogResult.Yes)
                 {
                     if (ItemDisposal.deleteItemDisposal(txtItemDisposalId.Text))
                     {
-                        Msg.doneMsg("Item Disposal deleted successfully !", "Successfully");
+                        Msg.deleted("Item Disposal");
                         done();
                     }
                 }

@@ -58,15 +58,15 @@ namespace WarehouseSystem
             else
             {
                 if (txtCenterId.Text != "")
-                    Msg.errorMsg("Click edit to edit this record", "Error");
+                    Msg.idInSave("Health Center");
                 else
                 {
                     CenterSaveDto dto = new CenterSaveDto("", cmbDistrict.SelectedValue.ToString(), txtEn.Text,
                     txtAr.Text);
 
-                    if(HealthCenter.saveHealthCenter(dto))
+                    if (HealthCenter.saveHealthCenter(dto))
                     {
-                        Msg.doneMsg("Health Center saved successfully !", "Saved Successfully");
+                        Msg.saved("Health Center");
                         done();
                     }
                 }
@@ -93,11 +93,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete health center ?", "Are You Sure") == DialogResult.Yes)
+                if (Msg.editConfirm("Health Center") == DialogResult.Yes)
                 {
                     if (HealthCenter.deleteHealthCenter(txtCenterId.Text))
                     {
-                        Msg.doneMsg("Health Center deleted successfully !", "Deleted Successfully");
+                        Msg.edited("Health Center");
                         done();
                     }
                 }
@@ -111,13 +111,13 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to edit health center ?","Are You Sure") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Health Center") == DialogResult.Yes)
                 {
                     CenterEditDto dto = new CenterEditDto(cmbDistrict.Text, txtEn.Text, txtAr.Text);
 
                     if (HealthCenter.editHealthCenter(dto,txtCenterId.Text))
                     {
-                        Msg.doneMsg("Health Center edited successfully !", "Edited Successfully");
+                        Msg.deleted("Health Center");
                         done();
                     }
                 }

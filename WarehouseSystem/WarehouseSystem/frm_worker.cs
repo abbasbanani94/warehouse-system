@@ -43,13 +43,13 @@ namespace WarehouseSystem
             else
             {
                 if (txtWorkerId.Text != "")
-                    Msg.errorMsg("click Edit button to edit this worker", "Error");
+                    Msg.idInSave("Worker");
                 else
                 {
                     WorkerSaveDto dto = new WorkerSaveDto(txtEn.Text, txtAr.Text, txtmobile.Text);
-                    if(Worker.saveWorker(dto))
+                    if (Worker.saveWorker(dto))
                     {
-                        Msg.doneMsg("Daily Worker saved successfully !", "Successfully");
+                        Msg.saved("Worker");
                         done();
                     }
                 }
@@ -84,12 +84,12 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to edit this Daily Worker ?","Edit Confirmation") == DialogResult.Yes)
+                if (Msg.editConfirm("Worker") == DialogResult.Yes)
                 {
                     WorkerSaveDto dto = new WorkerSaveDto(txtEn.Text, txtAr.Text, txtmobile.Text);
                     if (Worker.editWorker(dto, txtWorkerId.Text))
                     {
-                        Msg.doneMsg("Daily Worker edited successfully !", "Successfully");
+                        Msg.edited("Worker");
                         done();
                     }
                 }
@@ -102,11 +102,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete this Daily Worker ?", "Delete Confirmation") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Worker") == DialogResult.Yes)
                 {
                     if (Worker.deleteWorker(txtWorkerId.Text))
                     {
-                        Msg.doneMsg("Daily Worker deleted successfully !", "Successfully");
+                        Msg.deleted("Worker");
                         done();
                     }
                 }

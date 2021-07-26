@@ -112,15 +112,15 @@ namespace WarehouseSystem
             else
             {
                 if (txtItemDpId.Text != "")
-                    Msg.errorMsg("Click on Edit button to edit the record", "Error");
+                    Msg.idInSave("Item DP");
                 else
                 {
                     ItemDpSaveDto dto = new ItemDpSaveDto(txtDpId.Text, cmbDp.Text, txtDp.Text, dtpDp.Value.ToShortDateString(),
                         txtItemPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
 
-                    if(ItemDp.saveItemDp(dto))
+                    if (ItemDp.saveItemDp(dto))
                     {
-                        Msg.doneMsg("Item DP saved successfully !", "Saved Successfully");
+                        Msg.saved("Item DP");
                         done();
                     }
                 }
@@ -168,14 +168,14 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit Item DP ?", "Are You Sure") == DialogResult.Yes)
+                if(Msg.editConfirm("Item DP") == DialogResult.Yes)
                 {
                     ItemDpSaveDto dto = new ItemDpSaveDto(txtDpId.Text, cmbDp.Text, txtDp.Text, dtpDp.Value.ToShortDateString(),
                         txtItemPoId.Text, cmbCenter.SelectedValue.ToString(), txtQty.Text);
 
                     if (ItemDp.editItemDp(txtItemDpId.Text,dto))
                     {
-                        Msg.doneMsg("Item DP edited successfully !", "Edited Successfully");
+                        Msg.edited("Item DP");
                         done();
                     }
                 }
@@ -188,11 +188,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete Item DP ?", "Are You Sure") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Item DP") == DialogResult.Yes)
                 {
                     if (ItemDp.deleteItemDp(txtItemDpId.Text))
                     {
-                        Msg.doneMsg("Item DP deleted successfully !", "Deleted Successfully");
+                        Msg.deleted("Item DP");
                         done();
                     }
                 }

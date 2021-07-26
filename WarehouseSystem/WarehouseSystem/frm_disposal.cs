@@ -33,13 +33,13 @@ namespace WarehouseSystem
             else
             {
                 if (txtId.Text != "")
-                    Msg.errorMsg("click Edit to edit this disposal", "Error");
+                    Msg.idInSave("Disposal");
                 else
                 {
                     DisposalSaveDto dto = new DisposalSaveDto(txtReason.Text, dtp.Value.ToShortDateString());
                     if (Disposal.saveDisposal(dto))
                     {
-                        Msg.doneMsg("Disposal saved successfully !", "Successfully");
+                        Msg.saved("Disposal");
                         done();
                     }
                 }
@@ -73,12 +73,12 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit this disposal ?","Edit Confirmation") == DialogResult.Yes)
+                if(Msg.editConfirm("Disposal") == DialogResult.Yes)
                 {
                     DisposalSaveDto dto = new DisposalSaveDto(txtReason.Text, dtp.Value.ToShortDateString());
                     if(Disposal.editDisposal(txtId.Text,dto))
                     {
-                        Msg.doneMsg("Disposal edited successfully !", "Successfully");
+                        Msg.edited("Disposal");
                         done();
                     }
                 }
@@ -91,11 +91,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to deleted this disposal ?", "Delete Confirmation") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Disposal") == DialogResult.Yes)
                 {
                     if (Disposal.deleteDisposal(txtId.Text))
                     {
-                        Msg.doneMsg("Disposal deleted successfully !", "Successfully");
+                        Msg.deleted("Disposal");
                         done();
                     }
                 }

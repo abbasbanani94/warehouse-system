@@ -83,7 +83,7 @@ namespace WarehouseSystem
             else
             {
                 if (txtKitPoId.Text != "")
-                    Msg.errorMsg("Click edit to edit previously entered data.", "Error");
+                    Msg.idInSave("Kit PO");
                 else
                 {
                     KitPoSaveDto dto = new KitPoSaveDto(txtPoId.Text, cmbPoNo.Text, dtpReceived.Value.ToShortDateString(),
@@ -91,9 +91,9 @@ namespace WarehouseSystem
                         dtpExp.Value.ToShortDateString(), cmbCountry.Text, txtBatch.Text, txtPalletsQty.Text,
                         txtBoxesPallet.Text, txtTotalQty.Text, txtKitPoId.Text, txtLocation.Text, txtKitsPallet.Text,
                         cmbType.Text);
-                    if(KitPo.saveKitPo(dto))
+                    if (KitPo.saveKitPo(dto))
                     {
-                        Msg.doneMsg("Kit PO saved successfully !", "Done");
+                        Msg.saved("Kit PO");
                         done();
                     }
                 }
@@ -159,7 +159,7 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to edit Kit PO ?" , "Are you sure ?") == DialogResult.Yes)
+                if(Msg.editConfirm("Kit PO") == DialogResult.Yes)
                 {
                     KitPoSaveDto dto = new KitPoSaveDto(txtPoId.Text, cmbPoNo.Text, dtpReceived.Value.ToShortDateString(),
                         cmbKit.Text, txtMin.Text, txtMax.Text, txtDesc.Text, dtpMan.Value.ToShortDateString(),
@@ -168,7 +168,7 @@ namespace WarehouseSystem
                         cmbType.Text);
                     if (KitPo.editKitPo(dto))
                     {
-                        Msg.doneMsg("Kit PO edited successfully !", "Done");
+                        Msg.edited("Kit PO");
                         done();
                     }
                 }
@@ -183,7 +183,7 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to delete Kit PO ?", "Are you sure ?") == DialogResult.Yes)
+                if (Msg.deleteConfirm("Kit PO") == DialogResult.Yes)
                 {
                     KitPoSaveDto dto = new KitPoSaveDto(txtPoId.Text, cmbPoNo.Text, dtpReceived.Value.ToShortDateString(),
                         cmbKit.Text, txtMin.Text, txtMax.Text, txtDesc.Text, dtpMan.Value.ToShortDateString(),
@@ -192,7 +192,7 @@ namespace WarehouseSystem
                         cmbType.Text);
                     if (KitPo.deleteKitPo(dto))
                     {
-                        Msg.doneMsg("Kit PO deleted successfully !", "Done");
+                        Msg.deleted("Kit PO");
                         done();
                     }
                 }

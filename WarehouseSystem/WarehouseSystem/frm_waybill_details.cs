@@ -114,7 +114,7 @@ namespace WarehouseSystem
                 WbDetailsSaveDto dto = new WbDetailsSaveDto(dpList, wbList);
                 if(Waybill.saveWaybillDetails(txtWbId.Text, dto))
                 {
-                    Msg.doneMsg("Waybill details saved successfully !", "Successfully");
+                    Msg.saved("Waybill Details");
                 }
             }
         }

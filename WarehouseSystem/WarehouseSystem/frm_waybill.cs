@@ -67,15 +67,15 @@ namespace WarehouseSystem
             else
             {
                 if (txtWbId.Text != "")
-                    Msg.errorMsg("Click on Edit to edit the record", "Error");
+                    Msg.idInSave("Waybill");
                 else
                 {
                     WbSaveDto dto = new WbSaveDto(txtWbNo.Text, dtpWb.Value.ToShortDateString(),
                         txtBoxes.Text, txtPallets.Text, cmbCenter.SelectedValue.ToString());
 
-                    if(Waybill.saveWaybill(dto))
+                    if (Waybill.saveWaybill(dto))
                     {
-                        Msg.doneMsg("Waybill saved successfully !", "Successfully");
+                        Msg.saved("Waybill");
                         done();
                     }
                 }
@@ -101,14 +101,14 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if (Msg.questionMsg("Do you want to edit waybill ?","Are You Sure ?") == DialogResult.Yes)
+                if (Msg.editConfirm("Waybill") == DialogResult.Yes)
                 {
                     WbSaveDto dto = new WbSaveDto(txtWbNo.Text, dtpWb.Value.ToShortDateString(),
                         txtBoxes.Text, txtPallets.Text, cmbCenter.SelectedValue.ToString());
 
                     if (Waybill.editWaybill(txtWbId.Text,dto))
                     {
-                        Msg.doneMsg("Waybill edited successfully !", "Successfully");
+                        Msg.edited("Waybill");
                         done();
                     }
                 }
@@ -121,11 +121,11 @@ namespace WarehouseSystem
                 Msg.emptyFields();
             else
             {
-                if(Msg.questionMsg("Do you want to delete this waybill ?","Are You Sure ?") == DialogResult.Yes)
+                if(Msg.deleteConfirm("Waybill") == DialogResult.Yes)
                 {
                     if(Waybill.deleteWaybill(txtWbId.Text))
                     {
-                        Msg.doneMsg("Waybill deleted successfully !", "Successfully");
+                        Msg.deleted("Waybill");
                         done();
                     }
                 }

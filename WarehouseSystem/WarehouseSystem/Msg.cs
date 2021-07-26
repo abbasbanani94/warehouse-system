@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WarehouseSystem
@@ -68,6 +66,36 @@ namespace WarehouseSystem
         internal static void error500()
         {
             errorMsg("Internal Server Error", "Error 500");
+        }
+
+        internal static void edited(string name)
+        {
+            doneMsg(name + " edited successfully !", "Successfully");
+        }
+
+        internal static void idInSave(string name)
+        {
+            errorMsg("click Edit to edit this " + name, "Error");
+        }
+
+        internal static DialogResult deleteConfirm(string name)
+        {
+            return questionMsg("Do you want to delete this " + name + " ?", "Delete Confirmation");
+        }
+
+        internal static void deleted(string name)
+        {
+            doneMsg(name + " deleted successfully !", "Successfully");
+        }
+
+        internal static void saved (string name)
+        {
+            doneMsg(name + " saved successfully !", "Successfully");
+        }
+
+        internal static DialogResult editConfirm (string name)
+        {
+            return questionMsg("Do you want to edit this " + name + " ?", "Edit Confirmation");
         }
     }
 }
