@@ -1,9 +1,9 @@
 package com.who.warehousesystem.repository;
 
-import com.who.warehousesystem.model.DpChecking;
+import com.who.warehousesystem.model.Check;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DpCheckingRepository extends JpaRepository<DpChecking,Integer> {
+public interface CheckRepository extends JpaRepository<Check,Integer> {
 }

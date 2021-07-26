@@ -4,6 +4,7 @@ import com.who.warehousesystem.audit.DateAudit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.yaml.snakeyaml.events.Event;
 
 import javax.persistence.*;
 
@@ -12,19 +13,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "kit_checking_workers")
-public class KitCheckingWorker extends DateAudit {
+@Table(name = "check_item_po")
+public class CheckItemPo extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "kit_checking_worker_id")
+    @Column(name = "check_item_po_id")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "kit_checking_id")
-    private KitPoChecking kitPoChecking;
+    @JoinColumn(name = "check_id")
+    private Check check;
 
     @ManyToOne
-    @JoinColumn(name = "worker_id")
-    private Worker worker;
+    @JoinColumn(name = "item_po_id")
+    private ItemPo itemPo;
 }

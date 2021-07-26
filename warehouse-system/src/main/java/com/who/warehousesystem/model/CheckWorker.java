@@ -12,17 +12,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "item_checking_workers")
-public class ItemCheckingWorker extends DateAudit {
+@Table(name = "check_workers")
+public class CheckWorker extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_checking_worker_id")
+    @Column(name = "check_worker_id")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "item_checking_id")
-    private ItemPoChecking itemPoChecking;
+    @JoinColumn(name = "check_id")
+    private Check check;
 
     @ManyToOne
     @JoinColumn(name = "worker_id")

@@ -1,7 +1,6 @@
 package com.who.warehousesystem.service;
 
 import com.who.warehousesystem.dto.WorkerSaveDto;
-import com.who.warehousesystem.model.ItemCheckingWorker;
 import com.who.warehousesystem.model.User;
 import com.who.warehousesystem.model.Worker;
 import com.who.warehousesystem.repository.WorkerRepository;
@@ -13,7 +12,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,30 +67,21 @@ public class WorkerService {
             throwDuplicateException();
     }
 
-    @Autowired
-    ItemCheckingWorkerService itemWorkerService;
+//    public void deleteWorker(Integer id, Integer userId) throws Exception {
+//        checkRelatedData(id);
+//        User user = userService.findUserById(userId);
+//        Worker worker = findWorkerById(id);
+//        worker.setActive(false);
+//        worker.setUpdatedBy(user);
+//        workerRepository.save(worker);
+//    }
 
-    @Autowired
-    KitCheckingWorkerService kitWorkerService;
-
-    @Autowired
-    DpCheckingWorkerService dpWorkerService;
-
-    public void deleteWorker(Integer id, Integer userId) throws Exception {
-        checkRelatedData(id);
-        User user = userService.findUserById(userId);
-        Worker worker = findWorkerById(id);
-        worker.setActive(false);
-        worker.setUpdatedBy(user);
-        workerRepository.save(worker);
-    }
-
-    private void checkRelatedData(Integer workerId) throws Exception {
-        if(itemWorkerService.findAllItemsCheckingByWorker(workerId).size() > 0 ||
-           kitWorkerService.findAllKitsCheckingByWorker(workerId).size() > 0 ||
-           dpWorkerService.findAllKitsCheckingByWorker(workerId).size() > 0)
-            throw new Exception("This worker cannot be deleted because it's included in another tables");
-    }
+//    private void checkRelatedData(Integer workerId) throws Exception {
+//        if(itemWorkerService.findAllItemsCheckingByWorker(workerId).size() > 0 ||
+//           kitWorkerService.findAllKitsCheckingByWorker(workerId).size() > 0 ||
+//           dpWorkerService.findAllKitsCheckingByWorker(workerId).size() > 0)
+//            throw new Exception("This worker cannot be deleted because it's included in another tables");
+//    }
 
     @Autowired
     EntityManager entityManager;

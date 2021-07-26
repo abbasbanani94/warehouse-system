@@ -6,25 +6,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
-@Table(name = "dp_checking")
-public class DpChecking extends DateAudit {
+@Table(name = "checks")
+public class Check extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dp_checking_id")
+    @Column(name = "check_id")
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "check_type_id")
     private CheckType checkType;
 
-    @ManyToOne
-    @JoinColumn(name = "dp_id")
-    private DistributionPlan distributionPlan;
+    @Column(name = "notes")
+    private String notes;
+
+    @Column(name = "check_date")
+    private LocalDate checkDate;
 }

@@ -49,9 +49,6 @@ public class ItemPoService {
     @Autowired
     ItemDpService itemDpService;
 
-    @Autowired
-    ItemPoCheckingService itemPoCheckingService;
-
     public List<ItemPo> findItemPoDgv() {
         return itemPoRepository.findItemPoDgv().orElse(new ArrayList<>());
     }
@@ -95,26 +92,26 @@ public class ItemPoService {
         return itemPo;
     }
 
-    public void deleteItemPo(Integer id, Integer userId) throws Exception {
-        User user = userService.findUserById(userId);
-        ItemPo itemPo = itemPoRepository.findItemPoById(id).orElseThrow(() -> new Exception("Item PO not found for ID : " + id));
-        checkItemPoExistence(id);
-        itemPo.setActive(false);
-        itemPo.setUpdatedBy(user);
-        itemPoRepository.save(itemPo);
-        ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemPo
-                (1,itemPo.getId());
-        itemInventory.setActive(false);
-        itemInventory.setUpdatedBy(user);
-        itemInventoryService.saveItemInventory(itemInventory);
-    }
-
-    private void checkItemPoExistence(Integer itemPoId) throws Exception {
-        if(itemDisposalService.findItemDisposalByItemPo(itemPoId) != null ||
-           itemDpService.findItemDpByItemPo(itemPoId) != null ||
-           itemPoCheckingService.findItemCheckingByItemPo(itemPoId) != null)
-            throw new Exception("ItemPo ID : " + itemPoId + " cannot be deleted because it's included with another tables");
-    }
+//    public void deleteItemPo(Integer id, Integer userId) throws Exception {
+//        User user = userService.findUserById(userId);
+//        ItemPo itemPo = itemPoRepository.findItemPoById(id).orElseThrow(() -> new Exception("Item PO not found for ID : " + id));
+//        checkItemPoExistence(id);
+//        itemPo.setActive(false);
+//        itemPo.setUpdatedBy(user);
+//        itemPoRepository.save(itemPo);
+//        ItemInventory itemInventory = itemInventoryService.findItemInventoryByTypeAndItemPo
+//                (1,itemPo.getId());
+//        itemInventory.setActive(false);
+//        itemInventory.setUpdatedBy(user);
+//        itemInventoryService.saveItemInventory(itemInventory);
+//    }
+//
+//    private void checkItemPoExistence(Integer itemPoId) throws Exception {
+//        if(itemDisposalService.findItemDisposalByItemPo(itemPoId) != null ||
+//           itemDpService.findItemDpByItemPo(itemPoId) != null ||
+//           itemPoCheckingService.findItemCheckingByItemPo(itemPoId) != null)
+//            throw new Exception("ItemPo ID : " + itemPoId + " cannot be deleted because it's included with another tables");
+//    }
 
     public List<ItemPo> searchItemPo(ItemPoSearchDto dto) throws Exception {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();

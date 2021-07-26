@@ -43,7 +43,8 @@ public class KitPoController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteKitPo (@PathVariable (value = "id") Integer id,
                                        @RequestHeader (value = "userId") Integer userId) throws Exception {
-        kitPoService.deleteKitPo(id,userId);
+        //todo fix this after creating new check tables
+        //kitPoService.deleteKitPo(id,userId);
         return new ResponseEntity(HttpStatus.OK);
     }
 

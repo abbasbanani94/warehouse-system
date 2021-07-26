@@ -12,19 +12,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "dp_checking_workers")
-public class DpCheckingWorker extends DateAudit {
+@Table(name = "check_kit_po")
+public class CheckKitPo extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dp_checking_worker_id")
+    @Column(name = "check_kit_po_id")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "dp_checking_id")
-    private DpChecking dpChecking;
+    @JoinColumn(name = "check_id")
+    private Check check;
 
     @ManyToOne
-    @JoinColumn(name = "worker_id")
-    private Worker worker;
+    @JoinColumn(name = "kit_po_id")
+    private KitPo kitPo;
 }
