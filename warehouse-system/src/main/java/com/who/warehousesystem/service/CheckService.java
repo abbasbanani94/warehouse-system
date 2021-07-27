@@ -2,9 +2,11 @@ package com.who.warehousesystem.service;
 
 import com.who.warehousesystem.dto.CheckDgvDto;
 import com.who.warehousesystem.dto.CheckSaveDto;
+import com.who.warehousesystem.dto.CheckWorkerDto;
 import com.who.warehousesystem.model.Check;
 import com.who.warehousesystem.model.CheckType;
 import com.who.warehousesystem.model.User;
+import com.who.warehousesystem.model.Worker;
 import com.who.warehousesystem.repository.CheckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,5 +118,28 @@ public class CheckService {
             return new CheckDgvDto((Integer)check[0],check[1].toString(),(Date)check[2],
                     check[3].toString(),(Integer)check[6],((Integer)check[4] + (Integer)check[5]));
         }).collect(Collectors.toList());
+    }
+
+    @Autowired
+    WorkerService workerService;
+
+    public List<String> findAllWorkers(Integer checkId) {
+        return workerService.findAllWorkersByCheck(checkId);
+    }
+
+    public List<String> findCheckWorkers(Integer checkId) {
+        return checkWorkerService.findCheckWorkersByCheck(checkId).stream().map(checkWorker -> {
+            return checkWorker.getWorker().getId() + " - " + checkWorker.getWorker().getEnName();
+        }).collect(Collectors.toList());
+    }
+
+    public boolean saveCheckWorkers(Integer checkId, CheckWorkerDto dto, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        if(checkWorkerService.deleteCheckWorkersByCheck(checkId,user)) {
+            List<Worker> workers = workerService.extractWorkerFromStringList(dto.getWorker());
+            Check check = findCheckById(checkId);
+            checkWorkerService.saveCheckWorkers(check,workers,user);
+        }
+        return true;
     }
 }

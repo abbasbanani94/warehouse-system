@@ -35,35 +35,7 @@ namespace WarehouseSystem
                 Msg.errorMsg("You must select atleast one item from DP to move it into WB", "Error");
             else
             {
-                moveItems(listDp, listWb);
-            }
-        }
-
-        private void moveItems(ListBox source, ListBox destination)
-        {
-            List<string> items = new List<string>();
-            for (int i = 0; i < source.SelectedItems.Count; i++)
-            {
-                for (int j = 0; j < source.Items.Count; j++)
-                {
-                    if ((string)source.SelectedItems[i] == source.Items[j].ToString())
-                    {
-                        destination.Items.Add(source.Items[j]);
-                        items.Add(source.Items[j].ToString());
-                        break;
-                    }
-                }
-            }
-            for (int i = 0; i < items.Count; i++)
-            {
-                for (int j = 0; j < source.Items.Count; j++)
-                {
-                    if (items[i] == source.Items[j].ToString())
-                    {
-                        source.Items.RemoveAt(j);
-                        break;
-                    }
-                }
+                FormsFunctions.moveItems(listDp, listWb);
             }
         }
 
@@ -73,11 +45,11 @@ namespace WarehouseSystem
                 Msg.errorMsg("no items in DP list to be moved into WB", "Error");
             else
             {
-                for(int i=listDp.Items.Count - 1; i > -1; i--)
+                for(int i=0; i < listDp.Items.Count; i++)
                 {
                     listWb.Items.Add(listDp.Items[i]);
-                    listDp.Items.RemoveAt(i);
                 }
+                listDp.Items.Clear();
             }
         }
 
@@ -87,7 +59,7 @@ namespace WarehouseSystem
                 Msg.errorMsg("You must select atleast one item from WB to move it back into DP", "Error");
             else
             {
-                moveItems(listWb, listDp);
+                FormsFunctions.moveItems(listWb, listDp);
             }
         }
 
@@ -97,11 +69,11 @@ namespace WarehouseSystem
                 Msg.errorMsg("no items in WB list to be moved into DP", "Error");
             else
             {
-                for (int i = listWb.Items.Count - 1; i > -1; i--)
+                for (int i = 0; i < listWb.Items.Count; i++)
                 {
                     listDp.Items.Add(listWb.Items[i]);
-                    listWb.Items.RemoveAt(i);
                 }
+                listWb.Items.Clear();
             }
         }
 
@@ -109,24 +81,14 @@ namespace WarehouseSystem
         {
             if(Msg.questionMsg("Do you want to save Waybill details ?","Save Confirmation") == DialogResult.Yes)
             {
-                List<string> dpList = addFromListBox(listDp);
-                List<string> wbList = addFromListBox(listWb);
+                List<string> dpList = FormsFunctions.addFromListBox(listDp);
+                List<string> wbList = FormsFunctions.addFromListBox(listWb);
                 WbDetailsSaveDto dto = new WbDetailsSaveDto(dpList, wbList);
                 if(Waybill.saveWaybillDetails(txtWbId.Text, dto))
                 {
                     Msg.saved("Waybill Details");
                 }
             }
-        }
-
-        private List<string> addFromListBox(ListBox listBox)
-        {
-            List<string> list = new List<string>();
-            for(int i=0; i<listBox.Items.Count; i++)
-            {
-                list.Add(listBox.Items[i].ToString());
-            }
-            return list;
         }
     }
 }

@@ -23,4 +23,8 @@ public interface WorkerRepository extends JpaRepository<Worker, Integer> {
 
     @Query(value = "select * from workers where active = 1 and worker_id = :id",nativeQuery = true)
     Optional<Worker> findWorkerById(@Param(value = "id") Integer id);
+
+    @Query(value = "select * from workers where active = 1 and worker_id not in (select worker_id from " +
+            "check_workers where active = 1 and check_id = :check)", nativeQuery = true)
+    Optional<List<Worker>> findAllWorkersNotInCheck(@Param(value = "check") Integer checkId);
 }

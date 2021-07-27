@@ -124,5 +124,29 @@ namespace WarehouseSystem
                     Check.findAllChecksDgv(dgv);
             }
         }
+
+        private frm_check_worker _check_worker = null;
+
+        private void btnWorkers_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text == "")
+                Msg.errorMsg("Double click on the row you want to add workers for", "Error");
+            else
+            {
+                if (_check_worker == null)
+                {
+                    _check_worker = new frm_check_worker(txtId.Text);
+                    _check_worker.Show();
+                    _check_worker.FormClosed += _check_worker_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Check Workers");
+            }
+        }
+
+        private void _check_worker_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _check_worker = null;
+        }
     }
 }

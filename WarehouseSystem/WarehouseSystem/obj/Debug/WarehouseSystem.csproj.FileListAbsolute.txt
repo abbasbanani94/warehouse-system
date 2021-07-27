@@ -26,3 +26,4 @@ C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debu
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_kit_po.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_kit_disposal.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_check.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_check_worker.resources

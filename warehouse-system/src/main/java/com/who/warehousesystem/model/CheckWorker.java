@@ -27,4 +27,10 @@ public class CheckWorker extends DateAudit {
     @ManyToOne
     @JoinColumn(name = "worker_id")
     private Worker worker;
+
+    public CheckWorker(Check check, Worker worker, User user) {
+        this.check = check;
+        this.worker = worker;
+        this.setCreatedBy(user);
+    }
 }

@@ -57,8 +57,10 @@
     <Compile Include="CenterEditDto.cs" />
     <Compile Include="CenterSaveDto.cs" />
     <Compile Include="Check.cs" />
+    <Compile Include="CheckDetailsDto.cs" />
     <Compile Include="CheckSaveDto.cs" />
     <Compile Include="CheckType.cs" />
+    <Compile Include="CheckWorkerDto.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ComboDto.cs" />
     <Compile Include="Disposal.cs" />
@@ -71,6 +73,12 @@
     </Compile>
     <Compile Include="frm_check.Designer.cs">
       <DependentUpon>frm_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_check_worker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_check_worker.Designer.cs">
+      <DependentUpon>frm_check_worker.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_disposal.cs">
       <SubType>Form</SubType>
@@ -200,6 +208,9 @@
     <Compile Include="WorkerSaveDto.cs" />
     <EmbeddedResource Include="frm_check.resx">
       <DependentUpon>frm_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_check_worker.resx">
+      <DependentUpon>frm_check_worker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_disposal.resx">
       <DependentUpon>frm_disposal.cs</DependentUpon>

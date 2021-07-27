@@ -1,6 +1,7 @@
 package com.who.warehousesystem.repository;
 
 import com.who.warehousesystem.model.CheckWorker;
+import com.who.warehousesystem.model.Worker;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

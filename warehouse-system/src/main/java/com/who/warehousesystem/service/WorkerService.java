@@ -14,6 +14,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WorkerService {
@@ -104,5 +105,23 @@ public class WorkerService {
 
         cq.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         return entityManager.createQuery(cq).getResultList();
+    }
+
+    public List<String> findAllWorkersByCheck(Integer checkId) {
+        return workerRepository.findAllWorkersNotInCheck(checkId).orElse(new ArrayList<>()).stream().map(
+                worker -> {
+                    return worker.getId() + " - " + worker.getEnName();
+                }
+        ).collect(Collectors.toList());
+    }
+
+    public List<Worker> extractWorkerFromStringList(List<String> workersList) throws Exception {
+        List<Worker> workers = new ArrayList<>();
+        for(String s : workersList) {
+            String id = s.substring(0,s.indexOf(' '));
+            Worker worker = findWorkerById(Integer.parseInt(id));
+            workers.add(worker);
+        }
+        return workers;
     }
 }
