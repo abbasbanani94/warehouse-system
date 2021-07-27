@@ -27,4 +27,10 @@ public class CheckKitPo extends DateAudit {
     @ManyToOne
     @JoinColumn(name = "kit_po_id")
     private KitPo kitPo;
+
+    public CheckKitPo(Check check, KitPo kitPo, User user) {
+        this.check = check;
+        this.kitPo = kitPo;
+        this.setCreatedBy(user);
+    }
 }

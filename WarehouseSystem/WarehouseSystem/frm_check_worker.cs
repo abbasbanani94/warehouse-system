@@ -24,8 +24,8 @@ namespace WarehouseSystem
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            Check.findWorkers(listWorkers,"/checks/" + txtCheckId.Text + "/all-workers");
-            Check.findWorkers(listCheck, "/checks/" + txtCheckId.Text + "/check-workers");
+            Check.findListBoxItems(listWorkers,"/checks/" + txtCheckId.Text + "/all-workers");
+            Check.findListBoxItems(listCheck, "/checks/" + txtCheckId.Text + "/check-workers");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -177,8 +177,8 @@ public class ItemDpService {
 
     public List<String> findDpItemsByCenterNoWb(Integer centerId) {
         return itemDpRepository.findItemDpByCenterNoWb(centerId).orElse(new ArrayList<>()).stream().map(itemDp -> {
-            return "I" + itemDp.getId() + " - " + itemDp.getItemPo().getItem().getName() + " - Qty : " +
-                    itemDp.getQty();
+            return "I" + itemDp.getId() + " - " + itemDp.getItemPo().getItem().getName() + " - PO#" +
+                    itemDp.getItemPo().getPurchaseOrder().getNo() + " - Qty : " + itemDp.getQty();
         }).collect(Collectors.toList());
     }
 

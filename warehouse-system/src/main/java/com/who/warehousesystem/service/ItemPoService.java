@@ -15,6 +15,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemPoService {
@@ -198,5 +199,32 @@ public class ItemPoService {
 
     public void addInventoryByItemDisposal(ItemDisposal itemDisposal, User user) {
         editInventoryByItemPoAndQty(itemDisposal.getItemPo(), itemDisposal.getQty(), user, "add");
+    }
+
+    public List<String> findItemsByNoCheck(Integer checkId) {
+        return createItemPoCheckList(itemPoRepository.findItemsByNoCheck(checkId).orElse(new ArrayList<>()));
+    }
+
+    private List<String> createItemPoCheckList (List<ItemPo> itemPos) {
+        return itemPos.stream().map(
+                itemPo -> {
+                    return "I" + itemPo.getId() + " - " + itemPo.getItem().getName() + " - PO#" +
+                            itemPo.getPurchaseOrder().getNo() + " - Qty: " + itemPo.getTotalQty();
+                }
+        ).collect(Collectors.toList());
+    }
+
+    public List<String> findItemsByCheck(Integer checkId) {
+        return createItemPoCheckList(itemPoRepository.findItemsByCheck(checkId).orElse(new ArrayList<>()));
+    }
+
+    public List<ItemPo> extractItemPoFromStringList(List<String> checkList) throws Exception {
+        List<ItemPo> itemPos = new ArrayList<>();
+        for(String s : checkList) {
+            if(s.startsWith("I")) {
+                itemPos.add(findItemPoById(Integer.parseInt(s.substring(1,s.indexOf(' ')))));
+            }
+        }
+        return itemPos;
     }
 }

@@ -48,7 +48,7 @@ public class WaybillService {
             return false;
     }
 
-    private List<String> addTwoLists(List<String> items, List<String> kits) {
+    public List<String> addTwoLists(List<String> items, List<String> kits) {
         List<String> listBox = new ArrayList<>();
         for(String item : items) {
             listBox.add(item);

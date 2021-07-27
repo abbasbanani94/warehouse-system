@@ -28,4 +28,12 @@ public interface KitPoRepository extends JpaRepository<KitPo,Integer> {
     @Query(value = "select count(kit_po_id) from kit_po where active = 1 and purchase_order_id = :poId",
             nativeQuery = true)
     int findKitsCountByPo(@Param(value = "poId") Integer poId);
+
+    @Query(value = "select * from kit_po where active = 1 and kit_po_id not in (select kit_po_id from " +
+            "check_kit_po where active = 1 and check_id = :check) order by kit_po_id desc", nativeQuery = true)
+    Optional<List<KitPo>> findKitsByNoCheck(@Param(value = "check") Integer checkId);
+
+    @Query(value = "select * from kit_po where active = 1 and kit_po_id in (select kit_po_id from " +
+            "check_kit_po where active = 1 and check_id = :check) order by kit_po_id desc", nativeQuery = true)
+    Optional<List<KitPo>> findKitsByCheck(@Param(value = "check") Integer checkId);
 }

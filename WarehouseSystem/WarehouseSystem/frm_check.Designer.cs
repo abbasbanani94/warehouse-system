@@ -114,6 +114,7 @@
             this.btnContent.TabStop = false;
             this.btnContent.Text = "Items And Kits";
             this.btnContent.UseVisualStyleBackColor = true;
+            this.btnContent.Click += new System.EventHandler(this.btnContent_Click);
             // 
             // btnWorkers
             // 

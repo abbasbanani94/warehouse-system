@@ -60,6 +60,8 @@ public class PurchaseOrderService {
             return purchaseOrderRepository.findPurchaseOrderById(poId)
                     .orElseThrow(() -> new Exception("PO not found for ID : " + poId));
         else {
+            if(purchaseOrderRepository.findPurchaseOrderByNo(Integer.parseInt(poNo)).isPresent())
+                return purchaseOrderRepository.findPurchaseOrderByNo(Integer.parseInt(poNo)).get();
             return purchaseOrderRepository.save(new PurchaseOrder(Integer.parseInt(poNo),user));
         }
      }

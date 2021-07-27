@@ -28,4 +28,10 @@ public class CheckItemPo extends DateAudit {
     @ManyToOne
     @JoinColumn(name = "item_po_id")
     private ItemPo itemPo;
+
+    public CheckItemPo(Check check, ItemPo itemPo, User user) {
+        this.check = check;
+        this.itemPo = itemPo;
+        this.setCreatedBy(user);
+    }
 }

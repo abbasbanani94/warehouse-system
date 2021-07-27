@@ -15,6 +15,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class KitPoService {
@@ -207,5 +208,32 @@ public class KitPoService {
 
     public void addInventoryByKitDisposal(KitDisposal kitDisposal, User user) {
         editInventoryByKitPo(kitDisposal.getKitPo(),kitDisposal.getQty(),user,"add");
+    }
+
+    public List<String> findKitsByNoCheck(Integer checkId) {
+        return createKitPoCheckList(kitPoRepository.findKitsByNoCheck(checkId).orElse(new ArrayList<>()));
+    }
+
+    private List<String> createKitPoCheckList (List<KitPo> kitPos) {
+        return kitPos.stream().map(
+                kitPo -> {
+                    return "K" + kitPo.getId() + " - " + kitPo.getKit().getName() + " - PO#" +
+                            kitPo.getOrder().getNo() + " - Qty: " + kitPo.getTotalQty();
+                }
+        ).collect(Collectors.toList());
+    }
+
+    public List<String> findKitsByCheck(Integer checkId) {
+        return createKitPoCheckList(kitPoRepository.findKitsByCheck(checkId).orElse(new ArrayList<>()));
+    }
+
+    public List<KitPo> extractKitPoFromStringList(List<String> checkList) throws Exception {
+        List<KitPo> kitPos = new ArrayList<>();
+        for(String s : checkList) {
+            if(s.startsWith("K")) {
+                kitPos.add(findKitPoById(Integer.parseInt(s.substring(1,s.indexOf(' ')))));
+            }
+        }
+        return kitPos;
     }
 }

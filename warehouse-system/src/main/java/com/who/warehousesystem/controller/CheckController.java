@@ -77,4 +77,21 @@ public class CheckController {
                                             @RequestHeader (value = "userId") Integer userId) throws Exception {
         return new ResponseEntity(checkService.saveCheckWorkers(id,dto,userId), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}/all-items")
+    public ResponseEntity findAllItems (@PathVariable (value = "id") Integer id) {
+        return new ResponseEntity(checkService.findAllItems(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/check-items")
+    public ResponseEntity findCheckItems (@PathVariable (value = "id") Integer id) {
+        return new ResponseEntity(checkService.findCheckItems(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}/check-items")
+    public ResponseEntity saveCheckItems (@PathVariable (value = "id") Integer id,
+                                          @RequestBody CheckWorkerDto dto,
+                                          @RequestHeader (value = "userId") Integer userId) throws Exception {
+        return new ResponseEntity(checkService.saveCheckItems(id,dto,userId), HttpStatus.OK);
+    }
 }

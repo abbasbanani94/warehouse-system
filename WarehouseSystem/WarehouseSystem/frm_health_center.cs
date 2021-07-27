@@ -30,6 +30,7 @@ namespace WarehouseSystem
         private void load()
         {
             HealthCenter.findAllHealthCenters(dgv);
+            cmbCity.Focus();
         }
 
         private void cmbCity_SelectedIndexChanged(object sender, EventArgs e)

@@ -74,6 +74,12 @@
     <Compile Include="frm_check.Designer.cs">
       <DependentUpon>frm_check.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_check_item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_check_item.Designer.cs">
+      <DependentUpon>frm_check_item.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_check_worker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     <Compile Include="WorkerSaveDto.cs" />
     <EmbeddedResource Include="frm_check.resx">
       <DependentUpon>frm_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_check_item.resx">
+      <DependentUpon>frm_check_item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_check_worker.resx">
       <DependentUpon>frm_check_worker.cs</DependentUpon>

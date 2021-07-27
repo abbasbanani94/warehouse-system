@@ -3,10 +3,7 @@ package com.who.warehousesystem.service;
 import com.who.warehousesystem.dto.CheckDgvDto;
 import com.who.warehousesystem.dto.CheckSaveDto;
 import com.who.warehousesystem.dto.CheckWorkerDto;
-import com.who.warehousesystem.model.Check;
-import com.who.warehousesystem.model.CheckType;
-import com.who.warehousesystem.model.User;
-import com.who.warehousesystem.model.Worker;
+import com.who.warehousesystem.model.*;
 import com.who.warehousesystem.repository.CheckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -141,5 +138,43 @@ public class CheckService {
             checkWorkerService.saveCheckWorkers(check,workers,user);
         }
         return true;
+    }
+
+    @Autowired
+    ItemPoService itemPoService;
+
+    @Autowired
+    KitPoService kitPoService;
+
+    @Autowired
+    WaybillService waybillService;
+
+    public List<String> findAllItems(Integer checkId) {
+        List<String> items = itemPoService.findItemsByNoCheck(checkId);
+        List<String> kits = kitPoService.findKitsByNoCheck(checkId);
+
+        return waybillService.addTwoLists(items,kits);
+    }
+
+    public List<String> findCheckItems(Integer checkId) {
+        List<String> items = itemPoService.findItemsByCheck(checkId);
+        List<String> kits = kitPoService.findKitsByCheck(checkId);
+
+        return waybillService.addTwoLists(items,kits);
+    }
+
+    public boolean saveCheckItems(Integer checkId, CheckWorkerDto dto, Integer userId) throws Exception {
+        User user = userService.findUserById(userId);
+        if(checkItemPoService.deleteItemsByCheck(checkId,user) && checkKitPoService.deleteKitsByCheck(checkId,user)) {
+            Check check = findCheckById(checkId);
+
+            List<ItemPo> itemPos = itemPoService.extractItemPoFromStringList(dto.getWorker());
+            List<KitPo> kitPos = kitPoService.extractKitPoFromStringList(dto.getWorker());
+
+            checkItemPoService.saveCheckItems(check,itemPos,user);
+            checkKitPoService.saveCheckKits(check,kitPos,user);
+            return true;
+        }
+        return false;
     }
 }

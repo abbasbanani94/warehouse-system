@@ -179,7 +179,8 @@ public class KitDpService {
 
     public List<String> findDpKitsByCenterNoWb(Integer centerId) {
         return kitDpRepository.findKitDpByCenterNoWb(centerId).orElse(new ArrayList<>()).stream().map(kitDp -> {
-            return "K" + kitDp.getId() + " - " + kitDp.getKitPo().getKit().getName() + " - Qty : " + kitDp.getQty();
+            return "K" + kitDp.getId() + " - " + kitDp.getKitPo().getKit().getName() + " - PO#" +
+                    kitDp.getKitPo().getOrder().getNo() + " - Qty : " + kitDp.getQty();
         }).collect(Collectors.toList());
     }
 

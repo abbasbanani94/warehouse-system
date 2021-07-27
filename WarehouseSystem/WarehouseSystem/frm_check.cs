@@ -148,5 +148,29 @@ namespace WarehouseSystem
         {
             _check_worker = null;
         }
+
+        private frm_check_item _check_item = null;
+
+        private void btnContent_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text == "")
+                Msg.errorMsg("Double click on the row you want to add items for", "Error");
+            else
+            {
+                if (_check_item == null)
+                {
+                    _check_item = new frm_check_item(txtId.Text);
+                    _check_item.Show();
+                    _check_item.FormClosed += _check_item_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Check Items");
+            }
+        }
+
+        private void _check_item_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _check_item = null;
+        }
     }
 }

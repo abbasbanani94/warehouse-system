@@ -52,7 +52,7 @@ namespace WarehouseSystem
                 "&date=" + date + "&d=" + d);
         }
 
-        internal static async void findWorkers(ListBox list,string url)
+        internal static async void findListBoxItems(ListBox list,string url)
         {
             try
             {
@@ -71,6 +71,11 @@ namespace WarehouseSystem
         internal static bool saveCheckWorkers(string checkId, CheckWorkerDto dto)
         {
             return Client.saveRequest(baseUrl + "/" + checkId + "/check-workers", dto);
+        }
+
+        internal static bool saveCheckItems(string checkId, CheckWorkerDto dto)
+        {
+            return Client.saveRequest(baseUrl + "/" + checkId + "/check-items", dto);
         }
     }
 }
