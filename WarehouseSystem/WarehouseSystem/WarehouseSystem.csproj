@@ -86,6 +86,12 @@
     <Compile Include="frm_check_worker.Designer.cs">
       <DependentUpon>frm_check_worker.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_connection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_connection.Designer.cs">
+      <DependentUpon>frm_connection.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_disposal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,12 @@
     </Compile>
     <Compile Include="frm_kit_disposal.Designer.cs">
       <DependentUpon>frm_kit_disposal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_password.cs">
       <SubType>Form</SubType>
@@ -210,6 +222,7 @@
     <Compile Include="KitPoDpDto.cs" />
     <Compile Include="KitPoSaveDto.cs" />
     <Compile Include="KitPoSearchDto.cs" />
+    <Compile Include="LoginDto.cs" />
     <Compile Include="Msg.cs" />
     <Compile Include="NameDto.cs" />
     <Compile Include="PasswordDto.cs" />
@@ -220,6 +233,7 @@
     <Compile Include="PurchaseOrder.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserLoginDto.cs" />
     <Compile Include="UserSaveDto.cs" />
     <Compile Include="Waybill.cs" />
     <Compile Include="WbDetailsDto.cs" />
@@ -235,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_check_worker.resx">
       <DependentUpon>frm_check_worker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_connection.resx">
+      <DependentUpon>frm_connection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_disposal.resx">
       <DependentUpon>frm_disposal.cs</DependentUpon>
@@ -262,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_po.resx">
       <DependentUpon>frm_kit_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_password.resx">
       <DependentUpon>frm_password.cs</DependentUpon>
@@ -295,6 +315,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -311,6 +332,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whoparent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,7 +11,7 @@ namespace WarehouseSystem
         public static HttpClient getHttpClient()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080");
+            client.BaseAddress = new Uri(Properties.Settings.Default.serverUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));

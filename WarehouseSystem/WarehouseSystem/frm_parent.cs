@@ -272,5 +272,10 @@ namespace WarehouseSystem
         {
             _password = null;
         }
+
+        private void frm_parent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

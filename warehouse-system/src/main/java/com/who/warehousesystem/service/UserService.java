@@ -1,5 +1,6 @@
 package com.who.warehousesystem.service;
 
+import com.who.warehousesystem.dto.LoginDto;
 import com.who.warehousesystem.dto.PasswordDto;
 import com.who.warehousesystem.dto.UserSaveDto;
 import com.who.warehousesystem.model.Role;
@@ -97,5 +98,9 @@ public class UserService {
     private User findUserByUsernameAndPassword(String username, String password) throws Exception {
         return userRepository.findUserByUsernameAndPassword(username,password)
                 .orElseThrow(() -> new Exception("Incorrect username or password or this user had been deactivated"));
+    }
+
+    public User login(LoginDto dto) throws Exception {
+        return findUserByUsernameAndPassword(dto.getUsername(),dto.getPassword());
     }
 }

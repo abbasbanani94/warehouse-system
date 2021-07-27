@@ -30,3 +30,5 @@ C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debu
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_check_item.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_user.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_password.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_login.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_connection.resources

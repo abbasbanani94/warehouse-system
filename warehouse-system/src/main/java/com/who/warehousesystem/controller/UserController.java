@@ -1,8 +1,6 @@
 package com.who.warehousesystem.controller;
 
-import com.who.warehousesystem.dto.PasswordDto;
-import com.who.warehousesystem.dto.UserDgvDto;
-import com.who.warehousesystem.dto.UserSaveDto;
+import com.who.warehousesystem.dto.*;
 import com.who.warehousesystem.model.User;
 import com.who.warehousesystem.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -51,5 +49,11 @@ public class UserController {
     @PutMapping("/password")
     public ResponseEntity changePassword (@RequestBody PasswordDto dto) throws Exception {
         return new ResponseEntity(modelMapper.map(userService.changePassword(dto),UserDgvDto.class), HttpStatus.OK);
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity login (@RequestParam (value = "username") String username,
+                                 @RequestParam (value = "password") String password) throws Exception {
+        return new ResponseEntity(modelMapper.map(userService.login(new LoginDto(username,password)), UserLoginDto.class), HttpStatus.OK);
     }
 }

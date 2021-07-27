@@ -1,0 +1,16 @@
+package com.who.warehousesystem.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class UserLoginDto {
+
+    private Integer id;
+    private String roleName;
+    private String name;
+}
