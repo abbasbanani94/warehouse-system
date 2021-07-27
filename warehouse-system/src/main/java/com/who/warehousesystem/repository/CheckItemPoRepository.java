@@ -14,4 +14,7 @@ public interface CheckItemPoRepository extends JpaRepository<CheckItemPo,Integer
 
     @Query(value = "select * from check_item_po where active = 1 and item_po_id = :itemPo", nativeQuery = true)
     Optional<List<CheckItemPo>> findCheckItemsByItemPo(@Param(value = "itemPo") Integer itemPoId);
+
+    @Query(value = "select * from check_item_po where active = 1 and check_id = :check",nativeQuery = true)
+    Optional<List<CheckItemPo>> findCheckItemsByCheck(@Param(value = "check") Integer checkId);
 }

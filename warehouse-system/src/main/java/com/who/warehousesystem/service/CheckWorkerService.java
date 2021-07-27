@@ -17,4 +17,8 @@ public class CheckWorkerService {
     public List<CheckWorker> findCheckWorkersByWorker(Integer workerId) {
         return checkWorkerRepository.findCheckWorkersByWorker(workerId).orElse(new ArrayList<>());
     }
+
+    public List<CheckWorker> findCheckWorkersByCheck(Integer checkId) {
+        return checkWorkerRepository.findCheckWorkersByCheck(checkId).orElse(new ArrayList<>());
+    }
 }

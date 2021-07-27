@@ -18,4 +18,8 @@ public class CheckKitPoService {
     public List<CheckKitPo> findCheckKitsByKitPo(Integer kitPoId) {
         return checkKitPoRepository.findCheckKitsByKitPo(kitPoId).orElse(new ArrayList<>());
     }
+
+    public List<CheckKitPo> findCheckKitsByCheck(Integer checkId) {
+        return checkKitPoRepository.findCheckKitsByCheck(checkId).orElse(new ArrayList<>());
+    }
 }

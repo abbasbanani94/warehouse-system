@@ -213,5 +213,24 @@ namespace WarehouseSystem
         {
             _disposal = null;
         }
+
+        private frm_check _check = null;
+
+        private void checksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_check == null)
+            {
+                _check = new frm_check();
+                _check.Show();
+                _check.FormClosed += _check_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Checks");
+        }
+
+        private void _check_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _check = null;
+        }
     }
 }

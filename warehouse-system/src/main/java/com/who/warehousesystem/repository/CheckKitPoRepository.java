@@ -14,4 +14,7 @@ public interface CheckKitPoRepository extends JpaRepository<CheckKitPo,Integer> 
 
     @Query(value = "select * from check_kit_po where active = 1 and kit_po_id = :kitPo", nativeQuery = true)
     Optional<List<CheckKitPo>> findCheckKitsByKitPo(@Param(value = "kitPo") Integer kitPoId);
+
+    @Query(value = "select * from check_kit_po where active = 1 and check_id = :check", nativeQuery = true)
+    Optional<List<CheckKitPo>> findCheckKitsByCheck(@Param(value = "check") Integer checkId);
 }

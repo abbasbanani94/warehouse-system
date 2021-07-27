@@ -30,4 +30,11 @@ public class Check extends DateAudit {
 
     @Column(name = "check_date")
     private LocalDate checkDate;
+
+    public Check(CheckType checkType, String notes, LocalDate date, User user) {
+        this.checkType = checkType;
+        this.notes = notes;
+        this.checkDate = date;
+        this.setCreatedBy(user);
+    }
 }
