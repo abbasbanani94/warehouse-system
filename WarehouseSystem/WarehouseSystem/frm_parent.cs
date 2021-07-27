@@ -232,5 +232,24 @@ namespace WarehouseSystem
         {
             _check = null;
         }
+
+        private frm_user _user = null;
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_user == null)
+            {
+                _user = new frm_user();
+                _user.Show();
+                _user.FormClosed += _user_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Users");
+        }
+
+        private void _user_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _user = null;
+        }
     }
 }

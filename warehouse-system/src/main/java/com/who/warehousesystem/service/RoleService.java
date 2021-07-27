@@ -17,4 +17,9 @@ public class RoleService {
     public List<Role> findAllRoles() {
         return roleRepository.findAllRoles().orElse(new ArrayList<>());
     }
+
+    public Role findRoleById(Integer roleId) throws Exception {
+        return roleRepository.findRoleById(roleId).orElseThrow(() ->
+                new Exception("No Role for ID : " + roleId));
+    }
 }

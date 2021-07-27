@@ -28,3 +28,4 @@ C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debu
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_check.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_check_worker.resources
 C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_check_item.resources
+C:\Users\abbas\Desktop\warehouse-system\WarehouseSystem\WarehouseSystem\obj\Debug\WarehouseSystem.frm_user.resources
