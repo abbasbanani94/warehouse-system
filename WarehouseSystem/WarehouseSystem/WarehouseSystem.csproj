@@ -134,6 +134,12 @@
     <Compile Include="frm_kit_disposal.Designer.cs">
       <DependentUpon>frm_kit_disposal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_password.Designer.cs">
+      <DependentUpon>frm_password.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_purchase_order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,7 @@
     <Compile Include="KitPoSearchDto.cs" />
     <Compile Include="Msg.cs" />
     <Compile Include="NameDto.cs" />
+    <Compile Include="PasswordDto.cs" />
     <Compile Include="PlanSaveDto.cs" />
     <Compile Include="PoCombo.cs" />
     <Compile Include="Program.cs" />
@@ -255,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_po.resx">
       <DependentUpon>frm_kit_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_password.resx">
+      <DependentUpon>frm_password.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_purchase_order.resx">
       <DependentUpon>frm_purchase_order.cs</DependentUpon>

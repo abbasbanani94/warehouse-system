@@ -1,5 +1,6 @@
 package com.who.warehousesystem.controller;
 
+import com.who.warehousesystem.dto.PasswordDto;
 import com.who.warehousesystem.dto.UserDgvDto;
 import com.who.warehousesystem.dto.UserSaveDto;
 import com.who.warehousesystem.model.User;
@@ -45,5 +46,10 @@ public class UserController {
     @PutMapping("/deactivate/{id}")
     public ResponseEntity deactivateUser (@PathVariable (value = "id") Integer id) throws Exception {
         return new ResponseEntity(modelMapper.map(userService.deactivateUser(id), UserDgvDto.class), HttpStatus.OK);
+    }
+
+    @PutMapping("/password")
+    public ResponseEntity changePassword (@RequestBody PasswordDto dto) throws Exception {
+        return new ResponseEntity(modelMapper.map(userService.changePassword(dto),UserDgvDto.class), HttpStatus.OK);
     }
 }

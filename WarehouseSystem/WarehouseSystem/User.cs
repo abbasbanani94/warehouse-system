@@ -34,5 +34,10 @@ namespace WarehouseSystem
         {
             return Client.editRequest(baseUrl + "/deactivate/" + id, new UserSaveDto());
         }
+
+        internal static bool changePassword(PasswordDto dto)
+        {
+            return Client.editRequest(baseUrl + "/password", dto);
+        }
     }
 }

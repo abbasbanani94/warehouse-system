@@ -12,6 +12,8 @@ namespace WarehouseSystem
 
         private void frm_parent_Load(object sender, EventArgs e)
         {
+            if (User.role != "Admin")
+                usersToolStripMenuItem.Enabled = false;
             tslDate.Text = DateTime.Now.ToShortDateString();
             tslTime.Text = DateTime.Now.ToShortTimeString();
             tslRole.Text = User.role;
@@ -250,6 +252,25 @@ namespace WarehouseSystem
         private void _user_FormClosed(object sender, FormClosedEventArgs e)
         {
             _user = null;
+        }
+
+        private frm_password _password = null;
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_password == null)
+            {
+                _password = new frm_password();
+                _password.Show();
+                _password.FormClosed += _password_FormClosed;
+            }
+            else
+                Msg.formAlreadyOpen("Change Password");
+        }
+
+        private void _password_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _password = null;
         }
     }
 }
