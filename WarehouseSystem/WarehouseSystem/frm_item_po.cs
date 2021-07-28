@@ -36,6 +36,7 @@ namespace WarehouseSystem
             PurchaseOrder.findAllCountries(cmbCountry);
             Item.findAllItemsCombo(cmbItem);
             ItemPo.findItemPoDgv(dgv);
+            cmbPoNo.Focus();
         }
 
         private void cmbPoNo_TextChanged(object sender, EventArgs e)
@@ -44,7 +45,9 @@ namespace WarehouseSystem
             if(cmbPoNo.Text != "")
             {
                 if(cmbPoNo.SelectedValue != null)
+                {
                     txtPoId.Text = cmbPoNo.SelectedValue.ToString();
+                }
             }
         }
 

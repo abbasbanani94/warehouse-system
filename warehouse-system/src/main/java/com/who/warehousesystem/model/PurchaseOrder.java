@@ -23,8 +23,8 @@ public class PurchaseOrder extends DateAudit {
     @Column(name = "purchase_order_no",unique = true)
     private String no;
 
-    public PurchaseOrder(Integer poNo, User user) {
-        this.no = poNo.toString();
+    public PurchaseOrder(String poNo, User user) {
+        this.no = poNo;
         this.setCreatedBy(user);
     }
 }

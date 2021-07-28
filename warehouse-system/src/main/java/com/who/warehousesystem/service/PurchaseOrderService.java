@@ -21,36 +21,33 @@ public class PurchaseOrderService {
     @Autowired
     UserService userService;
 
-    public List<PoComboDto> findAllPurchaseOrdersItems() {
+    private List<PoComboDto> findAllPurchaseOrders (Integer index) {
         List<PoComboDto> list = new ArrayList<>();
         List<Object[]> objects = purchaseOrderRepository.findAllPoDgv().orElse(new ArrayList<>());
         for(Object[] po : objects) {
-            if (Integer.parseInt(po[2].toString()) != 0) {
+            if (Integer.parseInt(po[index].toString()) != 0) {
                 list.add(new PoComboDto(Integer.parseInt(po[0].toString()), po[1].toString()));
             }
         }
         return list;
+    }
+
+    public List<PoComboDto> findAllPurchaseOrdersItems() {
+        return findAllPurchaseOrders(2); // 2 for items
     }
 
     public List<PoComboDto> findAllPurchaseOrdersKits() {
-        List<PoComboDto> list = new ArrayList<>();
-        List<Object[]> objects = purchaseOrderRepository.findAllPoDgv().orElse(new ArrayList<>());
-        for(Object[] po : objects) {
-            if (Integer.parseInt(po[3].toString()) != 0) {
-                list.add(new PoComboDto(Integer.parseInt(po[0].toString()), po[1].toString()));
-            }
-        }
-        return list;
+        return findAllPurchaseOrders(3); // 3 for kits
     }
 
-    public PurchaseOrder savePurchaseOrder(Integer poNo,Integer userId) throws Exception {
+    public PurchaseOrder savePurchaseOrder(String poNo,Integer userId) throws Exception {
         User user = userService.findUserById(userId);
         checkPoDuplicate(poNo);
         PurchaseOrder purchaseOrder = new PurchaseOrder(poNo, user);
         return purchaseOrderRepository.save(purchaseOrder);
     }
 
-    private void checkPoDuplicate(Integer poNo) throws Exception {
+    private void checkPoDuplicate(String poNo) throws Exception {
         if(purchaseOrderRepository.findPurchaseOrderByNo(poNo).isPresent())
             throw new Exception("There is another purchase order with the same No entered");
     }
@@ -60,9 +57,9 @@ public class PurchaseOrderService {
             return purchaseOrderRepository.findPurchaseOrderById(poId)
                     .orElseThrow(() -> new Exception("PO not found for ID : " + poId));
         else {
-            if(purchaseOrderRepository.findPurchaseOrderByNo(Integer.parseInt(poNo)).isPresent())
-                return purchaseOrderRepository.findPurchaseOrderByNo(Integer.parseInt(poNo)).get();
-            return purchaseOrderRepository.save(new PurchaseOrder(Integer.parseInt(poNo),user));
+            if(purchaseOrderRepository.findPurchaseOrderByNo(poNo).isPresent())
+                return purchaseOrderRepository.findPurchaseOrderByNo(poNo).get();
+            return purchaseOrderRepository.save(new PurchaseOrder(poNo,user));
         }
      }
 
@@ -73,15 +70,15 @@ public class PurchaseOrderService {
         }).collect(Collectors.toList());
     }
 
-    public PurchaseOrder editPurchaseOrder(Integer id, Integer poNo, Integer userId) throws Exception {
+    public PurchaseOrder editPurchaseOrder(Integer id, String poNo, Integer userId) throws Exception {
         PurchaseOrder po = checkPoDuplicate(poNo, id);
         User user = userService.findUserById(userId);
-        po.setNo(poNo.toString());
+        po.setNo(poNo);
         po.setUpdatedBy(user);
         return purchaseOrderRepository.save(po);
     }
 
-    private PurchaseOrder checkPoDuplicate(Integer poNo, Integer id) throws Exception {
+    private PurchaseOrder checkPoDuplicate(String poNo, Integer id) throws Exception {
         PurchaseOrder po = purchaseOrderRepository.findPurchaseOrderByNo(poNo).orElse(null);
         if(po != null && po.getId() != id)
             throw new Exception("There is another purchase order with the same No entered");

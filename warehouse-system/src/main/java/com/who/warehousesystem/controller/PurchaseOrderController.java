@@ -41,7 +41,7 @@ public class PurchaseOrderController {
     }
 
     @PostMapping("")
-    public ResponseEntity savePurchaseOrder (@RequestBody Integer poNo,
+    public ResponseEntity savePurchaseOrder (@RequestBody String poNo,
                                              @RequestHeader (value = "userId") Integer userId) throws Exception {
         return new ResponseEntity(modelMapper.map(purchaseOrderService.savePurchaseOrder(poNo, userId),
                 PoComboDto.class),HttpStatus.OK);
@@ -51,7 +51,7 @@ public class PurchaseOrderController {
     public ResponseEntity editPurchaseOrder (@PathVariable (value = "id") Integer id,
                                              @RequestBody Integer poNo,
                                              @RequestHeader (value = "userId") Integer userId) throws Exception {
-        return new ResponseEntity(modelMapper.map(purchaseOrderService.editPurchaseOrder(id,poNo,userId),
+        return new ResponseEntity(modelMapper.map(purchaseOrderService.editPurchaseOrder(id,poNo.toString(),userId),
                 PoComboDto.class), HttpStatus.OK);
     }
 
