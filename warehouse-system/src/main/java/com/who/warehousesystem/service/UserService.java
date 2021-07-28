@@ -6,6 +6,7 @@ import com.who.warehousesystem.dto.UserSaveDto;
 import com.who.warehousesystem.model.Role;
 import com.who.warehousesystem.model.User;
 import com.who.warehousesystem.repository.UserRepository;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class UserService {
         checkPassword(dto.getPassword(),dto.getConfirm());
 
         Role role = roleService.findRoleById(dto.getRoleId());
-        User user = new User(dto.getName(),dto.getUsername(),dto.getPassword(),role);
+        User user = new User(dto.getName(),dto.getUsername(), BCrypt.hashpw(dto.getPassword(),BCrypt.gensalt()),role);
         return userRepository.save(user);
     }
 
@@ -96,8 +97,12 @@ public class UserService {
     }
 
     private User findUserByUsernameAndPassword(String username, String password) throws Exception {
-        return userRepository.findUserByUsernameAndPassword(username,password)
-                .orElseThrow(() -> new Exception("Incorrect username or password or this user had been deactivated"));
+        User user = userRepository.findUserByUsername(username)
+                .orElseThrow(() -> new Exception("Incorrect username or password or this user had been deactivated"));;
+        if(BCrypt.checkpw(password,user.getPassword()))
+            return user;
+        else
+            throw new Exception("Incorrect username or password or this user had been deactivated");
     }
 
     public User login(LoginDto dto) throws Exception {
