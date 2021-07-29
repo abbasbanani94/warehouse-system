@@ -34,6 +34,18 @@ namespace WarehouseSystem
                 r.SetParameterValue("itemPoId", id);
                 crv.ReportSource = r;
             }
+            else if(report == "Kit General Info (Card)")
+            {
+                Reports.rpt_one_kit_general_info r = new Reports.rpt_one_kit_general_info();
+                r.SetParameterValue("kitItemPo", id);
+                crv.ReportSource = r;
+            }
+            else if(report == "Kit Inventory Log")
+            {
+                Reports.rpt_one_kit_inventory r = new Reports.rpt_one_kit_inventory();
+                r.SetParameterValue("kitPoId", id);
+                crv.ReportSource = r;
+            }
             Text = report;
         }
     }

@@ -241,5 +241,29 @@ namespace WarehouseSystem
             if (dgv.Rows.Count == 0)
                 KitPo.findKitPoDgv(dgv);
         }
+
+        private frm_kit_po_reports _kit_po_reports = null;
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            if (txtKitPoId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (_kit_po_reports == null)
+                {
+                    _kit_po_reports = new frm_kit_po_reports(txtKitPoId.Text);
+                    _kit_po_reports.Show();
+                    _kit_po_reports.FormClosed += _kit_po_reports_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Kit PO Reports");
+            }
+        }
+
+        private void _kit_po_reports_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _kit_po_reports = null;
+        }
     }
 }

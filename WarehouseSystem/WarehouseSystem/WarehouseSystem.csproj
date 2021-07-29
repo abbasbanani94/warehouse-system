@@ -153,6 +153,12 @@
     <Compile Include="frm_kit_disposal.Designer.cs">
       <DependentUpon>frm_kit_disposal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_kit_po_reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kit_po_reports.Designer.cs">
+      <DependentUpon>frm_kit_po_reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,18 @@
       <DependentUpon>rpt_one_item_inventory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\rpt_one_kit_general_info.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_one_kit_general_info.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rpt_one_kit_inventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_one_kit_inventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="frm_check.resx">
       <DependentUpon>frm_check.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_po.resx">
       <DependentUpon>frm_kit_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_kit_po_reports.resx">
+      <DependentUpon>frm_kit_po_reports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.cs</DependentUpon>
@@ -361,6 +382,14 @@
     <EmbeddedResource Include="Reports\rpt_one_item_inventory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_one_item_inventory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rpt_one_kit_general_info.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_one_kit_general_info.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rpt_one_kit_inventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_one_kit_inventory.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
