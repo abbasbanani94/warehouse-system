@@ -54,20 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CenterEditDto.cs" />
-    <Compile Include="CenterSaveDto.cs" />
-    <Compile Include="Check.cs" />
-    <Compile Include="CheckDetailsDto.cs" />
-    <Compile Include="CheckSaveDto.cs" />
-    <Compile Include="CheckType.cs" />
-    <Compile Include="CheckWorkerDto.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="ComboDto.cs" />
-    <Compile Include="Disposal.cs" />
-    <Compile Include="DisposalSaveDto.cs" />
-    <Compile Include="DistributionPlan.cs" />
-    <Compile Include="DpDetailsDto.cs" />
-    <Compile Include="FormsFunctions.cs" />
+    <Compile Include="Dto\CenterEditDto.cs" />
+    <Compile Include="Dto\CenterSaveDto.cs" />
+    <Compile Include="Classes\Check.cs" />
+    <Compile Include="Dto\CheckDetailsDto.cs" />
+    <Compile Include="Dto\CheckSaveDto.cs" />
+    <Compile Include="Classes\CheckType.cs" />
+    <Compile Include="Dto\CheckWorkerDto.cs" />
+    <Compile Include="Classes\Client.cs" />
+    <Compile Include="Dto\ComboDto.cs" />
+    <Compile Include="Classes\Disposal.cs" />
+    <Compile Include="Dto\DisposalSaveDto.cs" />
+    <Compile Include="Classes\DistributionPlan.cs" />
+    <Compile Include="Dto\DpDetailsDto.cs" />
+    <Compile Include="Classes\FormsFunctions.cs" />
     <Compile Include="frm_check.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,47 +200,47 @@
     <Compile Include="frm_worker.Designer.cs">
       <DependentUpon>frm_worker.cs</DependentUpon>
     </Compile>
-    <Compile Include="HealthCenter.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemDisposal.cs" />
-    <Compile Include="ItemDisposalSaveDto.cs" />
-    <Compile Include="ItemDp.cs" />
-    <Compile Include="ItemDpSaveDto.cs" />
-    <Compile Include="ItemPo.cs" />
-    <Compile Include="ItemPoDpDto.cs" />
-    <Compile Include="ItemPoSaveDto.cs" />
-    <Compile Include="ItemPoSearchDto.cs" />
-    <Compile Include="ItemTbDto.cs" />
-    <Compile Include="Kit.cs" />
-    <Compile Include="KitDetails.cs" />
-    <Compile Include="KitDetailSaveDto.cs" />
-    <Compile Include="KitDisposal.cs" />
-    <Compile Include="KitDisposalSaveDto.cs" />
-    <Compile Include="KitDp.cs" />
-    <Compile Include="KitDpSaveDto.cs" />
-    <Compile Include="KitPo.cs" />
-    <Compile Include="KitPoDpDto.cs" />
-    <Compile Include="KitPoSaveDto.cs" />
-    <Compile Include="KitPoSearchDto.cs" />
-    <Compile Include="LoginDto.cs" />
-    <Compile Include="Msg.cs" />
-    <Compile Include="NameDto.cs" />
-    <Compile Include="PasswordDto.cs" />
-    <Compile Include="PlanSaveDto.cs" />
-    <Compile Include="PoCombo.cs" />
+    <Compile Include="Classes\HealthCenter.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="Classes\ItemDisposal.cs" />
+    <Compile Include="Dto\ItemDisposalSaveDto.cs" />
+    <Compile Include="Classes\ItemDp.cs" />
+    <Compile Include="Dto\ItemDpSaveDto.cs" />
+    <Compile Include="Classes\ItemPo.cs" />
+    <Compile Include="Dto\ItemPoDpDto.cs" />
+    <Compile Include="Dto\ItemPoSaveDto.cs" />
+    <Compile Include="Dto\ItemPoSearchDto.cs" />
+    <Compile Include="Dto\ItemTbDto.cs" />
+    <Compile Include="Classes\Kit.cs" />
+    <Compile Include="Classes\KitDetails.cs" />
+    <Compile Include="Dto\KitDetailSaveDto.cs" />
+    <Compile Include="Classes\KitDisposal.cs" />
+    <Compile Include="Dto\KitDisposalSaveDto.cs" />
+    <Compile Include="Classes\KitDp.cs" />
+    <Compile Include="Dto\KitDpSaveDto.cs" />
+    <Compile Include="Classes\KitPo.cs" />
+    <Compile Include="Dto\KitPoDpDto.cs" />
+    <Compile Include="Dto\KitPoSaveDto.cs" />
+    <Compile Include="Dto\KitPoSearchDto.cs" />
+    <Compile Include="Dto\LoginDto.cs" />
+    <Compile Include="Classes\Msg.cs" />
+    <Compile Include="Dto\NameDto.cs" />
+    <Compile Include="Dto\PasswordDto.cs" />
+    <Compile Include="Dto\PlanSaveDto.cs" />
+    <Compile Include="Classes\PoCombo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseOrder.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserLoginDto.cs" />
-    <Compile Include="UserSaveDto.cs" />
-    <Compile Include="Waybill.cs" />
-    <Compile Include="WbDetailsDto.cs" />
-    <Compile Include="WbDetailsSaveDto.cs" />
-    <Compile Include="WbSaveDto.cs" />
-    <Compile Include="Worker.cs" />
-    <Compile Include="WorkerSaveDto.cs" />
+    <Compile Include="Classes\PurchaseOrder.cs" />
+    <Compile Include="Classes\Role.cs" />
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Dto\UserLoginDto.cs" />
+    <Compile Include="Dto\UserSaveDto.cs" />
+    <Compile Include="Classes\Waybill.cs" />
+    <Compile Include="Dto\WbDetailsDto.cs" />
+    <Compile Include="Dto\WbDetailsSaveDto.cs" />
+    <Compile Include="Dto\WbSaveDto.cs" />
+    <Compile Include="Classes\Worker.cs" />
+    <Compile Include="Dto\WorkerSaveDto.cs" />
     <EmbeddedResource Include="frm_check.resx">
       <DependentUpon>frm_check.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +335,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\whoparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
