@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace WarehouseSystem
@@ -50,6 +51,16 @@ namespace WarehouseSystem
                     }
                 }
             }
+        }
+
+        internal static bool checkItemInCombo(string item, ComboBox cmb)
+        {
+            for(int i=0; i<cmb.Items.Count; i++)
+            {
+                if (cmb.Items[i].ToString() == item)
+                    return true;
+            }
+            return false;
         }
     }
 }

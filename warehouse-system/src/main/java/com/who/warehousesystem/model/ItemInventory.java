@@ -64,7 +64,8 @@ public class ItemInventory extends DateAudit {
         this.outQty = itemDp.getQty();
         this.setCreatedBy(user);
         this.note = "ItemDp Id: " + itemDp.getId() + ", Plan Name: " + itemDp.getDistributionPlan().getEnName() + ", " +
-                "Item: " + itemDp.getItemPo().getItem().getName() + ", Out Qty: " + itemDp.getQty();
+                "Center: " + itemDp.getHealthCenter().getEnName() + " - " + itemDp.getHealthCenter().getEnName() + " - " +
+                itemDp.getHealthCenter().getDistrict().getCity().getEnName() + ", Out Qty: " + itemDp.getQty();
     }
 
     public ItemInventory(ItemDisposal itemDisposal, InventoryType inventoryType, User user) {
@@ -75,7 +76,6 @@ public class ItemInventory extends DateAudit {
         this.outQty = itemDisposal.getQty();
         this.setCreatedBy(user);
         this.note = "ItemDisposal Id: " + itemDisposal.getId() + ", Disposal Reason: " + itemDisposal.getDisposal()
-                .getReason() + ", Item: " + itemDisposal.getItemPo().getItem().getName() + ", Out Qty: " +
-                itemDisposal.getQty();
+                .getReason() + ", Out Qty: " + itemDisposal.getQty();
     }
 }

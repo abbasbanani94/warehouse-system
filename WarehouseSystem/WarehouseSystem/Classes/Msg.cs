@@ -25,6 +25,11 @@ namespace WarehouseSystem
             errorMsg(v + " form is already opened, you can't open the same form twice", "Already Open");
         }
 
+        internal static void reportDoesntExist()
+        {
+            Msg.errorMsg("No report with the name you entered, please select from the list", "Error");
+        }
+
         static public void numbersOnly(KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))

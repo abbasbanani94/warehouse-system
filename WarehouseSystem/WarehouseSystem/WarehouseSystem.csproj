@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -43,6 +48,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -128,6 +135,12 @@
     <Compile Include="frm_item_po.designer.cs">
       <DependentUpon>frm_item_po.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_item_po_reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_item_po_reports.Designer.cs">
+      <DependentUpon>frm_item_po_reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_kit_details.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +170,12 @@
     </Compile>
     <Compile Include="frm_purchase_order.Designer.cs">
       <DependentUpon>frm_purchase_order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_report.Designer.cs">
+      <DependentUpon>frm_report.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_user.cs">
       <SubType>Form</SubType>
@@ -241,6 +260,18 @@
     <Compile Include="Dto\WbSaveDto.cs" />
     <Compile Include="Classes\Worker.cs" />
     <Compile Include="Dto\WorkerSaveDto.cs" />
+    <Compile Include="Reports\rpt_one_item_general_info.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_one_item_general_info.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rpt_one_item_inventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_one_item_inventory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="frm_check.resx">
       <DependentUpon>frm_check.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +302,9 @@
     <EmbeddedResource Include="frm_item_po.resx">
       <DependentUpon>frm_item_po.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_item_po_reports.resx">
+      <DependentUpon>frm_item_po_reports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_kit_details.resx">
       <DependentUpon>frm_kit_details.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_purchase_order.resx">
       <DependentUpon>frm_purchase_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_report.resx">
+      <DependentUpon>frm_report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_user.resx">
       <DependentUpon>frm_user.cs</DependentUpon>
@@ -317,6 +354,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rpt_one_item_general_info.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_one_item_general_info.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rpt_one_item_inventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_one_item_inventory.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -336,8 +381,9 @@
   <ItemGroup>
     <None Include="Resources\whoparent.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Reports\" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

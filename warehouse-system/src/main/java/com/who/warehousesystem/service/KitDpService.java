@@ -113,7 +113,8 @@ public class KitDpService {
         kitInventory.setOutQty(kitDp.getQty());
         kitInventory.setUpdatedBy(user);
         kitInventory.setNote("KitDp ID: " + id + ", Plan Name: " + kitDp.getDistributionPlan().getEnName() + ", " +
-                "Kit: " + kitDp.getKitPo().getKit().getName() + ", Out Qty: " + kitDp.getQty());
+                "Center: " + kitDp.getHealthCenter().getEnName() + " - " + kitDp.getHealthCenter().getDistrict().getEnName() +
+                " - " + kitDp.getHealthCenter().getDistrict().getCity().getEnName() + ", Out Qty: " + kitDp.getQty());
 
         kitInventoryService.saveKitInventory(kitInventory);
         kitPoService.subInventoryByKitDp(kitDp, user);

@@ -106,7 +106,8 @@ public class ItemDpService {
         itemInventory.setOutQty(dto.getQty());
         itemInventory.setUpdatedBy(user);
         itemInventory.setNote("ItemDp Id: " + itemDp.getId() + ", Plan Name: " + itemDp.getDistributionPlan().getEnName() +
-                ", Item: " + itemDp.getItemPo().getItem().getName() + ", Out Qty: " + itemDp.getQty());
+                ", Center: " + itemDp.getHealthCenter().getEnName() + " - " + itemDp.getHealthCenter().getDistrict().getEnName() +
+                " - " + itemDp.getHealthCenter().getDistrict().getCity().getEnName() + ", Out Qty: " + itemDp.getQty());
         itemInventoryService.saveItemInventory(itemInventory);
         itemPoService.subInventoryByItemDp(itemDp, user);
         return itemDp;

@@ -215,5 +215,29 @@ namespace WarehouseSystem
             if (dgv.Rows.Count == 0)
                 ItemPo.findItemPoDgv(dgv);
         }
+
+        private frm_item_po_reports _item_po_reports = null;
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            if (txtItemPoId.Text == "")
+                Msg.emptyFields();
+            else
+            {
+                if (_item_po_reports == null)
+                {
+                    _item_po_reports = new frm_item_po_reports(txtItemPoId.Text);
+                    _item_po_reports.Show();
+                    _item_po_reports.FormClosed += _item_po_reports_FormClosed;
+                }
+                else
+                    Msg.formAlreadyOpen("Item PO Reports");
+            }
+        }
+
+        private void _item_po_reports_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _item_po_reports = null;
+        }
     }
 }

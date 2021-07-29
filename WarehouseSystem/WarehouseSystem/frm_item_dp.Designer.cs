@@ -642,7 +642,6 @@
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(144, 32);
             this.txtQty.TabIndex = 11;
-            this.txtQty.TabStop = false;
             this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPoNo_KeyPress);
             // 
             // label11

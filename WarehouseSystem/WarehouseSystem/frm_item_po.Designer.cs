@@ -82,12 +82,14 @@
             this.dtpExp = new System.Windows.Forms.DateTimePicker();
             this.dtpMan = new System.Windows.Forms.DateTimePicker();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.btnReports = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnReports);
             this.groupBox1.Controls.Add(this.chkExp);
             this.groupBox1.Controls.Add(this.chkMan);
             this.groupBox1.Controls.Add(this.label21);
@@ -150,7 +152,7 @@
             // 
             this.chkExp.AutoSize = true;
             this.chkExp.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.chkExp.Location = new System.Drawing.Point(1469, 286);
+            this.chkExp.Location = new System.Drawing.Point(1352, 286);
             this.chkExp.Name = "chkExp";
             this.chkExp.Size = new System.Drawing.Size(123, 28);
             this.chkExp.TabIndex = 28;
@@ -162,7 +164,7 @@
             // 
             this.chkMan.AutoSize = true;
             this.chkMan.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.chkMan.Location = new System.Drawing.Point(1640, 252);
+            this.chkMan.Location = new System.Drawing.Point(1523, 252);
             this.chkMan.Name = "chkMan";
             this.chkMan.Size = new System.Drawing.Size(128, 28);
             this.chkMan.TabIndex = 27;
@@ -174,7 +176,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(1465, 219);
+            this.label21.Location = new System.Drawing.Point(1348, 219);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(157, 24);
             this.label21.TabIndex = 36;
@@ -184,7 +186,7 @@
             // 
             this.chkReceived.AutoSize = true;
             this.chkReceived.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.chkReceived.Location = new System.Drawing.Point(1469, 252);
+            this.chkReceived.Location = new System.Drawing.Point(1352, 252);
             this.chkReceived.Name = "chkReceived";
             this.chkReceived.Size = new System.Drawing.Size(165, 28);
             this.chkReceived.TabIndex = 26;
@@ -682,6 +684,18 @@
             this.dgv.TabStop = false;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
+            // btnReports
+            // 
+            this.btnReports.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.Location = new System.Drawing.Point(1720, 267);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(127, 51);
+            this.btnReports.TabIndex = 37;
+            this.btnReports.TabStop = false;
+            this.btnReports.Text = "Reports";
+            this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
             // frm_item_po
             // 
             this.AcceptButton = this.btnSave;
@@ -756,6 +770,7 @@
         private System.Windows.Forms.CheckBox chkMan;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.CheckBox chkReceived;
+        private System.Windows.Forms.Button btnReports;
     }
 }
 
