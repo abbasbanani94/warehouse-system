@@ -24,13 +24,13 @@ namespace WarehouseSystem
         {
             load();
             HealthCenter.findCitiesCombo(cmbCity);
+            DistributionPlan.findAllDpCombo(cmbDpEn);
         }
 
         private void load()
         {
             KitDp.findKitDpDgv(dgv);
             PurchaseOrder.findAllPoComboKits(cmbPoNo);
-            DistributionPlan.findAllDpCombo(cmbDpEn);
         }
 
         private void cmbCity_TextChanged(object sender, EventArgs e)

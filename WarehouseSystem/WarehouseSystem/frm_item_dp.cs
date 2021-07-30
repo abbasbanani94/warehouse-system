@@ -24,13 +24,13 @@ namespace WarehouseSystem
         {
             load();
             HealthCenter.findCitiesCombo(cmbCity);
+            DistributionPlan.findAllDpCombo(cmbDp);
         }
 
         private void load()
         {
             ItemDp.findItemDpDgv(dgv);
             PurchaseOrder.findAllPoComboItems(cmbPoNo);
-            DistributionPlan.findAllDpCombo(cmbDp);
         }
 
         private void cmbCity_TextChanged(object sender, EventArgs e)
@@ -99,8 +99,6 @@ namespace WarehouseSystem
 
         private void done()
         {
-            cmbItem.SelectedValue = -1;
-            cmbItem.DataSource = null;
             load();
         }
 

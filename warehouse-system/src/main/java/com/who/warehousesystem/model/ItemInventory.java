@@ -64,7 +64,7 @@ public class ItemInventory extends DateAudit {
         this.outQty = itemDp.getQty();
         this.setCreatedBy(user);
         this.note = "ItemDp Id: " + itemDp.getId() + ", Plan Name: " + itemDp.getDistributionPlan().getEnName() + ", " +
-                "Center: " + itemDp.getHealthCenter().getEnName() + " - " + itemDp.getHealthCenter().getEnName() + " - " +
+                "Center: " + itemDp.getHealthCenter().getEnName() + " - " + itemDp.getHealthCenter().getDistrict().getEnName() + " - " +
                 itemDp.getHealthCenter().getDistrict().getCity().getEnName() + ", Out Qty: " + itemDp.getQty();
     }
 
