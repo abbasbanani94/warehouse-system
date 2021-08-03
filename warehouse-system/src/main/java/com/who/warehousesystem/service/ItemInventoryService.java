@@ -5,6 +5,9 @@ import com.who.warehousesystem.repository.ItemInventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ItemInventoryService {
 
@@ -32,5 +35,9 @@ public class ItemInventoryService {
         return itemInventoryRepository.findItemInventoryByTypeAndItemDisposal(typeId, itemDisposalId)
                 .orElseThrow(() -> new Exception("No Item inventory for Item Disposal ID : " + itemDisposalId +
                         " and type ID : " + typeId));
+    }
+
+    public List<ItemInventory> findAllItemInventoriesByItemPo(Integer itemPoId) {
+        return itemInventoryRepository.findItemInventoriesByItemPo(itemPoId).orElse(new ArrayList<>());
     }
 }

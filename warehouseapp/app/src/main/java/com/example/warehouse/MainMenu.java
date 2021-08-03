@@ -19,7 +19,7 @@ public class MainMenu extends AppCompatActivity {
 
     TextView txtBarcode;
     String id, type;
-    Button btnDetails;
+    Button btnDetails,btnInventory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,19 @@ public class MainMenu extends AppCompatActivity {
                             Toast.makeText(MainMenu.this,t.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
+                }
+            }
+        });
+
+        btnInventory = findViewById(R.id.btnInventory);
+
+        btnInventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(type == "item") {
+                    Intent intent = new Intent(MainMenu.this, ItemInventory.class);
+                    intent.putExtra("itemPoId", id);
+                    startActivity(intent);
                 }
             }
         });

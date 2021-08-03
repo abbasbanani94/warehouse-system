@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -25,4 +26,7 @@ public interface ItemInventoryRepository extends JpaRepository<ItemInventory,Int
             "type_id = :typeId", nativeQuery = true)
     Optional<ItemInventory> findItemInventoryByTypeAndItemDisposal(@Param(value = "typeId") Integer typeId,
                                                                    @Param(value = "itemDisposal") Integer itemDisposalId);
+
+    @Query(value = "select * from item_inventory where active = 1 and item_po_id = :itemPo", nativeQuery = true)
+    Optional<List<ItemInventory>> findItemInventoriesByItemPo(@Param(value = "itemPo") Integer itemPoId);
 }

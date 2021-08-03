@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Warehouse"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ItemInventory"
+            android:exported="true" />
+        <activity
             android:name=".ItemPoDetails"
             android:exported="true" />
         <activity

@@ -1,5 +1,6 @@
 package com.who.warehousesystem.service;
 
+import com.who.warehousesystem.dto.ItemInventoryAppDto;
 import com.who.warehousesystem.dto.ItemPoSaveDto;
 import com.who.warehousesystem.dto.ItemPoSearchDto;
 import com.who.warehousesystem.model.*;
@@ -226,5 +227,19 @@ public class ItemPoService {
             }
         }
         return itemPos;
+    }
+
+    public List<ItemInventoryAppDto> findItemPoInventoryForApp(Integer id) throws Exception {
+        ItemPo itemPo = findItemPoById(id);
+        List<ItemInventory> itemInventories = itemInventoryService.findAllItemInventoriesByItemPo(id);
+        Integer stock = 0;
+        List<ItemInventoryAppDto> dtos = new ArrayList<>();
+        for(ItemInventory itemInventory : itemInventories) {
+            stock += itemInventory.getInQty();
+            stock -= itemInventory.getOutQty();
+            dtos.add(new ItemInventoryAppDto(itemInventory.getNote(),itemInventory.getCreatedAt().toLocalDate(),
+                    itemInventory.getInQty(),itemInventory.getOutQty(),stock));
+        }
+        return dtos;
     }
 }

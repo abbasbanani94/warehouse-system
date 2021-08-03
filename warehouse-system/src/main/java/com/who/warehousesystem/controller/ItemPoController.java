@@ -90,8 +90,13 @@ public class ItemPoController {
         return new ResponseEntity(dto, HttpStatus.OK);
     }
 
-    @GetMapping("/app/{id}")
+    @GetMapping("/app/details/{id}")
     public ResponseEntity findItemPoDetailsForApp (@PathVariable (value = "id") Integer id) throws Exception {
         return new ResponseEntity(modelMapper.map(itemPoService.findItemPoById(id),ItemPoAppDto.class),HttpStatus.OK);
+    }
+
+    @GetMapping("/app/inventory/{id}")
+    public ResponseEntity findItemPoInventoryForApp (@PathVariable (value = "id") Integer id) throws Exception {
+        return new ResponseEntity(itemPoService.findItemPoInventoryForApp(id), HttpStatus.OK);
     }
 }
