@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemPoDetails"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/txtItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Item Details"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtItemPoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtItemTitle"
+        android:layout_marginBottom="10dp"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtItemPoId"
+        android:layout_marginBottom="10dp"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtPo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtItemName"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtBatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtPo"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtPackaging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtBatch"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtRecDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtPackaging"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtManDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtRecDate"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtExpDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtManDate"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtExpDate"
+        android:layout_marginBottom="10dp"/>
+
+
+
+</RelativeLayout>

@@ -89,4 +89,9 @@ public class ItemPoController {
                 itemPo.getManDate(),itemPo.getExpDate(),itemPo.getPackaging(),itemPo.getTotalQty(),itemPo.getInventory());
         return new ResponseEntity(dto, HttpStatus.OK);
     }
+
+    @GetMapping("/app/{id}")
+    public ResponseEntity findItemPoDetailsForApp (@PathVariable (value = "id") Integer id) throws Exception {
+        return new ResponseEntity(modelMapper.map(itemPoService.findItemPoById(id),ItemPoAppDto.class),HttpStatus.OK);
+    }
 }
