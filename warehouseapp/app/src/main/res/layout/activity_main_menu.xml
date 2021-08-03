@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/txtBarcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnDetails"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PO Details"
+        android:textSize="30sp"
+        android:layout_below="@id/txtBarcode"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnInventory"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inventory"
+        android:textSize="30sp"
+        android:layout_below="@id/btnDetails"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnDp"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DPs"
+        android:textSize="30sp"
+        android:layout_below="@id/btnInventory"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnChecks"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checks"
+        android:textSize="30sp"
+        android:layout_below="@id/btnDp"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

@@ -30,7 +30,7 @@ namespace WarehouseSystem
             else if(report == "Kit General Info (Card)")
             {
                 Reports.rpt_one_kit_general_info r = new Reports.rpt_one_kit_general_info();
-                r.SetParameterValue("kitItemPo", id);
+                r.SetParameterValue("kitPoId", id);
                 crv.ReportSource = r;
             }
             else if(report == "Kit Inventory Log")
