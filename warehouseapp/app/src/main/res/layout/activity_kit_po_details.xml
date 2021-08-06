@@ -5,95 +5,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemPoDetails"
+    tools:context=".KitPoDetails"
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/txtItemTitle"
+        android:id="@+id/txtKitTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Item Details"
+        android:text="Kit Details"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtItemPoId"
+        android:id="@+id/txtKitPoId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtItemTitle"
+        android:layout_below="@id/txtKitTitle"
         android:layout_marginBottom="10dp"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/txtItemName"
+        android:id="@+id/txtKitName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtItemPoId"
+        android:layout_below="@id/txtKitPoId"
         android:layout_marginBottom="10dp"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/txtPo"
+        android:id="@+id/txtKitPo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtItemName"
+        android:layout_below="@id/txtKitName"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtBatch"
+        android:id="@+id/txtKitBatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtPo"
+        android:layout_below="@id/txtKitPo"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtPackaging"
+        android:id="@+id/txtKitRecDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtBatch"
+        android:layout_below="@id/txtKitBatch"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtRecDate"
+        android:id="@+id/txtKitManDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtPackaging"
+        android:layout_below="@id/txtKitRecDate"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtManDate"
+        android:id="@+id/txtKitExpDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtRecDate"
+        android:layout_below="@id/txtKitManDate"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtExpDate"
+        android:id="@+id/txtKitCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtManDate"
+        android:layout_below="@id/txtKitExpDate"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtCountry"
+        android:id="@+id/txtKitLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtExpDate"
+        android:layout_below="@id/txtKitCountry"
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtLocation"
+        android:id="@+id/txtKitBoxes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_below="@id/txtCountry"
+        android:layout_below="@id/txtKitLocation"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/txtKitsPallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/txtKitBoxes"
         android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>

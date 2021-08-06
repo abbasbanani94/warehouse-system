@@ -12,5 +12,5 @@ public interface ItemPoClient {
     Call<ItemPoAppDto> findItemPoDetailsForApp (@Path("id") Integer id);
 
     @GET("/itemPo/app/inventory/{id}")
-    Call<List<ItemInventoryAppDto>> findItemPoInventoryForApp (@Path("id") Integer id);
+    Call<List<InventoryAppDto>> findItemPoInventoryForApp (@Path("id") Integer id);
 }

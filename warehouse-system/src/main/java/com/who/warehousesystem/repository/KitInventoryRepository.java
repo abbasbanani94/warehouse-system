@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -24,4 +25,7 @@ public interface KitInventoryRepository extends JpaRepository<KitInventory,Integ
             "type_id = :type", nativeQuery = true)
     Optional<KitInventory> findKitInventoryByTypeAndKitDisposal(@Param(value = "type") Integer typeId,
                                                                 @Param(value = "kitDisposal") Integer kitDisposalId);
+
+    @Query(value = "select * from kit_inventory where active = 1 and kit_po_id = :kitPo", nativeQuery = true)
+    Optional<List<KitInventory>> findAllKitInventoriesByKitPo(@Param(value = "kitPo") Integer kitPoId);
 }

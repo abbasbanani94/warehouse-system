@@ -1,7 +1,7 @@
 package com.example.warehouse;
 
 
-public class ItemInventoryAppDto {
+public class InventoryAppDto {
 
     private String note;
     private String date;
@@ -9,7 +9,7 @@ public class ItemInventoryAppDto {
     private String outQty;
     private String stock;
 
-    public ItemInventoryAppDto(String note, String date, String inQty, String outQty, String stock) {
+    public InventoryAppDto(String note, String date, String inQty, String outQty, String stock) {
         this.note = note;
         this.date = date;
         this.inQty = inQty;

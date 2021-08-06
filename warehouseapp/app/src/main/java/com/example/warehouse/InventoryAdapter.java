@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ItemInventoryAdapter extends RecyclerView.Adapter<ItemInventoryAdapter.ViewHolder> {
+public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.ViewHolder> {
 
     Context context;
-    List<ItemInventoryAppDto> list;
+    List<InventoryAppDto> list;
 
-    public ItemInventoryAdapter (Context context,List<ItemInventoryAppDto> list) {
+    public InventoryAdapter(Context context, List<InventoryAppDto> list) {
         this.context = context;
         this.list = list;
     }
@@ -31,7 +31,7 @@ public class ItemInventoryAdapter extends RecyclerView.Adapter<ItemInventoryAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(list != null && list.size() > 0) {
-            ItemInventoryAppDto dto = list.get(position);
+            InventoryAppDto dto = list.get(position);
             holder.txtNote.setText(dto.getNote());
             holder.txtDate.setText("Date : " + dto.getDate());
             holder.txtStock.setText("Stock : " + dto.getStock());

@@ -93,4 +93,14 @@ public class KitPoController {
     public ResponseEntity findKitNameByKitPo (@PathVariable (value = "id") Integer id) throws Exception {
         return new ResponseEntity(new NameDto(kitPoService.findKitNameByKitPo(id)), HttpStatus.OK);
     }
+
+    @GetMapping("/app/details/{id}")
+    public ResponseEntity findKitPoDetailsForApp (@PathVariable (value = "id") Integer id) throws Exception {
+        return new ResponseEntity(modelMapper.map(kitPoService.findKitPoById(id), KitPoAppDto.class), HttpStatus.OK);
+    }
+
+    @GetMapping("/app/inventory/{id}")
+    public ResponseEntity findKitPoInventoryForApp (@PathVariable (value = "id") Integer id) throws Exception {
+        return new ResponseEntity(kitPoService.findKitPoInventoryForApp(id), HttpStatus.OK);
+    }
 }

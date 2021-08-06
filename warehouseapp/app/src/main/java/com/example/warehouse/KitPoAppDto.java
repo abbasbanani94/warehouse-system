@@ -1,36 +1,33 @@
 package com.example.warehouse;
 
-public class ItemPoAppDto {
+public class KitPoAppDto {
 
     private Integer id;
-    private String itemName;
-    private String purchaseOrderNo;
+    private String kitName;
+    private String orderNo;
     private String batchNo;
-    private String packaging;
     private String recDate;
     private String manDate;
     private String expDate;
     private String countryName;
     private String location;
+    private Integer boxesPerPallet;
+    private Integer kitsPerPallet;
 
     public Integer getId() {
         return id;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getKitName() {
+        return kitName;
     }
 
-    public String getPurchaseOrderNo() {
-        return purchaseOrderNo;
+    public String getOrderNo() {
+        return orderNo;
     }
 
     public String getBatchNo() {
         return batchNo;
-    }
-
-    public String getPackaging() {
-        return packaging;
     }
 
     public String getRecDate() {
@@ -51,5 +48,13 @@ public class ItemPoAppDto {
 
     public String getLocation() {
         return location;
+    }
+
+    public Integer getBoxesPerPallet() {
+        return boxesPerPallet;
+    }
+
+    public Integer getKitsPerPallet() {
+        return kitsPerPallet;
     }
 }

@@ -10,16 +10,17 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ItemPoAppDto {
+public class KitPoAppDto {
 
     private Integer id;
-    private String itemName;
-    private String purchaseOrderNo;
+    private String kitName;
+    private String orderNo;
     private String batchNo;
-    private String packaging;
     private LocalDate recDate;
     private LocalDate manDate;
     private LocalDate expDate;
     private String countryName;
     private String location;
+    private Integer boxesPerPallet;
+    private Integer kitsPerPallet;
 }

@@ -1,5 +1,6 @@
 package com.who.warehousesystem.service;
 
+import com.who.warehousesystem.dto.InventoryAppDto;
 import com.who.warehousesystem.dto.KitPoSaveDto;
 import com.who.warehousesystem.dto.KitPoSearchDto;
 import com.who.warehousesystem.model.*;
@@ -235,5 +236,19 @@ public class KitPoService {
             }
         }
         return kitPos;
+    }
+
+    public List<InventoryAppDto> findKitPoInventoryForApp(Integer id) throws Exception {
+        KitPo kitPo = findKitPoById(id);
+        List<KitInventory> kitInventories = kitInventoryService.findAllKitInventoriesByKitPo(id);
+        Integer stock = 0;
+        List<InventoryAppDto> list = new ArrayList<>();
+        for(KitInventory kitInventory : kitInventories) {
+            stock += kitInventory.getInQty();
+            stock -= kitInventory.getOutQty();
+            list.add(new InventoryAppDto(kitInventory.getNote(),kitInventory.getCreatedAt().toLocalDate(),
+                    kitInventory.getInQty(),kitInventory.getOutQty(),stock));
+        }
+        return list;
     }
 }

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ItemInventoryAppDto {
+public class InventoryAppDto {
 
     private String note;
     private LocalDate date;

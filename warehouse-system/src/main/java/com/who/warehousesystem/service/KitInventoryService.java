@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class KitInventoryService {
 
@@ -32,5 +35,9 @@ public class KitInventoryService {
         return kitInventoryRepository.findKitInventoryByTypeAndKitDisposal(typeId,kitDisposalId)
                 .orElseThrow(() -> new Exception("No Kit inventory for Kit Disposal id : " + kitDisposalId + " and " +
                         "type ID : " + typeId));
+    }
+
+    public List<KitInventory> findAllKitInventoriesByKitPo(Integer kitPoId) {
+        return kitInventoryRepository.findAllKitInventoriesByKitPo(kitPoId).orElse(new ArrayList<>());
     }
 }
