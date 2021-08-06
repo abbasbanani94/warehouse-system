@@ -33,9 +33,8 @@ public class ItemInventoryAdapter extends RecyclerView.Adapter<ItemInventoryAdap
         if(list != null && list.size() > 0) {
             ItemInventoryAppDto dto = list.get(position);
             holder.txtNote.setText(dto.getNote());
-            holder.txtIn.setText(dto.getInQty());
-            holder.txtOut.setText(dto.getOutQty());
-            holder.txtStock.setText(dto.getStock());
+            holder.txtDate.setText("Date : " + dto.getDate());
+            holder.txtStock.setText("Stock : " + dto.getStock());
         }
     }
 
@@ -46,13 +45,12 @@ public class ItemInventoryAdapter extends RecyclerView.Adapter<ItemInventoryAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtNote,txtIn,txtOut,txtStock;
+        TextView txtNote,txtDate,txtStock;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNote = itemView.findViewById(R.id.txtNote);
-            txtIn = itemView.findViewById(R.id.txtIn);
-            txtOut = itemView.findViewById(R.id.txtOut);
+            txtDate = itemView.findViewById(R.id.txtDate);
             txtStock = itemView.findViewById(R.id.txtStock);
         }
     }

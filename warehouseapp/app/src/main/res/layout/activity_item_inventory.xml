@@ -1,48 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ItemInventory"
-    android:stretchColumns="1,2,3,4"
     android:layout_margin="8dp">
 
-    <TableRow>
-        <TextView
-            android:text="Note"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="1"/>
-        <TextView
-            android:text="In"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="1"/>
-        <TextView
-            android:text="Out"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="1"/>
-        <TextView
-            android:text="Stock"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="1"/>
-    </TableRow>
+    <TextView
+        android:textStyle="bold"
+        android:text="Inventory Log"
+        android:id="@+id/txtInventoryLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:layout_marginBottom="5dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:layout_below="@id/txtInventoryLog"/>
 
-</TableLayout>
+</RelativeLayout>
