@@ -2,6 +2,7 @@ package com.example.warehouse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class ItemPoDetails extends AppCompatActivity {
     TextView txtExpDate;
     TextView txtCountry;
     TextView txtLocation;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,11 @@ public class ItemPoDetails extends AppCompatActivity {
         txtCountry = findViewById(R.id.txtCountry);
         txtLocation = findViewById(R.id.txtLocation);
 
+        SharedPreferences preferences = getSharedPreferences("warehouse",MODE_PRIVATE);
+        url = preferences.getString("url","");
+
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://192.168.8.105:8080")
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();

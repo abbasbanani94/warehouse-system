@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -19,12 +20,15 @@ public class InventoryActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     InventoryAdapter adapter;
-    String id,type;
+    String id,type,url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_inventory);
+
+        SharedPreferences preferences = getSharedPreferences("warehouse",MODE_PRIVATE);
+        url = preferences.getString("url","");
 
         id = getIntent().getStringExtra("id");
         type = getIntent().getStringExtra("type");
@@ -37,7 +41,7 @@ public class InventoryActivity extends AppCompatActivity {
         try {
             if(id != null && !id.isEmpty()) {
                 Retrofit.Builder builder = new Retrofit.Builder()
-                        .baseUrl("http://192.168.8.105:8080")
+                        .baseUrl(url)
                         .addConverterFactory(GsonConverterFactory.create());
 
                 Retrofit retrofit = builder.build();
